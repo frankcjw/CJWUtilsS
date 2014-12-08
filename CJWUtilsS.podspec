@@ -94,7 +94,6 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
 
   s.subspec 'CJWUtils' do |ss|
-    ss.source_files = 'CJWUtils/libqrencode/*'
     ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
   end
 
