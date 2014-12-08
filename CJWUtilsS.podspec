@@ -93,8 +93,10 @@ Pod::Spec.new do |s|
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
-
-
+  s.subspec 'CJWUtils' do |ss|
+    ss.source_files = 'CJWUtils/libqrencode/*'
+    ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
+  end
 
   # s.public_header_files = "Classes/**/*.h"
 
