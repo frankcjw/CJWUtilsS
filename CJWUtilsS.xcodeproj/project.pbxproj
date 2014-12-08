@@ -14,6 +14,7 @@
 		B64D5BC51A356CC500D137D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64D5BC41A356CC500D137D1 /* Images.xcassets */; };
 		B64D5BC81A356CC500D137D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64D5BC61A356CC500D137D1 /* LaunchScreen.xib */; };
 		B64D5BD41A356CC500D137D1 /* CJWUtilsSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BD31A356CC500D137D1 /* CJWUtilsSTests.swift */; };
+		B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BDE1A35714200D137D1 /* CJWDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B64D5BCD1A356CC500D137D1 /* CJWUtilsSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CJWUtilsSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D5BD21A356CC500D137D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64D5BD31A356CC500D137D1 /* CJWUtilsSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJWUtilsSTests.swift; sourceTree = "<group>"; };
+		B64D5BDE1A35714200D137D1 /* CJWDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CJWDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		B64D5BB71A356CC500D137D1 /* CJWUtilsS */ = {
 			isa = PBXGroup;
 			children = (
+				B64D5BDD1A3570C100D137D1 /* utils */,
 				B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */,
 				B64D5BBF1A356CC500D137D1 /* ViewController.swift */,
 				B64D5BC11A356CC500D137D1 /* Main.storyboard */,
@@ -113,6 +116,14 @@
 				B64D5BD21A356CC500D137D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B64D5BDD1A3570C100D137D1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B64D5BDE1A35714200D137D1 /* CJWDate.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +228,7 @@
 			files = (
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,
 				B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */,
+				B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */,
 				B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
