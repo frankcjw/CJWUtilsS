@@ -9,5 +9,7 @@
 import UIKit
 
 class CJWDate: NSDate {
-   
+    class func testing(){
+        println("test CJWDate")
+    }
 }
