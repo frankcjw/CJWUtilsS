@@ -170,6 +170,8 @@
 		B64D5BAD1A356CC500D137D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = cen;
 				TargetAttributes = {
@@ -423,6 +425,7 @@
 				B64D5BD91A356CC500D137D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B64D5BDA1A356CC500D137D1 /* Build configuration list for PBXNativeTarget "CJWUtilsSTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +434,7 @@
 				B64D5BDC1A356CC500D137D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
