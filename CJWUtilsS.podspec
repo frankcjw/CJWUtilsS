@@ -142,7 +142,7 @@ Pod::Spec.new do |s|
   s.dependency "MJRefresh"
   #s.dependency "EDStarRating"
   #s.dependency "MBProgressHUD"
-  #s.dependency "CGFloatType"
+  s.dependency "CGFloatType"
   #s.dependency "TMCache"
   #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
 end
