@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CJWDate: NSDate {
-    class func testing(){
+public class CJWDate: NSDate {
+    public class func testing(){
         print("test CJWDate", terminator: "")
     }
 }
