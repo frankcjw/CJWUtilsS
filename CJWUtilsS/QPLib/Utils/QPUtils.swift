@@ -510,13 +510,3 @@ extension UITextField{
     }
 }
 
-extension AppDelegate {
-    class func toHome(){
-//        let vc = QPLoginViewController(nibName : "QPLoginViewController" , bundle : nil )
-//        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        window.rootViewController = vc
-//        window.layer.transition()
-//        window.makeKeyAndVisible()
-    }
-}
-
