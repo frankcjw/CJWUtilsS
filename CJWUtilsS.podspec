@@ -140,6 +140,7 @@ Pod::Spec.new do |s|
   s.dependency "AFNetworking"
   s.dependency "SDWebImage"
   s.dependency "MJRefresh"
+  s.dependency "FlatUIKit"
   #s.dependency "EDStarRating"
   #s.dependency "MBProgressHUD"
   s.dependency "CGFloatType"
