@@ -17,6 +17,7 @@ target 'CJWUtilsS' do
     pod 'FCFileManager'
     pod 'LKDBHelper'
     pod 'FLKAutoLayout'
+    pod 'Alamofire'
 #    pod 'KLCPopup'
 #    pod "CJWUtils", :git => 'https://github.com/frankcjw/CJWUtils.git', :tag => '0.0.5'
 
