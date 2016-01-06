@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFBE1C3BA737006E221A /* UIViewController+BackButtonHandler.m */; };
-		01CAEFD31C3BA737006E221A /* GZAlertActionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC11C3BA737006E221A /* GZAlertActionUtils.swift */; };
+		01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC11C3BA737006E221A /* QPAlertActionUtils.swift */; };
 		01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC21C3BA737006E221A /* QPAppearance.swift */; };
 		01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC31C3BA737006E221A /* QPBaseTableTableViewController.swift */; };
 		01CAEFD61C3BA737006E221A /* QPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC41C3BA737006E221A /* QPBaseTableViewCell.swift */; };
@@ -48,7 +48,7 @@
 		01CAEFBD1C3BA737006E221A /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		01CAEFBE1C3BA737006E221A /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		01CAEFBF1C3BA737006E221A /* QPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPHeader.h; sourceTree = "<group>"; };
-		01CAEFC11C3BA737006E221A /* GZAlertActionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZAlertActionUtils.swift; sourceTree = "<group>"; };
+		01CAEFC11C3BA737006E221A /* QPAlertActionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertActionUtils.swift; sourceTree = "<group>"; };
 		01CAEFC21C3BA737006E221A /* QPAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAppearance.swift; sourceTree = "<group>"; };
 		01CAEFC31C3BA737006E221A /* QPBaseTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPBaseTableTableViewController.swift; sourceTree = "<group>"; };
 		01CAEFC41C3BA737006E221A /* QPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPBaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		01CAEFC01C3BA737006E221A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				01CAEFC11C3BA737006E221A /* GZAlertActionUtils.swift */,
+				01CAEFC11C3BA737006E221A /* QPAlertActionUtils.swift */,
 				01CAEFC21C3BA737006E221A /* QPAppearance.swift */,
 				01CAEFC31C3BA737006E221A /* QPBaseTableTableViewController.swift */,
 				01CAEFC41C3BA737006E221A /* QPBaseTableViewCell.swift */,
@@ -412,7 +412,7 @@
 				01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */,
 				01CAEFDC1C3BA737006E221A /* QPCacheUtils.swift in Sources */,
 				01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */,
-				01CAEFD31C3BA737006E221A /* GZAlertActionUtils.swift in Sources */,
+				01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */,
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,

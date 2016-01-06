@@ -18,8 +18,6 @@ private let URL_LOGOUT = BASE_URL + "logout/"
 let maxPageSize = NSNumber(int: Int32.max).integerValue
 let pageSize = 50
 
-typealias CJWNormalBlock = () -> ()
-
 class QPHttpUtils: NSObject {
     
     var sessionKey = ""

@@ -8,19 +8,19 @@
 
 import UIKit
 
-let FONT_TITLE = UIFont.boldSystemFontOfSize(15)
-let FONT_NORMAL = UIFont.systemFontOfSize(14)
-let FONT_BIG = UIFont.systemFontOfSize(15)
-let FONT_NORMAL_BOLD = UIFont.boldSystemFontOfSize(14)
-let FONT_LARGE = UIFont.systemFontOfSize(18)
-let FONT_SMALL = UIFont.systemFontOfSize(12)
-let FONT_SMALL_BOLD = UIFont.boldSystemFontOfSize(12)
+public let FONT_TITLE = UIFont.boldSystemFontOfSize(15)
+public let FONT_NORMAL = UIFont.systemFontOfSize(14)
+public let FONT_BIG = UIFont.systemFontOfSize(15)
+public let FONT_NORMAL_BOLD = UIFont.boldSystemFontOfSize(14)
+public let FONT_LARGE = UIFont.systemFontOfSize(18)
+public let FONT_SMALL = UIFont.systemFontOfSize(12)
+public let FONT_SMALL_BOLD = UIFont.boldSystemFontOfSize(12)
 
-let TEXT_CENTER = NSTextAlignment.Center
+public let TEXT_CENTER = NSTextAlignment.Center
 /// 屏幕宽度
-let SCREEN_WIDTH = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.width
+public let SCREEN_WIDTH = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.width
 /// 屏幕高度
-let SCREEN_HEIGHT = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.height
+public let SCREEN_HEIGHT = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.height
 
 let capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -40,42 +40,42 @@ class QPAppearance: NSObject {
     }
 }
 
-extension UIView {
+public extension UIView {
     
-    var width :CGFloat {
+    public var width :CGFloat {
         return self.frame.width
     }
     
-    var height :CGFloat {
+    public var height :CGFloat {
         return self.frame.height
     }
     
-    var x :CGFloat {
+    public var x :CGFloat {
         return self.frame.origin.x
     }
     
-    var y :CGFloat {
+    public var y :CGFloat {
         return self.frame.origin.y
     }
 }
 
-extension UIImageView {
-    func toCircleImageView(){
+public extension UIImageView {
+    public func toCircleImageView(){
         self.toCircleView()
     }
     
-    func scaleAspectFit(){
+    public func scaleAspectFit(){
         self.contentMode = UIViewContentMode.ScaleAspectFit
     }
 }
 
-extension UIView {
-    func cornorRadius(radius:CGFloat){
+public extension UIView {
+    public func cornorRadius(radius:CGFloat){
         layer.cornerRadius = radius
         layer.masksToBounds = true
     }
     
-    func toCircleView(){
+    public func toCircleView(){
         var radius : CGFloat!
         if self.width == self.height {
             radius = self.width
@@ -89,28 +89,28 @@ extension UIView {
     }
 }
 
-extension UITableView {
-    func setInsets(insets : UIEdgeInsets){
+public extension UITableView {
+    public func setInsets(insets : UIEdgeInsets){
         self.contentInset = insets;
         self.scrollIndicatorInsets = insets;
         //        self.scrollToTop(false)
     }
     
-    func setInsetsTop(top: CGFloat){
+    public func setInsetsTop(top: CGFloat){
         let insets = UIEdgeInsets(top: top, left: 0, bottom: 0 , right: 0)
         setInsets(insets)
     }
 }
 
-extension UILabel {
+public extension UILabel {
     
-    func setTextColor(color:UIColor , atRange range:NSRange){
+    public func setTextColor(color:UIColor , atRange range:NSRange){
         let attribute = getAttribute()
         attribute.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
         self.attributedText = attribute
     }
     
-    func setTextFont(font:UIFont , atRange range:NSRange){
+    public func setTextFont(font:UIFont , atRange range:NSRange){
         let attribute = getAttribute()
         attribute.addAttribute(NSFontAttributeName, value: font, range: range)
         self.attributedText = attribute
@@ -131,14 +131,14 @@ extension UILabel {
     }
 }
 
-extension UIView {
-    func addTapGesture(target:AnyObject?, action : Selector){
+public extension UIView {
+    public func addTapGesture(target:AnyObject?, action : Selector){
         let tap = UITapGestureRecognizer(target: target, action: action)
         self.userInteractionEnabled = true
         self.addGestureRecognizer(tap)
     }
     
-    func removeGesture(){
+    public func removeGesture(){
         self.removeGesture()
         self.userInteractionEnabled = false
     }

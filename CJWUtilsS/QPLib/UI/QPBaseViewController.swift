@@ -8,17 +8,17 @@
 
 import UIKit
 
-class QPBaseViewController: UIViewController {
+public class QPBaseViewController: UIViewController {
     
-    var info = NSDictionary()
-    override func viewDidLoad() {
+    public var info = NSDictionary()
+    override public func viewDidLoad() {
         super.viewDidLoad()
     }
     
     /// 是否隐藏NavigationBar,默认不隐藏
-    var shouldHideNavigationBar : Bool = false
+    public var shouldHideNavigationBar : Bool = false
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         
         
         if shouldHideNavigationBar {
@@ -35,16 +35,16 @@ class QPBaseViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
-extension UIViewController {
-    func request(){
+public extension UIViewController {
+    public func request(){
     }
     
-    func requestMore(){
+    public func requestMore(){
     }
 }
 
@@ -96,24 +96,24 @@ extension NSObject {
     }
 }
 
-extension UIViewController {
+public extension UIViewController {
     
     
     
-    func pushViewController(viewController: UIViewController){
+    public func pushViewController(viewController: UIViewController){
         if self.navigationController != nil {
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
-    func popViewController(){
+    public func popViewController(){
         if self.navigationController != nil {
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
     
-    func setBackTitle(title:String){
+    public func setBackTitle(title:String){
         let button = UIButton(frame: CGRectMake(0, 0, 30, 30))
         button.setBackgroundImage(UIImage(named: "Practicetopic_icon_back"), forState: .Normal)
         button.addTarget(self, action: "controllerDismiss", forControlEvents: UIControlEvents.TouchUpInside)
@@ -124,32 +124,15 @@ extension UIViewController {
         //        self.navigationItem.leftBarButtonItem = back
     }
     
-    func controllerDismiss(){
-        self.popViewController()
-    }
-    
-    func setBackAction(action:Selector){
+    public func setBackAction(action:Selector){
         let back = UIBarButtonItem()
         //        back.title = title
         back.action = action
         self.navigationItem.backBarButtonItem = back
     }
     
-    func showNetworkException(){
+    public func showNetworkException(){
 //        self.view.showTemporary("网络错误")
-    }
-}
-
-extension UIViewController {
-    func shouldChat(){
-        if let index = self.navigationController?.viewControllers.indexOf(self) {
-            if index == 0 {
-                if QPUtils.sharedInstance.chatting {
-                    //                    self.pushViewController(QPUtils.sharedInstance.chattingViewController)
-                }
-            }
-        }
-        
     }
 }
 

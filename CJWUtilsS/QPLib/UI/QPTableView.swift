@@ -17,44 +17,43 @@ class QPTableView: NSObject {
 
 
 // MARK: - 下拉刷新
-extension UITableView {
+public extension UITableView {
     
-    func addRefreshHeader(target:AnyObject!,action:Selector){
+    public func addRefreshHeader(target:AnyObject!,action:Selector){
         
         let header = CJWRefreshHeader(refreshingTarget: target, refreshingAction: action)
-        //        header.setup()
-        self.mj_header = header
+        self.refreshHeader = header
     }
     
-    func addRefreshFooter(target:AnyObject!,action:Selector){
+    public func addRefreshFooter(target:AnyObject!,action:Selector){
         
-        self.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: target, refreshingAction: action)
+        self.refresFooter = MJRefreshAutoNormalFooter(refreshingTarget: target, refreshingAction: action)
     }
     
-    func endRefreshing(){
+    public func endRefreshing(){
         endRefreshFooter()
         endRefreshHeader()
     }
     
-    func endRefreshHeader(){
-        self.mj_header.endRefreshing()
+    public func endRefreshHeader(){
+        self.refreshHeader.endRefreshing()
     }
     
-    func endRefreshFooter(){
-        self.mj_footer.endRefreshing()
+    public func endRefreshFooter(){
+        self.refresFooter.endRefreshing()
     }
     
-    func showHeader(){
-        self.mj_header.hidden = false
+    public func showHeader(){
+        self.refreshHeader.hidden = false
     }
-    func hideHeader(){
-        self.mj_header.hidden = true
+    public func hideHeader(){
+        self.refreshHeader.hidden = true
     }
-    func showFooter(){
-        self.mj_footer.hidden = false
+    public func showFooter(){
+        self.refresFooter.hidden = false
     }
-    func hideFooter(){
-        self.mj_footer.hidden = true
+    public func hideFooter(){
+        self.refresFooter.hidden = true
     }
     
     
@@ -72,57 +71,69 @@ extension UITableView {
 }
 
 // MARK: - 添加脚部,头部label
-extension UITableView {
-    
-    private func createLabel(txt:String) -> UILabel{
-        let label = UILabel(frame: CGRectMake(0, 0, self.frame.width, 44))
-        label.text = txt
-        label.textAlignment = NSTextAlignment.Center
-        label.textColor = UIColor.lightGrayColor()
-        return label
-    }
-    
-    func showHeaderTxt(txt:NSString){
-        self.tableHeaderView = createLabel(txt as String)
-    }
-    
-    func showFooterTxt(txt:NSString){
-        self.tableFooterView = createLabel(txt as String)
-    }
-    
-    func hideHeaderTxt(){
-        hideHeaderView()
-    }
-    
-    func hideFooterTxt(){
-        hideFooterView()
-    }
-}
+//extension UITableView {
+//    
+//    private func createLabel(txt:String) -> UILabel{
+//        let label = UILabel(frame: CGRectMake(0, 0, self.frame.width, 44))
+//        label.text = txt
+//        label.textAlignment = NSTextAlignment.Center
+//        label.textColor = UIColor.lightGrayColor()
+//        return label
+//    }
+//    
+//    func showHeaderTxt(txt:NSString){
+//        self.tableHeaderView = createLabel(txt as String)
+//    }
+//    
+//    func showFooterTxt(txt:NSString){
+//        self.tableFooterView = createLabel(txt as String)
+//    }
+//    
+//    func hideHeaderTxt(){
+//        hideHeaderView()
+//    }
+//    
+//    func hideFooterTxt(){
+//        hideFooterView()
+//    }
+//}
 
-extension UITableView {
-    func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        self.registerNib(nib, forCellReuseIdentifier: forCellReuseIdentifier)
-        
-    }
-}
+//extension UITableView {
+//    func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
+//        let nib = UINib(nibName: nibName, bundle: bundle)
+//        self.registerNib(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+//        
+//    }
+//}
 
 extension UITableView {
     public var refreshHeader : MJRefreshHeader {
-        return self.mj_header
+        get {
+            return self.mj_header
+        }
+        
+        set {
+            self.mj_header = newValue
+        }
     }
     
     var refresFooter : MJRefreshFooter {
-        return self.mj_footer
+        get {
+            return self.mj_footer
+        }
+        
+        set {
+            self.mj_footer = newValue
+        }
     }
 }
 
-extension MJRefreshFooter {
-    func showNoData(){
+public extension MJRefreshFooter {
+    public func showNoData(){
         self.endRefreshingWithNoMoreData()
     }
     
-    func resetNoData(){
+    public func resetNoData(){
         self.resetNoMoreData()
     }
 }

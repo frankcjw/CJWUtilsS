@@ -8,14 +8,14 @@
 
 import UIKit
 
-class GZAlertActionUtils: NSObject {
+class QPAlertActionUtils: NSObject {
 
 }
 
-extension UIViewController {
-    typealias GZAlertActionControllerInputBlock  = (text:String) -> ()
+public extension UIViewController {
+    typealias QPAlertActionControllerInputBlock  = (text:String) -> ()
     
-    func showInputAlert(title:String, message:String, inputtedText:String, keyboardType : UIKeyboardType, placeholder:String,block:GZAlertActionControllerInputBlock){
+    public func showInputAlert(title:String, message:String, inputtedText:String, keyboardType : UIKeyboardType, placeholder:String,block:QPAlertActionControllerInputBlock){
         
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -44,11 +44,11 @@ extension UIViewController {
         
     }
     
-    func showInputAlert(title:String, message:String, inputtedText:String, placeholder:String,block:GZAlertActionControllerInputBlock){
+    public func showInputAlert(title:String, message:String, inputtedText:String, placeholder:String,block:QPAlertActionControllerInputBlock){
         showInputAlert(title, message: message, inputtedText: inputtedText, keyboardType: UIKeyboardType.Default, placeholder: placeholder, block: block)
     }
     
-    func showConfirmAlert(title:String, message:String,confirm:CJWNormalBlock){
+    public func showConfirmAlert(title:String, message:String,confirm:QPNormalBlock){
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         let comfirmAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -60,7 +60,7 @@ extension UIViewController {
     }
     
     
-    func showConfirmAlert(title:String, message:String,confirm:CJWNormalBlock , cancel:CJWNormalBlock){
+    public func showConfirmAlert(title:String, message:String,confirm:QPNormalBlock , cancel:QPNormalBlock){
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) -> Void in
@@ -76,7 +76,7 @@ extension UIViewController {
     }
     
     typealias GZActionSheetBlock = (index:Int) -> ()
-    func showActionSheet(title:String, message:String,buttons: Array<String> ,block:GZActionSheetBlock){
+    public func showActionSheet(title:String, message:String,buttons: Array<String> ,block:GZActionSheetBlock){
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
         for button in buttons {
             let index = buttons.indexOf(button)!

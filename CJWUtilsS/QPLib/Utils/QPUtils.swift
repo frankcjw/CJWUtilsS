@@ -16,13 +16,16 @@ let UIControlStateNormal = UIControlState.Normal
 let UIControlStateSelected = UIControlState.Selected
 let UIControlStateHighlighted = UIControlState.Highlighted
 
-class QPUtils: NSObject {
+public typealias QPNormalBlock = () -> ()
+
+
+public class QPUtils: NSObject {
     var chatting = false
     var chattingViewController = UIViewController()
     
     var cacheObject : AnyObject?
     
-    class var sharedInstance : QPUtils {
+    public class var sharedInstance : QPUtils {
         struct Static {
             static var onceToken : dispatch_once_t = 0
             static var instance : QPUtils? = nil
@@ -34,8 +37,8 @@ class QPUtils: NSObject {
     }
 }
 
-extension QPUtils {
-    class func getSystemCacheSize() -> String {
+public extension QPUtils {
+    public class func getSystemCacheSize() -> String {
         let units = ["B","K","M","G"]
         let size = SDImageCache.sharedImageCache().getSize()
         var calc = NSNumber(unsignedLong: size).integerValue
@@ -85,7 +88,7 @@ extension QPUtils {
         return false
     }
     
-    class func updateSMSRequestTime(){
+    public class func updateSMSRequestTime(){
         let key = "SMSTime"
         let fmt = NSDateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -97,9 +100,9 @@ extension QPUtils {
 let DATE_FORMAT = "HH:mm"
 
 /// Array<NSDictionary>
-typealias NSInfoArray = Array<NSDictionary>
+public typealias NSInfoArray = Array<NSDictionary>
 
-extension String {
+public extension String {
     
     private var MAX_HEIGHT:CGFloat {
         return 9999
@@ -127,13 +130,13 @@ extension String {
         return size
     }
     
-    func length()->Int{
+    public func length()->Int{
         return self.characters.count
     }
 }
 
-extension Double {
-    func convertToDateString() -> String{
+public extension Double {
+    public func convertToDateString() -> String{
         let time = self / 1000 - NSTimeIntervalSince1970
         let date = NSDate(timeIntervalSinceReferenceDate: time)
         let fmt = NSDateFormatter()
@@ -142,7 +145,7 @@ extension Double {
         return realDate
     }
     
-    func convertToDateString(formatt:String) -> String{
+    public func convertToDateString(formatt:String) -> String{
         let time = self / 1000 - NSTimeIntervalSince1970
         let date = NSDate(timeIntervalSinceReferenceDate: time)
         let fmt = NSDateFormatter()
@@ -151,7 +154,7 @@ extension Double {
         return realDate
     }
     
-    func convertToDateStringForComment() -> String{
+    public func convertToDateStringForComment() -> String{
         let now = NSDate()
         let time = self / 1000 - NSTimeIntervalSince1970
         let date = NSDate(timeIntervalSinceReferenceDate: time)
@@ -238,8 +241,8 @@ extension Double {
     }
 }
 
-extension NSDate {
-    func convertToDateString() -> String{
+public extension NSDate {
+    public func convertToDateString() -> String{
         let date = self
         let fmt = NSDateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -247,7 +250,7 @@ extension NSDate {
         return realDate
     }
     
-    func convertToDateString2() -> String{
+    public func convertToDateString2() -> String{
         let date = self
         let fmt = NSDateFormatter()
         fmt.dateFormat = "yyyy-MM-dd"
@@ -256,10 +259,11 @@ extension NSDate {
     }
 }
 
-class QPExcuteDelay : NSObject {
-    typealias DelayBlock = () -> ()
+public typealias QPDelayBlock = () -> ()
+
+public class QPExcuteDelay : NSObject {
     
-    class func excute(timeDelay:NSTimeInterval,block:DelayBlock){
+    public class func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
         let ttt:Int64 = Int64(timeDelay)
         let time = dispatch_time(DISPATCH_TIME_NOW, ttt * (Int64)(1 * NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
@@ -268,18 +272,24 @@ class QPExcuteDelay : NSObject {
     }
 }
 
-extension Int {
-    func character() -> String{
+public extension NSObject {
+    public func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
+        QPExcuteDelay.excute(timeDelay, block: block)
+    }
+}
+
+public extension Int {
+    public func character() -> String{
         let character = Character(UnicodeScalar(65 + self))
         return "\(character)"
     }
 }
 
-extension Int {
-    func random() -> Int {
+public extension Int {
+    public func random() -> Int {
         return Int(arc4random_uniform(UInt32(abs(self))))
     }
-    func indexRandom() -> [Int] {
+    public func indexRandom() -> [Int] {
         var newIndex = 0
         var shuffledIndex:[Int] = []
         while shuffledIndex.count < self {
@@ -292,8 +302,8 @@ extension Int {
     }
 }
 
-extension Array {
-    func shuffle() -> [Element] {
+public extension Array {
+    public func shuffle() -> [Element] {
         var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = self.count.indexRandom()
         for i in 0...shuffledIndex.count-1 {
@@ -301,7 +311,7 @@ extension Array {
         }
         return shuffledContent
     }
-    mutating func shuffled() {
+    public mutating func shuffled() {
         var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = self.count.indexRandom()
         for i in 0...shuffledIndex.count-1 {
@@ -309,10 +319,10 @@ extension Array {
         }
         self = shuffledContent
     }
-    func chooseOne() -> Element {
+    public func chooseOne() -> Element {
         return self[Int(arc4random_uniform(UInt32(self.count)))]
     }
-    func choose(x:Int) -> [Element] {
+    public func choose(x:Int) -> [Element] {
         var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = x.indexRandom()
         for i in 0...shuffledIndex.count-1 {
@@ -322,8 +332,8 @@ extension Array {
     }
 }
 
-extension QPUtils{
-    class func passwordValidator(password:String) -> Bool{
+public extension QPUtils{
+    public class func passwordValidator(password:String) -> Bool{
         var letterCounter = 0
         var digitCount = 0
         let phrase = password
@@ -344,8 +354,8 @@ extension QPUtils{
     }
 }
 
-extension NSDictionary {
-    var id : Int {
+public extension NSDictionary {
+    public var id : Int {
         if let tmp = self["id"] as? Int {
             return tmp
         }
@@ -354,45 +364,45 @@ extension NSDictionary {
 }
 
 
-extension UIView {
+public extension UIView {
     //view:UIView,predicate:String
-    func leadingAlign(view:UIView,predicate:String){
+    public func leadingAlign(view:UIView,predicate:String){
         self.alignLeadingEdgeWithView(view, predicate: predicate)
     }
     
-    func leadingConstrain(view:UIView,predicate:String){
+    public func leadingConstrain(view:UIView,predicate:String){
         self.constrainLeadingSpaceToView(view, predicate: predicate)
     }
     
-    func trailing(view:UIView,predicate:String){
+    public func trailing(view:UIView,predicate:String){
         self.alignTrailingEdgeWithView(view, predicate: predicate)
     }
     
-    func top(view:UIView,predicate:String){
+    public func top(view:UIView,predicate:String){
         self.constrainTopSpaceToView(view, predicate: predicate)
     }
     
-    func bottom(view:UIView,predicate:String){
+    public func bottom(view:UIView,predicate:String){
         self.alignBottomEdgeWithView(view, predicate: predicate)
     }
     
-    func centerY(view:UIView,predicate:String){
+    public func centerY(view:UIView,predicate:String){
         self.alignCenterYWithView(view, predicate: predicate)
     }
     
-    func width(view:UIView,predicate:String){
+    public func width(view:UIView,predicate:String){
         self.constrainWidthToView(view, predicate: predicate)
     }
     
-    func widthConstrain(predicate:String){
+    public func widthConstrain(predicate:String){
         self.constrainWidth(predicate)
     }
     
-    func height(view:UIView,predicate:String){
+    public func height(view:UIView,predicate:String){
         self.constrainHeightToView(view, predicate: predicate)
     }
     
-    func heightConstrain(predicate:String){
+    public func heightConstrain(predicate:String){
         self.constrainHeight(predicate)
     }
 }
@@ -489,9 +499,9 @@ extension String {
     }
 }
 
-extension UITextField{
+public extension UITextField{
     
-    func isValid() -> Bool {
+    public func isValid() -> Bool {
         if text != nil && text! != "" {
             return true
         }

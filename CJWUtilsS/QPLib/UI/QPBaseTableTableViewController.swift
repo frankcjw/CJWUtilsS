@@ -22,7 +22,7 @@ let TIPS_TAP_RELOAD = ""//"点击重新加载"
 let TIPS_NETWORK_EXCEPTION = "网络不是很给力,加载就失败了.."
 let TIPS_CLEANING_CACHE = "正在清除缓存,请稍候"
 
-enum ImageType {
+public enum ImageType {
     case Loading
     case Error
 }
@@ -38,20 +38,20 @@ extension UIViewController {
     }
 }
 
-class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+public class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     
-    var controllerInfo = NSDictionary()
+    public var controllerInfo = NSDictionary()
     
-    var page = 1
+    public var page = 1
     private var shouldShowEmptyStatus:Bool = true
     private var statusText = TIPS_LOADING
     private var statusDesciption = TIPS_TAP_RELOAD
     private var statusImage = imageLoading
     
-    var shouldHideNavigationBar : Bool = false
+    public var shouldHideNavigationBar : Bool = false
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         
         
         //        IQKeyboardManager.sharedManager().enable = false
@@ -67,7 +67,7 @@ class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZN
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override public func viewWillDisappear(animated: Bool) {
         //        if shouldHideNavigationBar {
         //            self.navigationController?.setNavigationBarHidden(false, animated: animated)
         //            self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
@@ -76,20 +76,20 @@ class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZN
         super.viewWillDisappear(animated)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override public func viewDidDisappear(animated: Bool) {
         
         super.viewDidDisappear(animated)
         
     }
     
-    func tableViewLoading(){
+    public func tableViewLoading(){
         setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil,imageType: ImageType.Loading)
     }
     
-    func setTableViewEmptyStatus(tableView:UITableView,title:String,description:String?,imageType:ImageType?){
+    public func setTableViewEmptyStatus(tableView:UITableView,title:String,description:String?,imageType:ImageType?){
     }
     
-    func setTableViewEmptyStatus(title:String,description:String?,imageType:ImageType?){
+    public func setTableViewEmptyStatus(title:String,description:String?,imageType:ImageType?){
         if description == nil {
             statusDesciption = ""
         }else{
@@ -111,32 +111,32 @@ class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZN
         self.tableView.reloadEmptyDataSet()
     }
     
-    func hideTableViewEmptyStatus(){
+    public func hideTableViewEmptyStatus(){
         shouldShowEmptyStatus = false
         self.tableView.reloadEmptyDataSet()
     }
     
-    func showTableViewEmptyStatus(){
+    public func showTableViewEmptyStatus(){
         shouldShowEmptyStatus = true
         self.tableView.reloadEmptyDataSet()
     }
     
     
     
-    func tableViewLoadFail(){
+    public func tableViewLoadFail(){
         statusImage = imageError
         setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD,imageType: ImageType.Error)
     }
     
-    func tableViewNetworkException(){
+    public func tableViewNetworkException(){
         setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD,imageType: ImageType.Error)
     }
     
-    func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
+    public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
         return CGPointMake(0, -30)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         //        self.tableView.emptyDataSetSource = self;
         //        self.tableView.emptyDataSetDelegate = self;
@@ -145,52 +145,52 @@ class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZN
         request()
     }
     
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let att = [NSFontAttributeName:UIFont.systemFontOfSize(17),NSForegroundColorAttributeName:UIColor.lightGrayColor()]
         return NSAttributedString(string: statusText, attributes: att)
     }
     
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    public func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let att = [NSFontAttributeName:UIFont.systemFontOfSize(13),NSForegroundColorAttributeName:UIColor.lightGrayColor()]
         return NSAttributedString(string: statusDesciption, attributes: att)
     }
     
-    func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
+    public func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
         return shouldShowEmptyStatus
     }
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return statusImage!
     }
     
-    func emptyDataSetDidTapView(scrollView: UIScrollView!) {
+    public func emptyDataSetDidTapView(scrollView: UIScrollView!) {
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func reloadData(){
+    public func reloadData(){
         self.tableView.reloadData()
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
 }
 
 
 
-extension UITableViewController {
-    func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
+public extension UITableViewController {
+    public func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
         self.tableView.registerTableViewCell(nibName, bundle: bundle, forCellReuseIdentifier: forCellReuseIdentifier)
     }
     
-    func registerTableViewCell(nibName:String,bundle:NSBundle?){
+    public func registerTableViewCell(nibName:String,bundle:NSBundle?){
         self.tableView.registerTableViewCell(nibName, bundle: bundle, forCellReuseIdentifier: nibName)
     }
     
-    func registerTableViewCell(nibName:String){
+    public func registerTableViewCell(nibName:String){
         self.tableView.registerTableViewCell(nibName, bundle: nil, forCellReuseIdentifier: nibName)
     }
 }

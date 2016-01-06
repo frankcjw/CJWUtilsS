@@ -9,7 +9,7 @@
 import UIKit
 
 //class QPPushUtils: QPBasePushUtils, GeTuiSdkDelegate {
-class QPPushUtils: QPBasePushUtils {
+public class QPPushUtils: QPBasePushUtils {
 //    
 //    let appid = ""
 //    let appKey = ""
@@ -77,32 +77,32 @@ class QPPushUtils: QPBasePushUtils {
 //    }
 }
 
-class QPBasePushUtils: NSObject {
+public class QPBasePushUtils: NSObject {
     
-    var deviceToken = ""
+    public var deviceToken = ""
     
-    class func startPush(launchOptions:[NSObject:AnyObject]?){
+    public class func startPush(launchOptions:[NSObject:AnyObject]?){
         let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
-    func startPush(launchOptions:[NSObject:AnyObject]?){
+    public func startPush(launchOptions:[NSObject:AnyObject]?){
         let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
-    class func getPushID() ->  String {
+    public class func getPushID() ->  String {
         return ""
     }
     
-    class func registerDeviceToken(deviceToken:NSData){
+    public class func registerDeviceToken(deviceToken:NSData){
     }
     
-    class func handleRemoteNotification(userInfo:NSDictionary){
+    public class func handleRemoteNotification(userInfo:NSDictionary){
     }
     
-    func handleNotification(info:NSDictionary){
+    public func handleNotification(info:NSDictionary){
     }
 }

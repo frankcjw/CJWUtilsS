@@ -8,19 +8,19 @@
 
 import UIKit
 
-class QPBaseTableViewCell: UITableViewCell {
+public class QPBaseTableViewCell: UITableViewCell {
     
-    var rootViewController : UIViewController?
+    public var rootViewController : UIViewController?
     
     var didSetupConstraints = false
-    var cellInfo = NSDictionary()
+    public var cellInfo = NSDictionary()
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupViews(contentView)
         
@@ -32,7 +32,7 @@ class QPBaseTableViewCell: UITableViewCell {
         
     }
     
-    override func updateConstraints() {
+    override public func updateConstraints() {
         if !didSetupConstraints {
             setupConstrains(contentView)
             didSetupConstraints = true
@@ -40,17 +40,17 @@ class QPBaseTableViewCell: UITableViewCell {
         super.updateConstraints()
     }
     
-    func setupConstrains(view:UIView){
+    public func setupConstrains(view:UIView){
     }
     
-    func setupViews(view:UIView){
+    public func setupViews(view:UIView){
     }
     
-    func setInfo(info:NSDictionary){
+    public func setInfo(info:NSDictionary){
         self.cellInfo = info
     }
     
-    func setup(){
+    public func setup(){
         self.setNeedsUpdateConstraints()
         self.updateConstraintsIfNeeded()
     }
