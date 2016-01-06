@@ -9,7 +9,6 @@ target 'CJWUtilsS' do
     pod 'FlatUIKit'
     pod 'MBProgressHUD'
     pod 'CGFloatType'
-    pod 'AFNetworking'
     pod 'DZNEmptyDataSet'
     pod 'NSDate+TimeAgo'
     pod 'HMSegmentedControl'

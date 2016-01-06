@@ -141,9 +141,20 @@ Pod::Spec.new do |s|
   s.dependency "SDWebImage"
   s.dependency "MJRefresh"
   s.dependency "FlatUIKit"
-  #s.dependency "EDStarRating"
+  s.dependency "MBProgressHUD"
+  s.dependency "CGFloatType"
+  s.dependency "DZNEmptyDataSet"
+  s.dependency "NSDate+TimeAgo"
+  s.dependency "HMSegmentedControl"
+  s.dependency "MJExtension"
+  s.dependency "ClusterPrePermissions"
+  s.dependency "FCFileManager"
+  s.dependency "LKDBHelper"
+  s.dependency "FLKAutoLayout"
   #s.dependency "MBProgressHUD"
   s.dependency "CGFloatType"
   #s.dependency "TMCache"
   #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
+
+
 end
