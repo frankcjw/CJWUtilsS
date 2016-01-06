@@ -98,15 +98,15 @@ extension UITableView {
 //    }
 //}
 
-//extension UITableView {
-//    func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
-//        let nib = UINib(nibName: nibName, bundle: bundle)
-//        self.registerNib(nib, forCellReuseIdentifier: forCellReuseIdentifier)
-//        
-//    }
-//}
+public extension UITableView {
+    public func registerTableViewCell(nibName:String,bundle:NSBundle?,forCellReuseIdentifier:String){
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        self.registerNib(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+        
+    }
+}
 
-extension UITableView {
+public extension UITableView {
     public var refreshHeader : MJRefreshHeader {
         get {
             return self.mj_header
