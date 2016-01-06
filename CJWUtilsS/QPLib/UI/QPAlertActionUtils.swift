@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QPAlertActionUtils: NSObject {
+public class QPAlertActionUtils: NSObject {
 
 }
 
