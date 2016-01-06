@@ -24,28 +24,31 @@ class QPKeyChainUtils: NSObject {
     }
     
     class func setString(value:String, forKey key:String){
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        let secretKey = (key as NSString).encryptToAESString()
-        let secretValue = (value as NSString).encryptToAESString()
-        userDefault.setObject(secretValue, forKey: secretKey)
+        assertionFailure("library not been setup")
+//        let userDefault = NSUserDefaults.standardUserDefaults()
+//        let secretKey = (key as NSString).encryptToAESString()
+//        let secretValue = (value as NSString).encryptToAESString()
+//        userDefault.setObject(secretValue, forKey: secretKey)
     }
     
     class func stringForKey(key:String) -> String?{
-        
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        let secretKey = (key as NSString).encryptToAESString()
-        if let secretValue = userDefault.objectForKey(secretKey) as? String {
-            let value = (secretValue as NSString).decryptAESString()
-            return value
-        }else{
-            return nil
-        }
+        assertionFailure("library not been setup")
+//        let userDefault = NSUserDefaults.standardUserDefaults()
+//        let secretKey = (key as NSString).encryptToAESString()
+//        if let secretValue = userDefault.objectForKey(secretKey) as? String {
+//            let value = (secretValue as NSString).decryptAESString()
+//            return value
+//        }else{
+//            return nil
+//        }
+        return nil
     }
     
     class func removeKey(key:String){
-        let secretKey = (key as NSString).encryptToAESString()
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.removeObjectForKey(secretKey)
+        assertionFailure("library not been setup")
+//        let secretKey = (key as NSString).encryptToAESString()
+//        let userDefault = NSUserDefaults.standardUserDefaults()
+//        userDefault.removeObjectForKey(secretKey)
     }
     
     class func removeAllItems(){

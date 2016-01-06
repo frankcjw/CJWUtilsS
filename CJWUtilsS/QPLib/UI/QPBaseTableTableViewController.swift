@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import FlatUIKit
+import DZNEmptyDataSet
 
-private let imageError = UIImage(color: COLOR_CLEAR)//UIImage(named: "Cry")
-private let imageLoading = UIImage(color: COLOR_CLEAR)//UIImage(named: "Loading")
+//private let imageError = UIImage(color: COLOR_CLEAR)//UIImage(named: "Cry")
+//private let imageLoading = UIImage(color: COLOR_CLEAR)//UIImage(named: "Loading")
+
+private let imageError = UIImage(named: "Cry")//UIImage(named: "Cry")
+private let imageLoading = UIImage(named: "Loading")
+
 let TIPS_LOADING = ""//"加载中..."
 let TIPS_LOAD_FAIL = ""//"加载失败"
 let TIPS_TAP_RELOAD = ""//"点击重新加载"
@@ -23,11 +29,12 @@ enum ImageType {
 
 extension UIViewController {
     func fixNavigationBarColor(animated: Bool){
-        self.navigationController?.navigationBar.translucentWith(COLOR_WHITE)
-        self.navigationController?.navigationBar.translucent = false
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        assertionFailure("lib not been imported")
+//        self.navigationController?.navigationBar.translucentWith(COLOR_WHITE)
+//        self.navigationController?.navigationBar.translucent = false
+//        
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
     }
 }
 
@@ -133,7 +140,7 @@ class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSource,DZN
         super.viewDidLoad()
         //        self.tableView.emptyDataSetSource = self;
         //        self.tableView.emptyDataSetDelegate = self;
-        self.tableView.clearExtraLines()
+//        self.tableView.clearExtraLines()
         self.setBackTitle("")
         request()
     }

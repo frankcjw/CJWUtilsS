@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
+import NSDate_TimeAgo
+import FLKAutoLayout
 
 let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
 let UIControlStateNormal = UIControlState.Normal
@@ -52,31 +55,34 @@ extension QPUtils {
     }
     
     class func clearSystemCache(block:()->()){
-        let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
-        tmpView?.showHUDwith("正在清理缓存")
-        QPExcuteDelay.excute(2, block: { () -> () in
-            SDImageCache.sharedImageCache().clearDiskOnCompletion { () -> Void in
-                tmpView!.showTemporary("清除成功")
-                block()
-            }
-        })
+        assertionFailure("library not been setup")
+//        let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
+//        tmpView?.showHUDwith("正在清理缓存")
+//        QPExcuteDelay.excute(2, block: { () -> () in
+//            SDImageCache.sharedImageCache().clearDiskOnCompletion { () -> Void in
+//                tmpView!.showTemporary("清除成功")
+//                block()
+//            }
+//        })
     }
     
     class func isSMSRequestAvailable() -> Bool{
-        let key = "SMSTime"
-        if let time = QPKeyChainUtils.stringForKey(key) {
-            let fmt = NSDateFormatter()
-            fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let smsTime = fmt.dateFromString(time)
-            print("smsTime \(smsTime) \(NSDate())")
-            if smsTime?.minutesBeforeDate(NSDate()) >= 1 {
-                return true
-            }else{
-                return false
-            }
-        }else{
-            return true
-        }
+//        let key = "SMSTime"
+//        if let time = QPKeyChainUtils.stringForKey(key) {
+//            let fmt = NSDateFormatter()
+//            fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            let smsTime = fmt.dateFromString(time)
+//            print("smsTime \(smsTime) \(NSDate())")
+//            if smsTime?.minutesBeforeDate(NSDate()) >= 1 {
+//                return true
+//            }else{
+//                return false
+//            }
+//        }else{
+//            return true
+//        }
+        assertionFailure("library not been setup")
+        return false
     }
     
     class func updateSMSRequestTime(){
@@ -173,21 +179,21 @@ extension Double {
         fmt.dateFormat = "HH:mm"
         let timeString = fmt.stringFromDate(date)
         var weekDay = ""
-        if date.weekday == 1{
-            weekDay = "星期日"
-        }else if date.weekday == 2{
-            weekDay = "星期一"
-        }else if date.weekday == 3{
-            weekDay = "星期二"
-        }else if date.weekday == 4{
-            weekDay = "星期三"
-        }else if date.weekday == 5{
-            weekDay = "星期四"
-        }else if date.weekday == 6{
-            weekDay = "星期五"
-        }else if date.weekday == 7{
-            weekDay = "星期六"
-        }
+//        if date.weekday == 1{
+//            weekDay = "星期日"
+//        }else if date.weekday == 2{
+//            weekDay = "星期一"
+//        }else if date.weekday == 3{
+//            weekDay = "星期二"
+//        }else if date.weekday == 4{
+//            weekDay = "星期三"
+//        }else if date.weekday == 5{
+//            weekDay = "星期四"
+//        }else if date.weekday == 6{
+//            weekDay = "星期五"
+//        }else if date.weekday == 7{
+//            weekDay = "星期六"
+//        }
         return dateString + " " + weekDay + " " + timeString
     }
     
@@ -199,29 +205,29 @@ extension Double {
         let fmt = NSDateFormatter()
         fmt.dateFormat = "yyyy/MM/dd"
         if gap >= 60{
-            if date.isEqualToDateIgnoringTime(NSDate(daysBeforeNow: 3)) && (gap <= 604800) {
-                if date.weekday == 1{
-                    return "星期日"
-                }else if date.weekday == 2{
-                    return "星期一"
-                }else if date.weekday == 3{
-                    return "星期二"
-                }else if date.weekday == 4{
-                    return "星期三"
-                }else if date.weekday == 5{
-                    return "星期四"
-                }else if date.weekday == 6{
-                    return "星期五"
-                }else if date.weekday == 7{
-                    return "星期六"
-                }
-            }
-            if date.isEqualToDateIgnoringTime(NSDate(daysBeforeNow: 2)){
-                return "前天"
-            }
-            if date.isYesterday(){
-                return "昨天"
-            }
+//            if date.isEqualToDateIgnoringTime(NSDate(daysBeforeNow: 3)) && (gap <= 604800) {
+//                if date.weekday == 1{
+//                    return "星期日"
+//                }else if date.weekday == 2{
+//                    return "星期一"
+//                }else if date.weekday == 3{
+//                    return "星期二"
+//                }else if date.weekday == 4{
+//                    return "星期三"
+//                }else if date.weekday == 5{
+//                    return "星期四"
+//                }else if date.weekday == 6{
+//                    return "星期五"
+//                }else if date.weekday == 7{
+//                    return "星期六"
+//                }
+//            }
+//            if date.isEqualToDateIgnoringTime(NSDate(daysBeforeNow: 2)){
+//                return "前天"
+//            }
+//            if date.isYesterday(){
+//                return "昨天"
+//            }
             if fmt.stringFromDate(now) == fmt.stringFromDate(date){
                 fmt.dateFormat = "HH:mm"
             }
@@ -467,11 +473,13 @@ class QPCurrentCity : NSObject{
 
 extension String {
     func isMobile() -> Bool {
-        return "".isValidateMobile(self)
+//        return "".isValidateMobile(self)
+        return false
     }
     
     func isEmail() -> Bool {
-        return "".isValidateEmail(self)
+//        return "".isValidateEmail(self)
+        return false
     }
     
     func isPhone() -> Bool {
