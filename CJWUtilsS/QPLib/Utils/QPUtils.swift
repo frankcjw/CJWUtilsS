@@ -11,10 +11,10 @@ import SDWebImage
 import NSDate_TimeAgo
 import FLKAutoLayout
 
-let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
-let UIControlStateNormal = UIControlState.Normal
-let UIControlStateSelected = UIControlState.Selected
-let UIControlStateHighlighted = UIControlState.Highlighted
+public let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
+public let UIControlStateNormal = UIControlState.Normal
+public let UIControlStateSelected = UIControlState.Selected
+public let UIControlStateHighlighted = UIControlState.Highlighted
 
 public typealias QPNormalBlock = () -> ()
 
