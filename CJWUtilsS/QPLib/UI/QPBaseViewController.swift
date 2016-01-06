@@ -151,3 +151,13 @@ extension UIViewController {
     }
 }
 
+public extension UIView {
+    public func setToAutoLayout(){
+        if self.subviews.count > 0 {
+            for sv in self.subviews {
+                sv.setToAutoLayout()
+            }
+        }
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+}

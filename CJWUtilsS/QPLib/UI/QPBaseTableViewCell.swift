@@ -12,31 +12,45 @@ public class QPBaseTableViewCell: UITableViewCell {
     
     public var rootViewController : UIViewController?
     
-    var didSetupConstraints = false
+    public var didSetupConstraints = false
     public var cellInfo = NSDictionary()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupViews(contentView)
+        
+        initCell()
+        
+    }
+    
+    private func setupAutoLayout(){
+        self.contentView.setToAutoLayout()
+        contentView.alignLeading("0", trailing: "0", toView: self)
         
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initCell()
+    }
+    
+    private func initCell(){
         setupViews(contentView)
-        
+        setupAutoLayout()
+        self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
     override public func updateConstraints() {
-        if !didSetupConstraints {
-            setupConstrains(contentView)
-            didSetupConstraints = true
-        }
+        
+        //        if !didSetupConstraints {
+        //            setupConstrains(contentView)
+        //            didSetupConstraints = true
+        //        }
+        setupConstrains(contentView)
+        
         super.updateConstraints()
     }
     
@@ -48,6 +62,8 @@ public class QPBaseTableViewCell: UITableViewCell {
     
     public func setInfo(info:NSDictionary){
         self.cellInfo = info
+        setupConstrains(contentView)
+        
     }
     
     public func setup(){

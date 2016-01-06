@@ -172,16 +172,16 @@ public extension Double {
     }
     
     func convertToDateStringForActivity() -> String{
-        let now = NSDate()
-        let time = self / 1000 - NSTimeIntervalSince1970
-        let date = NSDate(timeIntervalSinceReferenceDate: time)
-        let gap = now.timeIntervalSinceDate(date)
-        let fmt = NSDateFormatter()
-        fmt.dateFormat = "yyyy-MM-dd"
-        let dateString = fmt.stringFromDate(date)
-        fmt.dateFormat = "HH:mm"
-        let timeString = fmt.stringFromDate(date)
-        var weekDay = ""
+//        let now = NSDate()
+//        let time = self / 1000 - NSTimeIntervalSince1970
+//        let date = NSDate(timeIntervalSinceReferenceDate: time)
+//        let gap = now.timeIntervalSinceDate(date)
+//        let fmt = NSDateFormatter()
+//        fmt.dateFormat = "yyyy-MM-dd"
+//        let dateString = fmt.stringFromDate(date)
+//        fmt.dateFormat = "HH:mm"
+//        let timeString = fmt.stringFromDate(date)
+//        var weekDay = ""
 //        if date.weekday == 1{
 //            weekDay = "星期日"
 //        }else if date.weekday == 2{
@@ -197,7 +197,9 @@ public extension Double {
 //        }else if date.weekday == 7{
 //            weekDay = "星期六"
 //        }
-        return dateString + " " + weekDay + " " + timeString
+//        return dateString + " " + weekDay + " " + timeString
+        assertionFailure("library not been setup")
+        return ""
     }
     
     func convertToDateStringForChat() -> String{
@@ -519,4 +521,5 @@ public extension UITextField{
         return false
     }
 }
+
 

@@ -151,7 +151,7 @@ private class CJWRefreshHeader : MJRefreshGifHeader {
     
     func setup(){
         
-        let scaleSize = CGSizeMake(scale, scale)
+//        let scaleSize = CGSizeMake(scale, scale)
         var idleimgs = Array<UIImage>()
         for index in 1...frameCount {
             

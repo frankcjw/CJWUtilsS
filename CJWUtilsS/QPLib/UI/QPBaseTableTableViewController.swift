@@ -102,8 +102,8 @@ public class QPBaseTableViewController: UITableViewController,DZNEmptyDataSetSou
                 statusImage = imageError
             case .Loading:
                 statusImage = imageLoading
-            default:
-                statusImage = imageLoading
+//            default:
+//                statusImage = imageLoading
             }
         }
         
