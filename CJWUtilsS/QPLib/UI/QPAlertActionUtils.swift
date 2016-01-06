@@ -12,6 +12,13 @@ public class QPAlertActionUtils: NSObject {
 
 }
 
+public class CJWDate2: NSDate {
+    public class func testing(){
+        print("test CJWDate", terminator: "")
+    }
+}
+
+
 public extension UIViewController {
     typealias QPAlertActionControllerInputBlock  = (text:String) -> ()
     
