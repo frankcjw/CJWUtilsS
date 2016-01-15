@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,16 +19,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Alamofire.request(.GET, "http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3", parameters: ["foo": "bar"])
-            .responseJSON { response in
-//                print(response.request)  // original URL request
-                print(response.response?.statusCode) // URL response
-//                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                }
+//        Alamofire.request(.GET, "http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3", parameters: ["foo": "bar"])
+//            .responseJSON { response in
+////                print(response.request)  // original URL request
+//                print(response.response?.statusCode) // URL response
+////                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
+//                
+//                if let JSON = response.result.value {
+//                    print("JSON: \(JSON)")
+//                }
+//        }
+        
+        
+        let url = "http://www.cardpool.cc/vipmodule/login/api.do?method=login"
+        let url2 = "http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3"
+        let url3 = "http://cardp2ool.cc/vipmodule/shop/api.do"
+        let param = ["mobile":"13631290232"]
+//        QPHttpUtils.sharedInstance.newHttpRequet(url, param: param, success: { (response) -> () in
+//            print("response \(response)")
+//            }) { () -> () in
+//        }
+        QPHttpUtils.sharedInstance.newHttpRequet(url3, param: param, success: { (response) -> () in
+//            print(response)
+            print("result nil")
+            
+
+            if let name = response["page"]["result"].array {
+                print("response [\(name)]")
+            }
+            
+
+            }) { () -> () in
+                //
         }
         return true
     }

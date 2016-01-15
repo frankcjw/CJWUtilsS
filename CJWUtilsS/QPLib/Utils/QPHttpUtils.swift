@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 let HOST = ""
 
@@ -34,6 +35,66 @@ class QPHttpUtils: NSObject {
             Static.instance = QPHttpUtils()
         }
         return Static.instance!
+    }
+    
+    typealias CJWSuccessBlock = (response:JSON) -> ()
+    typealias CJWFailBlock = () -> ()
+    
+    func newHttpRequet(url: String, param: [String : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){
+        
+        Alamofire.request(.GET, url, parameters: param)
+            .responseJSON { response in
+//                print(response.response?.statusCode) // URL response
+//                //                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
+////                print(response.result.value)
+                
+//                if let JSON = response.result.value {
+//                    print("JSON: \(JSON)")
+//                }
+//                debugPrint(response)
+                print(response.result)
+                if response.result.isSuccess {
+                    if let value = response.result.value {
+                        if let info = value as? NSDictionary {
+                            if let content = info["content"] as? String {
+                                print("content1 \(content)")
+                            }
+                        }
+                        let json = JSON(value)
+                        let content = json["content"].stringValue
+                        print("content2 \(content)")
+                        success(response: json)
+
+//                        if let str = json.string {
+//                            if str.hasPrefix("error") {
+////                                print("handle error ")
+////                                success(response: value)
+//                            }else{
+//                                success(response: value)
+//                            }
+//                        }
+                    }
+                }
+        }.responseString { (response) -> Void in
+            let result = response.result
+            if result.isSuccess {
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let str = json.string {
+                        if str.hasPrefix("error") {
+                            print("handle error ")
+                            success(response: json)
+                        }else{
+//                            success(response: value)
+                        }
+                    }
+                }
+            }else if result.isFailure {
+                debugPrint(response)
+                fail()
+            }
+        }
     }
     
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){

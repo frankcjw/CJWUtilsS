@@ -129,7 +129,10 @@ public extension String {
         size = self.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: dict, context: nil).size
         return size
     }
-    
+}
+
+
+public extension String {
     public func length()->Int{
         return self.characters.count
     }
@@ -263,9 +266,9 @@ public extension NSDate {
 
 public typealias QPDelayBlock = () -> ()
 
-public class QPExcuteDelay : NSObject {
+class QPExcuteDelay : NSObject {
     
-    public class func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
+    class func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
         let ttt:Int64 = Int64(timeDelay)
         let time = dispatch_time(DISPATCH_TIME_NOW, ttt * (Int64)(1 * NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
@@ -334,6 +337,28 @@ public extension Array {
     }
 }
 
+public extension Array where Element: Equatable {
+    
+    public mutating func removeElement(element: Element) -> Element? {
+        if let index = indexOf(element) {
+            return removeAtIndex(index)
+        }
+        return nil
+    }
+    
+    public mutating func removeAllOccurrencesOfElement(element: Element) -> Int {
+        var occurrences = 0
+        while true {
+            if let index = indexOf(element) {
+                removeAtIndex(index)
+                occurrences++
+            } else {
+                return occurrences
+            }
+        }
+    }
+}
+
 public extension QPUtils{
     public class func passwordValidator(password:String) -> Bool{
         var letterCounter = 0
@@ -367,7 +392,6 @@ public extension NSDictionary {
 
 
 public extension UIView {
-    //view:UIView,predicate:String
     public func leadingAlign(view:UIView,predicate:String){
         self.alignLeadingEdgeWithView(view, predicate: predicate)
     }
@@ -519,6 +543,16 @@ public extension UITextField{
             }
         }
         return false
+    }
+}
+
+public extension Double {
+    public func subDouble(scale:Int) -> Double{
+        
+        var dec = NSDecimalNumber(double: self)
+        let behavior = NSDecimalNumberHandler(roundingMode: NSRoundingMode.RoundPlain, scale: NSNumber(integer: scale).shortValue, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+        dec = dec.decimalNumberByRoundingAccordingToBehavior(behavior)
+        return dec.doubleValue
     }
 }
 

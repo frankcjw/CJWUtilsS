@@ -18,7 +18,10 @@ target 'CJWUtilsS' do
     pod 'LKDBHelper'
     pod 'FLKAutoLayout'
     pod 'Alamofire'
-#    pod 'KLCPopup'
+    pod 'KLCPopup'
+    pod 'XCGLogger'
+    pod 'CocoaLumberjack/Swift'
+    pod 'SwiftyJSON'
 #    pod "CJWUtils", :git => 'https://github.com/frankcjw/CJWUtils.git', :tag => '0.0.5'
 
 end

@@ -23,7 +23,7 @@
 		01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */; };
 		01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD01C3BA737006E221A /* QPPushUtils.swift */; };
 		01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD11C3BA737006E221A /* QPUtils.swift */; };
-		47736CB270649366B1DF6914 /* Pods_CJWUtilsS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD954E06D5FF04A29077A51A /* Pods_CJWUtilsS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		47736CB270649366B1DF6914 /* Pods_CJWUtilsS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD954E06D5FF04A29077A51A /* Pods_CJWUtilsS.framework */; };
 		B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */; };
 		B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBC1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld */; };
 		B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBF1A356CC500D137D1 /* ViewController.swift */; };
