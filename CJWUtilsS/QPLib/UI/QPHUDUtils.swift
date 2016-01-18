@@ -14,9 +14,9 @@ class QPHUDUtils: NSObject {
 
 public extension NSObject {
     public func showHUD(text:String){
-        SVProgressHUD.setBackgroundColor(COLOR_LIGHT_GRAY)
-        SVProgressHUD.setForegroundColor(COLOR_LIGHT_LIGHT_GRAY)
-        SVProgressHUD.setRingThickness(6)
+        SVProgressHUD.setBackgroundColor(COLOR_LIGHT_LIGHT_GRAY)
+        SVProgressHUD.setForegroundColor(UIColor.darkGrayColor())
+        SVProgressHUD.setRingThickness(8)
         SVProgressHUD.showWithStatus(text)
 
     }

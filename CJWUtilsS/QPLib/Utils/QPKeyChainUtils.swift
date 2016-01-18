@@ -7,8 +7,23 @@
 //
 
 import UIKit
+import SSKeychain
 
-class QPKeyChainUtils: NSObject {
+private let service = "com.cenjiawen.app"
+public class QPKeyChainUtils: NSObject {
+    
+    public class func save(key: String , value: String ){
+        SSKeychain.setPassword(value, forService: service, account: key)
+    }
+    
+    public class func value(key: String) -> String?{
+        if let value = SSKeychain.passwordForService(service, account: key) {
+            return value
+        }else{
+            return nil
+        }
+    }
+    
     class var sharedInstance : QPKeyChainUtils {
         struct Static {
             static var onceToken : dispatch_once_t = 0

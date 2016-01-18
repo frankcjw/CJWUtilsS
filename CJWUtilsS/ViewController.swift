@@ -23,6 +23,18 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+//        QPKeyChainUtils.sharedInstance.save("abc", value: "def")
+        if let pwd = QPKeyChainUtils.value("abc") {
+            print("pwd \(pwd)")
+        }
+        
+//        QPKeyChainUtils.sharedInstance.cache("aaaa", forKey: "cjw")
+        cacheToDisk("aaaa", forKey: "cjw")
+        if let value = QPKeyChainUtils.sharedInstance.cacheBy("cjw") {
+            print("value \(value)")
+        }
+        
         showHUD("nihao")
         showHUD("nihao")
         showHUD("nihao")
@@ -30,7 +42,7 @@ class ViewController: UIViewController {
         showHUD("nihao")
         
         excute(3) { () -> () in
-            self.hideHUD()
+//            self.hideHUD()
         }
     }
 

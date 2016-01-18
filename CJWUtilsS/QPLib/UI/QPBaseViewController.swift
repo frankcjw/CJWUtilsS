@@ -48,54 +48,6 @@ public extension UIViewController {
     }
 }
 
-extension NSObject {
-    //    var http : QPHttpUtils {
-    //        return QPHttpUtils.sharedInstance
-    //    }
-    private func appendingKey() -> String{
-        return "\(HOST)-\(QPMemberUtils.sharedInstance.memberId)"
-    }
-    
-    func cacheBy(key : String) -> AnyObject?{
-        let newKey = key + appendingKey()
-        //
-        //        if key == KEY_QuestionInfo {
-        //
-        //        }
-        //        if key == KEY_CourseCategorySelectionId {
-        //            //            return -1
-        //            if !cacheIsExist(KEY_CourseCategorySelectionId) {
-        //                return -1
-        //            }
-        //        }
-        //        if QPCacheUtils.isExist(newKey) {
-        //            //            let cacheObject : AnyObject = CJWCacheUtils.getCacheBy(key)
-        //            //            CJWCacheUtils.sharedCache().removeObjectForKey(key)
-        //            return QPCacheUtils.getCacheBy(newKey)
-        //        }else{
-        //            return nil
-        //        }
-        return QPCacheUtils.getCacheBy(newKey)
-    }
-    
-    
-    
-    func cache(cacheObject: AnyObject!, forKey: String!){
-        let newKey = forKey + appendingKey()
-        QPCacheUtils.cache(cacheObject, forKey: newKey)
-    }
-    
-    func cacheToDisk(cacheObject: AnyObject!, forKey: String!){
-        let newKey = forKey + appendingKey()
-        QPCacheUtils.cache(cacheObject, forKey: newKey, toDisk: true)
-    }
-    
-    func cacheIsExist(key:String) -> Bool {
-        let newKey = key + appendingKey()
-        return QPCacheUtils.isExist(newKey)
-    }
-}
-
 public extension UIViewController {
     
     
