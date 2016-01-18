@@ -548,7 +548,6 @@ public extension UITextField{
 
 public extension Double {
     public func subDouble(scale:Int) -> Double{
-        
         var dec = NSDecimalNumber(double: self)
         let behavior = NSDecimalNumberHandler(roundingMode: NSRoundingMode.RoundPlain, scale: NSNumber(integer: scale).shortValue, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         dec = dec.decimalNumberByRoundingAccordingToBehavior(behavior)

@@ -9,16 +9,30 @@
 import UIKit
 import SVProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor.lightGrayColor()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 10
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = "\(indexPath.row) \(indexPath.section)"
+        return cell
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,6 +62,7 @@ class ViewController: UIViewController {
         
         QPKeyChainUtils.debug()
         
+        showText("nihao")
         
 //        QPKeyChainUtils.sharedInstance.cache("aaaa", forKey: "cjw")
 //        cacheToDisk("aaaa", forKey: "cjw")
@@ -63,6 +78,15 @@ class ViewController: UIViewController {
         
         excute(3) { () -> () in
 //            self.hideHUD()
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        let vc = UIViewController()
+//        self.pushViewController(vc)
+        self.presentViewController(vc, animated: true) { () -> Void in
+            //
         }
     }
 

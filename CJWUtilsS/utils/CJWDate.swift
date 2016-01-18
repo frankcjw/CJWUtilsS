@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc
 public class CJWDate: NSDate {
     public class func testing(){
         print("test CJWDate", terminator: "")
