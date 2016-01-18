@@ -24,6 +24,15 @@ public class QPKeyChainUtils: NSObject {
         }
     }
     
+    class func debug(){
+        let accounts = SSKeychain.accountsForService(service)
+        print("accounts \(accounts)")
+    }
+    
+    public class func deleteValue(key: String) -> Bool{
+        return SSKeychain.deletePasswordForService(service, account: key)
+    }
+    
     class var sharedInstance : QPKeyChainUtils {
         struct Static {
             static var onceToken : dispatch_once_t = 0

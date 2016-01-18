@@ -49,9 +49,6 @@ public extension UIViewController {
 }
 
 public extension UIViewController {
-    
-    
-    
     public func pushViewController(viewController: UIViewController){
         if self.navigationController != nil {
             viewController.hidesBottomBarWhenPushed = true

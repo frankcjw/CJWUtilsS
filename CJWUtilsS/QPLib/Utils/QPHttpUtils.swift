@@ -67,6 +67,29 @@ public class QPHttpUtils: NSObject {
         return request
     }
     
+    func uploadFile(url:String, images: Array<UIImage>){
+        Alamofire.upload(.POST, "", multipartFormData: { (multipartFormData) -> Void in
+            for image in images {
+                let index = images.indexOf(image)
+                let name = "pic\(index)"
+                print("name \(name)")
+                let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+                multipartFormData.appendBodyPart(data: dataObj, name: name)
+            }
+            }, encodingCompletion: { (encodingResult) -> Void in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                    }.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
+                        print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
+                    })
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
+    
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){
 ////        CJWNetworkActivityIndicator.startIndicator()
 //        print("url \(url) param \(param)")
