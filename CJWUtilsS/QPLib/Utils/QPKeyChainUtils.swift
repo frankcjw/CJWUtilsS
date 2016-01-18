@@ -7,31 +7,31 @@
 //
 
 import UIKit
-import SSKeychain
+//import SSKeychain
 
 private let service = "com.cenjiawen.app"
 public class QPKeyChainUtils: NSObject {
     
-    public class func save(key: String , value: String ){
-        SSKeychain.setPassword(value, forService: service, account: key)
-    }
-    
-    public class func value(key: String) -> String?{
-        if let value = SSKeychain.passwordForService(service, account: key) {
-            return value
-        }else{
-            return nil
-        }
-    }
-    
-    class func debug(){
-        let accounts = SSKeychain.accountsForService(service)
-        print("accounts \(accounts)")
-    }
-    
-    public class func deleteValue(key: String) -> Bool{
-        return SSKeychain.deletePasswordForService(service, account: key)
-    }
+//    public class func save(key: String , value: String ){
+//        SSKeychain.setPassword(value, forService: service, account: key)
+//    }
+//    
+//    public class func value(key: String) -> String?{
+//        if let value = SSKeychain.passwordForService(service, account: key) {
+//            return value
+//        }else{
+//            return nil
+//        }
+//    }
+//    
+//    class func debug(){
+//        let accounts = SSKeychain.accountsForService(service)
+//        print("accounts \(accounts)")
+//    }
+//    
+//    public class func deleteValue(key: String) -> Bool{
+//        return SSKeychain.deletePasswordForService(service, account: key)
+//    }
     
     class var sharedInstance : QPKeyChainUtils {
         struct Static {
