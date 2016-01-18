@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CJWUtilsS"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "CJWUtilsS is sort of tools for iOS develop written by swift"
 
   s.description  = <<-DESC
@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift"
+  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/**/*.*"
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
