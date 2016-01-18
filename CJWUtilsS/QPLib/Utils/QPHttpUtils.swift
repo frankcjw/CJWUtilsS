@@ -20,13 +20,13 @@ private let URL_LOGOUT = BASE_URL + "logout/"
 let maxPageSize = NSNumber(int: Int32.max).integerValue
 let pageSize = 50
 
-class QPHttpUtils: NSObject {
+public class QPHttpUtils: NSObject {
     
     var sessionKey = ""
     
 //    var httpManager = AFHTTPRequestOperationManager()
     
-    class var sharedInstance : QPHttpUtils {
+    public class var sharedInstance : QPHttpUtils {
         struct Static {
             static var onceToken : dispatch_once_t = 0
             static var instance : QPHttpUtils? = nil
@@ -37,10 +37,10 @@ class QPHttpUtils: NSObject {
         return Static.instance!
     }
     
-    typealias CJWSuccessBlock = (response:JSON) -> ()
-    typealias CJWFailBlock = () -> ()
+    public typealias QPSuccessBlock = (response:JSON) -> ()
+    public typealias QPFailBlock = () -> ()
     
-    func newHttpRequet(url: String, param: [String : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!) -> Request{
+    public func newHttpRequet(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request{
         let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
             if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
                 if response.result.isSuccess {
@@ -169,8 +169,8 @@ class QPHttpUtils: NSObject {
 //    }
 }
 
-extension NSObject {
-    var http : QPHttpUtils {
+public extension NSObject {
+    public var http : QPHttpUtils {
         return QPHttpUtils.sharedInstance
     }
 }

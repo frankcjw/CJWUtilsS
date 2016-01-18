@@ -29,4 +29,4 @@ public let COLOR_LIGHT_GREEN = UIColor(fromHexCode: "#50e3c2")
 public let COLOR_ORANGE = UIColor(fromHexCode: "#f5a623")
 
 public let COLOR_LIGHT_GRAY = UIColor.lightGrayColor()
-public let COLOR_LIGHT_GRAY2 = UIColor(fromHexCode: "#f2f2f2")
+public let COLOR_LIGHT_LIGHT_GRAY = UIColor(fromHexCode: "#f2f2f2")

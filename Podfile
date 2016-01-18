@@ -25,6 +25,8 @@ target 'CJWUtilsS' do
 #    pod "CJWUtils", :git => 'https://github.com/frankcjw/CJWUtils.git', :tag => '0.0.5'
     pod 'SVProgressHUD'
     pod 'SSKeychain'
+    pod 'CryptoSwift'
+
 end
 
 target 'CJWUtilsSTests' do

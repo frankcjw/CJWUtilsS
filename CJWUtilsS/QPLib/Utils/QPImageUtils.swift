@@ -9,11 +9,11 @@
 import UIKit
 import SDWebImage
 
-class QPImageUtils: NSObject {
+public class QPImageUtils: NSObject {
 }
 
-extension UIImageView {
-    func image(url:String,placeholder:String){
+public extension UIImageView {
+    public func image(url:String,placeholder:String){
         let placeholderImage = UIImage(named: placeholder)
         sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
             //

@@ -266,9 +266,9 @@ public extension NSDate {
 
 public typealias QPDelayBlock = () -> ()
 
-class QPExcuteDelay : NSObject {
+public class QPExcuteDelay : NSObject {
     
-    class func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
+    public class func excute(timeDelay:NSTimeInterval,block:QPDelayBlock){
         let ttt:Int64 = Int64(timeDelay)
         let time = dispatch_time(DISPATCH_TIME_NOW, ttt * (Int64)(1 * NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
