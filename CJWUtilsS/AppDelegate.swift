@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url4 = "http://cardpool.cc/vipmodule/check/api.do"
         let param = ["mobile":"13631290232"]
         QPHttpUtils.sharedInstance.newHttpRequet(url, param: param, success: { (response) -> () in
-            print("result nil \(response.type)")
+            print("result nil \(response.string)")
             print("response \(response)")
             }) { () -> () in
         }
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }) { () -> () in
         }
         QPHttpUtils.sharedInstance.newHttpRequet(url2, param: param, success: { (response) -> () in
-            print("result nil \(response.type)")
+            print("result nil \(response.string)")
             print(response.isEmpty)
 
             }) { () -> () in

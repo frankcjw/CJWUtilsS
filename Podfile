@@ -23,7 +23,8 @@ target 'CJWUtilsS' do
     pod 'CocoaLumberjack/Swift'
     pod 'SwiftyJSON'
 #    pod "CJWUtils", :git => 'https://github.com/frankcjw/CJWUtils.git', :tag => '0.0.5'
-
+    pod 'SVProgressHUD'
+    pod 'SSKeychain'
 end
 
 target 'CJWUtilsSTests' do

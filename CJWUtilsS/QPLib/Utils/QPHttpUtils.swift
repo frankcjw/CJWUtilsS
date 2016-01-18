@@ -41,7 +41,6 @@ class QPHttpUtils: NSObject {
     typealias CJWFailBlock = () -> ()
     
     func newHttpRequet(url: String, param: [String : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!) -> Request{
-
         let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
             if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
                 if response.result.isSuccess {

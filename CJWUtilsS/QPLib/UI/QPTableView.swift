@@ -26,7 +26,6 @@ public extension UITableView {
     }
     
     public func addRefreshFooter(target:AnyObject!,action:Selector){
-        
         self.refresFooter = MJRefreshAutoNormalFooter(refreshingTarget: target, refreshingAction: action)
     }
     
