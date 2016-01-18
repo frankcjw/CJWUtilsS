@@ -62,7 +62,6 @@ class ViewController: UITableViewController {
         
         QPKeyChainUtils.debug()
         
-        showText("nihao")
         
 //        QPKeyChainUtils.sharedInstance.cache("aaaa", forKey: "cjw")
 //        cacheToDisk("aaaa", forKey: "cjw")
@@ -70,26 +69,24 @@ class ViewController: UITableViewController {
             print("value \(value)")
         }
         
-        showHUD("nihao")
-        showHUD("nihao")
-        showHUD("nihao")
-        showHUD("nihao")
-        showHUD("nihao")
+       
+//        showHUD("nihao")
+        self.view.showLoading("buhao")
         
         excute(3) { () -> () in
 //            self.hideHUD()
+//            self.view.hideLoading()
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        let vc = UIViewController()
-//        self.pushViewController(vc)
-        self.presentViewController(vc, animated: true) { () -> Void in
-            //
-        }
+
     }
 
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
 }
 

@@ -30,33 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                    print("JSON: \(JSON)")
 //                }
 //        }
-        
-        
-        let url = "http://www.cardpool.cc/vipmodule/login/api.do?method=login"
-        let url2 = "http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3"
-        let url3 = "http://cardpool.cc/vipmodule/shop/api.do"
-        let url4 = "http://cardpool.cc/vipmodule/check/api.do"
-        let param = ["mobile":"13631290232"]
-        QPHttpUtils.sharedInstance.newHttpRequet(url, param: param, success: { (response) -> () in
-            print("result nil \(response.string)")
-            print("response \(response)")
-            }) { () -> () in
-        }
-        QPHttpUtils.sharedInstance.newHttpRequet(url3, param: param, success: { (response) -> () in
-            print("result nil \(response.type)")
-            }) { () -> () in
-        }
-        QPHttpUtils.sharedInstance.newHttpRequet(url2, param: param, success: { (response) -> () in
-            print("result nil \(response.string)")
-            print(response.isEmpty)
-
-            }) { () -> () in
-        }
-        QPHttpUtils.sharedInstance.newHttpRequet(url4, param: param, success: { (response) -> () in
-            print("result nil \(response.type)")
-            print(response.isEmpty)
-            }) { () -> () in
-        }
         return true
     }
 
