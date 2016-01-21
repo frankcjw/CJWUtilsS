@@ -15,7 +15,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 	public var didSetupConstraints = false
 	public var cellInfo = NSDictionary()
 
-	public override func awakeFromNib() {
+	override public func awakeFromNib() {
 		super.awakeFromNib()
 	}
 
@@ -41,13 +41,14 @@ public class QPBaseTableViewCell: UITableViewCell {
 		self.selectionStyle = UITableViewCellSelectionStyle.None
 	}
 
-	public override func updateConstraints() {
+	override public func updateConstraints() {
 
 		// if !didSetupConstraints {
 		// setupConstrains(contentView)
 		// didSetupConstraints = true
 		// }
 		setupConstrains(contentView)
+
 		super.updateConstraints()
 	}
 
