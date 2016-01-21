@@ -26,7 +26,7 @@ target 'CJWUtilsS' do
     pod 'SVProgressHUD'
     pod 'SSKeychain'
     pod 'CryptoSwift'
-
+    pod 'SugarRecord'
 end
 
 target 'CJWUtilsSTests' do

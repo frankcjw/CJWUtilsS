@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014E2DE61C50D4EB006D814D /* QPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E2DE51C50D4EB006D814D /* QPModel.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
 		0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0151722B1C4CD23A00EEB9ED /* QPAlert.swift */; };
@@ -26,7 +27,6 @@
 		01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */; };
 		01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD01C3BA737006E221A /* QPPushUtils.swift */; };
 		01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD11C3BA737006E221A /* QPUtils.swift */; };
-		01EA74161C50AB0100A41EA6 /* QPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EA74151C50AB0100A41EA6 /* QPModel.swift */; };
 		01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */; };
 		47736CB270649366B1DF6914 /* Pods_CJWUtilsS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD954E06D5FF04A29077A51A /* Pods_CJWUtilsS.framework */; };
 		B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */; };
@@ -50,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014E2DE51C50D4EB006D814D /* QPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPModel.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
 		0151722B1C4CD23A00EEB9ED /* QPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlert.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPMemberUtils.swift; sourceTree = "<group>"; };
 		01CAEFD01C3BA737006E221A /* QPPushUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPushUtils.swift; sourceTree = "<group>"; };
 		01CAEFD11C3BA737006E221A /* QPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPUtils.swift; sourceTree = "<group>"; };
-		01EA74151C50AB0100A41EA6 /* QPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPModel.swift; sourceTree = "<group>"; };
 		01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
 		5B9A09F91082CAF891F97BC4 /* Pods-CJWUtilsS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJWUtilsS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJWUtilsS/Pods-CJWUtilsS.release.xcconfig"; sourceTree = "<group>"; };
 		8BEB095C9EB47C466C84CD6F /* Pods-CJWUtilsS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJWUtilsS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJWUtilsS/Pods-CJWUtilsS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +176,7 @@
 				01CAEFD11C3BA737006E221A /* QPUtils.swift */,
 				015172271C4C914F00EEB9ED /* QPImageUtils.swift */,
 				01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */,
+				014E2DE51C50D4EB006D814D /* QPModel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				B64D5BDE1A35714200D137D1 /* CJWDate.swift */,
-				01EA74151C50AB0100A41EA6 /* QPModel.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -424,6 +424,7 @@
 				01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
+				014E2DE61C50D4EB006D814D /* QPModel.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
 				01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */,
 				01CAEFDC1C3BA737006E221A /* QPCacheUtils.swift in Sources */,
@@ -437,7 +438,6 @@
 				01CAEFDB1C3BA737006E221A /* QPUISupportUtils.m in Sources */,
 				01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */,
 				01CAEFD91C3BA737006E221A /* QPKey.swift in Sources */,
-				01EA74161C50AB0100A41EA6 /* QPModel.swift in Sources */,
 				B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */,
 				01CAEFDA1C3BA737006E221A /* QPTableView.swift in Sources */,
 				01CAEFD61C3BA737006E221A /* QPBaseTableViewCell.swift in Sources */,
