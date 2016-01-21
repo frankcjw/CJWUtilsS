@@ -21,75 +21,88 @@ let maxPageSize = NSNumber(int: Int32.max).integerValue
 let pageSize = 50
 
 public class QPHttpUtils: NSObject {
-    
-    var sessionKey = ""
-    
+
+	var sessionKey = ""
+
 //    var httpManager = AFHTTPRequestOperationManager()
-    
-    public class var sharedInstance : QPHttpUtils {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : QPHttpUtils? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = QPHttpUtils()
-        }
-        return Static.instance!
-    }
-    
-    public typealias QPSuccessBlock = (response:JSON) -> ()
-    public typealias QPFailBlock = () -> ()
-    
-    public func newHttpRequet(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request{
-        let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
-            if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-                if response.result.isSuccess {
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        success(response: json)
-                    }else{
-                        assertionFailure("network exception which I haven't deal with it")
-                        fail()
-                    }
-                }else{
-                    if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-                        let json = JSON(str)
-                        success(response: json)
-                    }else{
-                        fail()
-                    }
-                }
-            }else{
-                debugPrint(response)
-                fail()
-            }
-        }
-        return request
-    }
-    
-    func uploadFile(url:String, images: Array<UIImage>){
-        Alamofire.upload(.POST, "", multipartFormData: { (multipartFormData) -> Void in
-            for image in images {
-                let index = images.indexOf(image)
-                let name = "pic\(index)"
-                print("name \(name)")
-                let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-                multipartFormData.appendBodyPart(data: dataObj, name: name)
-            }
-            }, encodingCompletion: { (encodingResult) -> Void in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON { response in
-                        debugPrint(response)
-                    }.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
-                        print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
-                    })
-                case .Failure(let encodingError):
-                    print(encodingError)
-                }
-        })
-    }
-    
+
+	public class var sharedInstance : QPHttpUtils {
+		struct Static {
+			static var onceToken : dispatch_once_t = 0
+			static var instance : QPHttpUtils? = nil
+		}
+		dispatch_once(&Static.onceToken) {
+			Static.instance = QPHttpUtils()
+		}
+		return Static.instance!
+	}
+
+	public typealias QPSuccessBlock = (response: JSON) -> ()
+	public typealias QPFailBlock = () -> ()
+
+	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request {
+		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
+	}
+
+	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request {
+		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					if let value = response.result.value {
+						let json = JSON(value)
+						success(response: json)
+						log.outputLogLevel = .Verbose
+						log.debug("hello")
+						log.error("hello")
+						log.warning("hello")
+						log.info("hello")
+						log.verbose("hello")
+					} else {
+						// TODO:
+						log.error("network exception which I haven't deal with it")
+						assertionFailure("network exception which I haven't deal with it")
+						fail()
+					}
+				} else {
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+						let json = JSON(str)
+						success(response: json)
+					} else {
+						fail()
+					}
+				}
+			} else {
+				debugPrint(response)
+				fail()
+			}
+		}
+		return request
+	}
+
+	func uploadFile(url: String, images: Array<UIImage>) {
+		// TODO:
+		Alamofire.upload(.POST, "", multipartFormData: { (multipartFormData) -> Void in
+				for image in images {
+					let index = images.indexOf(image)
+					let name = "pic\(index)"
+					print("name \(name)")
+					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+					multipartFormData.appendBodyPart(data: dataObj, name: name)
+				}
+			}, encodingCompletion: { (encodingResult) -> Void in
+				switch encodingResult {
+				case .Success(let upload, _, _):
+					upload.responseJSON { response in
+						debugPrint(response)
+					}.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
+							print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
+						})
+				case .Failure(let encodingError):
+					print(encodingError)
+				}
+			})
+	}
+
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){
 ////        CJWNetworkActivityIndicator.startIndicator()
 //        print("url \(url) param \(param)")
@@ -107,7 +120,7 @@ public class QPHttpUtils: NSObject {
 //                print("url:\(url)\n\(error) \(operation!.responseString)")
 //                fail()
 //        }
-//        
+//
 //    }
 //    func requestUrlWithCache(url: String!, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, failure: CJWFailBlock!){
 //        let key = "\(url)-\(param)"
@@ -124,12 +137,12 @@ public class QPHttpUtils: NSObject {
 //                success(resp)
 //                QPCacheUtils.cache(resp, forKey: key, toDisk: true)
 //            }
-//            
+//
 //            }) { () -> Void in
 //                failure()
 //        }
 //    }
-//    
+//
 //    func requestUrl(url: String!, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!) {
 //        var newParam = addAuth(param)
 //        if url == URL_LOGIN {
@@ -166,13 +179,13 @@ public class QPHttpUtils: NSObject {
 //            }) { () -> Void in
 //                fail()
 //        }
-//        
+//
 //    }
-//    
+//
 //    private func pushId() -> String{
 //        return QPPushUtils.getPushID()
 //    }
-//    
+//
 //    func addAuth(param: [NSObject : AnyObject]!) -> [NSObject : AnyObject]!{
 //        if param == nil {
 //            return param
@@ -193,7 +206,7 @@ public class QPHttpUtils: NSObject {
 }
 
 public extension NSObject {
-    public var http : QPHttpUtils {
-        return QPHttpUtils.sharedInstance
-    }
+	public var http : QPHttpUtils {
+		return QPHttpUtils.sharedInstance
+	}
 }
