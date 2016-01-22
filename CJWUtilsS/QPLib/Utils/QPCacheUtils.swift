@@ -30,7 +30,7 @@ public class QPCacheUtils: NSObject {
 	public class func cache(value: AnyObject, forKey : String, toDisk: Bool) {
 		let newKey = forKey.md5()
 //        let newKey = (forKey as NSString).encryptToAESString()
-		print("cache \(forKey) \(newKey) \(value)")
+//		print("cache \(forKey) \(newKey) \(value)")
 		QPCacheUtils.sharedInstance.container.setObject(value, forKey: newKey)
 		if toDisk {
 			let userDefault = NSUserDefaults.standardUserDefaults()
@@ -41,7 +41,7 @@ public class QPCacheUtils: NSObject {
 	public class func getCacheBy(key: String) -> AnyObject? {
 
 		let newKey = key.md5() //
-		print("getCacheBy \(key) \(newKey)")
+//		print("getCacheBy \(key) \(newKey)")
 		let obj = QPCacheUtils.sharedInstance.container[newKey]
 		if obj == nil {
 			let userDefault = NSUserDefaults.standardUserDefaults()
@@ -55,7 +55,7 @@ public class QPCacheUtils: NSObject {
 	public class func isExist(key: String) -> Bool {
 //        let newKey = (key as NSString).encryptToAESString()
 		let newKey = key.md5() //
-		print("isExist \(key) \(newKey)")
+//		print("isExist \(key) \(newKey)")
 		if let _ = QPCacheUtils.sharedInstance.container[newKey] {
 			return true
 		} else {
