@@ -27,6 +27,7 @@ target 'CJWUtilsS' do
     pod 'SSKeychain'
     pod 'CryptoSwift'
     pod 'SugarRecord'
+    pod 'AsyncSwift'
 end
 
 target 'CJWUtilsSTests' do

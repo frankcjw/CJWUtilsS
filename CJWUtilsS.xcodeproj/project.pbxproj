@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		014E2DE61C50D4EB006D814D /* QPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E2DE51C50D4EB006D814D /* QPModel.swift */; };
+		012691CA1C52049B00A9DC37 /* CJWRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012691C91C52049B00A9DC37 /* CJWRealmModel.swift */; };
+		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
 		0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0151722B1C4CD23A00EEB9ED /* QPAlert.swift */; };
@@ -50,7 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		014E2DE51C50D4EB006D814D /* QPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPModel.swift; sourceTree = "<group>"; };
+		012691C91C52049B00A9DC37 /* CJWRealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CJWRealmModel.swift; sourceTree = "<group>"; };
+		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
 		0151722B1C4CD23A00EEB9ED /* QPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlert.swift; sourceTree = "<group>"; };
@@ -176,7 +178,7 @@
 				01CAEFD11C3BA737006E221A /* QPUtils.swift */,
 				015172271C4C914F00EEB9ED /* QPImageUtils.swift */,
 				01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */,
-				014E2DE51C50D4EB006D814D /* QPModel.swift */,
+				012F30041C521812003891E5 /* QPDBUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -215,6 +217,7 @@
 				01CAEFB91C3BA737006E221A /* QPLib */,
 				B64D5BDD1A3570C100D137D1 /* utils */,
 				B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */,
+				012691C91C52049B00A9DC37 /* CJWRealmModel.swift */,
 				B64D5BBF1A356CC500D137D1 /* ViewController.swift */,
 				B64D5BC11A356CC500D137D1 /* Main.storyboard */,
 				B64D5BC41A356CC500D137D1 /* Images.xcassets */,
@@ -424,16 +427,17 @@
 				01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
-				014E2DE61C50D4EB006D814D /* QPModel.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
 				01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */,
 				01CAEFDC1C3BA737006E221A /* QPCacheUtils.swift in Sources */,
 				01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */,
 				01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */,
+				012F30051C521812003891E5 /* QPDBUtils.swift in Sources */,
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,
 				B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */,
+				012691CA1C52049B00A9DC37 /* CJWRealmModel.swift in Sources */,
 				01CAEFDE1C3BA737006E221A /* QPKeyChainUtils.swift in Sources */,
 				01CAEFDB1C3BA737006E221A /* QPUISupportUtils.m in Sources */,
 				01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */,

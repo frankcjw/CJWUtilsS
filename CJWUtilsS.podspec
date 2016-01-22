@@ -158,16 +158,10 @@ Pod::Spec.new do |s|
   s.dependency "SVProgressHUD"
   s.dependency "SSKeychain"
   s.dependency "CryptoSwift"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  s.dependency "FLKAutoLayout"
-  #s.dependency "MBProgressHUD"
+  s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
+  s.dependency "RealmSwift"
+
   #s.dependency "TMCache"
   #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
 
