@@ -145,6 +145,19 @@ class ViewController: UITableViewController {
 
 extension ViewController {
 	func realmTesting() {
+
+		let db = QPDBUtils.sharedInstance
+		for index in 0...10 {
+			let model = QPModel()
+			model.id = 1100.random()
+			db.addModel(model)
+		}
+		let lastId = db.lastId(QPModel.self)
+		print("lastId \(lastId)")
+		let res = db.query(QPModel.self)
+		for model in res {
+			print("mode \(model.id)")
+		}
 		QPDBUtils.sharedInstance.debug()
 	}
 

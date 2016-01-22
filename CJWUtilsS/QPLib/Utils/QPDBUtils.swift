@@ -42,36 +42,15 @@ public class QPDBUtils: NSObject {
 		}
 	}
 
-	/*
-	 Swift
-
-	 1
-	 2
-	 3
-	 4
-	 5
-	 6
-	 7
-	 8
-	 9
-	 func maximumValue<T: Comparable>(first: T, second: T) -> T
-	 {
-	 if (first >= second)
-	 {
-	 return first
-	 }
-
-	 */
-
 	public func query<T: QPModel>(modelType: T.Type) -> Results<T> {
 		let result = realm.objects(modelType).filter("id > %d", -1)
 		return result
 	}
 
 	public func lastId(modelType: QPModel.Type) -> Int {
-		let result = query(modelType).last
+		let result = query(modelType).sorted("id", ascending: true).last
 		if let lastResult = result {
-			return lastResult.id
+			return lastResult.id + 1
 		} else {
 			return 0
 		}
