@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Alamofire
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //				print("JSON: \(JSON)")
 //			}
 //		}
-
 //		let param = ["url": "github.com/frankcjw/CJWOCLib/blob/master/LICENSE"]
 //		QPHttpUtils.request("http://dwz.cn/create.php", param: param, success: { (response) -> () in
 //				print(response)

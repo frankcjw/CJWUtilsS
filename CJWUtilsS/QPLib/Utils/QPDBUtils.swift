@@ -47,6 +47,15 @@ public class QPDBUtils: NSObject {
 		return result
 	}
 
+	public func lastId(modelType: QPModel.Type) -> Int {
+		let result = query(modelType).last
+		if let lastResult = result {
+			return lastResult.id
+		} else {
+			return 0
+		}
+	}
+
 	func debug() {
 		log.info("db path : \(realm.path)")
 	}
