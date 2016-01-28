@@ -28,6 +28,21 @@ target 'CJWUtilsS' do
     pod 'CryptoSwift'
     pod 'SugarRecord'
     pod 'AsyncSwift'
+    #- swift date operation
+    pod 'SwiftDate'
+    pod 'AFDateHelper'
+    # remain testing
+    pod 'Signals'
+    pod 'PromiseKit'
+    pod 'TaskQueue'
+    #log net work status , remain testing
+    pod 'netfox'
+    # swift timer , seems usable, remain testing
+    pod 'SwiftyTimer'
+    #store any object in your user default
+    pod 'Prephirences'
+    # common user default
+    pod 'SwiftyUserDefaults'
 end
 
 target 'CJWUtilsSTests' do

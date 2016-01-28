@@ -52,11 +52,6 @@ public class QPHttpUtils: NSObject {
 						let json = JSON(value)
 						success(response: json)
 						log.outputLogLevel = .Verbose
-						log.debug("hello")
-						log.error("hello")
-						log.warning("hello")
-						log.info("hello")
-						log.verbose("hello")
 					} else {
 						// TODO:
 						log.error("network exception which I haven't deal with it")
