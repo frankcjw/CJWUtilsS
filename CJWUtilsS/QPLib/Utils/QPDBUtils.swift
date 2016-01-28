@@ -65,6 +65,7 @@ public class QPDBUtils: NSObject {
 public class QPModel : Object {
 
 	public dynamic var id: Int = -1
+	public dynamic var name : String = ""
 
 	override public static func primaryKey() -> String? {
 		return "id"
@@ -75,3 +76,14 @@ public class QPModel : Object {
 	}
 }
 
+extension QPModel {
+	class func newModel<T: QPModel>(modelType: T.Type) -> T {
+		let instance = T()
+		instance.id = QPDBUtils.sharedInstance.lastId(modelType)
+		return instance
+	}
+
+	func save() {
+		QPDBUtils.sharedInstance.addModel(self)
+	}
+}

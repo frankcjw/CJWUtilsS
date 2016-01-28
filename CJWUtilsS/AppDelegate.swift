@@ -11,6 +11,8 @@ import CoreData
 import Alamofire
 import RealmSwift
 import netfox
+import SwiftyUserDefaults
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,31 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		NFX.sharedInstance().start()
 		NFX.sharedInstance().setGesture(.shake)
-		Alamofire.request(.GET, "http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3", parameters: ["foo": "bar"])
-			.responseJSON { response in
-			print(response.response?.statusCode) // URL response
-			print(response.result) // result of response serialization
 
-			if let JSON = response.result.value {
-				print("JSON: \(JSON)")
-			}
-		}
-		let param = ["url": "github.com/frankcjw/CJWOCLib/blob/master/LICENSE"]
-		QPHttpUtils.request("http://dwz.cn/create.php", param: param, success: { (response) -> () in
-			print(response)
-		}) { () -> () in
-			//
-		}
+		Defaults["asd"] = "asd"
+		let sss = Defaults["asd"].stringValue
+		print(sss)
 
-		QPHttpUtils.request("http://cardpool.cc/vipmodule/shop/api.do?method=get&id=3", param: param, success: { (response) -> () in
-			print(response)
-		}) { () -> () in
-			//
-		}
-
-		excute(10) { () -> () in
-//			NFX.sharedInstance().show()
-		}
 		return true
 	}
 

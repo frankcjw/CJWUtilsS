@@ -39,9 +39,9 @@ target 'CJWUtilsS' do
     pod 'netfox'
     # swift timer , seems usable, remain testing
     pod 'SwiftyTimer'
-    #store any object in your user default
-    pod 'Prephirences'
-    # common user default
+    #store any object in your user default,but it's not that usefull
+    #pod 'Prephirences'
+    # common user default,recommand
     pod 'SwiftyUserDefaults'
 end
 
