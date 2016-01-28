@@ -189,3 +189,8 @@ public extension UITableViewController {
 		self.tableView.registerTableViewCell(nibName, bundle: nil, forCellReuseIdentifier: nibName)
 	}
 }
+
+public extension UITableView {
+	public func clearExtraLines() {
+	}
+}
