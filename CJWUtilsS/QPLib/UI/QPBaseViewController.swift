@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias QPViewController = QPBaseViewController
+
 public class QPBaseViewController: UIViewController {
 
 	public var info = NSDictionary()

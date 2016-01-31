@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias QPTableViewCell = QPBaseTableViewCell
+
 public class QPBaseTableViewCell: UITableViewCell {
 
 	public var rootViewController : UIViewController?

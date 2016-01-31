@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import Alamofire
-import RealmSwift
 import netfox
 import SwiftyUserDefaults
 
