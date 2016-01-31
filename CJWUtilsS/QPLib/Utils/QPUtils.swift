@@ -389,45 +389,50 @@ public extension NSDictionary {
 }
 
 public extension UIView {
-	public func leadingAlign(view: UIView, predicate: String) {
-		self.alignLeadingEdgeWithView(view, predicate: predicate)
-	}
-
-	public func leadingConstrain(view: UIView, predicate: String) {
-		self.constrainLeadingSpaceToView(view, predicate: predicate)
-	}
-
-	public func trailing(view: UIView, predicate: String) {
-		self.alignTrailingEdgeWithView(view, predicate: predicate)
-	}
-
-	public func top(view: UIView, predicate: String) {
-		self.constrainTopSpaceToView(view, predicate: predicate)
-	}
-
-	public func bottom(view: UIView, predicate: String) {
-		self.alignBottomEdgeWithView(view, predicate: predicate)
-	}
-
-	public func centerY(view: UIView, predicate: String) {
-		self.alignCenterYWithView(view, predicate: predicate)
-	}
-
-	public func width(view: UIView, predicate: String) {
-		self.constrainWidthToView(view, predicate: predicate)
-	}
-
-	public func widthConstrain(predicate: String) {
-		self.constrainWidth(predicate)
-	}
-
-	public func height(view: UIView, predicate: String) {
-		self.constrainHeightToView(view, predicate: predicate)
-	}
-
-	public func heightConstrain(predicate: String) {
-		self.constrainHeight(predicate)
-	}
+    // view:UIView,predicate:String
+    public func leadingAlign(view: UIView, predicate: String) {
+        self.alignLeadingEdgeWithView(view, predicate: predicate)
+    }
+    
+    public func leadingConstrain(view: UIView, predicate: String) {
+        self.constrainLeadingSpaceToView(view, predicate: predicate)
+    }
+    
+    public func trailing(view: UIView, predicate: String) {
+        self.alignTrailingEdgeWithView(view, predicate: predicate)
+    }
+    
+    public func topAlign(view: UIView, predicate: String){
+        self.alignTopEdgeWithView(view, predicate: predicate)
+    }
+    
+    public func top(view: UIView, predicate: String) {
+        self.constrainTopSpaceToView(view, predicate: predicate)
+    }
+    
+    public func bottom(view: UIView, predicate: String) {
+        self.alignBottomEdgeWithView(view, predicate: predicate)
+    }
+    
+    public func centerY(view: UIView, predicate: String) {
+        self.alignCenterYWithView(view, predicate: predicate)
+    }
+    
+    public func width(view: UIView, predicate: String) {
+        self.constrainWidthToView(view, predicate: predicate)
+    }
+    
+    public func widthConstrain(predicate: String) {
+        self.constrainWidth(predicate)
+    }
+    
+    public func height(view: UIView, predicate: String) {
+        self.constrainHeightToView(view, predicate: predicate)
+    }
+    
+    public func heightConstrain(predicate: String) {
+        self.constrainHeight(predicate)
+    }
 }
 
 class QPCurrentCity : NSObject {
