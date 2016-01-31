@@ -195,5 +195,7 @@ public extension UITableViewController {
 
 public extension UITableView {
 	public func clearExtraLines() {
+        let size = CGRectZero
+        self.tableFooterView = UIView(frame: size)
 	}
 }
