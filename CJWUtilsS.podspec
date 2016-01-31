@@ -160,7 +160,7 @@ Pod::Spec.new do |s|
   s.dependency "CryptoSwift"
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
-  s.dependency "RealmSwift", "~> 0.97.0"
+  #s.dependency "RealmSwift", "~> 0.97.0"
 
   #s.dependency "TMCache"
   #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
