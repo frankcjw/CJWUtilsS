@@ -42,7 +42,6 @@ extension UIViewController {
 
 public typealias QPTableViewController = QPBaseTableViewController
 
-
 public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
 	public var controllerInfo = NSDictionary()
@@ -195,7 +194,7 @@ public extension UITableViewController {
 
 public extension UITableView {
 	public func clearExtraLines() {
-        let size = CGRectZero
-        self.tableFooterView = UIView(frame: size)
+		let size = CGRectZero
+		self.tableFooterView = UIView(frame: size)
 	}
 }

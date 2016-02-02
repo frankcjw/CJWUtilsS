@@ -28,7 +28,7 @@ target 'CJWUtilsS' do
 #    pod 'SugarRecord'
 #    pod 'Realm', :tag ~> '0.97.0'
 #    pod 'Realm', '~> 0.97.0'
-#    pod 'RealmSwift', '~> 0.97.0'
+    pod 'RealmSwift'
     pod 'AsyncSwift'
     #- swift date operation
     pod 'SwiftDate'
@@ -45,6 +45,7 @@ target 'CJWUtilsS' do
     #pod 'Prephirences'
     # common user default,recommand
     pod 'SwiftyUserDefaults'
+    
 end
 
 target 'CJWUtilsSTests' do
