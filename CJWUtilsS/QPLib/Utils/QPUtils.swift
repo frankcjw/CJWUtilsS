@@ -43,7 +43,7 @@ public extension QPUtils {
 		var calc = NSNumber(unsignedLong: size).integerValue
 		var value = ""
 		var unitIndex = 0
-		for _ in 0...units.count - 1 {
+		for _ in 0 ... units.count - 1 {
 			if calc > 1024 * 2 {
 				calc = calc / 1024
 				unitIndex++
@@ -309,7 +309,7 @@ public extension Array {
 	public func shuffle() -> [Element] {
 		var shuffledContent: [Element] = []
 		let shuffledIndex: [Int] = self.count.indexRandom()
-		for i in 0...shuffledIndex.count - 1 {
+		for i in 0 ... shuffledIndex.count - 1 {
 			shuffledContent.append(self[shuffledIndex[i]])
 		}
 		return shuffledContent
@@ -317,7 +317,7 @@ public extension Array {
 	public mutating func shuffled() {
 		var shuffledContent: [Element] = []
 		let shuffledIndex: [Int] = self.count.indexRandom()
-		for i in 0...shuffledIndex.count - 1 {
+		for i in 0 ... shuffledIndex.count - 1 {
 			shuffledContent.append(self[shuffledIndex[i]])
 		}
 		self = shuffledContent
@@ -328,7 +328,7 @@ public extension Array {
 	public func choose(x: Int) -> [Element] {
 		var shuffledContent: [Element] = []
 		let shuffledIndex: [Int] = x.indexRandom()
-		for i in 0...shuffledIndex.count - 1 {
+		for i in 0 ... shuffledIndex.count - 1 {
 			shuffledContent.append(self[shuffledIndex[i]])
 		}
 		return shuffledContent
@@ -389,50 +389,50 @@ public extension NSDictionary {
 }
 
 public extension UIView {
-    // view:UIView,predicate:String
-    public func leadingAlign(view: UIView, predicate: String) {
-        self.alignLeadingEdgeWithView(view, predicate: predicate)
-    }
-    
-    public func leadingConstrain(view: UIView, predicate: String) {
-        self.constrainLeadingSpaceToView(view, predicate: predicate)
-    }
-    
-    public func trailing(view: UIView, predicate: String) {
-        self.alignTrailingEdgeWithView(view, predicate: predicate)
-    }
-    
-    public func topAlign(view: UIView, predicate: String){
-        self.alignTopEdgeWithView(view, predicate: predicate)
-    }
-    
-    public func top(view: UIView, predicate: String) {
-        self.constrainTopSpaceToView(view, predicate: predicate)
-    }
-    
-    public func bottom(view: UIView, predicate: String) {
-        self.alignBottomEdgeWithView(view, predicate: predicate)
-    }
-    
-    public func centerY(view: UIView, predicate: String) {
-        self.alignCenterYWithView(view, predicate: predicate)
-    }
-    
-    public func width(view: UIView, predicate: String) {
-        self.constrainWidthToView(view, predicate: predicate)
-    }
-    
-    public func widthConstrain(predicate: String) {
-        self.constrainWidth(predicate)
-    }
-    
-    public func height(view: UIView, predicate: String) {
-        self.constrainHeightToView(view, predicate: predicate)
-    }
-    
-    public func heightConstrain(predicate: String) {
-        self.constrainHeight(predicate)
-    }
+	// view:UIView,predicate:String
+	public func leadingAlign(view: UIView, predicate: String) {
+		self.alignLeadingEdgeWithView(view, predicate: predicate)
+	}
+
+	public func leadingConstrain(view: UIView, predicate: String) {
+		self.constrainLeadingSpaceToView(view, predicate: predicate)
+	}
+
+	public func trailing(view: UIView, predicate: String) {
+		self.alignTrailingEdgeWithView(view, predicate: predicate)
+	}
+
+	public func topAlign(view: UIView, predicate: String) {
+		self.alignTopEdgeWithView(view, predicate: predicate)
+	}
+
+	public func top(view: UIView, predicate: String) {
+		self.constrainTopSpaceToView(view, predicate: predicate)
+	}
+
+	public func bottom(view: UIView, predicate: String) {
+		self.alignBottomEdgeWithView(view, predicate: predicate)
+	}
+
+	public func centerY(view: UIView, predicate: String) {
+		self.alignCenterYWithView(view, predicate: predicate)
+	}
+
+	public func width(view: UIView, predicate: String) {
+		self.constrainWidthToView(view, predicate: predicate)
+	}
+
+	public func widthConstrain(predicate: String) {
+		self.constrainWidth(predicate)
+	}
+
+	public func height(view: UIView, predicate: String) {
+		self.constrainHeightToView(view, predicate: predicate)
+	}
+
+	public func heightConstrain(predicate: String) {
+		self.constrainHeight(predicate)
+	}
 }
 
 class QPCurrentCity : NSObject {
@@ -511,12 +511,16 @@ class QPCurrentCity : NSObject {
 
 extension String {
 	func isMobile() -> Bool {
+		// TODO: isMobile
+		log.warning("not been setup")
 //        return "".isValidateMobile(self)
 		return false
 	}
 
 	func isEmail() -> Bool {
+		// TODO: isEmail
 //        return "".isValidateEmail(self)
+		log.warning("not been setup")
 		return false
 	}
 
@@ -524,6 +528,12 @@ extension String {
 		let phoneRegex = "(([0-9]{4})|([0-9]{3}))-([0-9]{8})"
 		let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
 		return phoneTest.evaluateWithObject(self)
+	}
+}
+
+extension String {
+	func insert(string: String, ind: Int) -> String {
+		return String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count - ind))
 	}
 }
 
