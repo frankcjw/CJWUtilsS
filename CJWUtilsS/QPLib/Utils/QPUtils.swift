@@ -531,8 +531,8 @@ extension String {
 	}
 }
 
-extension String {
-	func insert(string: String, ind: Int) -> String {
+public extension String {
+	public func insert(string: String, ind: Int) -> String {
 		return String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count - ind))
 	}
 }
