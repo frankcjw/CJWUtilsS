@@ -15,6 +15,8 @@ class ViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
+        
+        tableView.aspectRatio()
 
 		log.outputLogLevel = .Debug
 

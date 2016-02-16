@@ -19,10 +19,6 @@ public let UIControlStateHighlighted = UIControlState.Highlighted
 public typealias QPNormalBlock = () -> ()
 
 public class QPUtils: NSObject {
-	var chatting = false
-	var chattingViewController = UIViewController()
-
-	var cacheObject : AnyObject?
 
 	public class var sharedInstance : QPUtils {
 		struct Static {
@@ -37,6 +33,11 @@ public class QPUtils: NSObject {
 }
 
 public extension QPUtils {
+	/**
+	 获取系统图片缓存大小
+
+	 - returns:
+	 */
 	public class func getSystemCacheSize() -> String {
 		let units = ["B", "K", "M", "G"]
 		let size = SDImageCache.sharedImageCache().getSize()
@@ -52,13 +53,13 @@ public extension QPUtils {
 			}
 		}
 		value = "\(calc)\(units[unitIndex])"
-		print("缓存大小:\(value) \(size)")
+		log.debug("缓存大小:\(value) \(size)")
 		return value
 	}
 
 	class func clearSystemCache(block: () -> ()) {
-		assertionFailure("library not been setup")
-//        let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
+		// TODO:清理系统缓存
+		// let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
 //        tmpView?.showHUDwith("正在清理缓存")
 //        QPExcuteDelay.excute(2, block: { () -> () in
 //            SDImageCache.sharedImageCache().clearDiskOnCompletion { () -> Void in
@@ -69,6 +70,7 @@ public extension QPUtils {
 	}
 
 	class func isSMSRequestAvailable() -> Bool {
+		// TODO:是否能发送短信
 //        let key = "SMSTime"
 //        if let time = QPKeyChainUtils.stringForKey(key) {
 //            let fmt = NSDateFormatter()
@@ -88,6 +90,7 @@ public extension QPUtils {
 	}
 
 	public class func updateSMSRequestTime() {
+		// TODO:还不能用
 		let key = "SMSTime"
 		let fmt = NSDateFormatter()
 		fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -101,6 +104,7 @@ let DATE_FORMAT = "HH:mm"
 /// Array<NSDictionary>
 public typealias NSInfoArray = Array<NSDictionary>
 
+// MARK: - 计算view尺寸
 public extension String {
 
 	private var MAX_HEIGHT: CGFloat {
@@ -111,18 +115,18 @@ public extension String {
 		return SCREEN_WIDTH
 	}
 
-	func calculateSizeHeight(font: UIFont, width: CGFloat) -> CGFloat {
+	public func calculateSizeHeight(font: UIFont, width: CGFloat) -> CGFloat {
 		return calculateSize(font, width: width).height
 	}
 
-	func calculateWidth(font: UIFont, height: CGFloat) -> CGFloat {
+	public func calculateWidth(font: UIFont, height: CGFloat) -> CGFloat {
 		var size = CGSizeMake(MAX_WIDTH, height)
 		let dict = [NSFontAttributeName: font]
 		size = self.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: dict, context: nil).size
 		return size.width
 	}
 
-	func calculateSize(font: UIFont, width: CGFloat) -> CGSize {
+	public func calculateSize(font: UIFont, width: CGFloat) -> CGSize {
 		var size = CGSizeMake(width, MAX_HEIGHT)
 		let dict = [NSFontAttributeName: font]
 		size = self.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: dict, context: nil).size
@@ -136,6 +140,7 @@ public extension String {
 	}
 }
 
+// MARK: - 时间转换
 public extension Double {
 	public func convertToDateString() -> String {
 		let time = self / 1000 - NSTimeIntervalSince1970
@@ -264,6 +269,7 @@ public extension NSDate {
 
 public typealias QPDelayBlock = () -> ()
 
+/// 延时执行
 public class QPExcuteDelay : NSObject {
 
 	public class func excute(timeDelay: NSTimeInterval, block: QPDelayBlock) {
@@ -275,12 +281,20 @@ public class QPExcuteDelay : NSObject {
 	}
 }
 
+/// 延时执行
 public extension NSObject {
+	/**
+	 延时执行
+
+	 - parameter timeDelay: 延时
+	 - parameter block:     block
+	 */
 	public func excute(timeDelay: NSTimeInterval, block: QPDelayBlock) {
 		QPExcuteDelay.excute(timeDelay, block: block)
 	}
 }
 
+// MARK: - 数字转ascii字符
 public extension Int {
 	public func character() -> String {
 		let character = Character(UnicodeScalar(65 + self))
@@ -289,9 +303,15 @@ public extension Int {
 }
 
 public extension Int {
+	/**
+	 范围内随机数
+
+	 - returns:
+	 */
 	public func random() -> Int {
 		return Int(arc4random_uniform(UInt32(abs(self))))
 	}
+
 	public func indexRandom() -> [Int] {
 		var newIndex = 0
 		var shuffledIndex: [Int] = []
@@ -306,6 +326,11 @@ public extension Int {
 }
 
 public extension Array {
+	/**
+	 Array洗牌
+
+	 - returns: <#return value description#>
+	 */
 	public func shuffle() -> [Element] {
 		var shuffledContent: [Element] = []
 		let shuffledIndex: [Int] = self.count.indexRandom()
@@ -322,6 +347,11 @@ public extension Array {
 		}
 		self = shuffledContent
 	}
+	/**
+	 随机选择其中一个元素
+
+	 - returns:
+	 */
 	public func chooseOne() -> Element {
 		return self[Int(arc4random_uniform(UInt32(self.count)))]
 	}
@@ -337,6 +367,13 @@ public extension Array {
 
 public extension Array where Element: Equatable {
 
+	/**
+	 移除array里面的元素
+
+	 - parameter element: 元素index
+
+	 - returns:
+	 */
 	public mutating func removeElement(element: Element) -> Element? {
 		if let index = indexOf(element) {
 			return removeAtIndex(index)
@@ -388,37 +425,42 @@ public extension NSDictionary {
 	}
 }
 
+// MARK: - autoLayout
 public extension UIView {
 	// view:UIView,predicate:String
-	public func leadingAlign(view: UIView, predicate: String) {
+	public func leadingAlign(view: UIView, predicate: String? = "8") {
 		self.alignLeadingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func leadingConstrain(view: UIView, predicate: String) {
+	public func leadingConstrain(view: UIView, predicate: String? = "8") {
 		self.constrainLeadingSpaceToView(view, predicate: predicate)
 	}
 
-	public func trailing(view: UIView, predicate: String) {
+	public func trailing(view: UIView, predicate: String? = "-8") {
 		self.alignTrailingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func topAlign(view: UIView, predicate: String) {
+	public func topAlign(view: UIView, predicate: String? = "8") {
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
 
-	public func top(view: UIView, predicate: String) {
+	public func top(view: UIView, predicate: String? = "8") {
 		self.constrainTopSpaceToView(view, predicate: predicate)
 	}
 
-	public func bottom(view: UIView, predicate: String) {
+	public func bottom(view: UIView, predicate: String? = "-8") {
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
-	public func centerY(view: UIView, predicate: String) {
+	public func centerX(view: UIView, predicate: String? = "0") {
+		self.alignCenterXWithView(view, predicate: predicate)
+	}
+
+	public func centerY(view: UIView, predicate: String? = "0") {
 		self.alignCenterYWithView(view, predicate: predicate)
 	}
 
-	public func width(view: UIView, predicate: String) {
+	public func width(view: UIView, predicate: String? = "0") {
 		self.constrainWidthToView(view, predicate: predicate)
 	}
 
@@ -426,16 +468,21 @@ public extension UIView {
 		self.constrainWidth(predicate)
 	}
 
-	public func height(view: UIView, predicate: String) {
+	public func height(view: UIView, predicate: String? = "0") {
 		self.constrainHeightToView(view, predicate: predicate)
 	}
 
 	public func heightConstrain(predicate: String) {
 		self.constrainHeight(predicate)
 	}
+
+	public func aspectRatio(predicate: String? = "") {
+		self.constrainAspectRatio(predicate)
+	}
 }
 
 class QPCurrentCity : NSObject {
+	// TODO: 获取当前城市
 	/// 获取当前城市
 
 	class var sharedInstance : QPCurrentCity {
@@ -532,14 +579,16 @@ extension String {
 }
 
 public extension String {
-	public func insert(string: String, ind: Int) -> String {
-		return String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count - ind))
+	public mutating func insert(string: String, ind: Int) -> String {
+		let str = String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count - ind))
+		self = str
+		return str
 	}
 }
 
 public extension UITextField {
 
-	public func isValid() -> Bool {
+	public func valid() -> Bool {
 		if text != nil && text! != "" {
 			return true
 		}
@@ -559,6 +608,13 @@ public extension UITextField {
 }
 
 public extension Double {
+	/**
+	 小数点后取几位
+
+	 - parameter scale: 后几位
+
+	 - returns:
+	 */
 	public func subDouble(scale: Int) -> Double {
 		var dec = NSDecimalNumber(double: self)
 		let behavior = NSDecimalNumberHandler(roundingMode: NSRoundingMode.RoundPlain, scale: NSNumber(integer: scale).shortValue, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)

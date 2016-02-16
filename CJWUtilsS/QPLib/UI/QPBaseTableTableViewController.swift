@@ -176,6 +176,20 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 	override public func scrollViewDidScroll(scrollView: UIScrollView) {
 		self.view.endEditing(true)
 	}
+
+	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//		return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        let cell = cellForRow(atIndexPath: indexPath)
+        if let qpCell = cell as? QPTableViewCell {
+            qpCell.setup()
+            return qpCell
+        }
+		return cellForRow(atIndexPath: indexPath)
+	}
+
+	public func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		return UITableViewCell()
+	}
 }
 
 public extension UITableViewController {
