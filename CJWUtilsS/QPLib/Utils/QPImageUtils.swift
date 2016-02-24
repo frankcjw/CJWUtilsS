@@ -13,10 +13,16 @@ public class QPImageUtils: NSObject {
 }
 
 public extension UIImageView {
-    public func image(url:String,placeholder:String){
-        let placeholderImage = UIImage(named: placeholder)
-        sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
-            //
-        }
-    }
+	public func image(url: String, placeholder: String) {
+		let placeholderImage = UIImage(named: placeholder)
+		sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
+			//
+		}
+	}
+
+	public func image(name: String) {
+		if let img = UIImage(named: name) {
+			self.image = img
+		}
+	}
 }
