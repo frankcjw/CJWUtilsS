@@ -440,6 +440,10 @@ public extension UIView {
 		self.alignTrailingEdgeWithView(view, predicate: predicate)
 	}
 
+	public func trailingConstrain(view: UIView, predicate: String? = "-8") {
+		self.constrainTrailingSpaceToView(view, predicate: predicate)
+	}
+
 	public func topAlign(view: UIView, predicate: String? = "8") {
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
