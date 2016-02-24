@@ -456,6 +456,10 @@ public extension UIView {
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
+	public func bottomConstrain(view: UIView, predicate: String? = "0") {
+		self.constrainBottomSpaceToView(view, predicate: predicate)
+	}
+
 	public func centerX(view: UIView, predicate: String? = "0") {
 		self.alignCenterXWithView(view, predicate: predicate)
 	}
