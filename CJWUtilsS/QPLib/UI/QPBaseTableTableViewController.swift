@@ -142,6 +142,7 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 //        self.tableView.clearExtraLines()
 		self.setBackTitle("")
 		request()
+		self.tableView.clearExtraLines()
 	}
 
 	public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
