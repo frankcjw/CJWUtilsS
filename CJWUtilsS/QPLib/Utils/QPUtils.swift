@@ -614,6 +614,15 @@ public extension UITextField {
 		return false
 	}
 }
+public extension UITextField {
+	public var textValue : String {
+		if let txt = text {
+			return txt
+		} else {
+			return ""
+		}
+	}
+}
 
 public extension Double {
 	/**
