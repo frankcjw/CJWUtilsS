@@ -179,16 +179,24 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 
 	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //		return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        let cell = cellForRow(atIndexPath: indexPath)
-        if let qpCell = cell as? QPTableViewCell {
-            qpCell.setup()
-            return qpCell
-        }
+		let cell = cellForRow(atIndexPath: indexPath)
+		if let qpCell = cell as? QPTableViewCell {
+			qpCell.setup()
+			return qpCell
+		}
 		return cellForRow(atIndexPath: indexPath)
 	}
 
 	public func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		return UITableViewCell()
+	}
+
+	override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return UITableViewAutomaticDimension
+	}
+
+	override public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return UITableViewAutomaticDimension
 	}
 }
 
