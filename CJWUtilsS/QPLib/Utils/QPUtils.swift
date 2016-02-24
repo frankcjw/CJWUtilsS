@@ -427,7 +427,7 @@ public extension NSDictionary {
 
 // MARK: - autoLayout
 public extension UIView {
-	// view:UIView,predicate:String
+
 	public func leadingAlign(view: UIView, predicate: String? = "8") {
 		self.alignLeadingEdgeWithView(view, predicate: predicate)
 	}
