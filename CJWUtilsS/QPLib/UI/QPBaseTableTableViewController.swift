@@ -183,6 +183,7 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 		let cell = cellForRow(atIndexPath: indexPath)
 		if let qpCell = cell as? QPTableViewCell {
 			qpCell.setup()
+			qpCell.rootViewController = self
 			return qpCell
 		}
 		return cellForRow(atIndexPath: indexPath)

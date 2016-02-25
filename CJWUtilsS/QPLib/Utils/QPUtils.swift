@@ -565,7 +565,7 @@ class QPCurrentCity : NSObject {
 }
 
 extension String {
-	func isMobile() -> Bool {
+	func  isMobile() -> Bool {
 		// TODO: isMobile
 		log.warning("not been setup")
 //        return "".isValidateMobile(self)
@@ -637,5 +637,26 @@ public extension Double {
 		let behavior = NSDecimalNumberHandler(roundingMode: NSRoundingMode.RoundPlain, scale: NSNumber(integer: scale).shortValue, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
 		dec = dec.decimalNumberByRoundingAccordingToBehavior(behavior)
 		return dec.doubleValue
+	}
+}
+public extension String {
+	func valid() -> Bool {
+		if self == "" || self.length() <= 0 {
+			return false
+		}
+		return true
+	}
+}
+
+public extension String {
+	func dial() -> Bool {
+
+		if valid() {
+			let tel = "tel:\(self)"
+			if let nsurl = NSURL(string: tel) {
+				return UIApplication.sharedApplication().openURL(nsurl)
+			}
+		}
+		return false
 	}
 }
