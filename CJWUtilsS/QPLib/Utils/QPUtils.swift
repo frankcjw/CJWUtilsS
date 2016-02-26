@@ -565,7 +565,7 @@ class QPCurrentCity : NSObject {
 }
 
 extension String {
-	func  isMobile() -> Bool {
+	func isMobile() -> Bool {
 		// TODO: isMobile
 		log.warning("not been setup")
 //        return "".isValidateMobile(self)
@@ -658,5 +658,11 @@ public extension String {
 			}
 		}
 		return false
+	}
+}
+
+public extension UIButton {
+	public func addTarget(targte: AnyObject?, action : Selector) {
+		self.addTarget(targte, action: action, forControlEvents: UIControlEvents.TouchUpInside)
 	}
 }
