@@ -8,12 +8,12 @@
 
 import UIKit
 
-class QPWebViewController: QPViewController {
+public class QPWebViewController: QPViewController {
 
-	let webView = UIWebView()
-	var url : String? = ""
+	public let webView = UIWebView()
+	public var url : String? = ""
 
-	override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
 //		webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)
 		webView.alignTop("0", leading: "0", bottom: "0", trailing: "0", toView: self.view)
@@ -23,7 +23,7 @@ class QPWebViewController: QPViewController {
 		self.view.updateConstraintsIfNeeded()
 	}
 
-	func load(url : String?) -> Bool {
+	public func load(url : String?) -> Bool {
 		if url != nil && url != "" {
 			self.url = url!
 			if let nsurl = NSURL(string: url!) {
@@ -34,13 +34,5 @@ class QPWebViewController: QPViewController {
 			}
 		}
 		return false
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
 	}
 }
