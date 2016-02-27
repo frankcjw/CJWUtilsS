@@ -13,7 +13,7 @@ public typealias QPTableViewCell = QPBaseTableViewCell
 public class QPBaseTableViewCell: UITableViewCell {
 
 	public var rootViewController : UIViewController?
-
+	public var indexPath : NSIndexPath?
 	public var didSetupConstraints = false
 	public var cellInfo = NSDictionary()
 
