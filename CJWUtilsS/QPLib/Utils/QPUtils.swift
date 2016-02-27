@@ -666,3 +666,10 @@ public extension UIButton {
 		self.addTarget(targte, action: action, forControlEvents: UIControlEvents.TouchUpInside)
 	}
 }
+
+public extension UIView {
+	public func setupAutoLayout() {
+		self.setNeedsUpdateConstraints()
+		self.updateConstraintsIfNeeded()
+	}
+}
