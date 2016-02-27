@@ -88,19 +88,6 @@ public extension UIView {
 	}
 }
 
-public extension UITableView {
-	public func setInsets(insets : UIEdgeInsets) {
-		self.contentInset = insets;
-		self.scrollIndicatorInsets = insets;
-		// self.scrollToTop(false)
-	}
-
-	public func setInsetsTop(top: CGFloat) {
-		let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
-		setInsets(insets)
-	}
-}
-
 public extension UILabel {
 
 	public func setTextColor(color: UIColor, atRange range: NSRange) {

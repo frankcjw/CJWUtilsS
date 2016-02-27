@@ -222,4 +222,24 @@ public extension UITableView {
 		let size = CGRectZero
 		self.tableFooterView = UIView(frame: size)
 	}
+
+	public func setInsetsTop(top: CGFloat) {
+		let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+		setInsets(insets)
+	}
+
+	public func setInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
+		let insets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+		setInsets(insets)
+	}
+
+	/**
+	 修正顶栏位置
+
+	 - parameter insets: top: 0, left: 0, bottom: 0, right: 0
+	 */
+	public func setInsets(insets: UIEdgeInsets) {
+		self.contentInset = insets;
+		self.scrollIndicatorInsets = insets;
+	}
 }

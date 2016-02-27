@@ -17,6 +17,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 	public var didSetupConstraints = false
 	public var cellInfo = NSDictionary()
 
+    
 	override public func awakeFromNib() {
 		super.awakeFromNib()
 	}
