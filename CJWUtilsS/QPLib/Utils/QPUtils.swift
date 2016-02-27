@@ -564,7 +564,7 @@ class QPCurrentCity : NSObject {
 	}
 }
 
-extension String {
+public extension String {
 	public mutating func urlEncode() -> Bool {
 		if let safeURL = self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
 			self = safeURL
@@ -574,12 +574,12 @@ extension String {
 		return false
 	}
 
-	func openUrl() -> Bool {
+	public func openUrl() -> Bool {
 		let flag = UIApplication.sharedApplication().openURL(NSURL(string: self)!)
 		return flag
 	}
 
-	func nsurl() -> NSURL? {
+	public func nsurl() -> NSURL? {
 		return NSURL(string: self)
 	}
 }
