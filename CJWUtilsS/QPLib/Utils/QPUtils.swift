@@ -668,7 +668,7 @@ public extension UIButton {
 }
 
 public extension UIView {
-	public func setupAutoLayout() {
+	public func setupConstraints() {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
 	}
