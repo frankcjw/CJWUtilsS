@@ -565,6 +565,26 @@ class QPCurrentCity : NSObject {
 }
 
 extension String {
+	public mutating func urlEncode() -> Bool {
+		if let safeURL = self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+			self = safeURL
+			return true
+		}
+
+		return false
+	}
+
+	func openUrl() -> Bool {
+		let flag = UIApplication.sharedApplication().openURL(NSURL(string: self)!)
+		return flag
+	}
+
+	func nsurl() -> NSURL? {
+		return NSURL(string: self)
+	}
+}
+
+extension String {
 	func isMobile() -> Bool {
 		// TODO: isMobile
 		log.warning("not been setup")

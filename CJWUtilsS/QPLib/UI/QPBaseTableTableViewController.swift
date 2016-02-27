@@ -224,7 +224,8 @@ public extension UITableView {
 	}
 
 	public func setInsetsTop(top: CGFloat) {
-		let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+
+		let insets = UIEdgeInsets(top: top, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
 		setInsets(insets)
 	}
 
