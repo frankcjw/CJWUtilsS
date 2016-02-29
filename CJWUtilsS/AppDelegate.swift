@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		NFX.sharedInstance().start()
 		NFX.sharedInstance().setGesture(.shake)
 
-		Defaults["asd"] = "1a1sd"
+		Defaults["asd"] = "asd"
 		let sss = Defaults["asd"].stringValue
 		print(sss)
 
