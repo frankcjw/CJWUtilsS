@@ -28,7 +28,7 @@ target 'CJWUtilsS' do
 #    pod 'SugarRecord'
 #    pod 'Realm', :tag ~> '0.97.0'
 #    pod 'Realm', '~> 0.97.0'
-    pod 'RealmSwift'
+#    pod 'RealmSwift'
     pod 'AsyncSwift'
     #- swift date operation
     pod 'SwiftDate'
