@@ -9,8 +9,53 @@
 import UIKit
 import SVProgressHUD
 import CoreData
+import ObjectiveC
+
+class CJWoOBJ : NSObject {
+	var title = "String666"
+	var numb = 1238
+	var sss : UIView?
+}
 
 class ViewController: UITableViewController {
+
+	func rfObject(ooo: AnyObject) {
+		let mirror = Mirror(reflecting: ooo)
+
+		defer {
+			print("defer")
+		}
+
+		defer {
+			print("defer111")
+		}
+
+		let className = mirror.subjectType
+		print("\(className)")
+		var dictionary = [String: Any]()
+		for child in mirror.children {
+			guard let key = child.label else { continue }
+			let value: Any = child.value
+
+			dictionary[key] = value
+
+			switch value {
+			case is Int: print("integer = \(value) \(key)")
+			case is String: print("string = \(value) \(key)")
+			default: print("other type = \(value) \(key)")
+			}
+
+			switch value {
+			case let i as Int: print("• integer = \(i) \(key)")
+			case let s as String: print("• string = \(s) \(key)")
+			default: print("• other type = \(value) \(key)")
+			}
+
+			if let i = value as? Int {
+				print("•• integer = \(i)")
+			}
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,11 +77,15 @@ class ViewController: UITableViewController {
 //
 //		anyMirror.subjectType
 
-		http.newHttpRequest("http://localhost:8080", param: ["hello": "frank"], success: { (response) -> () in
-			print("\(response)")
-		}) { () -> () in
-			print("fail")
+		if let aClass = NSClassFromString("CJWoOBJ") as? NSObject.Type {
+
+			let anObject = aClass.init()
+
+			rfObject(anObject)
 		}
+
+//		let ooo = CJWoOBJ()
+//        rfObject(anObject)
 	}
 
 	override func didReceiveMemoryWarning() {
