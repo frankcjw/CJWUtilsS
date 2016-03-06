@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AFNetworking
 
 let HOST = ""
 
@@ -40,62 +41,114 @@ public class QPHttpUtils: NSObject {
 	public typealias QPSuccessBlock = (response: JSON) -> ()
 	public typealias QPFailBlock = () -> ()
 
-	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request {
-		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
+	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
+//		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
 	}
 
-	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> Request {
-		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
-			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-				if response.result.isSuccess {
-					if let value = response.result.value {
-						let json = JSON(value)
-						success(response: json)
-						log.outputLogLevel = .Verbose
-					} else {
-						// TODO:
-						log.error("network exception which I haven't deal with it")
-						assertionFailure("network exception which I haven't deal with it")
-						fail()
-					}
-				} else {
-					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-						let json = JSON(str)
-						success(response: json)
-					} else {
-						fail()
-					}
-				}
-			} else {
-				debugPrint(response)
-				fail()
-			}
-		}
-		return request
+	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
+
+		let sss = AFHTTPRequestSerializer()
+		let req = NSURLRequest(URL: NSURL(string: url)!)
+//		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
+		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
+
+		let mgr = AFHTTPSessionManager()
+        
+        mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
+            print("\(response) \(obj) \(error)")
+
+        }
+//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
+//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
+//		mgr.POST(url, parameters: param, constructingBodyWithBlock: { (mutipartData) -> Void in
+//
+//			let image = UIImage(named: "testing")!
+//			let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+////			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
+//			}, progress: { (progess) -> Void in
+//			print("\(progess)")
+//			}, success: { (task, object) -> Void in
+//			print("\(object)")
+//			if let obj = object {
+//				let json = JSON(obj)
+//				let type = json["title"].stringValue
+//				print(type)
+//			}
+//			}, failure: { (task, error) -> Void in
+//			task?.response
+//			print("\(error)")
+//		})
+
+		/*
+		 public void testing(){
+		 HashMap<String, String> map = new HashMap<>();
+		 try {
+		 File file = getFileParam("imageFile", "image/dg");
+		 if (file == null ){
+		 map.put("fail", "fail");
+		 renderJson(map);
+		 }else{
+		 map.put("success", "success");
+		 renderJson(map);
+		 }
+		 } catch (Exception e) {
+		 map.put("error", "error "+ e);
+		 renderJson(map);
+		 }
+		 }
+		 */
+
+//		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
+//			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+//				if response.result.isSuccess {
+//					if let value = response.result.value {
+//						let json = JSON(value)
+//						success(response: json)
+//						log.outputLogLevel = .Verbose
+//					} else {
+//						// TODO:
+//						log.error("network exception which I haven't deal with it")
+//						assertionFailure("network exception which I haven't deal with it")
+//						fail()
+//					}
+//				} else {
+//					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+//						let json = JSON(str)
+//						success(response: json)
+//					} else {
+//						fail()
+//					}
+//				}
+//			} else {
+//				debugPrint(response)
+//				fail()
+//			}
+//		}
+//		return request
 	}
 
 	func uploadFile(url: String, images: Array<UIImage>) {
 		// TODO:
 		Alamofire.upload(.POST, "", multipartFormData: { (multipartFormData) -> Void in
-				for image in images {
-					let index = images.indexOf(image)
-					let name = "pic\(index)"
-					print("name \(name)")
-					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-					multipartFormData.appendBodyPart(data: dataObj, name: name)
-				}
+			for image in images {
+				let index = images.indexOf(image)
+				let name = "pic\(index)"
+				print("name \(name)")
+				let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+				multipartFormData.appendBodyPart(data: dataObj, name: name)
+			}
 			}, encodingCompletion: { (encodingResult) -> Void in
-				switch encodingResult {
-				case .Success(let upload, _, _):
-					upload.responseJSON { response in
-						debugPrint(response)
-					}.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
-							print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
-						})
-				case .Failure(let encodingError):
-					print(encodingError)
-				}
-			})
+			switch encodingResult {
+			case .Success(let upload, _, _):
+				upload.responseJSON { response in
+					debugPrint(response)
+				}.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
+					print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
+				})
+			case .Failure(let encodingError):
+				print(encodingError)
+			}
+		})
 	}
 
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){

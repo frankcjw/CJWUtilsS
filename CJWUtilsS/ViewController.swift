@@ -15,8 +15,8 @@ class ViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
-        
-        tableView.aspectRatio()
+
+		tableView.aspectRatio()
 
 		log.outputLogLevel = .Debug
 
@@ -31,6 +31,12 @@ class ViewController: UITableViewController {
 //		let anyMirror = Mirror(reflecting: anyObject)
 //
 //		anyMirror.subjectType
+
+		http.newHttpRequest("http://localhost:8080", param: ["hello": "frank"], success: { (response) -> () in
+			print("\(response)")
+		}) { () -> () in
+			print("fail")
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -76,7 +82,6 @@ class ViewController: UITableViewController {
 	}
 }
 
-
 class CJWCell : QPBaseTableViewCell {
 	let label = UILabel()
 	let label2 = UILabel()
@@ -105,4 +110,3 @@ class CJWCell : QPBaseTableViewCell {
 		label2.bottom(view, predicate: "-20")
 	}
 }
-
