@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'CJWUtilsS' do
     use_frameworks!
-#    pod 'AFNetworking'
+    pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'MJRefresh'
     pod 'FlatUIKit'
