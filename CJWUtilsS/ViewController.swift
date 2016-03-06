@@ -10,11 +10,19 @@ import UIKit
 import SVProgressHUD
 import CoreData
 import ObjectiveC
+import YYModel
 
 class CJWoOBJ : NSObject {
 	var title = "String666"
 	var numb = 1238
 	var sss : UIView?
+}
+
+class CJWMMM : NSObject {
+	var time : Int?
+	var time2 = 2
+	var day : String?
+	var day2 = "day2"
 }
 
 class ViewController: UITableViewController {
@@ -84,8 +92,23 @@ class ViewController: UITableViewController {
 			rfObject(anObject)
 		}
 
+		if view.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.Compact {
+			print("comp")
+		} else {
+			print("nn comp")
+		}
+
+		if view.traitCollection.verticalSizeClass == UIUserInterfaceSizeClass.Compact {
+			print("vvv cmp")
+		} else {
+			print("vvv nnn cmp")
+		}
+
 //		let ooo = CJWoOBJ()
 //        rfObject(anObject)
+
+		let model = CJWMMM()
+		CJWMMM.yy
 	}
 
 	override func didReceiveMemoryWarning() {
