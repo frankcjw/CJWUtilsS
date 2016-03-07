@@ -175,6 +175,11 @@ extension CALayer {
 }
 
 public extension UIScrollView {
+	/**
+	 滑动到顶部
+
+	 - parameter animate: 是否需要动画
+	 */
 	func scrollToTop(animate: Bool) {
 		self.setContentOffset(CGPointMake(0, 0), animated: animate)
 	}

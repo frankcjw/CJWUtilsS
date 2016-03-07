@@ -41,10 +41,48 @@ public class QPHttpUtils: NSObject {
 	public typealias QPSuccessBlock = (response: JSON) -> ()
 	public typealias QPFailBlock = () -> ()
 
+	public typealias QPOldSuccessBlock = (response: AnyObject?) -> ()
+
 	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 //		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
 	}
 
+	/**
+	 过去的http方法,不推荐使用
+
+	 - parameter url:     url
+	 - parameter param:   参数
+	 - parameter success: 成功返回:anyobject
+	 - parameter fail:    失败返回
+	 */
+	public func oldHttpRequest(url: String, param: [String : AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
+		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					success(response: response.result.value)
+				} else {
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+//						let json = JSON(str)
+						success(response: str)
+					} else {
+						fail()
+					}
+				}
+			} else {
+				debugPrint(response)
+				fail()
+			}
+		}
+	}
+
+	/**
+	 新的http方法,推荐使用
+
+	 - parameter url:     url
+	 - parameter param:   参数
+	 - parameter success: 成功 JSON
+	 - parameter fail:    失败
+	 */
 	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
 		let sss = AFHTTPRequestSerializer()
