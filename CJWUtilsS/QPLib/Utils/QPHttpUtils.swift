@@ -253,7 +253,7 @@ public class QPHttpUtils: NSObject {
 }
 
 public extension NSObject {
-	public var http : QPHttpUtils {
-		return QPHttpUtils.sharedInstance
-	}
+//	public var http : QPHttpUtils {
+//		return QPHttpUtils.sharedInstance
+//	}
 }
