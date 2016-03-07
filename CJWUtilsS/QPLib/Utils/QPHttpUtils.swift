@@ -53,11 +53,10 @@ public class QPHttpUtils: NSObject {
 		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
 
 		let mgr = AFHTTPSessionManager()
-        
-        mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
-            print("\(response) \(obj) \(error)")
 
-        }
+		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
+			print("\(response) \(obj) \(error)")
+		}
 //		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
 //		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
 //		mgr.POST(url, parameters: param, constructingBodyWithBlock: { (mutipartData) -> Void in
@@ -98,32 +97,32 @@ public class QPHttpUtils: NSObject {
 		 }
 		 */
 
-//		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
-//			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-//				if response.result.isSuccess {
-//					if let value = response.result.value {
-//						let json = JSON(value)
-//						success(response: json)
-//						log.outputLogLevel = .Verbose
-//					} else {
-//						// TODO:
-//						log.error("network exception which I haven't deal with it")
-//						assertionFailure("network exception which I haven't deal with it")
-//						fail()
-//					}
-//				} else {
-//					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-//						let json = JSON(str)
-//						success(response: json)
-//					} else {
-//						fail()
-//					}
-//				}
-//			} else {
-//				debugPrint(response)
-//				fail()
-//			}
-//		}
+		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					if let value = response.result.value {
+						let json = JSON(value)
+						success(response: json)
+						log.outputLogLevel = .Verbose
+					} else {
+						// TODO:
+						log.error("network exception which I haven't deal with it")
+						assertionFailure("network exception which I haven't deal with it")
+						fail()
+					}
+				} else {
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+						let json = JSON(str)
+						success(response: json)
+					} else {
+						fail()
+					}
+				}
+			} else {
+				debugPrint(response)
+				fail()
+			}
+		}
 //		return request
 	}
 
