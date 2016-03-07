@@ -87,11 +87,11 @@ class ViewController: UITableViewController {
 //		let ooo = CJWoOBJ()
 //        rfObject(anObject)
 
-		http.newHttpRequest("http://115.29.141.172/qian/", param: nil, success: { (response) -> () in
-			print(response)
-		}) { () -> () in
-			//
-		}
+//		http.newHttpRequest("http://115.29.141.172/qian/", param: nil, success: { (response) -> () in
+//			print(response)
+//		}) { () -> () in
+//			//
+//		}
 	}
 
 	override func didReceiveMemoryWarning() {
