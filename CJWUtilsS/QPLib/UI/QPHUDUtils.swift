@@ -69,4 +69,15 @@ public extension UIView {
 	public func hideAllHUD() {
 		hideLoading()
 	}
+
+	public func showHUDwith(text: String) {
+		showLoading(text)
+	}
+
+	public func showTemporary(text: String) {
+		showLoading(text)
+		self.excute(1.5) { () -> () in
+			self.hideAllHUD()
+		}
+	}
 }
