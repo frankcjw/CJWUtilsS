@@ -69,7 +69,7 @@ class ViewController: UITableViewController {
 		super.viewDidLoad()
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
-		tableView.aspectRatio()
+//		tableView.aspectRatio()
 
 		log.outputLogLevel = .Debug
 
@@ -108,7 +108,13 @@ class ViewController: UITableViewController {
 //        rfObject(anObject)
 
 		let model = CJWMMM()
-		CJWMMM.yy
+
+		let url = "http://localhost:8080?gello=12"
+		http.newHttpRequest(url, param: ["s": "333"], success: { (response) -> () in
+			print("\(response)")
+		}) { () -> () in
+			print("asdasd")
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -125,10 +131,7 @@ class ViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("CJWCell") as! CJWCell
-		cell.setup()
-		cell.label.setNeedsUpdateConstraints()
-		cell.label.updateConstraintsIfNeeded()
+		let cell = UITableViewCell()
 		return cell
 	}
 
@@ -138,7 +141,7 @@ class ViewController: UITableViewController {
 //        QPKeyChainUtils.sharedInstance.cache("aaaa", forKey: "cjw")
 //        cacheToDisk("aaaa", forKey: "cjw")
 		if let value = QPKeyChainUtils.sharedInstance.cacheBy("cjw") {
-			print("value \(value)")
+			print("value \(value) ")
 		}
 	}
 
@@ -160,7 +163,7 @@ class CJWCell : QPBaseTableViewCell {
 
 	override func setupViews(view: UIView) {
 		view.addSubview(label)
-		label.text = ".php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/.php?url=github.com/frankcjw/CJWOCLib/"
+		label.text = ".php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / .php?url = github.com / frankcjw / CJWOCLib / "
 		label.backgroundColor = UIColor.yellowColor()
 		label.numberOfLines = 0
 
@@ -171,14 +174,14 @@ class CJWCell : QPBaseTableViewCell {
 	}
 
 	override func setupConstrains(view: UIView) {
-		label.alignTop("20", leading: "20", bottom: "<=-20", trailing: "-20", toView: view)
-//		label.alignLeading("30", trailing: "-30", toView: view)
+		label.alignTop("20", leading: "20", bottom: " <= -20", trailing: " - 20", toView: view)
+//		label.alignLeading("30", trailing: " - 30", toView: view)
 //		label.alignTopEdgeWithView(view, predicate: "30")
-//		label.heightConstrain(">=200")
+//		label.heightConstrain(" >= 200")
 		label2.constrainTopSpaceToView(label, predicate: "30")
 
 		label2.leadingAlign(view, predicate: "0")
-		label2.trailing(view, predicate: "-30")
-		label2.bottom(view, predicate: "-20")
+		label2.trailing(view, predicate: " - 30")
+		label2.bottom(view, predicate: " - 20")
 	}
 }

@@ -48,23 +48,23 @@ public class QPHttpUtils: NSObject {
 	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
 		let sss = AFHTTPRequestSerializer()
-		let req = NSURLRequest(URL: NSURL(string: url)!)
-//		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
-		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
+		var req = NSURLRequest(URL: NSURL(string: url)!)
+		req = sss.requestBySerializingRequest(req, withParameters: param, error: nil)!
+//		req = sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
 
 		let mgr = AFHTTPSessionManager()
-        
-        mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
-            print("\(response) \(obj) \(error)")
 
-        }
-//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
-//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
+		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
+			print("\(response) \(obj) \(error)")
+		}
+
+		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
+		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
 //		mgr.POST(url, parameters: param, constructingBodyWithBlock: { (mutipartData) -> Void in
 //
 //			let image = UIImage(named: "testing")!
 //			let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-////			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
+//			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
 //			}, progress: { (progess) -> Void in
 //			print("\(progess)")
 //			}, success: { (task, object) -> Void in
@@ -75,28 +75,47 @@ public class QPHttpUtils: NSObject {
 //				print(type)
 //			}
 //			}, failure: { (task, error) -> Void in
-//			task?.response
 //			print("\(error)")
 //		})
 
-		/*
-		 public void testing(){
-		 HashMap<String, String> map = new HashMap<>();
-		 try {
-		 File file = getFileParam("imageFile", "image/dg");
-		 if (file == null ){
-		 map.put("fail", "fail");
-		 renderJson(map);
-		 }else{
-		 map.put("success", "success");
-		 renderJson(map);
-		 }
-		 } catch (Exception e) {
-		 map.put("error", "error "+ e);
-		 renderJson(map);
-		 }
-		 }
-		 */
+		let image = UIImage(named: "testing")!
+		let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+
+//		Alamofire.upload(.POST, url, headers: ["s": "123"], data: dataObj).response { (reqqq, resp, data, error) -> Void in
+//			print("\(error) \(resp) \(data)!!")
+//		}
+
+		Alamofire.upload(req, multipartFormData: { (multipartFormData) -> Void in
+			multipartFormData.appendBodyPart(data: dataObj, name: "image", fileName: "cj2.png", mimeType: "multipart/form-data")
+		}) { (ress) -> Void in
+			//
+			switch ress {
+			case .Success(let req, _, _):
+				print("\(req) 55")
+				break
+			default:
+				print("sss")
+				break
+			}
+		}
+
+//		Alamofire.upload(
+//				.POST,
+//			url,
+//			multipartFormData: { multipartFormData in
+//				multipartFormData.appendBodyPart(data: dataObj, name: "image", fileName: "cj2.png", mimeType: "multipart/form-data")
+//			},
+//			encodingCompletion: { encodingResult in
+//				switch encodingResult {
+//				case .Success(let upload, _, _):
+//					upload.responseJSON { response in
+//						debugPrint(response)
+//					}
+//				case .Failure(let encodingError):
+//					print(encodingError)
+//				}
+//			}
+//		)
 
 //		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
 //			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
