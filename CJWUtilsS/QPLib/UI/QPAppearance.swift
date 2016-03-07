@@ -173,3 +173,9 @@ extension CALayer {
 		print("\(transition)")
 	}
 }
+
+public extension UIScrollView {
+	func scrollToTop(animate: Bool) {
+		self.setContentOffset(CGPointMake(0, 0), animated: animate)
+	}
+}

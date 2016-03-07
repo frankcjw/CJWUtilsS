@@ -66,14 +66,30 @@ public extension UIView {
 		MBProgressHUD.hideAllHUDsForView(self, animated: true)
 	}
 
+	/**
+	 老方法,和以前的项目对接
+	 隐藏hud
+	 */
 	public func hideAllHUD() {
 		hideLoading()
 	}
 
+	/**
+	 老方法,和以前的项目对接
+	 显示hud
+
+	 - parameter text: 需要显示的内容
+	 */
 	public func showHUDwith(text: String) {
 		showLoading(text)
 	}
 
+	/**
+	 老方法,和以前的项目对接
+	 短暂出现hud
+
+	 - parameter text: 需要显示的内容
+	 */
 	public func showTemporary(text: String) {
 		showLoading(text)
 		self.excute(1.5) { () -> () in
