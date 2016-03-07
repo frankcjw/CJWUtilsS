@@ -41,30 +41,67 @@ public class QPHttpUtils: NSObject {
 	public typealias QPSuccessBlock = (response: JSON) -> ()
 	public typealias QPFailBlock = () -> ()
 
+	public typealias QPOldSuccessBlock = (response: AnyObject?) -> ()
+
 	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 //		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
 	}
 
+	/**
+	 过去的http方法,不推荐使用
+
+	 - parameter url:     url
+	 - parameter param:   参数
+	 - parameter success: 成功返回:anyobject
+	 - parameter fail:    失败返回
+	 */
+	public func oldHttpRequest(url: String, param: [String : AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
+		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					success(response: response.result.value)
+				} else {
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+//						let json = JSON(str)
+						success(response: str)
+					} else {
+						fail()
+					}
+				}
+			} else {
+				debugPrint(response)
+				fail()
+			}
+		}
+	}
+
+	/**
+	 新的http方法,推荐使用
+
+	 - parameter url:     url
+	 - parameter param:   参数
+	 - parameter success: 成功 JSON
+	 - parameter fail:    失败
+	 */
 	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
 		let sss = AFHTTPRequestSerializer()
-		var req = NSURLRequest(URL: NSURL(string: url)!)
-		req = sss.requestBySerializingRequest(req, withParameters: param, error: nil)!
-//		req = sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
+		let req = NSURLRequest(URL: NSURL(string: url)!)
+//		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
+		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
 
 		let mgr = AFHTTPSessionManager()
 
 		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
 			print("\(response) \(obj) \(error)")
 		}
-
-		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
-		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
+//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
+//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
 //		mgr.POST(url, parameters: param, constructingBodyWithBlock: { (mutipartData) -> Void in
 //
 //			let image = UIImage(named: "testing")!
 //			let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-//			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
+////			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
 //			}, progress: { (progess) -> Void in
 //			print("\(progess)")
 //			}, success: { (task, object) -> Void in
@@ -75,74 +112,55 @@ public class QPHttpUtils: NSObject {
 //				print(type)
 //			}
 //			}, failure: { (task, error) -> Void in
+//			task?.response
 //			print("\(error)")
 //		})
 
-		let image = UIImage(named: "testing")!
-		let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+		/*
+		 public void testing(){
+		 HashMap<String, String> map = new HashMap<>();
+		 try {
+		 File file = getFileParam("imageFile", "image/dg");
+		 if (file == null ){
+		 map.put("fail", "fail");
+		 renderJson(map);
+		 }else{
+		 map.put("success", "success");
+		 renderJson(map);
+		 }
+		 } catch (Exception e) {
+		 map.put("error", "error "+ e);
+		 renderJson(map);
+		 }
+		 }
+		 */
 
-//		Alamofire.upload(.POST, url, headers: ["s": "123"], data: dataObj).response { (reqqq, resp, data, error) -> Void in
-//			print("\(error) \(resp) \(data)!!")
-//		}
-
-		Alamofire.upload(req, multipartFormData: { (multipartFormData) -> Void in
-			multipartFormData.appendBodyPart(data: dataObj, name: "image", fileName: "cj2.png", mimeType: "multipart/form-data")
-		}) { (ress) -> Void in
-			//
-			switch ress {
-			case .Success(let req, _, _):
-				print("\(req) 55")
-				break
-			default:
-				print("sss")
-				break
+		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					if let value = response.result.value {
+						let json = JSON(value)
+						success(response: json)
+						log.outputLogLevel = .Verbose
+					} else {
+						// TODO:
+						log.error("network exception which I haven't deal with it")
+						assertionFailure("network exception which I haven't deal with it")
+						fail()
+					}
+				} else {
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+						let json = JSON(str)
+						success(response: json)
+					} else {
+						fail()
+					}
+				}
+			} else {
+				debugPrint(response)
+				fail()
 			}
 		}
-
-//		Alamofire.upload(
-//				.POST,
-//			url,
-//			multipartFormData: { multipartFormData in
-//				multipartFormData.appendBodyPart(data: dataObj, name: "image", fileName: "cj2.png", mimeType: "multipart/form-data")
-//			},
-//			encodingCompletion: { encodingResult in
-//				switch encodingResult {
-//				case .Success(let upload, _, _):
-//					upload.responseJSON { response in
-//						debugPrint(response)
-//					}
-//				case .Failure(let encodingError):
-//					print(encodingError)
-//				}
-//			}
-//		)
-
-//		let request = Alamofire.request(.GET, url, parameters: param).responseJSON { response in
-//			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-//				if response.result.isSuccess {
-//					if let value = response.result.value {
-//						let json = JSON(value)
-//						success(response: json)
-//						log.outputLogLevel = .Verbose
-//					} else {
-//						// TODO:
-//						log.error("network exception which I haven't deal with it")
-//						assertionFailure("network exception which I haven't deal with it")
-//						fail()
-//					}
-//				} else {
-//					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-//						let json = JSON(str)
-//						success(response: json)
-//					} else {
-//						fail()
-//					}
-//				}
-//			} else {
-//				debugPrint(response)
-//				fail()
-//			}
-//		}
 //		return request
 	}
 
@@ -273,7 +291,7 @@ public class QPHttpUtils: NSObject {
 }
 
 public extension NSObject {
-	public var http : QPHttpUtils {
-		return QPHttpUtils.sharedInstance
-	}
+//	public var http : QPHttpUtils {
+//		return QPHttpUtils.sharedInstance
+//	}
 }
