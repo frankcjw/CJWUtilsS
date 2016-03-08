@@ -135,7 +135,7 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 		return CGPointMake(0, -30)
 	}
 
-	override public func viewDidLoad() {
+	public override func viewDidLoad() {
 		super.viewDidLoad()
 		// self.tableView.emptyDataSetSource = self;
 		// self.tableView.emptyDataSetDelegate = self;
