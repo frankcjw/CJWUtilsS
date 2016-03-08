@@ -500,8 +500,6 @@ public extension UIView {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
 	}
-    
-    
 }
 
 class QPCurrentCity : NSObject {
