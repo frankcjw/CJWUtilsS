@@ -25,23 +25,26 @@ class QPHUDUtils: NSObject {
 	}
 }
 
-public extension NSObject {
-	public func showHUD(text: String) {
+// MARK: - 继续SVProgressHUD
+//TODO: 还没完善SVProgressHUD
+extension NSObject {
+	func showHUD(text: String) {
 		SVProgressHUD.setBackgroundColor(COLOR_BLACK)
 		SVProgressHUD.setForegroundColor(COLOR_WHITE)
 		SVProgressHUD.setRingThickness(8)
 		SVProgressHUD.showWithStatus(text)
 	}
 
-	public func hideHUD() {
+	func hideHUD() {
 		SVProgressHUD.dismiss()
 	}
 
-	public func showLoading(view: UIView, text: String) {
+	func showLoading(view: UIView, text: String) {
 		MBProgressHUD.showHUDAddedTo(view, animated: true)
 	}
 }
 
+// MARK: - 显示hud
 public extension UIView {
 
 	private func cleanHud() {
@@ -50,6 +53,11 @@ public extension UIView {
 		}
 	}
 
+	/**
+	 显示HUD(不自动消失)
+
+	 - parameter text: 需要显示的文字
+	 */
 	public func showLoading(text: String) {
 		cleanHud()
 		self.userInteractionEnabled = false
@@ -60,6 +68,9 @@ public extension UIView {
 		QPHUDUtils.sharedInstance.mbHUD = hud
 	}
 
+	/**
+	 隐藏HUD
+	 */
 	public func hideLoading() {
 		cleanHud()
 		self.userInteractionEnabled = true
@@ -69,6 +80,8 @@ public extension UIView {
 	/**
 	 老方法,和以前的项目对接
 	 隐藏hud
+	 调用hideLoading
+
 	 */
 	public func hideAllHUD() {
 		hideLoading()
@@ -77,6 +90,7 @@ public extension UIView {
 	/**
 	 老方法,和以前的项目对接
 	 显示hud
+	 调用showLoading
 
 	 - parameter text: 需要显示的内容
 	 */

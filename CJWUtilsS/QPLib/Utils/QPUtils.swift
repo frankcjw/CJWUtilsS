@@ -487,6 +487,14 @@ public extension UIView {
 	public func aspectRatio(predicate: String? = "") {
 		self.constrainAspectRatio(predicate)
 	}
+
+	/**
+	 设置autoLayout
+	 */
+	public func autoLayout() {
+		self.setNeedsUpdateConstraints()
+		self.updateConstraintsIfNeeded()
+	}
 }
 
 class QPCurrentCity : NSObject {
