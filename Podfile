@@ -45,6 +45,7 @@ target 'CJWUtilsS' do
     #pod 'Prephirences'
     # common user default,recommand
     pod 'SwiftyUserDefaults'
+    pod 'YYModel'
     
 end
 
