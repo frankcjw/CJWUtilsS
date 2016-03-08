@@ -25,11 +25,16 @@ public extension UIView {
 
 		if self is UIImageView {
 			self.backgroundColor = UIColor.pomegranateColor()
-		} else if self is UILabel {
+		} else if let label = self as? UILabel {
 			self.backgroundColor = UIColor.peterRiverColor()
-		} else if self is UIButton {
+			if label.text == nil {
+				label.text = "testing"
+			}
+		} else if let button = self as? UIButton {
+			button.setTitle("testing", forState: UIControlState.Normal)
 			self.backgroundColor = UIColor.pumpkinColor()
-		} else if self is UITextField {
+		} else if let textField = self as? UITextField {
+			textField.text = "tessting"
 			self.backgroundColor = UIColor.alizarinColor()
 		}
 		self.backgroundColor = COLOR_DEBUG
