@@ -135,14 +135,18 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 		return CGPointMake(0, -30)
 	}
 
+	public func load() {
+	}
+
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		// self.tableView.emptyDataSetSource = self;
 		// self.tableView.emptyDataSetDelegate = self;
 //        self.tableView.clearExtraLines()
-		self.setBackTitle("")
+//		self.setBackTitle("")
 		request()
 		self.tableView.clearExtraLines()
+		load()
 	}
 
 	public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
