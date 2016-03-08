@@ -54,7 +54,7 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 
 	public var shouldHideNavigationBar : Bool = false
 
-	override public func viewWillAppear(animated: Bool) {
+	public override func viewWillAppear(animated: Bool) {
 
 		// IQKeyboardManager.sharedManager().enable = false
 		// IQKeyboardManager.sharedManager().enableAutoToolbar = false
@@ -69,7 +69,7 @@ public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSo
 		super.viewWillAppear(animated)
 	}
 
-	override public func viewWillDisappear(animated: Bool) {
+	public override func viewWillDisappear(animated: Bool) {
 		// if shouldHideNavigationBar {
 		// self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		// self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
