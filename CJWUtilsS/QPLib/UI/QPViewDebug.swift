@@ -20,9 +20,19 @@ public extension UIView {
 	 - parameter deepDebug: 是否需要深度遍历所有的subview
 	 */
 	public func debug(deepDebug: Bool = false) {
-		self.backgroundColor = COLOR_DEBUG
 		layer.borderColor = UIColor.blackColor().CGColor
 		layer.borderWidth = 1
+
+		if self is UIImageView {
+			self.backgroundColor = UIColor.pomegranateColor()
+		} else if self is UILabel {
+			self.backgroundColor = UIColor.peterRiverColor()
+		} else if self is UIButton {
+			self.backgroundColor = UIColor.pumpkinColor()
+		} else if self is UITextField {
+			self.backgroundColor = UIColor.alizarinColor()
+		}
+		self.backgroundColor = COLOR_DEBUG
 
 		if deepDebug {
 			for sv in self.subviews {

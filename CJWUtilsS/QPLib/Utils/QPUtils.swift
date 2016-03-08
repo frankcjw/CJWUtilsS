@@ -495,6 +495,13 @@ public extension UIView {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
 	}
+
+	public func setupConstraints() {
+		self.setNeedsUpdateConstraints()
+		self.updateConstraintsIfNeeded()
+	}
+    
+    
 }
 
 class QPCurrentCity : NSObject {
@@ -696,8 +703,4 @@ public extension UIButton {
 }
 
 public extension UIView {
-	public func setupConstraints() {
-		self.setNeedsUpdateConstraints()
-		self.updateConstraintsIfNeeded()
-	}
 }
