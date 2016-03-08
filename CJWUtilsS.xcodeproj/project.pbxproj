@@ -27,6 +27,7 @@
 		01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */; };
 		01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD01C3BA737006E221A /* QPPushUtils.swift */; };
 		01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD11C3BA737006E221A /* QPUtils.swift */; };
+		01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6E8441C8E7A920095A206 /* QPViewDebug.swift */; };
 		01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423481C807A5D009FDA73 /* QPWebViewController.swift */; };
 		01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */; };
 		01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */; };
@@ -75,6 +76,7 @@
 		01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPMemberUtils.swift; sourceTree = "<group>"; };
 		01CAEFD01C3BA737006E221A /* QPPushUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPushUtils.swift; sourceTree = "<group>"; };
 		01CAEFD11C3BA737006E221A /* QPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPUtils.swift; sourceTree = "<group>"; };
+		01E6E8441C8E7A920095A206 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
 		01F423481C807A5D009FDA73 /* QPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPWebViewController.swift; sourceTree = "<group>"; };
 		01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertUtils.swift; sourceTree = "<group>"; };
 		01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */,
 				0151722B1C4CD23A00EEB9ED /* QPAlert.swift */,
 				01F423481C807A5D009FDA73 /* QPWebViewController.swift */,
+				01E6E8441C8E7A920095A206 /* QPViewDebug.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */,
 				01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */,
 				01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */,
+				01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
