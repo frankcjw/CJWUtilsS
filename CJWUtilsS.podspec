@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CJWUtilsS"
-  s.version      = "0.0.6"
+  s.version      = "1.0.0"
   s.summary      = "CJWUtilsS is sort of tools for iOS develop written by swift"
 
   s.description  = <<-DESC
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "6.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
