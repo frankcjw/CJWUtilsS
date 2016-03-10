@@ -6,4 +6,4 @@ Welcome to the CJWUtilsS wiki!
 
 ## usage
 `pod 'CJWUtilsS', :git => 'https://github.com/frankcjw/CJWUtilsS.git'`
-`pod "CJWUtils", :git => 'https://github.com/frankcjw/CJWUtils.git', :tag => '0.0.5'`
+`pod "CJWUtilsS", :git => 'https://github.com/frankcjw/CJWUtilsS.git', :tag => '1.0'`
