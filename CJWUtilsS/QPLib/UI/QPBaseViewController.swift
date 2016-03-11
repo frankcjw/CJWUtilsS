@@ -42,24 +42,41 @@ public class QPBaseViewController: UIViewController {
 }
 
 public extension UIViewController {
+	/**
+	 请求服务器方法.
+	 */
 	public func request() {
 	}
 
+	/**
+	 请求加载更多
+	 */
 	public func requestMore() {
 	}
 }
 
 public extension UIViewController {
-	public func pushViewController(viewController: UIViewController) {
-		if self.navigationController != nil {
+	/**
+	 安全的push view controller
+
+	 - parameter viewController: 要跳转的view controller
+	 - parameter animated:       是否动画 默认true
+	 */
+	public func pushViewController(viewController: UIViewController, animated: Bool = true) {
+		if let navi = self.navigationController {
 			viewController.hidesBottomBarWhenPushed = true
-			self.navigationController?.pushViewController(viewController, animated: true)
+			navi.pushViewController(viewController, animated: animated)
 		}
 	}
 
-	public func popViewController() {
-		if self.navigationController != nil {
-			self.navigationController?.popViewControllerAnimated(true)
+	/**
+	 安全的返回上一页
+
+	 - parameter animated: 是否动画 默认true
+	 */
+	public func popViewController(animated: Bool = true) {
+		if let navi = self.navigationController {
+			navi.popViewControllerAnimated(animated)
 		}
 	}
 
@@ -102,6 +119,9 @@ extension UIViewController {
 }
 
 public extension UIView {
+	/**
+	 把view以及子view的translatesAutoresizingMaskIntoConstraints = false
+	 */
 	public func setToAutoLayout() {
 		if self.subviews.count > 0 {
 			for sv in self.subviews {

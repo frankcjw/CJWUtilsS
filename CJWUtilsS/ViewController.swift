@@ -58,6 +58,7 @@ class ViewController: UITableViewController {
 	}
 
 	override func viewDidLoad() {
+        self.pushViewController(self, animated: false)
 		super.viewDidLoad()
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 

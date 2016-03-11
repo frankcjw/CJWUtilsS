@@ -12,22 +12,22 @@ public typealias QPTableViewCell = QPBaseTableViewCell
 
 public class QPBaseTableViewCell: UITableViewCell {
 
+	/// 父view controller
 	public var rootViewController : UIViewController?
+	/// 这个cell的indexPath
 	public var indexPath : NSIndexPath?
 	public var didSetupConstraints = false
+	/// cell的数据
 	public var cellInfo = NSDictionary()
-
-    
-	override public func awakeFromNib() {
-		super.awakeFromNib()
-	}
 
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-
 		initCell()
 	}
 
+	/**
+	 为contentView添加autoLayout
+	 */
 	private func setupAutoLayout() {
 		self.contentView.setToAutoLayout()
 		contentView.alignLeading("0", trailing: "0", toView: self)
@@ -38,12 +38,20 @@ public class QPBaseTableViewCell: UITableViewCell {
 		initCell()
 	}
 
+	/**
+	 初始化cell
+
+	 - returns: nil
+	 */
 	private func initCell() {
 		setupViews(contentView)
 		setupAutoLayout()
 		self.selectionStyle = UITableViewCellSelectionStyle.None
 	}
 
+	/**
+	 更新Constrains
+	 */
 	override public func updateConstraints() {
 
 		// if !didSetupConstraints {
@@ -55,12 +63,27 @@ public class QPBaseTableViewCell: UITableViewCell {
 		super.updateConstraints()
 	}
 
+	/**
+	 构造Constrains
+
+	 - parameter view: cell.contentView
+	 */
 	public func setupConstrains(view: UIView) {
 	}
 
+	/**
+	 初始化cell内的view
+
+	 - parameter view: cell.contentView
+	 */
 	public func setupViews(view: UIView) {
 	}
 
+	/**
+	 添加cell内容
+
+	 - parameter info: info
+	 */
 	public func setInfo(info: NSDictionary) {
 		self.cellInfo = info
 		setupConstrains(contentView)
