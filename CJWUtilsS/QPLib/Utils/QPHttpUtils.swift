@@ -164,21 +164,35 @@ public class QPHttpUtils: NSObject {
 //		return request
 	}
 
-	func uploadFile(url: String, images: Array<UIImage>) {
+	func uploadFile(var url: String, param: [String : AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 		// TODO:
-		Alamofire.upload(.POST, "", multipartFormData: { (multipartFormData) -> Void in
+
+		let keys = param.keys
+		var index = 0
+		for key in keys {
+			if index == 0 {
+				url = url + "?\(key)=\(param[key]!)"
+			} else {
+				url += "&\(key)=\(param[key]!)"
+			}
+			index++
+			print("key \(key)")
+		}
+		print(url)
+
+		Alamofire.upload(.POST, url, multipartFormData: { (multipartFormData) -> Void in
 			for image in images {
-				let index = images.indexOf(image)
-				let name = "pic\(index)"
-				print("name \(name)")
+				let index = images.indexOf(image)!
+				let name = names[index]
 				let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-				multipartFormData.appendBodyPart(data: dataObj, name: name)
+				multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
 			}
 			}, encodingCompletion: { (encodingResult) -> Void in
 			switch encodingResult {
 			case .Success(let upload, _, _):
 				upload.responseJSON { response in
 					debugPrint(response)
+//                    response.result.
 				}.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
 					print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
 				})

@@ -63,6 +63,7 @@ class ViewController: UITableViewController {
 
 		tableView.aspectRatio()
 
+//		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
 //		let stringObject: String = "testing"
