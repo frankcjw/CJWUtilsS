@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import CoreData
 import ObjectiveC
+import Alamofire
 
 class CJWoOBJ : NSObject {
 	var title = "String666"
@@ -58,8 +59,18 @@ class ViewController: UITableViewController {
 	}
 
 	override func viewDidLoad() {
-        self.pushViewController(self, animated: false)
+//        self.pushViewController(self, animated: false)
 		super.viewDidLoad()
+
+		let url = "http://www.cenjiawen.com/method/posd"
+		var URL = NSURL(string: url)
+		URL = URL?.URLByAppendingPathComponent("asdsd")
+		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
+		print("asdasd \(URL)")
+		let req = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: ["aasd": 123, "111": "ss"])
+
+		print("req \(req) \(req.0.URLString)")
+
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
 		tableView.aspectRatio()

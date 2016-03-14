@@ -167,20 +167,24 @@ public class QPHttpUtils: NSObject {
 	func uploadFile(var url: String, param: [String : AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 		// TODO:
 
-		let keys = param.keys
-		var index = 0
-		for key in keys {
-			if index == 0 {
-				url = url + "?\(key)=\(param[key]!)"
-			} else {
-				url += "&\(key)=\(param[key]!)"
-			}
-			index++
-			print("key \(key)")
-		}
-		print(url)
+//		let keys = param.keys
+//		var index = 0
+//		for key in keys {
+//			if index == 0 {
+//				url = url + "?\(key)=\(param[key]!)"
+//			} else {
+//				url += "&\(key)=\(param[key]!)"
+//			}
+//			index++
+//			print("key \(key)")
+//		}
+//		print(url)
 
-		Alamofire.upload(.POST, url, multipartFormData: { (multipartFormData) -> Void in
+		let URL = NSURL(string: url)
+		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
+		let paramUrl = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: param).0.URLString
+    
+		Alamofire.upload(.POST, paramUrl, multipartFormData: { (multipartFormData) -> Void in
 			for image in images {
 				let index = images.indexOf(image)!
 				let name = names[index]
