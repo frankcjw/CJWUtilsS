@@ -28,20 +28,20 @@ class QPHUDUtils: NSObject {
 // MARK: - 继续SVProgressHUD
 //TODO: 还没完善SVProgressHUD
 extension NSObject {
-	func showHUD(text: String) {
-		SVProgressHUD.setBackgroundColor(COLOR_BLACK)
-		SVProgressHUD.setForegroundColor(COLOR_WHITE)
-		SVProgressHUD.setRingThickness(8)
-		SVProgressHUD.showWithStatus(text)
-	}
-
-	func hideHUD() {
-		SVProgressHUD.dismiss()
-	}
-
-	func showLoading(view: UIView, text: String) {
-		MBProgressHUD.showHUDAddedTo(view, animated: true)
-	}
+//	func showHUD(text: String) {
+//		SVProgressHUD.setBackgroundColor(COLOR_BLACK)
+//		SVProgressHUD.setForegroundColor(COLOR_WHITE)
+//		SVProgressHUD.setRingThickness(8)
+//		SVProgressHUD.showWithStatus(text)
+//	}
+//
+//	func hideHUD() {
+//		SVProgressHUD.dismiss()
+//	}
+//
+//	func showLoading(view: UIView, text: String) {
+//		MBProgressHUD.showHUDAddedTo(view, animated: true)
+//	}
 }
 
 // MARK: - 显示hud
@@ -105,9 +105,26 @@ public extension UIView {
 	 - parameter text: 需要显示的内容
 	 */
 	public func showTemporary(text: String) {
-		showLoading(text)
-		self.excute(1.5) { () -> () in
-			self.hideAllHUD()
+		showHUDTemporary(text)
+	}
+
+	/**
+	 显示hud.默认1.5s后消失
+
+	 - parameter text:     显示的文字
+	 - parameter duration: 显示时常.默认1.5
+	 */
+	public func showHUDTemporary(text : String, duration: NSTimeInterval = 1.5) {
+		cleanHud()
+		let view = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
+		self.userInteractionEnabled = false
+		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+		if hud != nil { }
+		hud.labelText = text
+		hud.mode = .Text
+		QPHUDUtils.sharedInstance.mbHUD = hud
+		excute(duration) { () -> () in
+			view?.hideAllHUD()
 		}
 	}
 }
