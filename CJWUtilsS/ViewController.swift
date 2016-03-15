@@ -11,6 +11,7 @@ import SVProgressHUD
 import CoreData
 import ObjectiveC
 import Alamofire
+import WebViewJavascriptBridge
 
 class CJWoOBJ : NSObject {
 	var title = "String666"
@@ -57,6 +58,8 @@ class ViewController: UITableViewController {
 			}
 		}
 	}
+
+	let webView = UIWebView()
 
 	override func viewDidLoad() {
 //        self.pushViewController(self, animated: false)
@@ -136,6 +139,23 @@ class ViewController: UITableViewController {
 		if let value = QPKeyChainUtils.sharedInstance.cacheBy("cjw") {
 			print("value \(value)")
 		}
+
+		let wb = SecondeViewController()
+		// wb.url = "http://www.cenjiawen.com/qian"let path = NSBundle.mainBundle().pathForResource("attention2", ofType: "html")!
+		let path = NSBundle.mainBundle().pathForResource("ExampleApp", ofType: "html")!
+		do {
+			let html = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+//			wb.webView.loadHTMLString(html, baseURL: nil)
+			wb.html = html
+		}
+		catch let error as NSError {
+			fatalError(error.localizedDescription)
+		}
+
+//		self.presentViewController(wb, animated: true) { () -> Void in
+//			//
+//		}
+		self.view.showHUDTemporary("sdsds")
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

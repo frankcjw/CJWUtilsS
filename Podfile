@@ -46,6 +46,7 @@ target 'CJWUtilsS' do
     # common user default,recommand
     pod 'SwiftyUserDefaults'
     pod 'YYModel'
+    pod 'WebViewJavascriptBridge'
     
 end
 
