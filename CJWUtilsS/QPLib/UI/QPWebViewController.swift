@@ -9,7 +9,7 @@
 import UIKit
 
 /// 简易web controller
-public class QPWebViewController: QPViewController {
+public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	public let webView = UIWebView()
 
@@ -63,5 +63,9 @@ public class QPWebViewController: QPViewController {
 			}
 		}
 		return false
+	}
+
+	public func webViewDidFinishLoad(webView: UIWebView) {
+		self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
 	}
 }
