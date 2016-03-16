@@ -20,6 +20,7 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 		super.viewDidLoad()
 		self.view.addSubview(webView)
 		webView.alignTop("0", leading: "0", bottom: "0", trailing: "0", toView: self.view)
+		webView.delegate = self
 
 		if !load(url) {
 			loadHtml(html)
