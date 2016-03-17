@@ -99,8 +99,8 @@ public class QPHttpUtils: NSObject {
 	public func responseFromCache(key: String) -> JSON? {
 		do {
 			let cache = try Cache<NSString>(name: QPHttpCacheName)
-			if let cacheResult = cache.objectForKey(key) {
-				let json = JSON(cacheResult)
+			if let cacheResult = cache.objectForKey(key) as? String {
+				let json = JSON.parse(cacheResult)
 				return json
 			}
 		} catch _ {
@@ -123,7 +123,7 @@ public class QPHttpUtils: NSObject {
 			let value = response.toJSONString()
 			cache.setObject(value, forKey: key, expires: .Seconds(expires))
 		} catch _ {
-			log.warning("Something went wrong when cacheResponse :(")
+						log.warning("Something went wrong when cacheResponse :(")
 		}
 	}
 
@@ -222,7 +222,6 @@ public class QPHttpUtils: NSObject {
 
 		if let json = responseFromCache(key) {
 			success(response: json)
-			log.verbose("responseFromCache \(json.toJSONString())")
 		} else {
 			let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 				if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
@@ -231,7 +230,6 @@ public class QPHttpUtils: NSObject {
 							let json = JSON(value)
 							success(response: json)
 							self.cacheResponse(json, key: key, expires: expires)
-							log.outputLogLevel = .Verbose
 						} else {
 							// TODO:
 							log.error("network exception which I haven't deal with it")

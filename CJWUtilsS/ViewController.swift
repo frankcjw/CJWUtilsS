@@ -74,8 +74,9 @@ class ViewController: UITableViewController {
 
 		print("req \(req) \(req.0.URLString)")
 
-		QPHttpUtils.sharedInstance.newHttpRequest("http://www.cenjiawen.com/qian", param: ["ll": "xx"], expires: 35, success: { (response) -> () in
-			print("\(response)")
+		QPHttpUtils.sharedInstance.newHttpRequest("http://www.cenjiawen.com/qian", param: ["ll": "xx"], expires: 25, success: { (response) -> () in
+			print("++\(response["content"].stringValue) ")
+			print("\(response) ")
 		}) { () -> () in
 			//
 		}
@@ -109,7 +110,7 @@ class ViewController: UITableViewController {
 //		let ooo = CJWoOBJ()
 //        rfObject(anObject)
 
-//		http.newHttpRequest("http://115.29.141.172/qian/", param: nil, success: { (response) -> () in
+//		http.newHttpRequest("http: // 115.29.141.172/qian/", param: nil, success: { (response) -> () in
 //			print(response)
 //		}) { () -> () in
 //			//
