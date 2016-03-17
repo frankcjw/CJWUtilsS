@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import NSDate_TimeAgo
 import FLKAutoLayout
+import SwiftyJSON
 
 public let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
 public let UIControlStateNormal = UIControlState.Normal
@@ -720,5 +721,43 @@ public extension UIButton {
 	}
 }
 
-public extension UIView {
+public extension NSDictionary {
+	public func toJSON() -> JSON {
+		return JSON(self)
+	}
+
+	public func toJsonString() -> String {
+		do {
+			let jsonData = try NSJSONSerialization.dataWithJSONObject(self, options: NSJSONWritingOptions.PrettyPrinted)
+			if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as? String {
+				return jsonString
+			} else {
+				log.error("json string error")
+			}
+		} catch let error as NSError {
+			log.error("\(error)")
+		}
+		return ""
+	}
+}
+
+public extension NSArray {
+	public func toJSON() -> JSON {
+		let json = JSON(self)
+		return json
+	}
+
+	public func toJsonString() -> String {
+		do {
+			let jsonData = try NSJSONSerialization.dataWithJSONObject(self, options: NSJSONWritingOptions.PrettyPrinted)
+			if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as? String {
+				return jsonString
+			} else {
+				log.error("json string error")
+			}
+		} catch let error as NSError {
+			log.error("\(error)")
+		}
+		return ""
+	}
 }
