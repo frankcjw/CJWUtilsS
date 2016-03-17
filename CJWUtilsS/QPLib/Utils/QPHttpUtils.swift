@@ -19,9 +19,13 @@ let BASE_URL = HOST + "service/"
 private let URL_LOGIN = BASE_URL + "login"
 private let URL_LOGOUT = BASE_URL + "logout/"
 
-let QPHttpDefaultExpires : NSTimeInterval = 60 * 60 * 24 * 3
+/// 预设的超时时长,2天
+public let QPHttpDefaultExpires : NSTimeInterval = 60 * 60 * 24 * 2
 
+/// 最大的page size
 let maxPageSize = NSNumber(int: Int32.max).integerValue
+
+/// 默认page size
 let pageSize = 50
 
 public class QPHttpUtils: NSObject {
