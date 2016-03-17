@@ -56,10 +56,10 @@ public class QPHttpUtils: NSObject {
 //		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
 	}
 
-	override init() {
-		super.init()
-		cleanHttpCache()
-	}
+//	override init() {
+//		super.init()
+//		cleanHttpCache()
+//	}
 
 	/**
 	 过去的http方法,不推荐使用
