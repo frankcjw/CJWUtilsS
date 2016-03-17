@@ -74,6 +74,12 @@ class ViewController: UITableViewController {
 
 		print("req \(req) \(req.0.URLString)")
 
+		QPHttpUtils.sharedInstance.newHttpRequest("http://www.cenjiawen.com/qian", param: ["ll": "xx"], expires: 35, success: { (response) -> () in
+			print("\(response)")
+		}) { () -> () in
+			//
+		}
+
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
 		tableView.aspectRatio()

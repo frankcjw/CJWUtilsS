@@ -160,6 +160,7 @@ Pod::Spec.new do |s|
   s.dependency "CryptoSwift"
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
+  s.dependency "AwesomeCache", "~> 2.0"
   #s.dependency "RealmSwift", "~> 0.97.0"
 
   #s.dependency "TMCache"

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import AFNetworking
+import AwesomeCache
 
 let HOST = ""
 
@@ -18,12 +19,16 @@ let BASE_URL = HOST + "service/"
 private let URL_LOGIN = BASE_URL + "login"
 private let URL_LOGOUT = BASE_URL + "logout/"
 
+let QPHttpDefaultExpires : NSTimeInterval = 60 * 60 * 24 * 3
+
 let maxPageSize = NSNumber(int: Int32.max).integerValue
 let pageSize = 50
 
 public class QPHttpUtils: NSObject {
 
 	var sessionKey = ""
+
+	private let QPHttpCacheName = "QPCache"
 
 //    var httpManager = AFHTTPRequestOperationManager()
 
@@ -76,14 +81,82 @@ public class QPHttpUtils: NSObject {
 	}
 
 	/**
+	 从http缓存获取JSON
+
+	 - parameter key: 缓存的key
+
+	 - returns: JSON
+	 */
+	public func responseFromCache(key: String) -> JSON? {
+		do {
+			let cache = try Cache<NSString>(name: QPHttpCacheName)
+			if let cacheResult = cache.objectForKey(key) {
+				let json = JSON(cacheResult)
+				return json
+			}
+		} catch _ {
+			log.warning("Something went wrong when responseFromCache :(")
+		}
+		return nil
+	}
+
+	/**
+	 将JSON缓存
+
+	 - parameter response: 服务器返回的JSON
+	 - parameter key:      缓存key
+	 - parameter expires:  超时时长,默认0
+	 */
+	public func cacheResponse(response: JSON, key: String, expires: NSTimeInterval = 0) {
+
+		do {
+			let cache = try Cache<NSString>(name: QPHttpCacheName)
+			let value = response.toJSONString()
+			cache.setObject(value, forKey: key, expires: .Seconds(expires))
+		} catch _ {
+			log.warning("Something went wrong when cacheResponse :(")
+		}
+	}
+
+	/**
+	 清除所有http缓存
+	 */
+	public func clearHttpCache() {
+		do {
+			let cache = try Cache<NSString>(name: QPHttpCacheName)
+			cache.removeAllObjects()
+		} catch _ {
+			log.warning("Something went wrong when clearHttpCache :(")
+		}
+	}
+
+	/**
+	 清除超时http缓存
+
+	 - parameter key: 要清除的key的缓存
+	 */
+	public func cleanHttpCache(key: String?) {
+		do {
+			let cache = try Cache<NSString>(name: QPHttpCacheName)
+			cache.removeExpiredObjects()
+			if let key = key {
+				cache.removeObjectForKey(key)
+			}
+		} catch _ {
+			log.warning("Something went wrong when cleanHttpCache :(")
+		}
+	}
+
+	/**
 	 新的http方法,推荐使用
 
 	 - parameter url:     url
 	 - parameter param:   参数
+	 - parameter expires: 超时时长,默认0s
 	 - parameter success: 成功 JSON
 	 - parameter fail:    失败
 	 */
-	public func newHttpRequest(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
+	public func newHttpRequest(url: String, param: [String : AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
 		let sss = AFHTTPRequestSerializer()
 		let req = NSURLRequest(URL: NSURL(string: url)!)
@@ -135,32 +208,43 @@ public class QPHttpUtils: NSObject {
 		 }
 		 */
 
-		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
-			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-				if response.result.isSuccess {
-					if let value = response.result.value {
-						let json = JSON(value)
-						success(response: json)
-						log.outputLogLevel = .Verbose
+		/// 缓存用的key
+		let key = "\(url)\(param)"
+
+		if let json = responseFromCache(key) {
+			success(response: json)
+			log.verbose("responseFromCache \(json.toJSONString())")
+		} else {
+			let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+				if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+					if response.result.isSuccess {
+						if let value = response.result.value {
+							let json = JSON(value)
+							success(response: json)
+							self.cacheResponse(json, key: key, expires: expires)
+							log.outputLogLevel = .Verbose
+						} else {
+							// TODO:
+							log.error("network exception which I haven't deal with it")
+							assertionFailure("network exception which I haven't deal with it")
+							fail()
+						}
 					} else {
-						// TODO:
-						log.error("network exception which I haven't deal with it")
-						assertionFailure("network exception which I haven't deal with it")
-						fail()
+						if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+							let json = JSON(str)
+							success(response: json)
+							self.cacheResponse(json, key: key, expires: expires)
+						} else {
+							fail()
+						}
 					}
 				} else {
-					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-						let json = JSON(str)
-						success(response: json)
-					} else {
-						fail()
-					}
+					debugPrint(response)
+					fail()
 				}
-			} else {
-				debugPrint(response)
-				fail()
 			}
 		}
+
 //		return request
 	}
 
@@ -183,7 +267,7 @@ public class QPHttpUtils: NSObject {
 		let URL = NSURL(string: url)
 		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
 		let paramUrl = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: param).0.URLString
-    
+
 		Alamofire.upload(.POST, paramUrl, multipartFormData: { (multipartFormData) -> Void in
 			for image in images {
 				let index = images.indexOf(image)!
@@ -306,10 +390,4 @@ public class QPHttpUtils: NSObject {
 //            return newParam as [NSObject : AnyObject]
 //        }
 //    }
-}
-
-public extension NSObject {
-//	public var http : QPHttpUtils {
-//		return QPHttpUtils.sharedInstance
-//	}
 }

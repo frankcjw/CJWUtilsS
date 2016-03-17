@@ -47,7 +47,7 @@ target 'CJWUtilsS' do
     pod 'SwiftyUserDefaults'
     pod 'YYModel'
     pod 'WebViewJavascriptBridge'
-    
+    pod 'AwesomeCache', '~> 2.0'
 end
 
 target 'CJWUtilsSTests' do

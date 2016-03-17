@@ -741,6 +741,20 @@ public extension NSDictionary {
 	}
 }
 
+public extension JSON {
+	public func toJSONString() -> String {
+		if let value = self.object as? String {
+			return value
+		} else if let value = self.object as? NSArray {
+			return value.toJsonString()
+		} else if let value = self.object as? NSDictionary {
+			return value.toJsonString()
+		} else {
+			return ""
+		}
+	}
+}
+
 public extension NSArray {
 	public func toJSON() -> JSON {
 		let json = JSON(self)
