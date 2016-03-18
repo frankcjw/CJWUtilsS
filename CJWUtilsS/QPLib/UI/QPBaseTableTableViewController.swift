@@ -42,7 +42,7 @@ extension UIViewController {
 
 public typealias QPTableViewController = QPBaseTableViewController
 
-public class QPBaseTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+public class QPBaseTableViewController: UITableViewController {
 
 	public var controllerInfo = NSDictionary()
 
