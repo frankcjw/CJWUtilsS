@@ -256,7 +256,17 @@ public class QPHttpUtils: NSObject {
 //		return request
 	}
 
-	func uploadFile(var url: String, param: [String : AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
+    /**
+     上传图片
+     
+     - parameter url:    上传地址
+     - parameter param:  附带的参数
+     - parameter images: 图片的列表
+     - parameter names:  图片名称的列表
+     - parameter succes: 成功返回JSON
+     - parameter fail:   失败
+     */
+	func uploadFile(let url: String, param: [String : AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 		// TODO:
 
 //		let keys = param.keys
