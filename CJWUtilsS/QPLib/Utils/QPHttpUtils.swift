@@ -123,7 +123,7 @@ public class QPHttpUtils: NSObject {
 			let value = response.toJSONString()
 			cache.setObject(value, forKey: key, expires: .Seconds(expires))
 		} catch _ {
-						log.warning("Something went wrong when cacheResponse :(")
+			log.warning("Something went wrong when cacheResponse :(")
 		}
 	}
 
@@ -161,7 +161,7 @@ public class QPHttpUtils: NSObject {
 
 	 - parameter url:     url
 	 - parameter param:   参数
-	 - parameter expires: 超时时长,默认0s
+	 - parameter expires: 超时时长,默认0s.若expires=0,立即访问服务器.否则根据expires决定从服务器还是缓存返回结果
 	 - parameter success: 成功 JSON
 	 - parameter fail:    失败
 	 */
@@ -219,36 +219,37 @@ public class QPHttpUtils: NSObject {
 
 		/// 缓存用的key
 		let key = "\(url)\(param)"
-
-		if let json = responseFromCache(key) {
-			success(response: json)
-		} else {
-			let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
-				if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
-					if response.result.isSuccess {
-						if let value = response.result.value {
-							let json = JSON(value)
-							success(response: json)
-							self.cacheResponse(json, key: key, expires: expires)
-						} else {
-							// TODO:
-							log.error("network exception which I haven't deal with it")
-							assertionFailure("network exception which I haven't deal with it")
-							fail()
-						}
+		if (expires > 0) {
+			if let json = responseFromCache(key) {
+				success(response: json)
+				return
+			}
+		}
+		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
+				if response.result.isSuccess {
+					if let value = response.result.value {
+						let json = JSON(value)
+						success(response: json)
+						self.cacheResponse(json, key: key, expires: expires)
 					} else {
-						if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
-							let json = JSON(str)
-							success(response: json)
-							self.cacheResponse(json, key: key, expires: expires)
-						} else {
-							fail()
-						}
+						// TODO:
+						log.error("network exception which I haven't deal with it")
+						assertionFailure("network exception which I haven't deal with it")
+						fail()
 					}
 				} else {
-					debugPrint(response)
-					fail()
+					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
+						let json = JSON(str)
+						success(response: json)
+						self.cacheResponse(json, key: key, expires: expires)
+					} else {
+						fail()
+					}
 				}
+			} else {
+				debugPrint(response)
+				fail()
 			}
 		}
 
