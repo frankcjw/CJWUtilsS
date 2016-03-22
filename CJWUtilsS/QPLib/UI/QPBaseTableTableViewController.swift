@@ -163,9 +163,9 @@ public class QPBaseTableViewController: UITableViewController {
 		return shouldShowEmptyStatus
 	}
 
-	public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-		return statusImage!
-	}
+//	public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+//		return statusImage!
+//	}
 
 	public func emptyDataSetDidTapView(scrollView: UIScrollView!) {
 	}
