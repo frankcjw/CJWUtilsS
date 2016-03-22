@@ -116,7 +116,7 @@ public extension UIView {
 	 */
 	public func showHUDTemporary(text : String, duration: NSTimeInterval = 1.5) {
 		cleanHud()
-		let view = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
+		let view = self
 		self.userInteractionEnabled = false
 		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
 		if hud != nil { }
@@ -124,7 +124,7 @@ public extension UIView {
 		hud.mode = .Text
 		QPHUDUtils.sharedInstance.mbHUD = hud
 		excute(duration) { () -> () in
-			view?.hideAllHUD()
+			view.hideAllHUD()
 		}
 	}
 }
