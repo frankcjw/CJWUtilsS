@@ -18,7 +18,7 @@ private let imageLoading = UIImage(named: "Loading")
 
 let TIPS_LOADING = "加载中"// "加载中..."
 let TIPS_LOAD_FAIL = "加载失败"// "加载失败"
-let TIPS_TAP_RELOAD = "点击重新加载"// "点击重新加载"
+let TIPS_TAP_RELOAD = "点击加载"// "点击重新加载"
 let TIPS_NETWORK_EXCEPTION = "网络不是很给力,加载就失败了.."
 let TIPS_CLEANING_CACHE = "正在清除缓存,请稍候"
 
@@ -160,6 +160,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	}
 
 	public func emptyDataSetDidTapView(scrollView: UIScrollView!) {
+		request()
 	}
 
 	public func tableViewLoading() {
