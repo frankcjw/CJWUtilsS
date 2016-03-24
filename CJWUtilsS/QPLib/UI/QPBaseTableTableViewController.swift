@@ -16,9 +16,9 @@ import DZNEmptyDataSet
 private let imageError = UIImage(named: "Cry") // UIImage(named: "Cry")
 private let imageLoading = UIImage(named: "Loading")
 
-let TIPS_LOADING = ""// "加载中..."
-let TIPS_LOAD_FAIL = ""// "加载失败"
-let TIPS_TAP_RELOAD = ""// "点击重新加载"
+let TIPS_LOADING = "加载中"// "加载中..."
+let TIPS_LOAD_FAIL = "加载失败"// "加载失败"
+let TIPS_TAP_RELOAD = "点击重新加载"// "点击重新加载"
 let TIPS_NETWORK_EXCEPTION = "网络不是很给力,加载就失败了.."
 let TIPS_CLEANING_CACHE = "正在清除缓存,请稍候"
 
@@ -79,60 +79,7 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	override public func viewDidDisappear(animated: Bool) {
-
 		super.viewDidDisappear(animated)
-	}
-
-	public func tableViewLoading() {
-		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
-	}
-
-	public func setTableViewEmptyStatus(tableView: UITableView, title: String, description: String?, imageType: ImageType?) {
-	}
-
-	public func setTableViewEmptyStatus(title: String, description: String?, imageType: ImageType?) {
-		if description == nil {
-			statusDesciption = ""
-		} else {
-			statusDesciption = description!
-		}
-
-		if imageType != nil {
-			switch imageType! {
-			case .Error:
-				statusImage = imageError
-			case .Loading:
-				statusImage = imageLoading
-//            default:
-//                statusImage = imageLoading
-			}
-		}
-
-		statusText = title
-		self.tableView.reloadEmptyDataSet()
-	}
-
-	public func hideTableViewEmptyStatus() {
-		shouldShowEmptyStatus = false
-		self.tableView.reloadEmptyDataSet()
-	}
-
-	public func showTableViewEmptyStatus() {
-		shouldShowEmptyStatus = true
-		self.tableView.reloadEmptyDataSet()
-	}
-
-	public func tableViewLoadFail() {
-		statusImage = imageError
-		setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
-	}
-
-	public func tableViewNetworkException() {
-		setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
-	}
-
-	public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
-		return CGPointMake(0, -30)
 	}
 
 	public func load() {
@@ -140,34 +87,12 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		// self.tableView.emptyDataSetSource = self;
-		// self.tableView.emptyDataSetDelegate = self;
-//        self.tableView.clearExtraLines()
+		self.tableView.emptyDataSetSource = self;
+		self.tableView.emptyDataSetDelegate = self;
+		self.tableView.clearExtraLines()
 //		self.setBackTitle("")
 		request()
-		self.tableView.clearExtraLines()
 		load()
-	}
-
-	public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-		let att = [NSFontAttributeName: UIFont.systemFontOfSize(17), NSForegroundColorAttributeName: UIColor.lightGrayColor()]
-		return NSAttributedString(string: statusText, attributes: att)
-	}
-
-	public func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-		let att = [NSFontAttributeName: UIFont.systemFontOfSize(13), NSForegroundColorAttributeName: UIColor.lightGrayColor()]
-		return NSAttributedString(string: statusDesciption, attributes: att)
-	}
-
-	public func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
-		return shouldShowEmptyStatus
-	}
-
-//	public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-//		return statusImage!
-//	}
-
-	public func emptyDataSetDidTapView(scrollView: UIScrollView!) {
 	}
 
 	override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -204,6 +129,89 @@ public class QPBaseTableViewController: UITableViewController {
 
 	override public func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
+	}
+}
+
+extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+	public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+		return EmptyLoadingImage()
+	}
+
+	public func EmptyErrorImage() -> UIImage {
+		return UIImage()
+	}
+
+	public func EmptyLoadingImage() -> UIImage {
+		return UIImage()
+	}
+
+	public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+		let att = [NSFontAttributeName: UIFont.systemFontOfSize(17), NSForegroundColorAttributeName: UIColor.lightGrayColor()]
+		return NSAttributedString(string: statusText, attributes: att)
+	}
+
+	public func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+		let att = [NSFontAttributeName: UIFont.systemFontOfSize(13), NSForegroundColorAttributeName: UIColor.lightGrayColor()]
+		return NSAttributedString(string: statusDesciption, attributes: att)
+	}
+
+	public func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
+		return shouldShowEmptyStatus
+	}
+
+	public func emptyDataSetDidTapView(scrollView: UIScrollView!) {
+	}
+
+	public func tableViewLoading() {
+		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
+	}
+
+	public func setTableViewEmptyStatus(tableView: UITableView, title: String, description: String?, imageType: ImageType?) {
+	}
+
+	public func setTableViewEmptyStatus(title: String, description: String?, imageType: ImageType?) {
+		if description == nil {
+			statusDesciption = ""
+		} else {
+			statusDesciption = description!
+		}
+
+		if imageType != nil {
+			switch imageType! {
+			case .Error:
+				statusImage = EmptyErrorImage()
+			case .Loading:
+				statusImage = EmptyLoadingImage()
+				// default:
+				// statusImage = imageLoading
+			}
+		}
+
+		statusText = title
+		self.tableView.reloadEmptyDataSet()
+	}
+
+	public func hideTableViewEmptyStatus() {
+		shouldShowEmptyStatus = false
+		self.tableView.reloadEmptyDataSet()
+	}
+
+	public func showTableViewEmptyStatus() {
+		shouldShowEmptyStatus = true
+		self.tableView.reloadEmptyDataSet()
+	}
+
+	public func tableViewLoadFail() {
+		statusImage = EmptyErrorImage()
+		setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
+	}
+
+	public func tableViewNetworkException() {
+		setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
+	}
+
+	public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
+		return CGPointMake(0, -30)
 	}
 }
 
