@@ -63,7 +63,8 @@ public extension UITableView {
 	 开始加载数据,显示页脚
 	 */
 	public func startLoadData() {
-        self.refresFooter?.resetNoData()
+		self.refresFooter?.resetNoData()
+		self.showFooter()
 	}
 }
 

@@ -209,7 +209,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	 */
 	public func tableViewNoData() {
 		setTableViewEmptyStatus("没有数据", description: nil, imageType: ImageType.Loading)
-		self.tableView.noticeNoData()
+		self.tableView.hideFooter()
 	}
 
 	/**
