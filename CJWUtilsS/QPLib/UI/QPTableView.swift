@@ -51,6 +51,20 @@ public extension UITableView {
 	public func hideFooter() {
 		self.refresFooter?.hidden = true
 	}
+
+	/**
+	 隐藏页脚
+	 */
+	public func noticeNoData() {
+		self.refresFooter?.showNoData()
+	}
+
+	/**
+	 开始加载数据,显示页脚
+	 */
+	public func startLoadData() {
+        self.refresFooter?.resetNoData()
+	}
 }
 
 extension UITableView {

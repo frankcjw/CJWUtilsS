@@ -163,10 +163,6 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 		request()
 	}
 
-	public func tableViewLoading() {
-		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
-	}
-
 	public func setTableViewEmptyStatus(tableView: UITableView, title: String, description: String?, imageType: ImageType?) {
 	}
 
@@ -192,21 +188,47 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 		self.tableView.reloadEmptyDataSet()
 	}
 
+	/**
+	 隐藏空页面
+	 */
 	public func hideTableViewEmptyStatus() {
 		shouldShowEmptyStatus = false
 		self.tableView.reloadEmptyDataSet()
 	}
 
+	/**
+	 显示空页面
+	 */
 	public func showTableViewEmptyStatus() {
 		shouldShowEmptyStatus = true
 		self.tableView.reloadEmptyDataSet()
 	}
 
+	/**
+	 没有数据
+	 */
+	public func tableViewNoData() {
+		setTableViewEmptyStatus("没有数据", description: nil, imageType: ImageType.Loading)
+	}
+
+	/**
+	 加载中
+	 */
+	public func tableViewLoading() {
+		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
+	}
+
+	/**
+	 加载失败
+	 */
 	public func tableViewLoadFail() {
 		statusImage = EmptyErrorImage()
 		setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
 	}
 
+	/**
+	 网络错误
+	 */
 	public func tableViewNetworkException() {
 		setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
 	}
