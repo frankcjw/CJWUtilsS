@@ -209,6 +209,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	 */
 	public func tableViewNoData() {
 		setTableViewEmptyStatus("没有数据", description: nil, imageType: ImageType.Loading)
+		self.tableView.noticeNoData()
 	}
 
 	/**
@@ -216,6 +217,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	 */
 	public func tableViewLoading() {
 		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
+		self.tableView.startLoadData()
 	}
 
 	/**
@@ -224,6 +226,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	public func tableViewLoadFail() {
 		statusImage = EmptyErrorImage()
 		setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
+		self.tableView.noticeNoData()
 	}
 
 	/**
@@ -231,6 +234,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	 */
 	public func tableViewNetworkException() {
 		setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
+		self.tableView.noticeNoData()
 	}
 
 	public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
