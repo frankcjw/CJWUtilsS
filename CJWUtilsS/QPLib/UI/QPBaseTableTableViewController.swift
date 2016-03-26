@@ -119,6 +119,13 @@ public class QPBaseTableViewController: UITableViewController {
 		return cellForRow(atIndexPath: indexPath)
 	}
 
+	/**
+	 新版版使用这个方法加载cell
+
+	 - parameter indexPath: indexPath
+
+	 - returns: UITableViewCell
+	 */
 	public func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		return UITableViewCell()
 	}
@@ -209,7 +216,7 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	 */
 	public func tableViewNoData() {
 		setTableViewEmptyStatus("没有数据", description: nil, imageType: ImageType.Loading)
-        self.tableView.hideHeader()
+		self.tableView.hideHeader()
 		self.tableView.hideFooter()
 	}
 
@@ -217,7 +224,7 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	 加载中
 	 */
 	public func tableViewLoading() {
-		setTableViewEmptyStatus(TIPS_TAP_RELOAD, description: nil, imageType: ImageType.Loading)
+		setTableViewEmptyStatus(TIPS_LOADING, description: nil, imageType: ImageType.Loading)
 		self.tableView.startLoadData()
 	}
 
