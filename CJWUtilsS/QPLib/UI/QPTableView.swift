@@ -64,6 +64,7 @@ public extension UITableView {
 	 */
 	public func startLoadData() {
 		self.refresFooter?.resetNoData()
+		self.showHeader()
 		self.showFooter()
 	}
 }
@@ -115,7 +116,7 @@ public extension UITableView {
 }
 
 public extension UITableView {
-	public var refreshHeader : MJRefreshHeader? {
+	public var refreshHeader: MJRefreshHeader? {
 		get {
 			return self.mj_header
 		}
@@ -125,7 +126,7 @@ public extension UITableView {
 		}
 	}
 
-	var refresFooter : MJRefreshFooter? {
+	var refresFooter: MJRefreshFooter? {
 		get {
 			return self.mj_footer
 		}
@@ -146,7 +147,7 @@ public extension MJRefreshFooter {
 	}
 }
 
-private class CJWRefreshHeader : MJRefreshGifHeader {
+private class CJWRefreshHeader: MJRefreshGifHeader {
 
 	let idle = "Idle"
 	let pulling = "Pulling"

@@ -16,9 +16,9 @@ import DZNEmptyDataSet
 private let imageError = UIImage(named: "Cry") // UIImage(named: "Cry")
 private let imageLoading = UIImage(named: "Loading")
 
-let TIPS_LOADING = "加载中"// "加载中..."
-let TIPS_LOAD_FAIL = "加载失败"// "加载失败"
-let TIPS_TAP_RELOAD = "点击加载"// "点击重新加载"
+let TIPS_LOADING = "加载中" // "加载中..."
+let TIPS_LOAD_FAIL = "加载失败" // "加载失败"
+let TIPS_TAP_RELOAD = "点击加载" // "点击重新加载"
 let TIPS_NETWORK_EXCEPTION = "网络不是很给力,加载就失败了.."
 let TIPS_CLEANING_CACHE = "正在清除缓存,请稍候"
 
@@ -52,7 +52,7 @@ public class QPBaseTableViewController: UITableViewController {
 	private var statusDesciption = TIPS_TAP_RELOAD
 	private var statusImage = imageLoading
 
-	public var shouldHideNavigationBar : Bool = false
+	public var shouldHideNavigationBar: Bool = false
 
 	public override func viewWillAppear(animated: Bool) {
 
@@ -132,7 +132,7 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 }
 
-extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 	public func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
 		return EmptyLoadingImage()
 	}
@@ -209,6 +209,7 @@ extension QPBaseTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDele
 	 */
 	public func tableViewNoData() {
 		setTableViewEmptyStatus("没有数据", description: nil, imageType: ImageType.Loading)
+        self.tableView.hideHeader()
 		self.tableView.hideFooter()
 	}
 
