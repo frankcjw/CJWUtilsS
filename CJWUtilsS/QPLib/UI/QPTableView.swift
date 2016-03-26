@@ -53,9 +53,17 @@ public extension UITableView {
 	}
 
 	/**
-	 隐藏页脚
+	 显示页脚没有更多数据
 	 */
+	@available( *, deprecated, message = "use noticeNoMoreData: instead", renamed = "noticeNoMoreData")
 	public func noticeNoData() {
+		self.refresFooter?.showNoData()
+	}
+
+	/**
+	 显示页脚没有更多数据
+	 */
+	public func noticeNoMoreData() {
 		self.refresFooter?.showNoData()
 	}
 
