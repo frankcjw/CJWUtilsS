@@ -13,10 +13,10 @@ import ObjectiveC
 import Alamofire
 import WebViewJavascriptBridge
 
-class CJWoOBJ : NSObject {
+class CJWoOBJ: NSObject {
 	var title = "String666"
 	var numb = 1238
-	var sss : UIView?
+	var sss: UIView?
 }
 
 class ViewController: UITableViewController {
@@ -62,24 +62,8 @@ class ViewController: UITableViewController {
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
-//        self.pushViewController(self, animated: false)
+
 		super.viewDidLoad()
-
-		let url = "http://www.cenjiawen.com/method/posd"
-		var URL = NSURL(string: url)
-		URL = URL?.URLByAppendingPathComponent("asdsd")
-		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
-		print("asdasd \(URL)")
-		let req = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: ["aasd": 123, "111": "ss"])
-
-		print("req \(req) \(req.0.URLString)")
-
-		QPHttpUtils.sharedInstance.newHttpRequest("http://www.cenjiawen.com/qian", param: ["ll": "xx"], expires: 25, success: { (response) -> () in
-			print("++\(response["content"].stringValue) ")
-			print("\(response) ")
-		}) { () -> () in
-			//
-		}
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
@@ -115,6 +99,11 @@ class ViewController: UITableViewController {
 //		}) { () -> () in
 //			//
 //		}
+        
+		sb.leadingAlign(view)
+		sb.trailingAlign(view)
+		sb.topAlign(view)
+		sb.backgroundColor = UIColor.redColor()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -177,7 +166,7 @@ class ViewController: UITableViewController {
 	}
 }
 
-class CJWCell : QPBaseTableViewCell {
+class CJWCell: QPBaseTableViewCell {
 	let label = UILabel()
 	let label2 = UILabel()
 

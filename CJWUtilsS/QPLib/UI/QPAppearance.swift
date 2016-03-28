@@ -33,7 +33,7 @@ class QPAppearance: NSObject {
 
 		// UIView.appearance().tintColor = MAIN_COLOR
 		// UIAlertView.appearance().tintColor = MAIN_COLOR
-		UINavigationBar.appearance().barStyle = UIBarStyle.Black// 这是白色,黑色就注释掉吧
+		UINavigationBar.appearance().barStyle = UIBarStyle.Black // 这是白色,黑色就注释掉吧
 		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 		UINavigationBar.appearance().barTintColor = MAIN_COLOR
 	}
@@ -41,19 +41,19 @@ class QPAppearance: NSObject {
 
 public extension UIView {
 
-	public var width : CGFloat {
+	public var width: CGFloat {
 		return self.frame.width
 	}
 
-	public var height : CGFloat {
+	public var height: CGFloat {
 		return self.frame.height
 	}
 
-	public var x : CGFloat {
+	public var x: CGFloat {
 		return self.frame.origin.x
 	}
 
-	public var y : CGFloat {
+	public var y: CGFloat {
 		return self.frame.origin.y
 	}
 }
@@ -75,7 +75,7 @@ public extension UIView {
 	}
 
 	public func toCircleView() {
-		var radius : CGFloat!
+		var radius: CGFloat!
 		if self.width == self.height {
 			radius = self.width
 		} else {
@@ -103,7 +103,7 @@ public extension UILabel {
 	}
 
 	private func getAttribute() -> NSMutableAttributedString {
-		var attribute : NSMutableAttributedString!
+		var attribute: NSMutableAttributedString!
 		if self.attributedText == nil {
 			print("empt")
 			if self.text == nil {
@@ -118,7 +118,7 @@ public extension UILabel {
 }
 
 public extension UIView {
-	public func addTapGesture(target: AnyObject?, action : Selector) {
+	public func addTapGesture(target: AnyObject?, action: Selector) {
 		let tap = UITapGestureRecognizer(target: target, action: action)
 		self.userInteractionEnabled = true
 		self.addGestureRecognizer(tap)
@@ -182,5 +182,15 @@ public extension UIScrollView {
 	 */
 	func scrollToTop(animate: Bool) {
 		self.setContentOffset(CGPointMake(0, 0), animated: animate)
+	}
+}
+
+public extension UISearchBar {
+	public var textField: UITextField? {
+		if let textFieldInsideSearchBar = self.valueForKey("searchField") as? UITextField {
+			return textFieldInsideSearchBar
+		} else {
+			return nil
+		}
 	}
 }
