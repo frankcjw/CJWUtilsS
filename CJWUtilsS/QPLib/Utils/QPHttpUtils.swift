@@ -20,7 +20,7 @@ private let URL_LOGIN = BASE_URL + "login"
 private let URL_LOGOUT = BASE_URL + "logout/"
 
 /// 预设的超时时长,2天
-public let QPHttpDefaultExpires : NSTimeInterval = 60 * 60 * 24 * 2
+public let QPHttpDefaultExpires: NSTimeInterval = 60 * 60 * 24 * 2
 
 /// 最大的page size
 let maxPageSize = NSNumber(int: Int32.max).integerValue
@@ -36,10 +36,10 @@ public class QPHttpUtils: NSObject {
 
 //    var httpManager = AFHTTPRequestOperationManager()
 
-	public class var sharedInstance : QPHttpUtils {
+	public class var sharedInstance: QPHttpUtils {
 		struct Static {
-			static var onceToken : dispatch_once_t = 0
-			static var instance : QPHttpUtils? = nil
+			static var onceToken: dispatch_once_t = 0
+			static var instance: QPHttpUtils? = nil
 		}
 		dispatch_once(&Static.onceToken) {
 			Static.instance = QPHttpUtils()
@@ -52,7 +52,7 @@ public class QPHttpUtils: NSObject {
 
 	public typealias QPOldSuccessBlock = (response: AnyObject?) -> ()
 
-	public class func request(url: String, param: [String : AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
+	public class func request(url: String, param: [String: AnyObject]!, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 //		return QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: success, fail: fail)
 	}
 
@@ -69,7 +69,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter success: 成功返回:anyobject
 	 - parameter fail:    失败返回
 	 */
-	public func oldHttpRequest(url: String, param: [String : AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
+	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
 		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
@@ -165,7 +165,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter success: 成功 JSON
 	 - parameter fail:    失败
 	 */
-	public func newHttpRequest(url: String, param: [String : AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
+	public func newHttpRequest(url: String, param: [String: AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
 		let sss = AFHTTPRequestSerializer()
 		let req = NSURLRequest(URL: NSURL(string: url)!)
@@ -177,45 +177,6 @@ public class QPHttpUtils: NSObject {
 		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
 			print("\(response) \(obj) \(error)")
 		}
-//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain;charset=UTF-8")
-//		mgr.responseSerializer.acceptableContentTypes?.insert("text/plain")
-//		mgr.POST(url, parameters: param, constructingBodyWithBlock: { (mutipartData) -> Void in
-//
-//			let image = UIImage(named: "testing")!
-//			let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-////			mutipartData.appendPartWithFileData(dataObj, name: "cj2", fileName: "image.png", mimeType: "multipart/form-data")
-//			}, progress: { (progess) -> Void in
-//			print("\(progess)")
-//			}, success: { (task, object) -> Void in
-//			print("\(object)")
-//			if let obj = object {
-//				let json = JSON(obj)
-//				let type = json["title"].stringValue
-//				print(type)
-//			}
-//			}, failure: { (task, error) -> Void in
-//			task?.response
-//			print("\(error)")
-//		})
-
-		/*
-		 public void testing(){
-		 HashMap<String, String> map = new HashMap<>();
-		 try {
-		 File file = getFileParam("imageFile", "image/dg");
-		 if (file == null ){
-		 map.put("fail", "fail");
-		 renderJson(map);
-		 }else{
-		 map.put("success", "success");
-		 renderJson(map);
-		 }
-		 } catch (Exception e) {
-		 map.put("error", "error "+ e);
-		 renderJson(map);
-		 }
-		 }
-		 */
 
 		/// 缓存用的key
 		let key = "\(url)\(param)"
@@ -266,21 +227,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter succes: 成功返回JSON
 	 - parameter fail:   失败
 	 */
-	func uploadFile(let url: String, param: [String : AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
-		// TODO:
-
-//		let keys = param.keys
-//		var index = 0
-//		for key in keys {
-//			if index == 0 {
-//				url = url + "?\(key)=\(param[key]!)"
-//			} else {
-//				url += "&\(key)=\(param[key]!)"
-//			}
-//			index++
-//			print("key \(key)")
-//		}
-//		print(url)
+	func uploadFile(let url: String, param: [String: AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 
 		let URL = NSURL(string: url)
 		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
