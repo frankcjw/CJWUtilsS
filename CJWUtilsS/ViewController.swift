@@ -99,11 +99,11 @@ class ViewController: UITableViewController {
 //		}) { () -> () in
 //			//
 //		}
-        
-		sb.leadingAlign(view)
-		sb.trailingAlign(view)
-		sb.topAlign(view)
-		sb.backgroundColor = UIColor.redColor()
+
+//		sb.leadingAlign(view)
+//		sb.trailingAlign(view)
+//		sb.topAlign(view)
+//		sb.backgroundColor = UIColor.redColor()
 	}
 
 	override func didReceiveMemoryWarning() {

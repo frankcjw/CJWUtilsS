@@ -11,6 +11,7 @@
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
 		0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0151722B1C4CD23A00EEB9ED /* QPAlert.swift */; };
+		0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */; };
 		01A8FC611C96914200731483 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 01A8FC601C96914200731483 /* ExampleApp.html */; };
 		01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8FC621C96923F00731483 /* SecondeViewController.swift */; };
 		01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFBE1C3BA737006E221A /* UIViewController+BackButtonHandler.m */; };
@@ -59,6 +60,7 @@
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
 		0151722B1C4CD23A00EEB9ED /* QPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlert.swift; sourceTree = "<group>"; };
+		0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPCacheUtilsPro.swift; sourceTree = "<group>"; };
 		01A8FC601C96914200731483 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
 		01A8FC621C96923F00731483 /* SecondeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondeViewController.swift; sourceTree = "<group>"; };
 		01CAEFBD1C3BA737006E221A /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				01CAEFCC1C3BA737006E221A /* QPCacheUtils.swift */,
+				0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */,
 				01CAEFCD1C3BA737006E221A /* QPHttpUtils.swift */,
 				01CAEFCE1C3BA737006E221A /* QPKeyChainUtils.swift */,
 				01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */,
@@ -477,6 +480,7 @@
 				01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */,
 				012F30051C521812003891E5 /* QPDBUtils.swift in Sources */,
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
+				0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,
 				01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */,
