@@ -18,7 +18,7 @@ public class QPCacheUtilsPro: NSObject {
 
 	 - parameter object:  要储存的对象,comfess to nscoding的内容
 	 - parameter key:     key
-	 - parameter expires: 超时,默认不缓存
+	 - parameter expires: 超时,默认永久
 
 	 - returns: 是否储存成功
 	 */
@@ -39,7 +39,14 @@ public class QPCacheUtilsPro: NSObject {
 		do {
 			let cache = try Cache<NSString>(name: "QPHttpCacheName")
 			let value = json.toJSONString()
-			cache.setObject(value, forKey: key, expires: .Seconds(expires))
+			if expires == 0 {
+				cache.setObject(value, forKey: key, expires: .Never)
+			} else {
+				cache.setObject(value, forKey: key, expires: .Seconds(expires))
+			}
+			if let cacheResult = cache.objectForKey(key) as? String {
+				print("ss \(cacheResult)")
+			}
 			return true
 		} catch _ {
 			log.warning("Something went wrong when cacheResponse :(")
@@ -59,6 +66,9 @@ public class QPCacheUtilsPro: NSObject {
 			let cache = try Cache<NSString>(name: "QPHttpCacheName")
 			if let cacheResult = cache.objectForKey(forKey) as? String {
 				let json = JSON.parse(cacheResult)
+				if json == nil {
+					return cacheResult
+				}
 				return json.rawValue
 			}
 		} catch _ {

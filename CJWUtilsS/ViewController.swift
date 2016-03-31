@@ -104,6 +104,13 @@ class ViewController: UITableViewController {
 //		sb.trailingAlign(view)
 //		sb.topAlign(view)
 //		sb.backgroundColor = UIColor.redColor()
+
+		QPCacheUtilsPro.cache("fff", key: "ss", expires: 11)
+
+		excute(2) {
+			let ss = QPCacheUtilsPro.object("ss")
+			print(ss)
+		}
 	}
 
 	override func didReceiveMemoryWarning() {

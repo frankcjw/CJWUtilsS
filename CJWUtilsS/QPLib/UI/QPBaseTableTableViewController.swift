@@ -234,7 +234,7 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	public func tableViewLoadFail() {
 		statusImage = EmptyErrorImage()
 		setTableViewEmptyStatus(TIPS_LOAD_FAIL, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
-		self.tableView.noticeNoData()
+		self.tableView.noticeNoMoreData()
 	}
 
 	/**
@@ -242,7 +242,7 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	 */
 	public func tableViewNetworkException() {
 		setTableViewEmptyStatus(TIPS_NETWORK_EXCEPTION, description: TIPS_TAP_RELOAD, imageType: ImageType.Error)
-		self.tableView.noticeNoData()
+		self.tableView.noticeNoMoreData()
 	}
 
 	public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
