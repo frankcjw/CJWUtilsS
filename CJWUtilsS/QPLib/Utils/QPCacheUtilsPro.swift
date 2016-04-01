@@ -13,6 +13,10 @@ import AwesomeCache
 /// 只负责存储字符串类型
 public class QPCacheUtilsPro: NSObject {
 
+	public class func cacheName() -> String {
+		return "QPCache"
+	}
+
 	/**
 	 储存
 
@@ -37,7 +41,7 @@ public class QPCacheUtilsPro: NSObject {
 			return false
 		}
 		do {
-			let cache = try Cache<NSString>(name: "QPHttpCacheName")
+			let cache = try Cache<NSString>(name: cacheName())
 			let value = json.toJSONString()
 			if expires == 0 {
 				cache.setObject(value, forKey: key, expires: .Never)
@@ -63,7 +67,7 @@ public class QPCacheUtilsPro: NSObject {
 	 */
 	public class func object(forKey: String) -> AnyObject? {
 		do {
-			let cache = try Cache<NSString>(name: "QPHttpCacheName")
+			let cache = try Cache<NSString>(name: cacheName())
 			if let cacheResult = cache.objectForKey(forKey) as? String {
 				let json = JSON.parse(cacheResult)
 				if json == nil {
