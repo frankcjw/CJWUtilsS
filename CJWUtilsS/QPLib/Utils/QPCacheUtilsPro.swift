@@ -88,7 +88,7 @@ public class QPCacheUtilsPro: NSObject {
 	 */
 	public class func clearCache() -> Bool {
 		do {
-			let cache = try Cache<NSString>(name: "QPHttpCacheName")
+			let cache = try Cache<NSString>(name: cacheName())
 			cache.removeAllObjects()
 			return true
 		} catch _ {
