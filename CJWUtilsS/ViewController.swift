@@ -90,6 +90,8 @@ class ViewController: UITableViewController {
 
 			rfObject(anObject)
 		}
+        
+        
 
 //		let ooo = CJWoOBJ()
 //        rfObject(anObject)
