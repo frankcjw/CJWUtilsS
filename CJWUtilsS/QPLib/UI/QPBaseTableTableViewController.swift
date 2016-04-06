@@ -145,11 +145,11 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	}
 
 	public func EmptyErrorImage() -> UIImage {
-		return UIImage()
+		return UIImage.fromColor()
 	}
 
 	public func EmptyLoadingImage() -> UIImage {
-		return UIImage()
+		return UIImage.fromColor()
 	}
 
 	public func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
