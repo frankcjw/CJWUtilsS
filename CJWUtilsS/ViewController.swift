@@ -91,6 +91,8 @@ class ViewController: UITableViewController {
 			rfObject(anObject)
 		}
         
+        showNetworkException()
+        
         
 
 //		let ooo = CJWoOBJ()

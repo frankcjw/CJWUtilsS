@@ -18,7 +18,7 @@ public class QPBaseViewController: UIViewController {
 	}
 
 	/// 是否隐藏NavigationBar,默认不隐藏
-	public var shouldHideNavigationBar : Bool = false
+	public var shouldHideNavigationBar: Bool = false
 
 	override public func viewWillAppear(animated: Bool) {
 
@@ -99,7 +99,12 @@ public extension UIViewController {
 	}
 
 	public func showNetworkException() {
-//        self.view.showTemporary("网络错误")
+		let text = "网络错误"
+		if view is UITableView {
+			self.navigationController?.view.showHUDTemporary(text)
+		} else {
+			self.view.showHUDTemporary(text)
+		}
 	}
 }
 
