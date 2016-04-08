@@ -81,6 +81,13 @@ public class QPCacheUtilsPro: NSObject {
 		return nil
 	}
 
+	/**
+	 移除单个
+
+	 - parameter key: key
+
+	 - returns: 是否完成
+	 */
 	public class func removerCache(key: String) -> Bool {
 		do {
 			let cache = try Cache<NSString>(name: cacheName())
@@ -93,7 +100,7 @@ public class QPCacheUtilsPro: NSObject {
 	}
 
 	/**
-	 清楚缓存
+	 清除缓存
 
 	 - returns: 是否完成
 	 */
