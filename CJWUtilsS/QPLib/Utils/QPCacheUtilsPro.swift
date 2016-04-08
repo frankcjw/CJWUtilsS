@@ -81,6 +81,17 @@ public class QPCacheUtilsPro: NSObject {
 		return nil
 	}
 
+	public class func removerCache(key: String) -> Bool {
+		do {
+			let cache = try Cache<NSString>(name: cacheName())
+			cache.removeObjectForKey(key)
+			return true
+		} catch _ {
+			log.warning("Something went wrong when clearHttpCache :(")
+			return false
+		}
+	}
+
 	/**
 	 清楚缓存
 
