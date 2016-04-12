@@ -104,7 +104,7 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	override public func scrollViewDidScroll(scrollView: UIScrollView) {
-		self.view.endEditing(true)
+//		self.view.endEditing(true)
 	}
 
 	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
