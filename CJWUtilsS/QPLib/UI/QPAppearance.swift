@@ -186,11 +186,33 @@ public extension UIScrollView {
 }
 
 public extension UISearchBar {
+	/// UISearchBar 里面的UITextField
 	public var textField: UITextField? {
 		if let textFieldInsideSearchBar = self.valueForKey("searchField") as? UITextField {
 			return textFieldInsideSearchBar
 		} else {
 			return nil
 		}
+	}
+}
+
+public extension UIButton {
+	func addRightImage(img: UIImage) {
+//		let img = UIImage(named: "arrow_v")
+		let button = self
+		// button.setImage(img, forState: UIControlState.Normal)
+//		let inset: CGFloat = 15
+//		button.titleLabel?.font = FONT_SMALL
+//		button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+//		button.imageView?.scaleAspectFit()
+//		button.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+
+		let arrow = UIImageView()
+		arrow.image = img
+		button.addSubview(arrow)
+		arrow.centerY(button.titleLabel!)
+		arrow.heightConstrain("10")
+		arrow.widthConstrain("10")
+		arrow.leadingConstrain(button.titleLabel!, predicate: "4")
 	}
 }
