@@ -216,3 +216,21 @@ public extension UIButton {
 		arrow.leadingConstrain(button.titleLabel!, predicate: "4")
 	}
 }
+
+public class QPTextField: UITextField {
+	override public func layoutSubviews() {
+		super.layoutSubviews()
+		layer.borderWidth = 1
+		layer.borderColor = UIColor.lightGrayColor().CGColor
+		layer.cornerRadius = 5
+		layer.masksToBounds = true
+	}
+
+	override public func editingRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRectInset(bounds, 10, 10);
+	}
+
+	override public func textRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRectInset(bounds, 10, 10);
+	}
+}
