@@ -68,7 +68,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
+  s.ios.deployment_target = "8.0"
   # s.osx.deployment_target = "10.7"
 
 
@@ -160,6 +160,7 @@ Pod::Spec.new do |s|
   s.dependency "CryptoSwift"
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
+  s.dependency "CryptoSwift"
   s.dependency "AwesomeCache", "~> 2.0"
   #s.dependency "RealmSwift", "~> 0.97.0"
 
