@@ -59,15 +59,14 @@ public extension QPUtils {
 	}
 
 	class func clearSystemCache(block: () -> ()) {
-		// TODO:清理系统缓存
-		// let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
-//        tmpView?.showHUDwith("正在清理缓存")
-//        QPExcuteDelay.excute(2, block: { () -> () in
-//            SDImageCache.sharedImageCache().clearDiskOnCompletion { () -> Void in
-//                tmpView!.showTemporary("清除成功")
-//                block()
-//            }
-//        })
+		let tmpView = UIApplication.sharedApplication().keyWindow?.rootViewController?.view
+		tmpView?.showHUDwith("正在清理缓存")
+		QPExcuteDelay.excute(2, block: { () -> () in
+			SDImageCache.sharedImageCache().clearDiskOnCompletion { () -> Void in
+				tmpView!.showTemporary("清除成功")
+				block()
+			}
+		})
 	}
 
 	class func isSMSRequestAvailable() -> Bool {
@@ -403,10 +402,10 @@ public extension QPUtils {
 		for scalar in phrase.unicodeScalars {
 			let value = scalar.value
 			if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) {
-				letterCounter++
+				letterCounter = letterCounter + 1
 			}
 			if (value >= 48 && value <= 57) {
-				digitCount++
+				digitCount = digitCount + 1
 			}
 		}
 		if digitCount > 0 && letterCounter > 0 && password.length() > 7 {
