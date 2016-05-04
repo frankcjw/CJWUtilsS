@@ -775,7 +775,7 @@ public extension NSArray {
 	}
 }
 
-extension String {
+public extension String {
 
 	/**
 	 截取string,例:"abc"[0...1]
@@ -784,7 +784,7 @@ extension String {
 
 	 - returns: 截取的string
 	 */
-	subscript(r: Range<Int>) -> String {
+	public subscript(r: Range<Int>) -> String {
 		get {
 			let startIndex = self.startIndex.advancedBy(r.startIndex)
 			let endIndex = self.startIndex.advancedBy(r.endIndex)
@@ -800,7 +800,7 @@ extension String {
 
 	 - returns: 范围的数组
 	 */
-	func rangesOfString(string: String) -> Array<Range<Index>> {
+	public func rangesOfString(string: String) -> Array<Range<Index>> {
 		var array = Array<Range<Index>>()
 		let range = self.rangeOfString(string)
 		if range != nil {
@@ -820,5 +820,14 @@ extension String {
 			return array
 		}
 		return Array<Range<Index>>()
+	}
+}
+
+public extension UIView {
+	public var autoWidth: CGFloat {
+		return self.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).width
+	}
+	public var autoHeight: CGFloat {
+		return self.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
 	}
 }
