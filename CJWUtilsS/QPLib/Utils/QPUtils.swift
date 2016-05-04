@@ -774,3 +774,51 @@ public extension NSArray {
 		return ""
 	}
 }
+
+extension String {
+
+	/**
+	 截取string,例:"abc"[0...1]
+
+	 - parameter r: 范围
+
+	 - returns: 截取的string
+	 */
+	subscript(r: Range<Int>) -> String {
+		get {
+			let startIndex = self.startIndex.advancedBy(r.startIndex)
+			let endIndex = self.startIndex.advancedBy(r.endIndex)
+
+			return self[Range(startIndex ..< endIndex)]
+		}
+	}
+
+	/**
+	 短String在长String中的范围
+
+	 - parameter string: 短String
+
+	 - returns: 范围的数组
+	 */
+	func rangesOfString(string: String) -> Array<Range<Index>> {
+		var array = Array<Range<Index>>()
+		let range = self.rangeOfString(string)
+		if range != nil {
+			array.append(range!)
+			let rangeEndIndex = range?.endIndex
+			if rangeEndIndex < self.endIndex {
+				let substring = self.substringFromIndex(rangeEndIndex!)
+				let ranges = substring.rangesOfString(string)
+				for substringRange in ranges {
+					let startIntIndex: Int = self.startIndex.distanceTo(rangeEndIndex!) + substring.startIndex.distanceTo(substringRange.startIndex)
+					let endIntIndex: Int = startIntIndex + substringRange.startIndex.distanceTo(substringRange.endIndex)
+					let startIndex = self.startIndex.advancedBy(startIntIndex)
+					let endIndex = self.startIndex.advancedBy(endIntIndex)
+					array.append(Range(startIndex ..< endIndex))
+				}
+			}
+			return array
+		}
+		return Array<Range<Index>>()
+	}
+}
