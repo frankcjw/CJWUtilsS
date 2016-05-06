@@ -48,6 +48,7 @@ target 'CJWUtilsS' do
     pod 'YYModel'
     pod 'WebViewJavascriptBridge'
     pod 'AwesomeCache', '~> 2.0'
+    pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
 end
 
 target 'CJWUtilsSTests' do
