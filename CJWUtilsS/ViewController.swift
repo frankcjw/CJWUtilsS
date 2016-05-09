@@ -21,6 +21,13 @@ class CJWoOBJ: NSObject {
 
 class ViewController: QPTableViewController {
 
+    
+    func mutiParam(params:String...){
+        for param in params {
+            print(param)
+        }
+    }
+    
 	func rfObject(ooo: AnyObject) {
 		let mirror = Mirror(reflecting: ooo)
 
@@ -63,6 +70,7 @@ class ViewController: QPTableViewController {
 
 	override func viewDidLoad() {
 
+        mutiParam("aaa","vvv","cccc")
 		super.viewDidLoad()
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
