@@ -12,11 +12,18 @@ import CoreData
 import ObjectiveC
 import Alamofire
 import WebViewJavascriptBridge
+import Mirror
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
 	var numb = 1238
 	var sss: UIView?
+}
+
+struct Hello {
+	var flag: Bool = true
+	var name: String = "fuck you"
+	var price: Int?
 }
 
 class ViewController: QPTableViewController {
@@ -62,6 +69,12 @@ class ViewController: QPTableViewController {
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
+
+		let st = Hello()
+		let mirror = Mirror(st)
+        
+        mirror.names
+		print(mirror.toDictionary)
 
 		super.viewDidLoad()
 
@@ -175,6 +188,7 @@ class ViewController: QPTableViewController {
 class CJWCell: QPBaseTableViewCell {
 	let label = UILabel()
 	let label2 = UILabel()
+
 	var hello: String = "yes"
 	func rfObject(ooo: AnyObject) {
 		let mirror = Mirror(reflecting: ooo)
