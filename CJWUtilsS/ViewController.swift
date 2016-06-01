@@ -13,6 +13,7 @@ import ObjectiveC
 import Alamofire
 import WebViewJavascriptBridge
 import Mirror
+import FXBlurView
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -28,97 +29,34 @@ struct Hello {
 
 class ViewController: QPTableViewController {
 
-	func rfObject(ooo: AnyObject) {
-		let mirror = Mirror(reflecting: ooo)
-
-		defer {
-			print("defer")
-		}
-
-		defer {
-			print("defer111")
-		}
-
-		let className = mirror.subjectType
-		print("\(className)")
-		var dictionary = [String: Any]()
-		for child in mirror.children {
-			guard let key = child.label else { continue }
-			let value: Any = child.value
-
-			dictionary[key] = value
-
-			switch value {
-			case is Int: print("integer = \(value) \(key)")
-			case is String: print("string = \(value) \(key)")
-			default: print("other type = \(value) \(key)")
-			}
-
-			switch value {
-			case let i as Int: print("• integer = \(i) \(key)")
-			case let s as String: print("• string = \(s) \(key)")
-			default: print("• other type = \(value) \(key)")
-			}
-
-			if let i = value as? Int {
-				print("•• integer = \(i)")
-			}
-		}
-	}
-
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
 
+//		let http = QPHttpUtils.sharedInstance
+//        http.down
 		let st = Hello()
 		let mirror = Mirror(st)
-        
-        mirror.names
+
+		mirror.names
 		print(mirror.toDictionary)
 
 		super.viewDidLoad()
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
-		tableView.aspectRatio()
+//		tableView.aspectRatio()
 
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
-//		let stringObject: String = "testing"
-//		let stringArrayObject: [String] = ["one", "two"]
-//		let viewObject = UIView()
-//		let anyObject: Any = "testing"
-//
-//		let stringMirror = Mirror(reflecting: stringObject)
-//		let stringArrayMirror = Mirror(reflecting: stringArrayObject)
-//		let viewMirror = Mirror(reflecting: viewObject)
-//		let anyMirror = Mirror(reflecting: anyObject)
-//
-//		anyMirror.subjectType
-
-		if let aClass = NSClassFromString("CJWoOBJ") as? NSObject.Type {
-
-			let anObject = aClass.init()
-
-			rfObject(anObject)
-		}
-
 		showNetworkException()
+		testing()
+	}
 
-//		let ooo = CJWoOBJ()
-//        rfObject(anObject)
-
-//		http.newHttpRequest("http: // 115.29.141.172/qian/", param: nil, success: { (response) -> () in
-//			print(response)
-//		}) { () -> () in
-//			//
-//		}
-
-//		sb.leadingAlign(view)
-//		sb.trailingAlign(view)
-//		sb.topAlign(view)
-//		sb.backgroundColor = UIColor.redColor()
+	func jump() {
+		let vc = SecondeViewController()
+		self.pushViewController(vc)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -131,11 +69,12 @@ class ViewController: QPTableViewController {
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+		return 11
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("CJWCell") as! CJWCell
+		cell.backgroundColor = UIColor.clearColor()
 		return cell
 	}
 
@@ -145,6 +84,46 @@ class ViewController: QPTableViewController {
 //		cell.label.updateConstraintsIfNeeded()
 //		return cell
 //	}
+
+	var imgv = UIImageView()
+	let bv = FXBlurView()
+	var isBlur = false
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		imgv.frame = self.view.frame
+		imgv.image("http://ww1.sinaimg.cn/mw690/9e9d7b23gw1f4eg71jjgqg205m0ak7ac.gif", placeholder: "testing")
+
+		bv.frame = self.view.frame
+		bv.dynamic = true
+		bv.updateInterval = 1
+		self.tableView.insertSubview(bv, atIndex: 0)
+
+		self.tableView.setInsetsTop(300)
+		self.tableView.insertSubview(imgv, atIndex: 0)
+	}
+
+	override func scrollViewDidScroll(scrollView: UIScrollView) {
+		let offsetY = scrollView.contentOffset.y
+		super.scrollViewDidScroll(scrollView)
+		imgv.frame = CGRectMake(imgv.x, offsetY, imgv.width, imgv.height)
+		bv.frame = CGRectMake(bv.x, offsetY, bv.width, bv.height)
+
+		print(offsetY)
+		if offsetY > 0 {
+
+			if offsetY < 100 {
+				let percent = (offsetY - 0) / 100
+				print(percent)
+				bv.alpha = percent
+			} else {
+				bv.alpha = 1
+			}
+			bv.hidden = false
+		} else {
+			bv.hidden = true
+		}
+	}
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
@@ -183,7 +162,29 @@ class ViewController: QPTableViewController {
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
+//
+
+	func testing() {
+		let tagString = "啊实1打实,啊实2打实,啊实3打实"
+		let tags = tagString.characters.split { $0 == "," }.map(String.init)
+		for tag in tags {
+			print(tag)
+		}
+	}
 }
+
+//extension String {
+//	func split(s: String) -> [String] {
+//		if s.isEmpty {
+//			var x: [String] = []
+//			for y in self {
+//				x.append(String(y))
+//			}
+//			return x
+//		}
+//		return self.componentsSeparatedByString(s)
+//	}
+//}
 
 class CJWCell: QPBaseTableViewCell {
 	let label = UILabel()

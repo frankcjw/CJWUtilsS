@@ -23,21 +23,21 @@ public extension UIView {
 		layer.borderColor = UIColor.blackColor().CGColor
 		layer.borderWidth = 1
 
+		self.backgroundColor = COLOR_DEBUG
 		if self is UIImageView {
 			self.backgroundColor = UIColor.pomegranateColor()
 		} else if let label = self as? UILabel {
 			self.backgroundColor = UIColor.peterRiverColor()
 			if label.text == nil {
-				label.text = "testing"
+				label.text = "Label"
 			}
 		} else if let button = self as? UIButton {
-			button.setTitle("testing", forState: UIControlState.Normal)
+			button.setTitle("Button", forState: UIControlState.Normal)
 			self.backgroundColor = UIColor.pumpkinColor()
 		} else if let textField = self as? UITextField {
-			textField.text = "tessting"
+			textField.text = "UITextField"
 			self.backgroundColor = UIColor.alizarinColor()
 		}
-		self.backgroundColor = COLOR_DEBUG
 
 		if deepDebug {
 			for sv in self.subviews {
