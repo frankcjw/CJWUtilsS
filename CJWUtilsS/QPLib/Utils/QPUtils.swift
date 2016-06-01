@@ -429,66 +429,111 @@ public extension NSDictionary {
 public extension UIView {
 
 	// MARK: - leading
-	public func leadingAlign(view: UIView, predicate: String = "8") {
+	public func leadingAlign(view: UIView) {
+		self.leadingAlign(view, predicate: "8")
+	}
+
+	public func leadingAlign(view: UIView, predicate: String) {
 		self.alignLeadingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func leadingConstrain(view: UIView, predicate: String = "8") {
+	public func leadingConstrain(view: UIView) {
+		leadingConstrain(view, predicate: "8")
+	}
+
+	public func leadingConstrain(view: UIView, predicate: String) {
 		self.constrainLeadingSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - trailing
-	@available( *, deprecated, message = "use trailingAlign: instead", renamed = "trailingAlign")
-	public func trailing(view: UIView, predicate: String = "-8") {
-		self.trailingAlign(view, predicate: predicate)
+//	@available( *, deprecated, message = "use trailingAlign: instead", renamed = "trailingAlign")
+//	public func trailing(view: UIView, predicate: String = "-8") {
+//		self.trailingAlign(view, predicate: predicate)
+//	}
+
+	public func trailingAlign(view: UIView) {
+		trailingAlign(view, predicate: "-8")
 	}
 
-	public func trailingAlign(view: UIView, predicate: String = "-8") {
+	public func trailingAlign(view: UIView, predicate: String) {
 		self.alignTrailingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func trailingConstrain(view: UIView, predicate: String = "-8") {
+	public func trailingConstrain(view: UIView) {
+		trailingConstrain(view, predicate: "-8")
+	}
+
+	public func trailingConstrain(view: UIView, predicate: String) {
 		self.constrainTrailingSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - top
-	public func topAlign(view: UIView, predicate: String = "8") {
+
+	public func topAlign(view: UIView) {
+		topAlign(view, predicate: "8")
+	}
+
+	public func topAlign(view: UIView, predicate: String) {
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
 
-	@available( *, deprecated, message = "use topConstrain: instead", renamed = "topConstrain")
-	public func top(view: UIView, predicate: String = "8") {
-		self.topConstrain(view, predicate: predicate)
+//	@available( *, deprecated, message = "use topConstrain: instead", renamed = "topConstrain")
+//	public func top(view: UIView, predicate: String = "8") {
+//		self.topConstrain(view, predicate: predicate)
+//	}
+
+	public func topConstrain(view: UIView) {
+		topConstrain(view, predicate: "8")
 	}
 
-	public func topConstrain(view: UIView, predicate: String = "8") {
+	public func topConstrain(view: UIView, predicate: String) {
 		self.constrainTopSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - bottom
-	public func bottomAlign(view: UIView, predicate: String = "-8") {
+	public func bottomAlign(view: UIView) {
+		self.bottomAlign(view, predicate: "-8")
+	}
+
+	public func bottomAlign(view: UIView, predicate: String) {
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
-	@available( *, deprecated, message = "use bottomAlign: instead", renamed = "bottomAlign")
-	public func bottom(view: UIView, predicate: String = "-8") {
-		self.bottomAlign(view, predicate: predicate)
+//	@available( *, deprecated, message = "use bottomAlign: instead", renamed = "bottomAlign")
+//	public func bottom(view: UIView, predicate: String = "-8") {
+//		self.bottomAlign(view, predicate: predicate)
+//	}
+
+	public func bottomConstrain(view: UIView) {
+		self.bottomConstrain(view, predicate: "0")
 	}
 
-	public func bottomConstrain(view: UIView, predicate: String = "0") {
+	public func bottomConstrain(view: UIView, predicate: String) {
 		self.constrainBottomSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - other
-	public func centerX(view: UIView, predicate: String = "0") {
+	public func centerX(view: UIView) {
+		self.centerX(view, predicate: "0")
+	}
+
+	public func centerX(view: UIView, predicate: String) {
 		self.alignCenterXWithView(view, predicate: predicate)
 	}
 
-	public func centerY(view: UIView, predicate: String = "0") {
+	public func centerY(view: UIView) {
+		self.centerY(view, predicate: "0")
+	}
+
+	public func centerY(view: UIView, predicate: String) {
 		self.alignCenterYWithView(view, predicate: predicate)
 	}
 
-	public func width(view: UIView, predicate: String = "0") {
+	public func width(view: UIView) {
+		self.width(view, predicate: "0")
+	}
+
+	public func width(view: UIView, predicate: String) {
 		self.constrainWidthToView(view, predicate: predicate)
 	}
 
@@ -496,7 +541,11 @@ public extension UIView {
 		self.constrainWidth(predicate)
 	}
 
-	public func height(view: UIView, predicate: String = "0") {
+	public func height(view: UIView) {
+		self.height(view, predicate: "0")
+	}
+
+	public func height(view: UIView, predicate: String) {
 		self.constrainHeightToView(view, predicate: predicate)
 	}
 
@@ -504,7 +553,11 @@ public extension UIView {
 		self.constrainHeight(predicate)
 	}
 
-	public func aspectRatio(predicate: String = "") {
+	public func aspectRatio() {
+		self.aspectRatio("0")
+	}
+
+	public func aspectRatio(predicate: String) {
 		self.constrainAspectRatio(predicate)
 	}
 
