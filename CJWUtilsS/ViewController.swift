@@ -33,8 +33,6 @@ class ViewController: QPTableViewController {
 
 	override func viewDidLoad() {
 
-//		let http = QPHttpUtils.sharedInstance
-//        http.down
 		let st = Hello()
 		let mirror = Mirror(st)
 
