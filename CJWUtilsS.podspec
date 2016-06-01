@@ -93,9 +93,9 @@ Pod::Spec.new do |s|
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
-  s.subspec 'CJWUtils' do |ss|
+  #s.subspec 'CJWUtils' do |ss|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
-  end
+  #end
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -163,7 +163,7 @@ Pod::Spec.new do |s|
   s.dependency "CryptoSwift"
   s.dependency "AwesomeCache", "~> 2.0"
   #s.dependency "RealmSwift", "~> 0.97.0"
-  s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
+  #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
 
   #s.dependency "TMCache"
   #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
