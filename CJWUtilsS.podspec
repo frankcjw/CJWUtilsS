@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
 
   s.subspec 'CJWUtils' do |ss|
-    ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
+    #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
   end
 
   # s.public_header_files = "Classes/**/*.h"
