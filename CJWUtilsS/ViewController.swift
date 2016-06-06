@@ -50,6 +50,13 @@ class ViewController: QPTableViewController {
 
 		showNetworkException()
 		testing()
+
+		let flag = getFlag()
+		let str = flag ? "flag = true" : " flag = false"
+	}
+
+	func getFlag() -> Bool {
+		return false
 	}
 
 	func jump() {
@@ -250,7 +257,7 @@ class CJWCell: QPBaseTableViewCell {
 		label2.constrainTopSpaceToView(label, predicate: "30")
 
 		label2.leadingAlign(view, predicate: "0")
-		label2.trailing(view, predicate: "-30")
-		label2.bottom(view, predicate: "-20")
+		label2.trailingAlign(view, predicate: "-30")
+		label2.bottomAlign(view, predicate: "-20")
 	}
 }

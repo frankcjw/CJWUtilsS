@@ -434,6 +434,7 @@ public extension UIView {
 	}
 
 	public func leadingAlign(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignLeadingEdgeWithView(view, predicate: predicate)
 	}
 
@@ -442,6 +443,7 @@ public extension UIView {
 	}
 
 	public func leadingConstrain(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainLeadingSpaceToView(view, predicate: predicate)
 	}
 
@@ -456,6 +458,7 @@ public extension UIView {
 	}
 
 	public func trailingAlign(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignTrailingEdgeWithView(view, predicate: predicate)
 	}
 
@@ -464,6 +467,7 @@ public extension UIView {
 	}
 
 	public func trailingConstrain(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainTrailingSpaceToView(view, predicate: predicate)
 	}
 
@@ -474,6 +478,7 @@ public extension UIView {
 	}
 
 	public func topAlign(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
 
@@ -487,6 +492,7 @@ public extension UIView {
 	}
 
 	public func topConstrain(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainTopSpaceToView(view, predicate: predicate)
 	}
 
@@ -496,6 +502,7 @@ public extension UIView {
 	}
 
 	public func bottomAlign(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
@@ -509,6 +516,7 @@ public extension UIView {
 	}
 
 	public func bottomConstrain(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainBottomSpaceToView(view, predicate: predicate)
 	}
 
@@ -518,6 +526,7 @@ public extension UIView {
 	}
 
 	public func centerX(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignCenterXWithView(view, predicate: predicate)
 	}
 
@@ -526,6 +535,7 @@ public extension UIView {
 	}
 
 	public func centerY(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignCenterYWithView(view, predicate: predicate)
 	}
 
@@ -534,10 +544,12 @@ public extension UIView {
 	}
 
 	public func width(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainWidthToView(view, predicate: predicate)
 	}
 
 	public func widthConstrain(predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainWidth(predicate)
 	}
 
@@ -546,10 +558,12 @@ public extension UIView {
 	}
 
 	public func height(view: UIView, predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainHeightToView(view, predicate: predicate)
 	}
 
 	public func heightConstrain(predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainHeight(predicate)
 	}
 
@@ -558,6 +572,7 @@ public extension UIView {
 	}
 
 	public func aspectRatio(predicate: String) {
+		predicate = predicate .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainAspectRatio(predicate)
 	}
 
