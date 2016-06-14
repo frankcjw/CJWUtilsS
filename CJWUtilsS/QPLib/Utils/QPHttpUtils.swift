@@ -69,24 +69,31 @@ public class QPHttpUtils: NSObject {
 	 - parameter success: 成功返回:anyobject
 	 - parameter fail:    失败返回
 	 */
-	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
+	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) -> String {
+		let httpId = UIDevice.currentDevice().identifierForVendor?.UUIDString
+		let center = NSNotificationCenter.defaultCenter()
 		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
+					center.postNotificationName(httpId, object: nil)
 					success(response: response.result.value)
 				} else {
 					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
 //						let json = JSON(str)
+						center.postNotificationName(httpId, object: nil)
 						success(response: str)
 					} else {
+						center.postNotificationName(httpId, object: nil)
 						fail()
 					}
 				}
 			} else {
+				center.postNotificationName(httpId, object: nil)
 				debugPrint(response)
 				fail()
 			}
 		}
+		return httpId
 	}
 
 	/**

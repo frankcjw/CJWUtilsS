@@ -234,3 +234,9 @@ public class QPTextField: UITextField {
 		return CGRectInset(bounds, 10, 10);
 	}
 }
+
+public extension UILabel {
+	func textAlignmentCenter() {
+		self.textAlignment = NSTextAlignment.Center
+	}
+}
