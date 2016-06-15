@@ -246,3 +246,26 @@ public extension UILabel {
 		self.textAlignment = NSTextAlignment.Center
 	}
 }
+
+public class QPPaddingTextField: UITextField {
+
+	@IBInspectable public var paddingLeft: CGFloat = 4
+	@IBInspectable public var paddingRight: CGFloat = 4
+
+	override public func textRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRectMake(bounds.origin.x + paddingLeft, bounds.origin.y,
+			bounds.size.width - paddingLeft - paddingRight, bounds.size.height);
+	}
+
+	override public func editingRectForBounds(bounds: CGRect) -> CGRect {
+		return textRectForBounds(bounds)
+	}
+}
+
+public extension UITextField {
+	public func leftPadding(padding: CGFloat) {
+		let paddingView: UIView = UIView(frame: CGRectMake(0, 0, padding, 20))
+		leftView = paddingView
+		leftViewMode = UITextFieldViewMode.Always;
+	}
+}
