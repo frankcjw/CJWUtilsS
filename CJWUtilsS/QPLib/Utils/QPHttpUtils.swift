@@ -70,7 +70,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter fail:    失败返回
 	 */
 	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) -> String {
-		let httpId = UIDevice.currentDevice().identifierForVendor?.UUIDString
+		let httpId = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? "NoUUidNotification"
 		let center = NSNotificationCenter.defaultCenter()
 		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
