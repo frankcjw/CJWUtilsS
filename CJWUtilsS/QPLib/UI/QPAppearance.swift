@@ -65,6 +65,12 @@ public extension UIImageView {
 
 	public func scaleAspectFit() {
 		self.contentMode = UIViewContentMode.ScaleAspectFit
+		self.clipsToBounds = true
+	}
+
+	public func scaleAspectFill() {
+		self.contentMode = UIViewContentMode.ScaleAspectFill
+		self.clipsToBounds = true
 	}
 }
 
