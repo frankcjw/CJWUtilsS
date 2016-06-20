@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/Lib/**/*.*", "CJWUtilsS/QPLib/*.*"
+  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/Lib/**/*.*"
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  #s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
+##s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency "AFNetworking"
   s.dependency "SDWebImage"
