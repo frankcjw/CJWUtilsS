@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
   #end
 
-# s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
+s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h", "Bugly.framework/Headers/bugly.h"
 #s.public_header_files = 'Bugly.framework/Headers/bugly.h'
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -136,7 +136,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
+  #s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency "AFNetworking"
   s.dependency "SDWebImage"
@@ -162,6 +162,7 @@ Pod::Spec.new do |s|
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
+  s.dependency "Bugly"
   s.dependency "AwesomeCache", "~> 2.0"
   #s.dependency "RealmSwift", "~> 0.97.0"
   #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
