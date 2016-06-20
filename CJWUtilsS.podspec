@@ -95,10 +95,11 @@ Pod::Spec.new do |s|
 
 s.subspec 'CJWUtils' do |ss|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
-ss.dependency "Bugly"
+#ss.dependency "Bugly"
 #ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
 #ss.framework = 'Bugly'
-ss.library = 'Bugly'
+#ss.ios.library = 'Bugly'
+#ss.vendored_framework = 'Bugly'
 end
 
 #s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
@@ -140,7 +141,7 @@ end
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-##s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
+#s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency "AFNetworking"
   s.dependency "SDWebImage"
@@ -167,7 +168,7 @@ end
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
   s.dependency "AwesomeCache", "~> 2.0"
-  s.dependency "Bugly"
+#s.dependency "Bugly"
 #s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"
   #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}

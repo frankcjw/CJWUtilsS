@@ -66,6 +66,9 @@ public class QPLogUtils: NSObject {
 
 public class Log: XCGLogger {
 
+	/// 设备的标记
+	public var deviceIdentifier: String?
+
 	/// 远程调试url地址
 	public var remoteUrl: String? {
 		didSet {
@@ -73,26 +76,30 @@ public class Log: XCGLogger {
 		}
 	}
 
-	public var bugglyId: String? {
-		didSet {
-			if let bugglyId = bugglyId {
-				initBuggly(bugglyId)
-			}
-		}
-	}
-
-	private func initBuggly(id: String) {
-		Bugly.startWithAppId("900008815")
-//        BuglyLog.init
-	}
-
 	/// 是否允许远程调试
 	public var remoteDebugEnable = false
 
+	public typealias LogBlock = (logLevel: XCGLogger.LogLevel, debugInfo: String?) -> ()
+
+	var block: LogBlock?
+
+	public func onLog(block: LogBlock) {
+		self.block = block
+	}
+
 	private func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
+		block?(logLevel: logLevel, debugInfo: debugInfo)
+
 		if remoteDebugEnable {
+
 			if let url = remoteUrl {
-				QPHttpUtils.sharedInstance.newHttpRequest(url, param: ["\(logLevel)": debugInfo ?? ""], success: { (response) in
+				var param: [String: AnyObject] = [:]
+				param["logLevel"] = "\(logLevel)"
+				if let deviceIdentifier = deviceIdentifier {
+					param["deviceIdentifier"] = deviceIdentifier
+				}
+				param["debugInfo"] = debugInfo ?? ""
+				QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
 					//
 				}) {
 					//

@@ -20,7 +20,7 @@ public class CJWDate2: NSDate {
 public extension UIViewController {
 	typealias QPAlertActionControllerInputBlock = (text: String) -> ()
 
-	public func showInputAlert(title: String, message: String, inputedText: String?, keyboardType : UIKeyboardType, placeholder: String, block: QPAlertActionControllerInputBlock) {
+	public func showInputAlert(title: String, message: String, inputedText: String?, keyboardType: UIKeyboardType, placeholder: String, block: QPAlertActionControllerInputBlock) {
 
 		let actionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
 		let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
