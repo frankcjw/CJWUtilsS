@@ -67,14 +67,14 @@ public class QPLogUtils: NSObject {
 public class Log: XCGLogger {
 
 	/// 远程调试url地址
-	var remoteUrl: String? {
+	public var remoteUrl: String? {
 		didSet {
 			remoteDebugEnable = remoteUrl == nil ? false : true
 		}
 	}
 
 	/// 是否允许远程调试
-	var remoteDebugEnable = false
+	public var remoteDebugEnable = false
 
 	func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
 		if remoteDebugEnable {
