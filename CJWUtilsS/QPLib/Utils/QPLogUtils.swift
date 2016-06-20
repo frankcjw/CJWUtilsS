@@ -14,7 +14,7 @@ public let log = QPLogUtils.setup()
 
 public class QPLogUtils: NSObject {
 
-	public class func setup() -> XCGLogger {
+	public class func setup() -> Log {
 
 		let log = Log(identifier: "advancedLogger", includeDefaultDestinations: false)
 
@@ -60,20 +60,26 @@ public class QPLogUtils: NSObject {
 		// Add basic app info, version info etc, to the start of the logs
 		log.logAppDetails()
 		log.xcodeColorsEnabled = true
-		log.debug("")
 		return log
 	}
 }
 
-//class
-
 public class Log: XCGLogger {
-	public func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
+
+	var httpUrl: String?
+
+	func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
+		if let url = httpUrl {
+			QPHttpUtils.sharedInstance.newHttpRequest(url, param: ["\(logLevel)": debugInfo ?? ""], success: { (response) in
+				//
+			}) {
+				//
+			}
+		}
 	}
 
 	override public func logln(logLevel: XCGLogger.LogLevel, functionName: String, fileName: String, lineNumber: Int, @noescape closure: () -> String?) {
 		super.logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
-		print("testing \(logLevel) \(closure())")
 		localDebug(logLevel, debugInfo: closure())
 	}
 }
