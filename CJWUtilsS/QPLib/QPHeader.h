@@ -37,7 +37,7 @@
 //#import "UIImageView+WebCache.h"
 //#import "JSONKit.h"
 
-#import <Bugly/bugly.h>
+//#import <Bugly/bugly.h>
 
 
 //Animation
