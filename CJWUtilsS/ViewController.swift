@@ -48,6 +48,9 @@ class ViewController: QPTableViewController {
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
+		log.debug("hello")
+		log.info("fuck")
+
 		showNetworkException()
 		testing()
 
