@@ -98,7 +98,7 @@ Pod::Spec.new do |s|
   #end
 
 # s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
-#s.public_header_files = 'Bugly.framework/Headers/bugly.h
+ s.public_header_files = 'Bugly.framework/Headers/bugly.h'
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
