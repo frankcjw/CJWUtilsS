@@ -96,10 +96,10 @@ Pod::Spec.new do |s|
 s.subspec 'CJWUtils' do |ss|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
 ss.dependency "Bugly"
-ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
+#ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
 #ss.framework = 'Bugly'
 ss.library = 'Bugly'
-#end
+end
 
 #s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
 #s.public_header_files = 'Bugly.framework/Headers/bugly.h'
