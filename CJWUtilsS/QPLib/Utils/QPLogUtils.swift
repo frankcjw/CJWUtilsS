@@ -66,14 +66,24 @@ public class QPLogUtils: NSObject {
 
 public class Log: XCGLogger {
 
-	var httpUrl: String?
+	/// 远程调试url地址
+	var httpUrl: String? {
+		didSet {
+			remoteDebugEnable = httpUrl == nil ? false : true
+		}
+	}
+
+	/// 是否允许远程调试
+	var remoteDebugEnable = false
 
 	func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
-		if let url = httpUrl {
-			QPHttpUtils.sharedInstance.newHttpRequest(url, param: ["\(logLevel)": debugInfo ?? ""], success: { (response) in
-				//
-			}) {
-				//
+		if remoteDebugEnable {
+			if let url = httpUrl {
+				QPHttpUtils.sharedInstance.newHttpRequest(url, param: ["\(logLevel)": debugInfo ?? ""], success: { (response) in
+					//
+				}) {
+					//
+				}
 			}
 		}
 	}
