@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/Lib/**/*.*, "CJWUtilsS/QPLib/Lib/*.h"
+  s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/Lib/**/*.*", "CJWUtilsS/QPLib/Lib/*.h"
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
   #end
 
-    #s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
+  s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
