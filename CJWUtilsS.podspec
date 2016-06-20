@@ -93,9 +93,11 @@ Pod::Spec.new do |s|
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
-  #s.subspec 'CJWUtils' do |ss|
+  s.subspec 'CJWUtils' do |ss|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
-  #end
+    ss.dependency "Bugly"
+    ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
+  end
 
 s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
 #s.public_header_files = 'Bugly.framework/Headers/bugly.h'
@@ -162,7 +164,6 @@ s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
-  s.dependency "Bugly"
   s.dependency "AwesomeCache", "~> 2.0"
   #s.dependency "RealmSwift", "~> 0.97.0"
   #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
