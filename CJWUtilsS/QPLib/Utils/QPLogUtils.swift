@@ -73,10 +73,23 @@ public class Log: XCGLogger {
 		}
 	}
 
+	public var bugglyId: String? {
+		didSet {
+			if let bugglyId = bugglyId {
+				initBuggly(bugglyId)
+			}
+		}
+	}
+
+	private func initBuggly(id: String) {
+		Bugly.startWithAppId("900008815")
+//        BuglyLog.init
+	}
+
 	/// 是否允许远程调试
 	public var remoteDebugEnable = false
 
-	func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
+	private func localDebug(logLevel: XCGLogger.LogLevel, debugInfo: String?) {
 		if remoteDebugEnable {
 			if let url = remoteUrl {
 				QPHttpUtils.sharedInstance.newHttpRequest(url, param: ["\(logLevel)": debugInfo ?? ""], success: { (response) in

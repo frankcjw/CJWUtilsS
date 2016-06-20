@@ -50,6 +50,7 @@ target 'CJWUtilsS' do
     pod 'AwesomeCache', '~> 2.0'
     pod 'FXBlurView'
     pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
+    pod ’Bugly’
 end
 
 target 'CJWUtilsSTests' do
