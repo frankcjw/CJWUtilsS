@@ -99,7 +99,7 @@ Pod::Spec.new do |s|
     ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
   end
 
-s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
+#s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
 #s.public_header_files = 'Bugly.framework/Headers/bugly.h'
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
