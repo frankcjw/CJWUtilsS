@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
     #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
   #end
 
-  s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
+    #s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
