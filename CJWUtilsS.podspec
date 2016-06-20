@@ -166,6 +166,8 @@ Pod::Spec.new do |s|
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
   s.dependency "AwesomeCache", "~> 2.0"
+  s.dependency "Bugly"
+  s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"
   #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
 
