@@ -98,7 +98,7 @@ s.subspec 'CJWUtils' do |ss|
 ss.dependency "Bugly"
 ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
 #ss.framework = 'Bugly'
-ss.vendored_framework = 'Bugly'
+ss.library = 'Bugly'
 #end
 
 #s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
