@@ -51,6 +51,8 @@ target 'CJWUtilsS' do
     pod 'FXBlurView'
     pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
     pod ’Bugly’
+    pod 'PhoneNumberKit'
+
 end
 
 target 'CJWUtilsSTests' do

@@ -11,6 +11,7 @@ import SDWebImage
 import NSDate_TimeAgo
 import FLKAutoLayout
 import SwiftyJSON
+import PhoneNumberKit
 
 public let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
 public let UIControlStateNormal = UIControlState.Normal
@@ -685,11 +686,27 @@ public extension String {
 	}
 }
 
-extension String {
-	func isMobile() -> Bool {
+public extension String {
+	public func isMobile() -> Bool {
 		// TODO: isMobile
-		log.warning("not been setup")
+//		log.warning("not been setup")
 //        return "".isValidateMobile(self)
+
+		do {
+			let number = self
+			let phoneNumber = try PhoneNumber(rawNumber: number, region: "CN")
+
+//			log.debug("\(phoneNumber.isValidNumber) \(phoneNumberCustomDefaultRegion.isValidNumber)")
+//			log.warning("\(phoneNumber.numberExtension) \(phoneNumber.type) \(phoneNumberCustomDefaultRegion.toE164())")
+			if phoneNumber.type == .Mobile {
+				return true
+			}
+			return false
+		}
+		catch {
+			log.debug("Generic parser error")
+		}
+
 		return false
 	}
 

@@ -167,6 +167,7 @@ end
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
+  s.dependency "PhoneNumberKit"
   s.dependency "AwesomeCache", "~> 2.0"
 #s.dependency "Bugly"
 #s.framework = 'Bugly'
