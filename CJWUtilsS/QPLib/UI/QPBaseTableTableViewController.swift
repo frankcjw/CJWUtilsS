@@ -275,7 +275,7 @@ public extension UITableViewController {
 
 public extension QPBaseTableViewController {
 
-	private func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+	public func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
 		return segment
 	}
 
