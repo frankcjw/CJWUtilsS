@@ -9,6 +9,7 @@
 import UIKit
 import FlatUIKit
 import DZNEmptyDataSet
+import HMSegmentedControl
 
 //private let imageError = UIImage(color: COLOR_CLEAR)//UIImage(named: "Cry")
 //private let imageLoading = UIImage(color: COLOR_CLEAR)//UIImage(named: "Loading")
@@ -53,6 +54,14 @@ public class QPBaseTableViewController: UITableViewController {
 	private var statusImage = imageLoading
 
 	public var shouldHideNavigationBar: Bool = false
+
+	/// tableview header segment
+	public var titles = ["商会活动", "我的活动"] {
+		didSet {
+			self.navigationItem.titleView = initSegmentView()
+		}
+	}
+	private var segment: HMSegmentedControl!
 
 	public override func viewWillAppear(animated: Bool) {
 
@@ -261,6 +270,54 @@ public extension UITableViewController {
 
 	public func registerTableViewCell(nibName: String) {
 		self.tableView.registerTableViewCell(nibName, bundle: nil, forCellReuseIdentifier: nibName)
+	}
+}
+
+public extension QPBaseTableViewController {
+
+	private func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+		return segment
+	}
+
+	private func initSegmentView() -> UIView {
+		let view = UIView(frame: CGRectMake(0, 0, 190, 44))
+		let selectionViewSelectedColor = COLOR_WHITE
+		let selectionViewDeselectedColor = UIColor(fromHexCode: "#fad5a2")
+		let selectionViewFont = FONT_TITLE
+
+		if segment == nil {
+			segment = HMSegmentedControl(frame: CGRectMake(5, 10, 180, 28))
+		}
+		segment.backgroundColor = MAIN_COLOR
+		segment.sectionTitles = titles
+
+		segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+		segment.selectionIndicatorColor = selectionViewSelectedColor
+		segment.selectionIndicatorHeight = 1
+		segment.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+		segment.verticalDividerWidth = 0
+		segment.verticalDividerEnabled = true
+		segment.verticalDividerColor = UIColor(fromHexCode: "#DFE1E3")
+
+		segment.titleTextAttributes = [NSFontAttributeName: selectionViewFont, NSForegroundColorAttributeName: selectionViewDeselectedColor]
+		segment.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
+
+		segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
+		segment.addTarget(self, action: "segmentedControlChangedValue:", forControlEvents: UIControlEvents.ValueChanged)
+		segment = customSegment(segment)
+		view.addSubview(segment)
+
+		return view
+	}
+
+	func segmentedControlChangedValue(control: HMSegmentedControl) {
+		if control.selectedSegmentIndex == 0 {
+		}
+
+		onSegmentChanged(control.selectedSegmentIndex)
+	}
+
+	public func onSegmentChanged(index: Int) {
 	}
 }
 
