@@ -56,7 +56,7 @@ public class QPBaseTableViewController: UITableViewController {
 	public var shouldHideNavigationBar: Bool = false
 
 	/// tableview header segment
-	public var titles = ["商会活动", "我的活动"] {
+	public var segmentTitles = ["商会活动", "我的活动"] {
 		didSet {
 			self.navigationItem.titleView = initSegmentView()
 		}
@@ -289,7 +289,7 @@ public extension QPBaseTableViewController {
 			segment = HMSegmentedControl(frame: CGRectMake(5, 10, 180, 28))
 		}
 		segment.backgroundColor = MAIN_COLOR
-		segment.sectionTitles = titles
+		segment.sectionTitles = segmentTitles
 
 		segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
 		segment.selectionIndicatorColor = selectionViewSelectedColor
