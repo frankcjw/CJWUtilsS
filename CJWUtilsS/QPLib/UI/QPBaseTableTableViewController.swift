@@ -303,7 +303,7 @@ public extension QPBaseTableViewController {
 		segment.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
 
 		segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
-		segment.addTarget(self, action: "segmentedControlChangedValue:", forControlEvents: UIControlEvents.ValueChanged)
+		segment.addTarget(self, action: #selector(QPBaseTableViewController.segmentedControlChangedValue(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		segment = customSegment(segment)
 		view.addSubview(segment)
 
