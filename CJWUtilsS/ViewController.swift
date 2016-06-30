@@ -27,7 +27,7 @@ struct Hello {
 	var price: Int?
 }
 
-class ViewController: QPTableViewController {
+class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	let webView = UIWebView()
 
@@ -159,6 +159,11 @@ class ViewController: QPTableViewController {
 //			//
 //		}
 		self.view.showHUDTemporary("sdsds")
+
+	}
+
+	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+		dismissViewControllerAnimated(true, completion: nil)
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

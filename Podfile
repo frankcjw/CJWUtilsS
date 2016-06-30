@@ -52,6 +52,8 @@ target 'CJWUtilsS' do
     pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
     pod ’Bugly’
     pod 'PhoneNumberKit'
+#    pod 'ImagePickerSheetController'
+#    pod 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
 
 end
 

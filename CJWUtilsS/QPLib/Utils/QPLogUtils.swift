@@ -60,7 +60,26 @@ public class QPLogUtils: NSObject {
 		// Add basic app info, version info etc, to the start of the logs
 		log.logAppDetails()
 		log.xcodeColorsEnabled = true
+//		let des = FirelogDestination(FirelogDestination(owner: log, identifier: "Firelog"))
+//		log.addLogDestination(des)
+
+//		let des = XCGNSLogDestination(owner: log, identifier: "Firelog")
+//		log.addLogDestination(des)
 		return log
+	}
+}
+
+class FirelogDestination: XCGBaseLogDestination {
+	override func output(logDetails: XCGLogDetails, text: String) {
+		var data = [String: NSObject]()
+		data["logLevel"] = logDetails.logLevel.description
+		data["date"] = NSNumber(double: round(logDetails.date.timeIntervalSince1970 * 1000))
+		data["logMessage"] = logDetails.logMessage
+		data["functionName"] = logDetails.functionName
+		data["fileName"] = logDetails.fileName
+		data["lineNumber"] = logDetails.lineNumber
+//		logRef.childByAutoId().set(data)
+//        childby
 	}
 }
 

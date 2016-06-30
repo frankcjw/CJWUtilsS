@@ -175,7 +175,7 @@ end
   #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
 
   #s.dependency "TMCache"
-  #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
-
-
+#  s.dependency "MLSelectPhoto"
+#s.dependency 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
+#s.dependency 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
 end
