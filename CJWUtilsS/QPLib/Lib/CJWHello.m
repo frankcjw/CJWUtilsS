@@ -13,4 +13,8 @@
 //-tes
 
 //-t
+
+-(void)tesing{
+    NSLog(@"helo");
+}
 @end
