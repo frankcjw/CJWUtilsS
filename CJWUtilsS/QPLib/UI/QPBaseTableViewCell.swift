@@ -13,9 +13,9 @@ public typealias QPTableViewCell = QPBaseTableViewCell
 public class QPBaseTableViewCell: UITableViewCell {
 
 	/// 父view controller
-	public var rootViewController : UIViewController?
+	public var rootViewController: UIViewController?
 	/// 这个cell的indexPath
-	public var indexPath : NSIndexPath?
+	public var indexPath: NSIndexPath?
 	public var didSetupConstraints = false
 	/// cell的数据
 	public var cellInfo = NSDictionary()
@@ -92,5 +92,14 @@ public class QPBaseTableViewCell: UITableViewCell {
 	public func setup() {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
+	}
+}
+
+public extension UITableViewCell {
+	/**
+	 隐藏分割线
+	 */
+	public func disableSeparator() {
+		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
 	}
 }
