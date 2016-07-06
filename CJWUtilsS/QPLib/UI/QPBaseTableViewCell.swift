@@ -95,6 +95,12 @@ public class QPBaseTableViewCell: UITableViewCell {
 	}
 }
 
+public extension UITableView {
+	public func disableSeparator() {
+		separatorStyle = UITableViewCellSeparatorStyle.None
+	}
+}
+
 public extension UITableViewCell {
 	/**
 	 隐藏分割线
