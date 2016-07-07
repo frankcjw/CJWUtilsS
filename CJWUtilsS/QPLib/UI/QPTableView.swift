@@ -124,9 +124,9 @@ public extension UITableView {
 }
 
 public extension UITableView {
-	public var refreshHeader: MJRefreshHeader? {
+	public var refreshHeader: MJRefreshGifHeader? {
 		get {
-			return self.mj_header
+			return self.mj_header as? MJRefreshGifHeader
 		}
 
 		set {
@@ -134,9 +134,12 @@ public extension UITableView {
 		}
 	}
 
-	var refresFooter: MJRefreshFooter? {
+	var refresFooter: MJRefreshAutoNormalFooter? {
 		get {
-			return self.mj_footer
+
+//			let footer = self.mj_header as MJRefreshAutoNormalFooter
+//			return footer
+			return self.mj_footer as? MJRefreshAutoNormalFooter
 		}
 
 		set {

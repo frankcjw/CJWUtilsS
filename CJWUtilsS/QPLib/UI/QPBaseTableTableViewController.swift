@@ -104,6 +104,16 @@ public class QPBaseTableViewController: UITableViewController {
 		load()
 	}
 
+//    add
+
+	public func addRefreshHeader(target: AnyObject!, action: Selector) {
+		self.tableView.addRefreshHeader(target, action: action)
+	}
+
+	public func addRefreshFooter(target: AnyObject!, action: Selector) {
+		self.tableView.addRefreshFooter(target: AnyObject!, action: Selector)
+	}
+
 	override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 	}
