@@ -111,7 +111,7 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	public func addRefreshFooter(target: AnyObject!, action: Selector) {
-		self.tableView.addRefreshFooter(target: AnyObject!, action: Selector)
+		self.tableView.addRefreshFooter(target, action: action)
 	}
 
 	override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
