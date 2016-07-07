@@ -108,10 +108,11 @@ public extension UILabel {
 		self.attributedText = attribute
 	}
 
-	private func getAttribute() -> NSMutableAttributedString {
+	public func getAttribute() -> NSMutableAttributedString {
 		var attribute: NSMutableAttributedString!
 		if self.attributedText == nil {
-			print("empt")
+//			print("empt")
+			log.warning("empt")
 			if self.text == nil {
 				attribute = NSMutableAttributedString(string: "")
 			}
