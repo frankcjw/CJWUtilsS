@@ -112,11 +112,13 @@ public extension UILabel {
 		var attribute: NSMutableAttributedString!
 		if self.attributedText == nil {
 //			print("empt")
-			log.warning("empt")
-			if self.text == nil {
-				attribute = NSMutableAttributedString(string: "")
-			}
-			attribute = NSMutableAttributedString(string: self.text!)
+//			if self.text == nil {
+//				attribute = NSMutableAttributedString(string: "")
+//			} else {
+//				attribute = NSMutableAttributedString(string: self.text!)
+//			}
+			let txt = self.text ?? ""
+			attribute = NSMutableAttributedString(string: txt)
 		} else {
 			attribute = NSMutableAttributedString(attributedString: attributedText!)
 		}
