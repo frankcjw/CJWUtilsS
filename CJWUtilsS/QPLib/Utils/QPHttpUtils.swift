@@ -193,7 +193,7 @@ public class QPHttpUtils: NSObject {
 				return
 			}
 		}
-		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+		let _ = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
 					if let value = response.result.value {

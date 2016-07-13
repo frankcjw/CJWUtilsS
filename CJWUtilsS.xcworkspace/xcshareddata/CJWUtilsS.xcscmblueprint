@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DD112CAB25B56676C4051A92FB523EB2EBF2510F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "91DB7D95F4D14D60A1D63CBA6A35664D5052F124" : 0,
+    "DD112CAB25B56676C4051A92FB523EB2EBF2510F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A1FA50A7-4C1F-49CD-9D9E-945D59C64C41",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "91DB7D95F4D14D60A1D63CBA6A35664D5052F124" : "CJWLib\/",
+    "DD112CAB25B56676C4051A92FB523EB2EBF2510F" : "CJWUtilsS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CJWUtilsS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CJWUtilsS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/frankcjw\/CJWLib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91DB7D95F4D14D60A1D63CBA6A35664D5052F124"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/frankcjw\/CJWUtilsS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DD112CAB25B56676C4051A92FB523EB2EBF2510F"
+    }
+  ]
+}

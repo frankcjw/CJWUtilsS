@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let sss = Defaults["asd"].stringValue
 		print(sss)
 
+//        clu
+//        cjwh
 		return true
 	}
 

@@ -53,7 +53,9 @@ target 'CJWUtilsS' do
     pod ’Bugly’
     pod 'PhoneNumberKit'
 #    pod 'ImagePickerSheetController'
-#    pod 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
+#    pod 'CJWLib', :git => 'https://github.com/frankcjw/CJWLib.git'
+#    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
+
 
 end
 

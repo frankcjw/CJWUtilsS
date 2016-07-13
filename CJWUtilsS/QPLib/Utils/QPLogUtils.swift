@@ -117,6 +117,7 @@ public class Log: XCGLogger {
 				if let deviceIdentifier = deviceIdentifier {
 					param["deviceIdentifier"] = deviceIdentifier
 				}
+
 				param["debugInfo"] = debugInfo ?? ""
 				QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
 					//

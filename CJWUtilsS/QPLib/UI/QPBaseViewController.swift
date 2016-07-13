@@ -83,7 +83,7 @@ public extension UIViewController {
 	public func setBackTitle(title: String) {
 		let button = UIButton(frame: CGRectMake(0, 0, 30, 30))
 		button.setBackgroundImage(UIImage(named: "Practicetopic_icon_back"), forState: .Normal)
-		button.addTarget(self, action: "controllerDismiss", forControlEvents: UIControlEvents.TouchUpInside)
+		button.addTarget(self, action: Selector("controllerDismiss"), forControlEvents: UIControlEvents.TouchUpInside)
 		let back = UIBarButtonItem()
 		// back.title = title
 		back.customView = button

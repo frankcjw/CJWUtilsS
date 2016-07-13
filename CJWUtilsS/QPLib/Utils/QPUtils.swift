@@ -49,7 +49,7 @@ public extension QPUtils {
 		for _ in 0 ... units.count - 1 {
 			if calc > 1024 * 2 {
 				calc = calc / 1024
-				unitIndex++
+				unitIndex += 1
 			} else {
 				break
 			}
@@ -387,7 +387,7 @@ public extension Array where Element: Equatable {
 		while true {
 			if let index = indexOf(element) {
 				removeAtIndex(index)
-				occurrences++
+				occurrences += 1
 			} else {
 				return occurrences
 			}
