@@ -32,6 +32,8 @@ public class QPUtils: NSObject {
 		}
 		return Static.instance!
 	}
+
+	var config = QPConfig()
 }
 
 public extension QPUtils {
@@ -915,4 +917,8 @@ public extension UIView {
 	public var autoHeight: CGFloat {
 		return self.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
 	}
+}
+
+public struct QPConfig {
+	var hidesBottomBarWhenPushed = true
 }
