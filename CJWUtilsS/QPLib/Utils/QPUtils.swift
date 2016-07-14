@@ -33,7 +33,7 @@ public class QPUtils: NSObject {
 		return Static.instance!
 	}
 
-	var config = QPConfig()
+	public var config = QPConfig()
 }
 
 public extension QPUtils {
