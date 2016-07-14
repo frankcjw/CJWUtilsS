@@ -920,5 +920,5 @@ public extension UIView {
 }
 
 public struct QPConfig {
-	var hidesBottomBarWhenPushed = true
+	public var hidesBottomBarWhenPushed = true
 }
