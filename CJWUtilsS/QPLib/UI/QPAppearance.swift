@@ -18,9 +18,9 @@ public let FONT_SMALL_BOLD = UIFont.boldSystemFontOfSize(12)
 
 public let TEXT_CENTER = NSTextAlignment.Center
 /// 屏幕宽度
-public let SCREEN_WIDTH = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.width
+public let SCREEN_WIDTH: CGFloat = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.frame.width ?? 0
 /// 屏幕高度
-public let SCREEN_HEIGHT = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.height
+public let SCREEN_HEIGHT: CGFloat = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.frame.height ?? 0
 
 public let capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 public let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
