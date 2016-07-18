@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				01CAEFC21C3BA737006E221A /* QPAppearance.swift */,
 				01CAEFC31C3BA737006E221A /* QPBaseTableTableViewController.swift */,
 				01CAEFC41C3BA737006E221A /* QPBaseTableViewCell.swift */,
+				0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */,
 				01CAEFC51C3BA737006E221A /* QPBaseViewController.swift */,
 				01CAEFC61C3BA737006E221A /* QPColor.swift */,
 				01CAEFC71C3BA737006E221A /* QPKey.swift */,
@@ -558,6 +561,7 @@
 				015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */,
 				01CAEFDD1C3BA737006E221A /* QPHttpUtils.swift in Sources */,
 				0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */,
+				0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */,
 				B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
