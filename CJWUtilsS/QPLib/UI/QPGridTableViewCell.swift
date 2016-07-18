@@ -14,6 +14,20 @@ public protocol QPGridTableViewCellDelegate {
 	func numberOfRow() -> Int
 }
 
+//extension QPGridTableViewCell: QPGridTableViewCellDelegate {
+//	public func buttonAt(index: Int) -> UIButton {
+//		return UIButton()
+//	}
+//
+//	public func numberOfRow() -> Int {
+//		return 0
+//	}
+//
+//	public func numberOfColumn() -> Int {
+//		return 0
+//	}
+//}
+
 public class QPGridTableViewCell: QPTableViewCell {
 
 	public var delegate: QPGridTableViewCellDelegate?
@@ -24,6 +38,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 	public var column = 0
 
 	override public func setupViews(view: UIView) {
+//		self.delegate = self
 		super.setupViews(view)
 
 		column = delegate?.numberOfColumn() ?? 0
@@ -76,7 +91,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 				verticalReferenceView = button
 			} else {
 				if index % column == 0 {
-					button.topAlign(verticalReferenceView, predicate: "0")
+					button.topConstrain(verticalReferenceView, predicate: "0")
 					button.leadingAlign(view, predicate: "0")
 					verticalReferenceView = button
 					horizanReferenceView = button
