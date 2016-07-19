@@ -49,7 +49,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 			row += 1
 		}
 //		row = delegate?.numberOfRow() ?? 0
-		let count = itemCount// column * row - 1
+		let count = itemCount - 1// column * row - 1
 		self.backgroundColor = COLOR_WHITE
 		//
 
