@@ -36,9 +36,9 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	private var row = 0
 	public var column = 0
+	private var count = 0
 
 	override public func setupViews(view: UIView) {
-//		self.delegate = self
 		super.setupViews(view)
 
 		column = delegate?.numberOfColumn() ?? 0
@@ -48,22 +48,14 @@ public class QPGridTableViewCell: QPTableViewCell {
 		if (itemCount % column) != 0 {
 			row += 1
 		}
-//		row = delegate?.numberOfRow() ?? 0
-		let count = itemCount - 1// column * row - 1
+		// row = delegate?.numberOfRow() ?? 0
+		count = itemCount
 		self.backgroundColor = COLOR_WHITE
 		//
 
-		for index in 0 ... count {
-//			let button = TopIconButton()
+		for index in 0 ... count - 1 {
 			let button = delegate?.buttonAt(index) ?? UIButton()
 			button.tag = index
-			// button.setTitle("\(titles[index])", forState: UIControlState.Normal)
-			button.setImage(UIImage(named: "Phone"), forState: UIControlState.Normal)
-			button.setTitleColor(UIColor.lightGrayColor(), forState:
-					UIControlState.Normal)
-			button.setTitle("fuck it", forState: UIControlState.Normal)
-			// button.backgroundColor = COLOR_WHITE
-			// button.imageEdgeInsets = UIEdgeInsetsMake(-5, -5, -5, -5)
 			buttons.append(button)
 			view.addSubview(button)
 		}
@@ -71,9 +63,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	override public func layoutSubviews() {
 		super.layoutSubviews()
-//		for button in buttons {
-//			button.titleLabel?.font = FONT_M
-//		}
 	}
 
 	public func addTarget(target: AnyObject?, action: Selector) {
@@ -105,7 +94,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 					button.centerY(horizanReferenceView)
 					horizanReferenceView = button
 				}
-				if index == column * row - 1 {
+				if index == count - 1 {
 					button.bottomAlign(view, predicate: "-10")
 				}
 			}
