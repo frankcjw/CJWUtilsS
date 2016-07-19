@@ -35,6 +35,8 @@
 		01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */; };
 		01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */; };
 		47736CB270649366B1DF6914 /* Pods_CJWUtilsS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD954E06D5FF04A29077A51A /* Pods_CJWUtilsS.framework */; };
+		B63D6CE81CF9445B00965E3C /* LFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D6CE71CF9445B00965E3C /* LFViewController.swift */; };
+		B63D6CEA1CF9458100965E3C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D6CE91CF9458100965E3C /* Player.swift */; };
 		B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */; };
 		B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBC1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld */; };
 		B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5BBF1A356CC500D137D1 /* ViewController.swift */; };
@@ -88,6 +90,8 @@
 		01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
 		5B9A09F91082CAF891F97BC4 /* Pods-CJWUtilsS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJWUtilsS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJWUtilsS/Pods-CJWUtilsS.release.xcconfig"; sourceTree = "<group>"; };
 		8BEB095C9EB47C466C84CD6F /* Pods-CJWUtilsS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJWUtilsS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJWUtilsS/Pods-CJWUtilsS.debug.xcconfig"; sourceTree = "<group>"; };
+		B63D6CE71CF9445B00965E3C /* LFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFViewController.swift; sourceTree = "<group>"; };
+		B63D6CE91CF9458100965E3C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B64D5BB51A356CC500D137D1 /* CJWUtilsS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJWUtilsS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D5BB91A356CC500D137D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */,
 				01A8FC601C96914200731483 /* ExampleApp.html */,
 				B64D5BBF1A356CC500D137D1 /* ViewController.swift */,
+				B63D6CE71CF9445B00965E3C /* LFViewController.swift */,
+				B63D6CE91CF9458100965E3C /* Player.swift */,
 				01A8FC621C96923F00731483 /* SecondeViewController.swift */,
 				B64D5BC11A356CC500D137D1 /* Main.storyboard */,
 				B64D5BC41A356CC500D137D1 /* Images.xcassets */,
@@ -487,12 +493,14 @@
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,
 				B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */,
 				01CAEFDE1C3BA737006E221A /* QPKeyChainUtils.swift in Sources */,
+				B63D6CEA1CF9458100965E3C /* Player.swift in Sources */,
 				01CAEFDB1C3BA737006E221A /* QPUISupportUtils.m in Sources */,
 				01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */,
 				01CAEFD91C3BA737006E221A /* QPKey.swift in Sources */,
 				B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */,
 				01CAEFDA1C3BA737006E221A /* QPTableView.swift in Sources */,
 				01CAEFD61C3BA737006E221A /* QPBaseTableViewCell.swift in Sources */,
+				B63D6CE81CF9445B00965E3C /* LFViewController.swift in Sources */,
 				015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */,
 				01CAEFDD1C3BA737006E221A /* QPHttpUtils.swift in Sources */,
 				0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */,
