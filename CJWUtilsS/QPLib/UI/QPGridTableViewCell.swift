@@ -11,7 +11,7 @@ import UIKit
 public protocol QPGridTableViewCellDelegate {
 	func buttonAt(index: Int) -> UIButton
 	func numberOfColumn() -> Int
-	func numberOfRow() -> Int
+	func numberOfItem() -> Int
 }
 
 //extension QPGridTableViewCell: QPGridTableViewCellDelegate {
@@ -34,7 +34,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	public var buttons: [UIButton] = []
 
-	public var row = 0
+	private var row = 0
 	public var column = 0
 
 	override public func setupViews(view: UIView) {
@@ -42,9 +42,14 @@ public class QPGridTableViewCell: QPTableViewCell {
 		super.setupViews(view)
 
 		column = delegate?.numberOfColumn() ?? 0
-		row = delegate?.numberOfRow() ?? 0
 
-		let count = column * row - 1
+		let itemCount = delegate?.numberOfItem() ?? 0
+		row = itemCount / column
+		if (itemCount % column) != 0 {
+			row += 1
+		}
+//		row = delegate?.numberOfRow() ?? 0
+		let count = itemCount// column * row - 1
 		self.backgroundColor = COLOR_WHITE
 		//
 
