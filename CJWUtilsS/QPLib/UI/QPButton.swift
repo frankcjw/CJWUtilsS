@@ -40,25 +40,27 @@ public class CPTopIconButton: QPButton {
 
 	public override func layoutSubviews() {
 		super.layoutSubviews()
-//		verticalCenterImageAndTitle(10)
+		verticalCenterImageAndTitle(10)
 	}
 }
 
 public extension UIButton {
 	public func verticalCenterImageAndTitle(spacing: CGFloat) {
-//		// get the size of the elements here for readability
-//		let imageSize: CGFloat = self.imageView?.frame.size ?? 0;
-//		var titleSize: CGFloat = self.titleLabel?.frame.size ?? 0;
-//
-//		// lower the text and push it left to center it
-//		self.titleEdgeInsets = UIEdgeInsetsMake(0.0, -(imageSize?.width), -(imageSize.height? + spacing / 2), 0.0);
-//
-//		// the text width might have changed (in case it was shortened before due to
-//		// lack of space and isn't anymore now), so we get the frame size again
-//		titleSize = self.titleLabel?.frame.size;
-//
-//		// raise the image and push it right to center it
-//		self.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing / 2), 0.0, 0.0, -titleSize.width);
+		if let imageView = self.imageView {
+			let sizeZero = CGSizeMake(0, 0)
+			// get the size of the elements here for readability
+			let imageSize = imageView.frame.size ;
+			var titleSize = self.titleLabel?.frame.size ?? sizeZero
 
+			// lower the text and push it left to center it
+			self.titleEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, -(imageSize.height + spacing / 2), 0.0);
+
+			// the text width might have changed (in case it was shortened before due to
+			// lack of space and isn't anymore now), so we get the frame size again
+			titleSize = self.titleLabel?.frame.size ?? sizeZero;
+
+			// raise the image and push it right to center it
+			self.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing / 2), 0.0, 0.0, -titleSize.width);
+		}
 	}
 }
