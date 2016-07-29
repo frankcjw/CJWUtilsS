@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+@objc
 public protocol QPGridTableViewCellDelegate {
 	func viewAt(index: Int) -> UIView
 	func numberOfColumn() -> Int
 	func numberOfItem() -> Int
+	optional func heightPredicateForView() -> String
 }
 
 //extension QPGridTableViewCell: QPGridTableViewCellDelegate {
@@ -100,7 +101,11 @@ public class QPGridTableViewCell: QPTableViewCell {
 				}
 			}
 			button.width(view, predicate: "*\(wwwScale)")
-			button.aspectRatio()
+			if let predicate = delegate?.heightPredicateForView?() {
+				button.heightConstrain(predicate)
+			} else {
+				button.aspectRatio()
+			}
 		}
 	}
 }
