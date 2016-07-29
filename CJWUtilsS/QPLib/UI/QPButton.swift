@@ -36,7 +36,7 @@ public class QPButton: UIButton {
 
 }
 
-public class CPTopIconButton: QPButton {
+public class QPTopIconButton: QPButton {
 
 	public override func layoutSubviews() {
 		super.layoutSubviews()

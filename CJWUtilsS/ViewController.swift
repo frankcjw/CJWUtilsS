@@ -57,6 +57,19 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		let flag = getFlag()
 		let str = flag ? "flag = true" : " flag = false"
+
+		let button = QPTopIconButton()
+		self.view.addSubview(button)
+		button.topAlign(view)
+		button.centerX(view)
+		button.widthConstrain("100")
+		button.aspectRatio()
+		// TODO:
+
+		let img = UIImage.fromColor(UIColor.redColor(), width: 50, height: 50)
+		button.setTitle("he1", forState: UIControlState.Normal)
+		button.setImage(img, forState: UIControlState.Normal)
+
 	}
 
 	func getFlag() -> Bool {

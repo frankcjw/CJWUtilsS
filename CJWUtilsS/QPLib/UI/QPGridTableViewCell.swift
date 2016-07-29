@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol QPGridTableViewCellDelegate {
-	func buttonAt(index: Int) -> UIButton
+	func viewAt(index: Int) -> UIView
 	func numberOfColumn() -> Int
 	func numberOfItem() -> Int
 }
@@ -32,7 +32,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	public var delegate: QPGridTableViewCellDelegate?
 
-	public var buttons: [UIButton] = []
+	public var customViews: [UIView] = []
 
 	private var row = 0
 	public var column = 0
@@ -54,10 +54,10 @@ public class QPGridTableViewCell: QPTableViewCell {
 		//
 
 		for index in 0 ... count - 1 {
-			let button = delegate?.buttonAt(index) ?? UIButton()
-			button.tag = index
-			buttons.append(button)
-			view.addSubview(button)
+			let customView = delegate?.viewAt(index) ?? UIView()
+			customView.tag = index
+			customViews.append(customView)
+			view.addSubview(customView)
 		}
 	}
 
@@ -66,18 +66,19 @@ public class QPGridTableViewCell: QPTableViewCell {
 	}
 
 	public func addTarget(target: AnyObject?, action: Selector) {
-		for button in buttons {
-			button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+		for customView in customViews {
+//			button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+			customView.addTapGesture(target, action: action)
 		}
 	}
 
 	override public func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
-		var horizanReferenceView = buttons.first!
-		var verticalReferenceView = buttons.first!
+		var horizanReferenceView = customViews.first!
+		var verticalReferenceView = customViews.first!
 		let wwwScale: CGFloat = CGFloat(1) / CGFloat(column)
-		for button in buttons {
-			let index = buttons.indexOf(button)!
+		for button in customViews {
+			let index = customViews.indexOf(button)!
 			if index == 0 {
 				button.leadingAlign(view, predicate: "0")
 				button.topAlign(view, predicate: "0")

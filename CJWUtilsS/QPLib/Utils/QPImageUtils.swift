@@ -35,8 +35,19 @@ public extension UIImage {
 
 	 - returns: 图片
 	 */
-	public static func fromColor(color: UIColor = UIColor.redColor()) -> UIImage {
-		let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+//	public static func fromColor(color: UIColor = UIColor.redColor()) -> UIImage {
+//		let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+//		UIGraphicsBeginImageContext(rect.size)
+//		let context = UIGraphicsGetCurrentContext()
+//		CGContextSetFillColorWithColor(context, color.CGColor)
+//		CGContextFillRect(context, rect)
+//		let img = UIGraphicsGetImageFromCurrentImageContext()
+//		UIGraphicsEndImageContext()
+//		return img
+//	}
+
+	public static func fromColor(color: UIColor = UIColor.redColor(), width: CGFloat = 1, height: CGFloat = 1) -> UIImage {
+		let rect = CGRect(x: 0, y: 0, width: width, height: height)
 		UIGraphicsBeginImageContext(rect.size)
 		let context = UIGraphicsGetCurrentContext()
 		CGContextSetFillColorWithColor(context, color.CGColor)
