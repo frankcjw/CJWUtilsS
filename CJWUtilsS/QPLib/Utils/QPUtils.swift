@@ -451,10 +451,10 @@ public extension UIView {
 	}
 
 	// MARK: - trailing
-//	@available( *, deprecated, message = "use trailingAlign: instead", renamed = "trailingAlign")
-//	public func trailing(view: UIView, predicate: String = "-8") {
-//		self.trailingAlign(view, predicate: predicate)
-//	}
+	@available( *, deprecated, message = "use trailingAlign: instead", renamed = "trailingAlign")
+	public func trailing(view: UIView, predicate: String = "-8") {
+		self.trailingAlign(view, predicate: predicate)
+	}
 
 	public func trailingAlign(view: UIView) {
 		trailingAlign(view, predicate: "-8")
@@ -485,10 +485,10 @@ public extension UIView {
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
 
-//	@available( *, deprecated, message = "use topConstrain: instead", renamed = "topConstrain")
-//	public func top(view: UIView, predicate: String = "8") {
-//		self.topConstrain(view, predicate: predicate)
-//	}
+	@available( *, deprecated, message = "use topConstrain: instead", renamed = "topConstrain")
+	public func top(view: UIView, predicate: String = "8") {
+		self.topConstrain(view, predicate: predicate)
+	}
 
 	public func topConstrain(view: UIView) {
 		topConstrain(view, predicate: "8")
@@ -509,10 +509,10 @@ public extension UIView {
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
-//	@available( *, deprecated, message = "use bottomAlign: instead", renamed = "bottomAlign")
-//	public func bottom(view: UIView, predicate: String = "-8") {
-//		self.bottomAlign(view, predicate: predicate)
-//	}
+	@available( *, deprecated, message = "use bottomAlign: instead", renamed = "bottomAlign")
+	public func bottom(view: UIView, predicate: String = "-8") {
+		self.bottomAlign(view, predicate: predicate)
+	}
 
 	public func bottomConstrain(view: UIView) {
 		self.bottomConstrain(view, predicate: "0")

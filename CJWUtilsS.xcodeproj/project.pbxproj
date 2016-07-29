@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */; };
+		012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012489B91D4AF6EE00DA3865 /* QPButton.swift */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
+		012489B91D4AF6EE00DA3865 /* QPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPButton.swift; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				0151722B1C4CD23A00EEB9ED /* QPAlert.swift */,
 				01F423481C807A5D009FDA73 /* QPWebViewController.swift */,
 				01E6E8441C8E7A920095A206 /* QPViewDebug.swift */,
+				012489B91D4AF6EE00DA3865 /* QPButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
 				0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
+				012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */,
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,
 				01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */,
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,
