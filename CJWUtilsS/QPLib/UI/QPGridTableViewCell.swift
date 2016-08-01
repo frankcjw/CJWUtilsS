@@ -71,6 +71,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customView.debug()
 			grid.addSubview(customView)
 		}
+		thisView.debug()
 	}
 
 	override public func layoutSubviews() {
@@ -87,7 +88,8 @@ public class QPGridTableViewCell: QPTableViewCell {
 	override public func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
 
-		let padding = delegate?.gridPadding?() ?? 0
+		let tmpPadding = delegate?.gridPadding?() ?? 0
+		let padding = tmpPadding == 0 ? 0 : tmpPadding / 2
 
 		gridContainerView.topAlign(view, predicate: "\(padding)")
 		gridContainerView.bottomAlign(view, predicate: "-\(padding)")
@@ -191,7 +193,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 	public func gridPadding() -> Int {
-		return 4
+		return 8
 	}
 
 	public func numberOfItem() -> Int {
@@ -199,7 +201,7 @@ extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 	}
 
 	public func numberOfColumn() -> Int {
-		return 4
+		return 2
 	}
 
 	public func viewAt(index: Int) -> UIView {
@@ -207,5 +209,9 @@ extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 		label.text = "label \(index)"
 		label.textAlignmentCenter()
 		return label
+	}
+
+	public func heightPredicateForView() -> String {
+		return "100"
 	}
 }
