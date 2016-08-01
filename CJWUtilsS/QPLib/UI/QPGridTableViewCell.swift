@@ -57,8 +57,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 		self.backgroundColor = COLOR_WHITE
 
 		view.addSubview(gridContainerView)
-		let thisView = view
-		let view = gridContainerView
 		for index in 0 ... count - 1 {
 
 			let grid = UIView()
@@ -71,7 +69,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customView.debug()
 			grid.addSubview(customView)
 		}
-		thisView.debug()
 	}
 
 	override public func layoutSubviews() {
