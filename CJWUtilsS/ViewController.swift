@@ -126,7 +126,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		imgv.frame = CGRectMake(imgv.x, offsetY, imgv.width, imgv.height)
 		bv.frame = CGRectMake(bv.x, offsetY, bv.width, bv.height)
 
-		print(offsetY)
 		if offsetY > 0 {
 
 			if offsetY < 100 {
