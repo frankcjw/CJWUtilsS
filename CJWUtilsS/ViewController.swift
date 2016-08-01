@@ -64,11 +64,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.centerX(view)
 		button.widthConstrain("100")
 		button.aspectRatio()
-		// TODO:
-
-		let img = UIImage.fromColor(UIColor.redColor(), width: 50, height: 50)
-		button.setTitle("he1", forState: UIControlState.Normal)
-		button.setImage(img, forState: UIControlState.Normal)
 
 	}
 
@@ -95,7 +90,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("CJWCell") as! CJWCell
+		let cell = QPGridTableViewCell()
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
 	}
@@ -282,4 +277,8 @@ class CJWCell: QPBaseTableViewCell {
 		label2.trailingAlign(view, predicate: "-30")
 		label2.bottomAlign(view, predicate: "-20")
 	}
+}
+
+class GS: QPGridTableViewCell {
+
 }
