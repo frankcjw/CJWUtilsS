@@ -579,6 +579,15 @@ public extension UIView {
 		self.constrainAspectRatio(predicate)
 	}
 
+	public func equalConstrain() {
+		if let view = self.superview {
+			self.leadingAlign(view, predicate: "0")
+			self.trailingAlign(view, predicate: "0")
+			self.topAlign(view, predicate: "0")
+			self.bottomAlign(view, predicate: "0")
+		}
+	}
+
 	/**
 	 设置autoLayout
 	 */
