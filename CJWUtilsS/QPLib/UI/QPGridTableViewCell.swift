@@ -197,11 +197,11 @@ extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 	}
 
 	public func numberOfItem() -> Int {
-		return 13
+		return 4
 	}
 
 	public func numberOfColumn() -> Int {
-		return 2
+		return 4
 	}
 
 	public func viewAt(index: Int) -> UIView {
@@ -209,9 +209,5 @@ extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 		label.text = "label \(index)"
 		label.textAlignmentCenter()
 		return label
-	}
-
-	public func heightPredicateForView() -> String {
-		return "100"
 	}
 }
