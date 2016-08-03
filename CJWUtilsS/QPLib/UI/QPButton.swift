@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 public class QPButton: UIButton {
 	public override func updateConstraints() {
@@ -37,43 +38,59 @@ public class QPButton: UIButton {
 }
 
 public class QPTopIconButton: QPButton {
-
-	let imgv = UIImageView()
-	let title = UILabel()
-
-	public override func setTitle(title: String?, forState state: UIControlState) {
-		self.title.text = title
+	public override func setup() {
+		titleLabel?.numberOfLines = 0
 	}
 
-	public override func setImage(image: UIImage?, forState state: UIControlState) {
-		imgv.image = image
-        imgv.scaleAspectFill()
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		verticalCenterImageAndTitle(4)
+	}
+}
+
+public class QPTopIconButtonPro: QPControl {
+
+	let imageView = UIImageView()
+	let titleLabel = UILabel()
+
+	public func setTitle(title: String?, forState state: UIControlState) {
+		self.titleLabel.text = title
+	}
+
+	public func setImage(image: UIImage?, forState state: UIControlState) {
+		imageView.image = image
+	}
+
+	public override func addTarget(target: AnyObject?, action: Selector, forControlEvents controlEvents: UIControlEvents) {
+		super.addTarget(target, action: action, forControlEvents: controlEvents)
 	}
 
 	public override func setup() {
-		addSubview(imgv)
-		addSubview(title)
-		title.numberOfLines = 0
-		setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
-		setTitle("不换行驶证", forState: UIControlState.Normal)
+		addSubview(imageView)
+		addSubview(titleLabel)
+//		title.textColor = UIColor.whiteColor()
+		titleLabel.numberOfLines = 0
+		titleLabel.font = UIFont.systemFontOfSize(13)
+		titleLabel.textAlignmentCenter()
+		imageView.scaleAspectFill()
 	}
 
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 
-		imgv.topAlign(self, predicate: "4")
-		imgv.aspectRatio()
-		imgv.width(self, predicate: "*0.35")
-		imgv.centerX(self)
-		title.topConstrain(imgv, predicate: "4")
-		title.bottomAlign(self, predicate: "-4")
-		title.leadingAlign(self, predicate: "8")
-		title.trailingAlign(self, predicate: "-8")
-		// verticalCenterImageAndTitle(4)
+		imageView.topAlign(self, predicate: "4")
+		imageView.aspectRatio()
+		imageView.width(self, predicate: "*0.5")
+		imageView.centerX(self)
+		titleLabel.topConstrain(imageView, predicate: "0")
+		titleLabel.bottomAlign(self, predicate: "0")
+		titleLabel.leadingAlign(self, predicate: "8")
+		titleLabel.trailingAlign(self, predicate: "-8")
 	}
 }
 
 public extension UIButton {
+
 	public func verticalCenterImageAndTitle(spacing: CGFloat) {
 		if let imageView = self.imageView {
 			let sizeZero = CGSizeMake(0, 0)

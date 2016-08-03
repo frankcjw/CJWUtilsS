@@ -287,3 +287,27 @@ public extension UITextField {
 		leftViewMode = UITextFieldViewMode.Always;
 	}
 }
+
+public class QPControl: UIControl {
+	override public func updateConstraints() {
+		super.updateConstraints()
+	}
+
+	public func setup() {
+	}
+
+	convenience public init () {
+		self.init(frame: CGRect.zero)
+		setup()
+	}
+
+	override public init(frame: CGRect) {
+		super.init(frame: frame)
+		setup()
+	}
+
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		setup()
+	}
+}

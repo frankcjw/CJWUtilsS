@@ -68,6 +68,9 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customViews.append(customView)
 			grid.addSubview(customView)
 		}
+
+		view.backgroundColor = UIColor.redColor()
+
 	}
 
 	override public func layoutSubviews() {

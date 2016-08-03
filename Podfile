@@ -55,7 +55,7 @@ target 'CJWUtilsS' do
 #    pod 'ImagePickerSheetController'
 #    pod 'CJWLib', :git => 'https://github.com/frankcjw/CJWLib.git'
 #    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
-
+    pod 'SnapKit'
 
 end
 

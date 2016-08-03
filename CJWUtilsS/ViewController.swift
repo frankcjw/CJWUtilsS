@@ -52,17 +52,21 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		showNetworkException()
 		testing()
 
-//		let button = QPTopIconButton()
-//		self.view.addSubview(button)
-//		button.topAlign(view)
-//		button.centerX(view)
-//		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
-//		button.widthConstrain("100")
-//		button.aspectRatio()
-//		button.debug()
-//		button.titleLabel?.numberOfLines = 0
-//		button.setTitle("button\nbutton", forState: UIControlState.Normal)
+		let button = QPTopIconButtonPro()
+		self.view.addSubview(button)
+		button.topAlign(view)
+		button.centerX(view)
+		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+		button.widthConstrain("100")
+		button.aspectRatio()
+		button.debug()
+		button.setTitle("button\nbutton", forState: UIControlState.Normal)
+		button.addTarget(self, action: "accc:", forControlEvents: UIControlEvents.TouchUpInside)
 
+	}
+
+	func accc(sender: QPTopIconButtonPro) {
+		print("accc")
 	}
 
 	func jump() {
@@ -275,7 +279,7 @@ class CJWCell: QPBaseTableViewCell {
 class GS: QPGridTableViewCell {
 
 	override func viewAt(index: Int) -> UIView {
-		let button = QPTopIconButton()
+		let button = QPTopIconButtonPro()
 //		self.view.addSubview(button)
 //		button.topAlign(view)
 //		button.centerX(view)
@@ -284,6 +288,10 @@ class GS: QPGridTableViewCell {
 //		button.titleLabel?.numberOfLines = 0
 //		button.debug()
 		button.superview?.backgroundColor = UIColor.yellowColor()
+
+		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+		button.setTitle("不换\n行驶证", forState: UIControlState.Normal)
+		button.backgroundColor = UIColor.peterRiverColor()
 		return button
 	}
 
