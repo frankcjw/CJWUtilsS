@@ -279,12 +279,11 @@ class GS: QPGridTableViewCell {
 //		self.view.addSubview(button)
 //		button.topAlign(view)
 //		button.centerX(view)
-		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
 //		button.widthConstrain("100")
 //		button.aspectRatio()
-		button.debug()
 //		button.titleLabel?.numberOfLines = 0
-		button.setTitle("button\nbutton", forState: UIControlState.Normal)
+//		button.debug()
+		button.superview?.backgroundColor = UIColor.yellowColor()
 		return button
 	}
 

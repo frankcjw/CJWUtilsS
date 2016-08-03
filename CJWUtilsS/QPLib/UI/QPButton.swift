@@ -38,10 +38,38 @@ public class QPButton: UIButton {
 
 public class QPTopIconButton: QPButton {
 
+	let imgv = UIImageView()
+	let title = UILabel()
+
+	public override func setTitle(title: String?, forState state: UIControlState) {
+		self.title.text = title
+	}
+
+	public override func setImage(image: UIImage?, forState state: UIControlState) {
+		imgv.image = image
+        imgv.scaleAspectFill()
+	}
+
+	public override func setup() {
+		addSubview(imgv)
+		addSubview(title)
+		title.numberOfLines = 0
+		setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+		setTitle("不换行驶证", forState: UIControlState.Normal)
+	}
+
 	public override func layoutSubviews() {
 		super.layoutSubviews()
-		self.titleLabel?.numberOfLines = 0
-		verticalCenterImageAndTitle(10)
+
+		imgv.topAlign(self, predicate: "4")
+		imgv.aspectRatio()
+		imgv.width(self, predicate: "*0.35")
+		imgv.centerX(self)
+		title.topConstrain(imgv, predicate: "4")
+		title.bottomAlign(self, predicate: "-4")
+		title.leadingAlign(self, predicate: "8")
+		title.trailingAlign(self, predicate: "-8")
+		// verticalCenterImageAndTitle(4)
 	}
 }
 
