@@ -49,8 +49,8 @@ public class QPTopIconButton: QPButton {
 
 public class QPTopIconButtonPro: QPControl {
 
-	let imageView = UIImageView()
-	let titleLabel = UILabel()
+	public let imageView = UIImageView()
+	public let titleLabel = UILabel()
 
 	public func setTitle(title: String?, forState state: UIControlState) {
 		self.titleLabel.text = title
