@@ -66,7 +66,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 			let customView = delegate?.viewAt(index) ?? UIView()
 			customView.tag = index
 			customViews.append(customView)
-			customView.debug()
 			grid.addSubview(customView)
 		}
 	}
