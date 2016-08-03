@@ -49,26 +49,20 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
-		log.debug("hello")
-		log.info("fuck")
-
 		showNetworkException()
 		testing()
 
-		let flag = getFlag()
-		let str = flag ? "flag = true" : " flag = false"
+//		let button = QPTopIconButton()
+//		self.view.addSubview(button)
+//		button.topAlign(view)
+//		button.centerX(view)
+//		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+//		button.widthConstrain("100")
+//		button.aspectRatio()
+//		button.debug()
+//		button.titleLabel?.numberOfLines = 0
+//		button.setTitle("button\nbutton", forState: UIControlState.Normal)
 
-		let button = QPTopIconButton()
-		self.view.addSubview(button)
-		button.topAlign(view)
-		button.centerX(view)
-		button.widthConstrain("100")
-		button.aspectRatio()
-
-	}
-
-	func getFlag() -> Bool {
-		return false
 	}
 
 	func jump() {
@@ -90,7 +84,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = QPGridTableViewCell()
+		let cell = GS()
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
 	}
@@ -279,5 +273,19 @@ class CJWCell: QPBaseTableViewCell {
 }
 
 class GS: QPGridTableViewCell {
+
+	override func viewAt(index: Int) -> UIView {
+		let button = QPTopIconButton()
+//		self.view.addSubview(button)
+//		button.topAlign(view)
+//		button.centerX(view)
+		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+//		button.widthConstrain("100")
+//		button.aspectRatio()
+		button.debug()
+//		button.titleLabel?.numberOfLines = 0
+		button.setTitle("button\nbutton", forState: UIControlState.Normal)
+		return button
+	}
 
 }

@@ -40,6 +40,7 @@ public class QPTopIconButton: QPButton {
 
 	public override func layoutSubviews() {
 		super.layoutSubviews()
+		self.titleLabel?.numberOfLines = 0
 		verticalCenterImageAndTitle(10)
 	}
 }
