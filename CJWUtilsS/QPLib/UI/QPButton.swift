@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 public class QPButton: UIButton {
 	public override func updateConstraints() {
