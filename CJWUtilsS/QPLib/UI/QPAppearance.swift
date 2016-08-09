@@ -222,22 +222,16 @@ public extension UISearchBar {
 
 public extension UIButton {
 	public func addRightImage(img: UIImage) {
-//		let img = UIImage(named: "arrow_v")
 		let button = self
-		// button.setImage(img, forState: UIControlState.Normal)
-//		let inset: CGFloat = 15
-//		button.titleLabel?.font = FONT_SMALL
-//		button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
-//		button.imageView?.scaleAspectFit()
-//		button.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-
 		let arrow = UIImageView()
 		arrow.image = img
-		button.addSubview(arrow)
-		arrow.centerY(button.titleLabel!)
-		arrow.heightConstrain("10")
-		arrow.widthConstrain("10")
-		arrow.leadingConstrain(button.titleLabel!, predicate: "4")
+		if let title = button.titleLabel {
+			button.addSubview(arrow)
+			arrow.centerY(title)
+			arrow.heightConstrain("10")
+			arrow.widthConstrain("10")
+			arrow.leadingConstrain(title, predicate: "4")
+		}
 	}
 }
 
