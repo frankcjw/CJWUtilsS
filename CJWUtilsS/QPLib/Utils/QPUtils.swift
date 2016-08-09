@@ -931,3 +931,19 @@ public extension UIView {
 public struct QPConfig {
 	public var hidesBottomBarWhenPushed = true
 }
+
+public extension String {
+	/**
+	 中文转拼音,未完全测试
+
+	 - returns: 拼音字母
+	 */
+	public func toPY() -> String {
+		let mutableString = NSMutableString(string: self) as CFMutableStringRef
+		CFStringTransform(mutableString, nil, kCFStringTransformMandarinLatin, false)
+		CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, false)
+		let string = mutableString as String
+		return string.uppercaseString.stringByReplacingOccurrencesOfString(" ", withString: "")
+	}
+}
+

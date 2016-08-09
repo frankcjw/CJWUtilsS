@@ -379,3 +379,10 @@ public extension UIView {
 		// shadowEffect2()
 	}
 }
+
+public extension UIImageView {
+	func imageWithSize(width: Int, height: Int) {
+		let qnurl = "http://oagxrzzdf.bkt.clouddn.com/123.jpg?imageView2/1/w/\(Int(width))/h/\(Int(height))"
+		self.image(qnurl, placeholder: "")
+	}
+}
