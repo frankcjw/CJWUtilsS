@@ -63,6 +63,11 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.setTitle("button\nbutton", forState: UIControlState.Normal)
 		button.addTarget(self, action: "accc:", forControlEvents: UIControlEvents.TouchUpInside)
 
+		let fv = UIView()
+		fv.backgroundColor = UIColor.yellowColor()
+		fv.frame = CGRectMake(0, 100, 100, 100)
+		floatView.addSubview(fv)
+
 	}
 
 	func accc(sender: QPTopIconButtonPro) {
@@ -278,21 +283,28 @@ class CJWCell: QPBaseTableViewCell {
 
 class GS: QPGridTableViewCell {
 
-	override func viewAt(index: Int) -> UIView {
-		let button = QPTopIconButtonPro()
-//		self.view.addSubview(button)
-//		button.topAlign(view)
-//		button.centerX(view)
-//		button.widthConstrain("100")
-//		button.aspectRatio()
-//		button.titleLabel?.numberOfLines = 0
-//		button.debug()
-		button.superview?.backgroundColor = UIColor.yellowColor()
+	override func numberOfItem() -> Int {
+		return 4
+	}
 
-		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
-		button.setTitle("不换\n行驶证", forState: UIControlState.Normal)
-		button.backgroundColor = UIColor.peterRiverColor()
-		return button
+	override func numberOfColumn() -> Int {
+		return 1
+	}
+
+	func heightPredicateForView() -> String {
+		return "100"
+	}
+
+	override func viewAt(index: Int) -> UIView {
+//		let button = QPTopIconButtonPro()
+//		button.superview?.backgroundColor = UIColor.yellowColor()
+//		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
+//		button.setTitle("不换\n行驶证", forState: UIControlState.Normal)
+//		button.backgroundColor = UIColor.peterRiverColor()
+//		return button
+		let view = UIView()
+		view.debug()
+		return view
 	}
 
 }

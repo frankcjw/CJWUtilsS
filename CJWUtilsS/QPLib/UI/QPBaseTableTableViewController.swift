@@ -63,6 +63,9 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 	private var segment: HMSegmentedControl!
 
+	/// 浮动在vc上的view
+	var floatView = QPFloatView()
+
 	public override func viewWillAppear(animated: Bool) {
 
 		// IQKeyboardManager.sharedManager().enable = false
@@ -96,12 +99,14 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
+		view.addSubview(floatView)
 		self.tableView.emptyDataSetSource = self;
 		self.tableView.emptyDataSetDelegate = self;
 		self.tableView.clearExtraLines()
 //		self.setBackTitle("")
 		request()
 		load()
+
 	}
 
 //    add
@@ -123,7 +128,9 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	override public func scrollViewDidScroll(scrollView: UIScrollView) {
-//		self.view.endEditing(true)
+		// self.view.endEditing(true)
+//		super.scrollViewDidScroll(scrollView)
+		floatView.frame = CGRectMake(0, scrollView.contentOffset.y, view.width, view.height)
 	}
 
 	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -311,3 +311,71 @@ public class QPControl: UIControl {
 		setup()
 	}
 }
+
+public extension UIView {
+	public func backgroundColorClear() {
+		self.backgroundColor = UIColor.clearColor()
+	}
+
+	public func backgroundColorBlack() {
+		self.backgroundColor = UIColor.blackColor()
+	}
+
+	public func backgroundColorWhite() {
+		self.backgroundColor = UIColor.whiteColor()
+	}
+
+	public func backgroundColorHex(hex: String) {
+		let color = UIColor(fromHexCode: hex)
+		self.backgroundColor = color
+	}
+}
+
+// MARK: - 发弹幕
+public extension NSObject {
+	public func showScreenComment(text: String) {
+		let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+		for window in frontToBackWindows {
+			if window.windowLevel == UIWindowLevelNormal {
+
+				let text = text.stringByReplacingOccurrencesOfString("\n", withString: "")
+				let font = UIFont.systemFontOfSize(17)
+
+				let label = UILabel()
+				let ran = CGFloat(rand())
+				let hei: CGFloat = 30
+				let width = text.calculateWidth(font, height: hei)
+
+				label.frame = CGRectMake(320, ran % 290, width, hei);
+				label.text = text
+				label.font = font
+				label.textColor = UIColor.whiteColor()
+				label.numberOfLines = 0
+				label.shadowEffect()
+				window.addSubview(label)
+
+				let time = Double(width / 60.0)
+				UIView.animateWithDuration(time, animations: {
+					label.frame = CGRectMake(-width, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
+
+					}, completion: { (flag) in
+					label.removeFromSuperview()
+				})
+			}
+		}
+	}
+}
+
+public extension UIView {
+
+	/**
+	 背景添加阴影效果
+	 */
+	public func shadowEffect() {
+		self.layer.shadowColor = UIColor.blackColor().CGColor;// shadowColor阴影颜色
+		self.layer.shadowOffset = CGSizeMake(-4, 4);// shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+		self.layer.shadowOpacity = 0.8;// 阴影透明度，默认0
+		self.layer.shadowRadius = 4;// 阴影半径，默认3
+		// shadowEffect2()
+	}
+}
