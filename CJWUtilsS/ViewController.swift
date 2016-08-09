@@ -64,9 +64,18 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.addTarget(self, action: "accc:", forControlEvents: UIControlEvents.TouchUpInside)
 
 		let fv = QPCircleImageView()
+		fv.imageWithSize(200, height: 200)
 		fv.backgroundColor = UIColor.yellowColor()
-		fv.frame = CGRectMake(0, 100, 100, 100)
+//		fv.frame = CGRectMake(0, 100, 100, 100)
 		floatView.addSubview(fv)
+
+		fv.topAlign(floatView, predicate: "100")
+		fv.leadingAlign(floatView)
+		fv.heightConstrain("200")
+		fv.aspectRatio()
+
+		print("fv \(fv.autoWidth)")
+		print("fv \(fv.width)")
 
 	}
 
