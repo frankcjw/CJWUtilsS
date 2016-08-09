@@ -79,24 +79,8 @@ public extension UIView {
 	}
 }
 
-public extension UIImageView {
-	public func toCircleImageView() {
-		self.toCircleView()
-	}
-
-	public func scaleAspectFit() {
-		self.contentMode = UIViewContentMode.ScaleAspectFit
-		self.clipsToBounds = true
-	}
-
-	public func scaleAspectFill() {
-		self.contentMode = UIViewContentMode.ScaleAspectFill
-		self.clipsToBounds = true
-	}
-}
-
 public extension UIView {
-	public func cornorRadius(radius: CGFloat) {
+	public func cornorRadius(radius: CGFloat = 3) {
 		layer.cornerRadius = radius
 		layer.masksToBounds = true
 	}
@@ -220,21 +204,7 @@ public extension UISearchBar {
 	}
 }
 
-public extension UIButton {
-	public func addRightImage(img: UIImage) {
-		let button = self
-		let arrow = UIImageView()
-		arrow.image = img
-		if let title = button.titleLabel {
-			button.addSubview(arrow)
-			arrow.centerY(title)
-			arrow.heightConstrain("10")
-			arrow.widthConstrain("10")
-			arrow.leadingConstrain(title, predicate: "4")
-		}
-	}
-}
-
+/// 有一定padding的textfield
 public class QPTextField: UITextField {
 	override public func layoutSubviews() {
 		super.layoutSubviews()
@@ -275,6 +245,11 @@ public class QPPaddingTextField: UITextField {
 }
 
 public extension UITextField {
+	/**
+	 简单的添加左边padding
+
+	 - parameter padding: 左边padding
+	 */
 	public func leftPadding(padding: CGFloat) {
 		let paddingView: UIView = UIView(frame: CGRectMake(0, 0, padding, 20))
 		leftView = paddingView
@@ -327,6 +302,11 @@ public extension UIView {
 
 // MARK: - 发弹幕
 public extension NSObject {
+	/**
+	 发弹幕
+
+	 - parameter text: 弹幕内容
+	 */
 	public func showScreenComment(text: String) {
 		let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
 		for window in frontToBackWindows {
@@ -374,9 +354,3 @@ public extension UIView {
 	}
 }
 
-public extension UIImageView {
-	func imageWithSize(width: Int, height: Int) {
-		let qnurl = "http://oagxrzzdf.bkt.clouddn.com/123.jpg?imageView2/1/w/\(Int(width))/h/\(Int(height))"
-		self.image(qnurl, placeholder: "")
-	}
-}

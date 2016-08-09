@@ -63,7 +63,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.setTitle("button\nbutton", forState: UIControlState.Normal)
 		button.addTarget(self, action: "accc:", forControlEvents: UIControlEvents.TouchUpInside)
 
-		let fv = UIView()
+		let fv = QPCircleImageView()
 		fv.backgroundColor = UIColor.yellowColor()
 		fv.frame = CGRectMake(0, 100, 100, 100)
 		floatView.addSubview(fv)
