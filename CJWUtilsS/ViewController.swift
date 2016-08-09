@@ -75,7 +75,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		fv.aspectRatio()
 
 		print("fv \(fv.autoWidth)")
-		print("fv \(fv.width)")
+		let ss = "你是个傻逼吗?嘗試下繁體字,yingwen".toPY()
+		print("fv \(fv.width) \(ss)")
 
 	}
 
