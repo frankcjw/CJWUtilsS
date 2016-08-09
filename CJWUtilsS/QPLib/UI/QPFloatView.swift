@@ -8,9 +8,9 @@
 
 import UIKit
 
-class QPFloatView: UIView {
+public class QPFloatView: UIView {
 
-	override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+	override public func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
 		let subview = super.hitTest(point, withEvent: event)
 		let flag = (subview == self)
 		if !flag {

@@ -64,7 +64,7 @@ public class QPBaseTableViewController: UITableViewController {
 	private var segment: HMSegmentedControl!
 
 	/// 浮动在vc上的view
-	var floatView = QPFloatView()
+	public let floatView = QPFloatView()
 
 	public override func viewWillAppear(animated: Bool) {
 
