@@ -221,7 +221,7 @@ public extension UISearchBar {
 }
 
 public extension UIButton {
-	func addRightImage(img: UIImage) {
+	public func addRightImage(img: UIImage) {
 //		let img = UIImage(named: "arrow_v")
 		let button = self
 		// button.setImage(img, forState: UIControlState.Normal)
