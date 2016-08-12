@@ -44,8 +44,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 
-//		tableView.aspectRatio()
-
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
