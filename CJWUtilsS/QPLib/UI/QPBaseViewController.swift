@@ -56,6 +56,29 @@ public extension UIViewController {
 }
 
 public extension UIViewController {
+	public func presentViewControllerFromKeyWindow() {
+//        let vc = CJWWebViewController()
+//        vc.url = "http://www.qq.com"
+		let vc = self
+		let barButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: vc, action: #selector(UIViewController.dismiss))
+		vc.navigationItem.leftBarButtonItem = barButton
+		let navi = UINavigationController(rootViewController: vc)
+
+		UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(navi, animated: true, completion: { () -> Void in
+			//
+		})
+	}
+}
+
+public extension UIViewController {
+	public func dismiss() {
+		self.dismissViewControllerAnimated(true) {
+			//
+		}
+	}
+}
+
+public extension UIViewController {
 	/**
 	 安全的push view controller
 

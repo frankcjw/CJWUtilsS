@@ -77,7 +77,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		print("fv \(fv.autoWidth)")
 		let ss = "你是个傻逼吗?嘗試下繁體字,yingwen".toPY()
 		print("fv \(fv.width) \(ss)")
-
 	}
 
 	func accc(sender: QPTopIconButtonPro) {
@@ -91,7 +90,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -179,7 +177,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			//
 //		}
 		self.view.showHUDTemporary("sdsds")
-
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
