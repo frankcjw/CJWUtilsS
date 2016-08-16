@@ -947,3 +947,17 @@ public extension String {
 	}
 }
 
+public extension String {
+	func addParam(param: [String: AnyObject]?) -> String {
+		if let param = param {
+			let URL = NSURL(string: self)
+			let mutableURLRequest = NSMutableURLRequest(URL: URL!)
+			let paramUrl = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: param).0.URLString
+//			self = paramUrl
+			return paramUrl
+		} else {
+			return self;
+		}
+	}
+}
+
