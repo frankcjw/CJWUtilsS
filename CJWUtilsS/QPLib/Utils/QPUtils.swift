@@ -12,6 +12,7 @@ import NSDate_TimeAgo
 import FLKAutoLayout
 import SwiftyJSON
 import PhoneNumberKit
+import Alamofire
 
 public let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
 public let UIControlStateNormal = UIControlState.Normal
