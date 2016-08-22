@@ -109,3 +109,40 @@ public extension UITableViewCell {
 		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
 	}
 }
+
+public class QPConfirmTableViewCell: QPTableViewCell {
+	public let button = UIButton()
+	public let label = UILabel()
+
+	override public func setupViews(view: UIView) {
+		super.setupViews(view)
+
+		view.addSubview(button)
+		view.addSubview(label)
+
+		button.backgroundColor = MAIN_COLOR
+		button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		backgroundColorClear()
+
+		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
+
+	}
+
+	override public func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+
+		label.heightConstrain("40")
+		label.leadingAlign(view, predicate: "16")
+		label.topAlign(view, predicate: "20")
+		label.trailingAlign(view, predicate: "-16")
+		label.bottomAlign(view, predicate: "-4")
+
+		button.heightConstrain("40")
+		button.leadingAlign(view, predicate: "16")
+		button.topAlign(view, predicate: "20")
+		button.trailingAlign(view, predicate: "-16")
+		button.bottomAlign(view, predicate: "-4")
+
+	}
+
+}
