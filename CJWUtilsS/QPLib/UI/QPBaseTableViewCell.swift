@@ -112,7 +112,7 @@ public extension UITableViewCell {
 
 public class QPConfirmTableViewCell: QPTableViewCell {
 	public let button = UIButton()
-	public let label = UILabel()
+	private let label = UILabel()
 
 	override public func setupViews(view: UIView) {
 		super.setupViews(view)
