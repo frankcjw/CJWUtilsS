@@ -14,6 +14,8 @@ import Alamofire
 import WebViewJavascriptBridge
 import Mirror
 import FXBlurView
+import SwiftyRSA
+import CryptoSwift
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -47,34 +49,9 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
 
-		showNetworkException()
 		testing()
+		rsa()
 
-		let button = QPTopIconButtonPro()
-		self.view.addSubview(button)
-		button.topAlign(view)
-		button.centerX(view)
-		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
-		button.widthConstrain("100")
-		button.aspectRatio()
-		button.debug()
-		button.setTitle("button\nbutton", forState: UIControlState.Normal)
-		button.addTarget(self, action: "accc:", forControlEvents: UIControlEvents.TouchUpInside)
-
-		let fv = QPCircleImageView()
-		fv.imageWithSize(200, height: 200)
-		fv.backgroundColor = UIColor.yellowColor()
-//		fv.frame = CGRectMake(0, 100, 100, 100)
-		floatView.addSubview(fv)
-
-		fv.topAlign(floatView, predicate: "100")
-		fv.leadingAlign(floatView)
-		fv.heightConstrain("200")
-		fv.aspectRatio()
-
-		print("fv \(fv.autoWidth)")
-		let ss = "你是个傻逼吗?嘗試下繁體字,yingwen".toPY()
-		print("fv \(fv.width) \(ss)")
 	}
 
 	func accc(sender: QPTopIconButtonPro) {
@@ -103,13 +80,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
 	}
-
-//	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//		cell.setup()
-//		cell.label.setNeedsUpdateConstraints()
-//		cell.label.updateConstraintsIfNeeded()
-//		return cell
-//	}
 
 	var imgv = UIImageView()
 	let bv = FXBlurView()
@@ -199,6 +169,54 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		for tag in tags {
 			print(tag)
 		}
+	}
+
+	func rsa() {
+//		let rsa = SwiftyRSA()
+		let bundle = NSBundle.mainBundle()
+		let pubPath = bundle.pathForResource("rsa_public_key", ofType: "pem")!
+		let pubString = try? String(contentsOfFile: pubPath, encoding: NSUTF8StringEncoding)
+
+		let str = "Frank"
+		let pemString = "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAuG5B006eaxeYsx+njeNNJvPc\nPqie9WodNyEUjicQEFjOdQKhVK2WkM4DuMqVl43s+I5bS28BTdSf4OiZaH6Xn93f\nZy3sbc/dKcamE66MONnsVrfVL/dXYRGM7XCPruLKpQnuzWHIZIaIiRAZ1mXGJ6ig\nhW84bWRLMPWPYC2JZQIDAQAB\n-----END PUBLIC KEY-----\n"
+		let encryptedString = try! SwiftyRSA.encryptString(str, publicKeyPEM: pemString)
+
+//		let priPath = bundle.pathForResource("rsa_private_key", ofType: "pem")!
+//		let priString = try? String(contentsOfFile: priPath, encoding: NSUTF8StringEncoding)
+
+//		let signatureString = try! SwiftyRSA.signString(str, privateKeyPEM: pemString)
+//		print("signatureString\n\(signatureString)")
+
+		var param: [String: AnyObject] = [:]
+		param["key1"] = "Value1"
+		param["key2"] = "Value2"
+		param["abc"] = "abc"
+		param["zzz"] = "fff"
+
+		var urlParam = ""
+		for (key, value) in Array(param).sort({ $0.0 < $1.0 }) {
+			urlParam = urlParam + "\(key)=\(value)&"
+		}
+		let url = (urlParam as NSString).substringToIndex(urlParam.length() - 1)
+
+		var sign = url.md5()
+		sign.urlEncode()
+
+		let secret_key = sign
+//        SwiftyRSA.encr
+		let param_key = try! SwiftyRSA.encryptString(url, publicKeyPEM: pemString)
+//		print("\(secret_key)\n\(param_key)")
+		let requestUrl = "secret_key=\(secret_key)&param_key=\(param_key)"
+		print("\(requestUrl)")
+
+//		for key in sortedKeys {
+//		}
+//		let urlParam = "key1=value1&key2=value2"
+
+		let count = "MIICoTAbBgkqhkiG9w0BBQMwDgQIC2bS+trZgQQCAggABIICgHiNSce6u9Z4Lg3PJAwvyB4q/7K5Ik4oTy39c9fBKyXnacZ5Vq8gqKhbhc/yOhL80X34/F6vea2iEFH/Qdajky6b5jPvvHMioNc0kD86qcMAsIJXBtWFt9FpswdFP+u/4MacoTFYDEg5h0vNum8HRX4rOPtIgjSbRFdVr6qaw2JXODb2mYfB8LqAy56kvQx2z9rq+n0knsACJZSyCFouIPg343+uxsUdhzdpvtEgF9Jd5Zmz3Vg13LSW/2xIAS6Niw4mhFLSfDjbM5FofM/UEfKHYpY8hlphANgtzHv972ca0nmiwb01lrT9AngkdSNniDRmUUQLW9SbXrM9tlFq55lyKar2cxLdio2ERz2N0RzmkwqEmY+M+mQkWh1ZZA08rbsLiuyu59htTjX5+pte+O2mQ9DvBbxbvSMppWV4pMtsfECLtpseyUjnRKrmdiFpoq0W8FLat/F9SaYM4tqpoPv0EyUH+nydWKrzvZ+zjtVzKimZr/fMbblR35KA5n3vildqGvGwdkHmq4QHzeUl3fj404EKe11YEyUv1jWn2l+gn1GDKB7XacNRIjVPvsAQPGtSB1vF7TGhUoLIXu+7nxzWf5P/+4jRFreGh+Z6zfZy/Gt1vPw8aAsmBTxPSnX1nBBtZdRvGZFx0a/CFeQJnJ7YDLadL+JGOjhE+5qKiKhoEOLIwYLYF7tKKPdrqqo54KiOzcuczJLr8W1bi7/4LWsEkKySJ+zfC43dnkG6xXhYt801nHWzzE0UOPVwucmNS01FforPytoZuzFdvhqgdXLhMEaJ4sjSYAV+r2OC6lPz1IUUXqX4NGvg8HDaJmoi3ex5ViRcrf1+kBZhnunz3tw="
+
+		let count2 = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCERFbQ1ETtXKZuDZWd0rz1koiC3GOVehyJKlWUZy95sVR4oDu7/q/MDWbUFY6gK+5ZuQkkUcAzv8vX8AgDE9X2SRswlJvnWc4mUH+gTFuXXRmpDr1TA/pL/PR+ETqi9hRztyv+fzwNh2G5dPtI/zBtM/8Lgiqc9hySzChDodcvPwIDAQAB"
+		print("\(count.length()) \(count2.length())")
 	}
 }
 

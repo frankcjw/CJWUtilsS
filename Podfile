@@ -56,6 +56,7 @@ target 'CJWUtilsS' do
 #    pod 'CJWLib', :git => 'https://github.com/frankcjw/CJWLib.git'
 #    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
     pod 'SnapKit'
+    pod 'SwiftyRSA'
 
 end
 

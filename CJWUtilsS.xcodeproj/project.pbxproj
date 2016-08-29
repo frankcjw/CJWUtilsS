@@ -35,6 +35,8 @@
 		01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD01C3BA737006E221A /* QPPushUtils.swift */; };
 		01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD11C3BA737006E221A /* QPUtils.swift */; };
 		01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6E8441C8E7A920095A206 /* QPViewDebug.swift */; };
+		01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */; };
+		01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */; };
 		01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423481C807A5D009FDA73 /* QPWebViewController.swift */; };
 		01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */; };
 		01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */; };
@@ -93,6 +95,8 @@
 		01CAEFD01C3BA737006E221A /* QPPushUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPushUtils.swift; sourceTree = "<group>"; };
 		01CAEFD11C3BA737006E221A /* QPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPUtils.swift; sourceTree = "<group>"; };
 		01E6E8441C8E7A920095A206 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
+		01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
+		01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key.pem; sourceTree = "<group>"; };
 		01F423481C807A5D009FDA73 /* QPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPWebViewController.swift; sourceTree = "<group>"; };
 		01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertUtils.swift; sourceTree = "<group>"; };
 		01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				01CAEFB91C3BA737006E221A /* QPLib */,
 				B64D5BDD1A3570C100D137D1 /* utils */,
 				B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */,
+				01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */,
+				01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */,
 				01A8FC601C96914200731483 /* ExampleApp.html */,
 				B64D5BBF1A356CC500D137D1 /* ViewController.swift */,
 				01A8FC621C96923F00731483 /* SecondeViewController.swift */,
@@ -398,6 +404,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B64D5BC31A356CC500D137D1 /* Main.storyboard in Resources */,
+				01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */,
+				01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */,
 				B64D5BC81A356CC500D137D1 /* LaunchScreen.xib in Resources */,
 				B64D5BC51A356CC500D137D1 /* Images.xcassets in Resources */,
 				01A8FC611C96914200731483 /* ExampleApp.html in Resources */,
