@@ -144,6 +144,18 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		self.presentViewController(wb, animated: true) { () -> Void in
 //			//
 //		}
+
+		// text.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(integer:(NSUnderlineStyle.StyleDouble).toRaw()), range: NSMakeRange(0, text.length))
+
+		let button = UIButton(frame: CGRectMake(0, 0, 100, 100))
+		view.addSubview(button)
+		let dashed = NSUnderlineStyle.PatternDash.rawValue | NSUnderlineStyle.StyleThick.rawValue
+
+		let attribs = [NSUnderlineStyleAttributeName: dashed, NSUnderlineColorAttributeName: UIColor.whiteColor()];
+
+		let attrString = NSAttributedString(string: "广州 - 珠海", attributes: attribs)
+
+		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
 		self.view.showHUDTemporary("sdsds")
 	}
 
