@@ -45,6 +45,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		super.viewDidLoad()
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
+//		self.tableView.registerClass(GS.self, forCellReuseIdentifier: "GS")
 
 //		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
 		log.outputLogLevel = .Debug
@@ -76,7 +77,11 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = GS()
+//		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
+
+		let cell = GS(rowCount: 37)
+//        drawcell
+//		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
 	}
@@ -319,11 +324,11 @@ class CJWCell: QPBaseTableViewCell {
 class GS: QPGridTableViewCell {
 
 	override func numberOfItem() -> Int {
-		return 4
+		return 0
 	}
 
 	override func numberOfColumn() -> Int {
-		return 1
+		return 4
 	}
 
 	func heightPredicateForView() -> String {
@@ -331,6 +336,7 @@ class GS: QPGridTableViewCell {
 	}
 
 	override func viewAt(index: Int) -> UIView {
+		print("idx \(index)")
 //		let button = QPTopIconButtonPro()
 //		button.superview?.backgroundColor = UIColor.yellowColor()
 //		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)

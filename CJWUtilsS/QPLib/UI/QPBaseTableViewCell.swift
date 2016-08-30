@@ -28,7 +28,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 	/**
 	 为contentView添加autoLayout
 	 */
-	private func setupAutoLayout() {
+	func setupAutoLayout() {
 		self.contentView.setToAutoLayout()
 		contentView.alignLeading("0", trailing: "0", toView: self)
 	}
@@ -43,7 +43,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 
 	 - returns: nil
 	 */
-	private func initCell() {
+	func initCell() {
 		setupViews(contentView)
 		setupAutoLayout()
 		self.selectionStyle = UITableViewCellSelectionStyle.None

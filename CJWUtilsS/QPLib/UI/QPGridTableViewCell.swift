@@ -40,23 +40,45 @@ public class QPGridTableViewCell: QPTableViewCell {
 	public var column = 0
 	private var count = 0
 
+	private var privateRowCount = 0;
+
 	let gridContainerView = UIView()
+
+	public convenience init(rowCount: Int) {
+		self.init()
+		privateRowCount = rowCount
+		grids.removeAll()
+		for sv in contentView.subviews {
+			sv.removeFromSuperview()
+		}
+		initCell()
+	}
 
 	override public func setupViews(view: UIView) {
 		super.setupViews(view)
 		self.delegate = self
 		column = delegate?.numberOfColumn() ?? 0
 
-		let itemCount = delegate?.numberOfItem() ?? 0
-		row = itemCount / column
-		if (itemCount % column) != 0 {
-			row += 1
+		var itemCount = 0
+
+		if privateRowCount > 0 {
+			itemCount = privateRowCount
+		} else {
+			itemCount = delegate?.numberOfItem() ?? 0
 		}
+//		row = itemCount / column
+//		if (itemCount % column) != 0 {
+//			row += 1
+//		}
 		// row = delegate?.numberOfRow() ?? 0
 		count = itemCount
+		print("count \(count)")
 		self.backgroundColor = COLOR_WHITE
 
 		view.addSubview(gridContainerView)
+		if count == 0 {
+			return
+		}
 		for index in 0 ... count - 1 {
 
 			let grid = UIView()
@@ -67,12 +89,33 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customView.tag = index
 			customViews.append(customView)
 			grid.addSubview(customView)
+			grid.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
 		}
 	}
 
 	override public func layoutSubviews() {
 		super.layoutSubviews()
 	}
+
+//	func drawGrids(count: Int) {
+//		grids.removeAll()
+////        gridContainerView.remov
+//		for sv in gridContainerView.subviews {
+//			sv.removeFromSuperview()
+//		}
+//
+//		for index in 0 ... count - 1 {
+//
+//			let grid = UIView()
+//			grids.append(grid)
+//			gridContainerView.addSubview(grid)
+//
+//			let customView = delegate?.viewAt(index) ?? UIView()
+//			customView.tag = index
+//			customViews.append(customView)
+//			grid.addSubview(customView)
+//		}
+//	}
 
 	public func addTarget(target: AnyObject?, action: Selector) {
 		for customView in customViews {
@@ -98,6 +141,8 @@ public class QPGridTableViewCell: QPTableViewCell {
 		let wwwScale: CGFloat = CGFloat(1) / CGFloat(column)
 
 		let view = gridContainerView
+
+		print("grids \(grids.count)")
 		for grid in grids {
 			let index = grids.indexOf(grid)!
 
