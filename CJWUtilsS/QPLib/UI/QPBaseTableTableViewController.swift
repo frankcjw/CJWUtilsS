@@ -106,8 +106,7 @@ public class QPBaseTableViewController: UITableViewController {
 //		self.setBackTitle("")
 		request()
 		load()
-		floatView.frame = CGRectMake(0, scrollView.contentOffset.y, view.width, view.height)
-
+		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
 	}
 
 //    add
