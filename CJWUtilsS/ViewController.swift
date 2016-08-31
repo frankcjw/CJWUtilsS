@@ -79,7 +79,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
 
-		let cell = GS(rowCount: 37)
+		let cell = GS()
 //        drawcell
 //		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()

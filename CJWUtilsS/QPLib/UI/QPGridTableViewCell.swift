@@ -37,7 +37,11 @@ public protocol QPGridTableViewCellDelegate {
 
 public class QPGridTableViewCell: QPTableViewCell {
 
-	public var delegate: QPGridTableViewCellDelegate?
+	public var delegate: QPGridTableViewCellDelegate? {
+		didSet {
+			print("did Set")
+		}
+	}
 	public var customViews: [UIView] = []
 	var grids: [UIView] = []
 
@@ -49,8 +53,9 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	let gridContainerView = UIView()
 
-	public convenience init(rowCount: Int) {
+	public convenience init(rowCount: Int, delegate: QPGridTableViewCellDelegate) {
 		self.init()
+		self.delegate = delegate
 		privateRowCount = rowCount
 		grids = []
 		for sv in contentView.subviews {
@@ -61,7 +66,9 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	override public func setupViews(view: UIView) {
 		super.setupViews(view)
-		self.delegate = self
+		if self.delegate == nil {
+			self.delegate = self
+		}
 		column = delegate?.numberOfColumn() ?? 0
 
 		var itemCount = 0
