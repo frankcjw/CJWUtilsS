@@ -11,6 +11,11 @@ import UIKit
 public protocol QPGridTableViewCellDelegate {
 	func viewAt(index: Int) -> UIView
 	func numberOfColumn() -> Int
+	/**
+	 如果不固定grid的数量返回0!!!!!!
+
+	 - returns: grids的数量
+	 */
 	func numberOfItem() -> Int
 	optional func heightPredicateForView() -> String
 	optional func gridPadding() -> Int
@@ -47,7 +52,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 	public convenience init(rowCount: Int) {
 		self.init()
 		privateRowCount = rowCount
-		grids.removeAll()
+		grids = []
 		for sv in contentView.subviews {
 			sv.removeFromSuperview()
 		}
@@ -60,7 +65,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 		column = delegate?.numberOfColumn() ?? 0
 
 		var itemCount = 0
-
 		if privateRowCount > 0 {
 			itemCount = privateRowCount
 		} else {
@@ -72,7 +76,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 //		}
 		// row = delegate?.numberOfRow() ?? 0
 		count = itemCount
-		print("count \(count)")
 		self.backgroundColor = COLOR_WHITE
 
 		view.addSubview(gridContainerView)
@@ -142,7 +145,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 		let view = gridContainerView
 
-		print("grids \(grids.count)")
 		for grid in grids {
 			let index = grids.indexOf(grid)!
 
