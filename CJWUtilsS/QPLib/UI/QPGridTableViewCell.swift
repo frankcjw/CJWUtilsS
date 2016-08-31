@@ -92,7 +92,6 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customView.tag = index
 			customViews.append(customView)
 			grid.addSubview(customView)
-			grid.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
 		}
 	}
 
