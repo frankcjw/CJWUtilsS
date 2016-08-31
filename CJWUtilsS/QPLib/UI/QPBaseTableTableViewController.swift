@@ -81,6 +81,11 @@ public class QPBaseTableViewController: UITableViewController {
 		super.viewWillAppear(animated)
 	}
 
+	override public func viewDidAppear(animated: Bool) {
+		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
+		super.viewDidAppear(animated)
+	}
+
 	public override func viewWillDisappear(animated: Bool) {
 		// if shouldHideNavigationBar {
 		// self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -131,6 +136,7 @@ public class QPBaseTableViewController: UITableViewController {
 		// self.view.endEditing(true)
 //		super.scrollViewDidScroll(scrollView)
 		floatView.frame = CGRectMake(0, scrollView.contentOffset.y, view.width, view.height)
+		scrollView.bringSubviewToFront(floatView)
 	}
 
 	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
