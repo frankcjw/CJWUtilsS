@@ -242,7 +242,7 @@ extension QPGridTableViewCell: QPGridTableViewCellDelegate {
 	}
 
 	public func numberOfItem() -> Int {
-		return 4
+		return 0
 	}
 
 	public func numberOfColumn() -> Int {
