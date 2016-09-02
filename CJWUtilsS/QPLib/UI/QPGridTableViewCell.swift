@@ -37,11 +37,7 @@ public protocol QPGridTableViewCellDelegate {
 
 public class QPGridTableViewCell: QPTableViewCell {
 
-	public var delegate: QPGridTableViewCellDelegate? {
-		didSet {
-			print("did Set")
-		}
-	}
+	public var delegate: QPGridTableViewCellDelegate?
 	public var customViews: [UIView] = []
 	var grids: [UIView] = []
 
