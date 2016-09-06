@@ -234,7 +234,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter succes: 成功返回JSON
 	 - parameter fail:   失败
 	 */
-	func uploadFile(let url: String, param: [String: AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
+	public func uploadFile(let url: String, param: [String: AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 
 		let URL = NSURL(string: url)
 		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
@@ -260,6 +260,58 @@ public class QPHttpUtils: NSObject {
 				print(encodingError)
 			}
 		})
+	}
+
+	func uploadImage(url: String, param: [String: AnyObject]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
+
+		if let URL = NSURL(string: url.addParam(param)) {
+			let mutableURLRequest = NSMutableURLRequest(URL: URL)
+			mutableURLRequest.HTTPMethod = "POST"
+			Alamofire.URLRequestConvertible
+			let encoding: ParameterEncoding = .URL
+			let encodedURLRequest = encoding.encode(mutableURLRequest, parameters: param).0
+			log.debug("url:\(encodedURLRequest)")
+			log.debug("param \(param) imageName:\(imageName) \(encodedURLRequest)")
+
+			Alamofire.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
+				var iii = 0
+				for image in images {
+					// let index = images.indexOf(image)!
+					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+					let name = imageName[iii]
+					multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
+					iii += 1
+				}
+				// multipartFormData.appendBodyPart(data: <#T##NSData#>, name: <#T##String#>, fileName: <#T##String#>, mimeType: <#T##String#>)
+				}, encodingCompletion: { encodingResult in
+				switch encodingResult {
+				case .Success(let upload, _, _):
+					upload.responseJSON { response in
+						// debugPrint(response)
+						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
+						log.debug("ss \(datastring)")
+						if let value = datastring {
+							let json = JSON(value)
+							success(response: json)
+						} else {
+							fail()
+						}
+						if let value = response.result.value {
+							let json = JSON(value)
+							success(response: json)
+						} else {
+							fail()
+						}
+					}
+				case .Failure(let encodingError):
+					print(encodingError)
+					log.error("encodingError \(encodingError)")
+					fail()
+				}
+			})
+		} else {
+			fail()
+		}
 	}
 
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){
