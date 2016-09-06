@@ -32,6 +32,49 @@ public class QPHttpUtils: NSObject {
 
 	var sessionKey = ""
 
+	let manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+	public func testingNW() {
+
+		let url = "http://quickplain.asuscomm.com:9090/network"
+
+//        NSURLSessionConfiguration.
+//		Alamofire.Manager()
+
+		Alamofire.request(.POST, url, parameters: ["ss": "s3"])
+		manager.request(.POST, url, parameters: ["ss": "s4"])
+
+		oldHttpRequest(url, param: ["ss": "s1"], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+		oldHttpRequest(url, param: ["ss": "s5"], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+		let img = UIImage(color: UIColor.redColor(), cornerRadius: 30)
+		uploadImage(url, param: ["ss": "s2"], imageName: ["image"], images: [img], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+
+		log.error("测试了")
+	}
+
+	private func mgr() -> Manager {
+
+		let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.example.app.background")
+
+//		let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+		let manager = Alamofire.Manager(configuration: configuration)
+//		Alamofire.Manager
+//        manager.up
+		return manager
+	}
+
 	private let QPHttpCacheName = "QPCache"
 
 //    var httpManager = AFHTTPRequestOperationManager()
@@ -72,7 +115,8 @@ public class QPHttpUtils: NSObject {
 	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) -> String {
 		let httpId = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? "NoUUidNotification"
 		let center = NSNotificationCenter.defaultCenter()
-		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+//        Alamofire.req
+		manager.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
 					center.postNotificationName(httpId, object: nil)
@@ -174,16 +218,16 @@ public class QPHttpUtils: NSObject {
 	 */
 	public func newHttpRequest(url: String, param: [String: AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
-		let sss = AFHTTPRequestSerializer()
-		let req = NSURLRequest(URL: NSURL(string: url)!)
-//		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
-		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
-
-		let mgr = AFHTTPSessionManager()
-
-		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
-			print("\(response) \(obj) \(error)")
-		}
+//		let sss = AFHTTPRequestSerializer()
+//		let req = NSURLRequest(URL: NSURL(string: url)!)
+////		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
+//		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
+//
+//		let mgr = AFHTTPSessionManager()
+//
+//		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
+//			print("\(response) \(obj) \(error)")
+//		}
 
 		/// 缓存用的key
 		let key = "\(url)\(param)"
@@ -273,21 +317,19 @@ public class QPHttpUtils: NSObject {
 			log.debug("url:\(encodedURLRequest)")
 			log.debug("param \(param) imageName:\(imageName) \(encodedURLRequest)")
 
-			Alamofire.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
+//			manager.request(.POST, url, parameters: param)
+			manager.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
 				var iii = 0
 				for image in images {
-					// let index = images.indexOf(image)!
 					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
 					let name = imageName[iii]
 					multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
 					iii += 1
 				}
-				// multipartFormData.appendBodyPart(data: <#T##NSData#>, name: <#T##String#>, fileName: <#T##String#>, mimeType: <#T##String#>)
 				}, encodingCompletion: { encodingResult in
 				switch encodingResult {
 				case .Success(let upload, _, _):
 					upload.responseJSON { response in
-						// debugPrint(response)
 						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
 						log.debug("ss \(datastring)")
 						if let value = datastring {

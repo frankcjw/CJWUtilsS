@@ -74,12 +74,20 @@ public class QPTopIconButtonPro: QPControl {
 		imageView.scaleAspectFill()
 	}
 
+	public func imageSizePredicate() -> String {
+		return "*0.5"
+	}
+
+	public func imageTopAlignPreidicate() -> String {
+		return "4"
+	}
+
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 
-		imageView.topAlign(self, predicate: "4")
+		imageView.topAlign(self, predicate: imageTopAlignPreidicate())
 		imageView.aspectRatio()
-		imageView.width(self, predicate: "*0.5")
+		imageView.width(self, predicate: imageSizePredicate())
 		imageView.centerX(self)
 		titleLabel.topConstrain(imageView, predicate: "0")
 		titleLabel.bottomAlign(self, predicate: "0")

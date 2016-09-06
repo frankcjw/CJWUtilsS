@@ -35,7 +35,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	override func viewDidLoad() {
 
-		log.remoteUrl = "http://192.168.1.223:9090"
+//		log.remoteUrl = "http://192.168.1.223:9090"
 		let st = Hello()
 		let mirror = Mirror(st)
 
@@ -324,7 +324,7 @@ class CJWCell: QPBaseTableViewCell {
 class GS: QPGridTableViewCell {
 
 	override func numberOfItem() -> Int {
-		return 0
+		return 10
 	}
 
 	override func numberOfColumn() -> Int {
