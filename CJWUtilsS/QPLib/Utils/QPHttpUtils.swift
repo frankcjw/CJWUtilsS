@@ -234,7 +234,7 @@ public class QPHttpUtils: NSObject {
 	 - parameter succes: 成功返回JSON
 	 - parameter fail:   失败
 	 */
-	public func uploadFile(let url: String, param: [String: AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
+	func uploadFile(let url: String, param: [String: AnyObject], images: Array<UIImage>, names: Array<String>, succes: QPSuccessBlock, fail: QPFailBlock) {
 
 		let URL = NSURL(string: url)
 		let mutableURLRequest = NSMutableURLRequest(URL: URL!)
@@ -262,7 +262,7 @@ public class QPHttpUtils: NSObject {
 		})
 	}
 
-	func uploadImage(url: String, param: [String: AnyObject]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
+	public func uploadImage(url: String, param: [String: AnyObject]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
 
 		if let URL = NSURL(string: url.addParam(param)) {
 			let mutableURLRequest = NSMutableURLRequest(URL: URL)
