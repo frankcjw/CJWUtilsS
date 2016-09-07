@@ -963,14 +963,14 @@ public extension String {
 }
 
 // MARK: - convert Struct to JSON
-protocol JSONRepresentable {
+public protocol JSONRepresentable {
 	var JSONRepresentation: AnyObject { get }
 }
 
-protocol JSONSerializable: JSONRepresentable {
+public protocol JSONSerializable: JSONRepresentable {
 }
 
-extension JSONSerializable {
+public extension JSONSerializable {
 	var JSONRepresentation: AnyObject {
 		var representation = [String: AnyObject]()
 
