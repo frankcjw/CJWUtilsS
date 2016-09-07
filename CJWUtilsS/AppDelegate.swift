@@ -24,12 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		Defaults["asd"] = "asd"
 		let sss = Defaults["asd"].stringValue
+
 		print(sss)
 
-		QPHttpUtils.sharedInstance.testingNW()
+		// let sc = SymmetricCryptor(algorithm: .AES128, options: CCOptions(kCCOptionPKCS7Padding))
+//		cypher.setRandomIV()
+//		do {
+//			let cypherText = try sc.crypt(string: clearText, key: key)
+//            print("")
+//		} catch {
+//			print("Error while encrypting: \(error)")
+//		}
 
-//        clu
-//        cjwh
 		return true
 	}
 

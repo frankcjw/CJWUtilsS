@@ -13,3 +13,8 @@
 -(void)tesing;
 
 @end
+
+
+@interface NSDate (CJWDate)
+-(void)testing;
+@end

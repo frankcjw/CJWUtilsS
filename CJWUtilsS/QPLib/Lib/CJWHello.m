@@ -18,3 +18,11 @@
     NSLog(@"helo");
 }
 @end
+
+@implementation NSDate (CJWDate)
+
+-(void)testing{
+    NSLog(@"fucking testing");
+}
+
+@end

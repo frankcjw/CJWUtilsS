@@ -38,6 +38,8 @@
 //#import "JSONKit.h"
 
 #import <Bugly/bugly.h>
+#import "CJWDesEncrypt.h"
+#import "AppInfoManager.h"
 
 
 //Animation
