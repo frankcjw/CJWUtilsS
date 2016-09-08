@@ -10,7 +10,7 @@ import UIKit
 
 public class QPSecurityUtils: NSObject {
 
-	public class func generateNewParam(param: [String: AnyObject]!, pushId: String) -> [String: AnyObject]! {
+	public class func generateNewParam(param: [String: AnyObject]!, pushId: String = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 
 		var newParam = param
 		if param == nil {
@@ -18,18 +18,14 @@ public class QPSecurityUtils: NSObject {
 			log.warning("generateNewParam param nil")
 		}
 		if let session = getCache("session") as? String {
-			// let tmp = NSMutableDictionary(dictionary: param as NSDictionary)
-			// let pushId = QPCacheUtils.getPushID()
-			if let uid = getCache("UID") as? String {
+			if let uid = getUID() {
 				if uid == "0" {
 					log.warning("uid = 0")
 				} else {
 					let str = "\(uid)-\(pushId)"
 					let auth = CJWDesEncrypt.encrypt(str, key: session as String)
-					// tmp.setObject(auth, forKey: "auth")
 					newParam["auth"] = auth
 					log.info("auth \(auth)")
-					// newParam = tmp as [String : AnyObject]
 					log.verbose("\(str)\n\(auth)\n\(newParam)")
 				}
 			} else {
@@ -80,6 +76,29 @@ extension QPSecurityUtils {
 			log.warning("no session was found")
 			return ""
 		}
+	}
+
+	public class func saveUID(uid: String) {
+		saveCache("UID", value: uid)
+	}
+
+	public class func getUID() -> String? {
+		if let uid = getCache("UID") as? String {
+			return uid
+		}
+		return nil
+	}
+
+	public class func savePushId(uid: String) {
+		saveCache("PushId", value: uid)
+	}
+
+	public class func getPushId() -> String {
+		if let uid = getCache("PushId") as? String {
+			return uid
+		}
+		log.error("push nil")
+		return "0"
 	}
 }
 
