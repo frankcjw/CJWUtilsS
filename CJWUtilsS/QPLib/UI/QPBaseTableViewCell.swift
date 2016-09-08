@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public typealias QPTableViewCell = QPBaseTableViewCell
 
@@ -86,6 +87,10 @@ public class QPBaseTableViewCell: UITableViewCell {
 	 */
 	public func setInfo(info: NSDictionary) {
 		self.cellInfo = info
+		setupConstrains(contentView)
+	}
+
+	public func setJson(json: JSON) {
 		setupConstrains(contentView)
 	}
 
