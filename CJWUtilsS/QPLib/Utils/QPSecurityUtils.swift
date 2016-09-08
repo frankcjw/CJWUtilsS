@@ -10,7 +10,7 @@ import UIKit
 
 public class QPSecurityUtils: NSObject {
 
-	public class func generateNewParam(param: [String: AnyObject]!, pushId: String? = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
+	public class func generateAuthParam(param: [String: AnyObject]!, pushId: String? = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 
 		var newParam = param
 		if param == nil {
@@ -22,7 +22,9 @@ public class QPSecurityUtils: NSObject {
 				if uid == "0" {
 					log.warning("uid = 0")
 				} else {
+					let pushId = pushId ?? "ErrorPushId"
 					let str = "\(uid)-\(pushId)"
+					log.verbose(str)
 					let auth = CJWDesEncrypt.encrypt(str, key: session as String)
 					newParam["auth"] = auth
 					log.info("auth \(auth)")
@@ -115,13 +117,6 @@ extension QPSecurityUtils {
 extension String {
 
 	private func getSessionKey() -> String {
-//		let str: AnyObject! = QPSecurityUtils.getCache("session")
-//		if str != nil {
-//			return str as! String
-//		} else {
-//			log.warning("no session was found")
-//			return ""
-//		}
 		return QPSecurityUtils.getSession()
 	}
 
@@ -129,5 +124,11 @@ extension String {
 		let session = getSessionKey()
 		let pwd = CJWDesEncrypt.encrypt(self, key: session as String)
 		return pwd
+	}
+}
+
+public extension QPHttpUtils {
+	func generateAuthParam(param: [String: AnyObject]!, pushId: String? = nil) -> [String: AnyObject]! {
+		return QPSecurityUtils.generateAuthParam(param, pushId: pushId)
 	}
 }
