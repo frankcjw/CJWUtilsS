@@ -10,7 +10,7 @@ import UIKit
 
 public class QPSecurityUtils: NSObject {
 
-	public class func generateNewParam(param: [String: AnyObject]!, pushId: String = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
+	public class func generateNewParam(param: [String: AnyObject]!, pushId: String? = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 
 		var newParam = param
 		if param == nil {
@@ -98,7 +98,7 @@ extension QPSecurityUtils {
 			return uid
 		}
 		log.error("push nil")
-		return "0"
+		return "QPSecurityUtilsDefaultPushId"
 	}
 }
 
