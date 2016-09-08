@@ -40,6 +40,14 @@
 #import <Bugly/bugly.h>
 #import "CJWDesEncrypt.h"
 #import "AppInfoManager.h"
+#import "CJWHello.h"
+
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "MLSelectPhotoPickerViewController.h"
+#import "MLSelectPhotoNavigationViewController.h"
+#import "MLSelectPhotoPickerGroupViewController.h"
+#import "MLSelectPhotoCommon.h"
+#import "MLSelectPhotoAssets.h"
 
 
 //Animation

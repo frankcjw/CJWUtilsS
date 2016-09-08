@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface CJWHello : NSObject
 
@@ -17,4 +18,11 @@
 
 @interface NSDate (CJWDate)
 -(void)testing;
+@end
+
+
+@interface UIImage (fixOrientation)
+
+- (UIImage *)fixOrientation;
+
 @end

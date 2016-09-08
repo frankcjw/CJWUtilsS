@@ -114,7 +114,7 @@ end
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+  s.resources = "CJWUtilsS/QPLib/Lib/MLSelectPhoto/MLSelectPhoto.bundle"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
