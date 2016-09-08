@@ -9,13 +9,6 @@
 import UIKit
 
 public class QPSecurityUtils: NSObject {
-	func testing() {
-		CJWDesEncrypt.encrypt("", key: "")
-	}
-
-	public class func saveSession(session: String) {
-		QPCacheUtils.cache(session, forKey: "session")
-	}
 
 	public class func generateNewParam(param: [String: AnyObject]!, pushId: String) -> [String: AnyObject]! {
 
@@ -24,10 +17,10 @@ public class QPSecurityUtils: NSObject {
 			newParam = [:]
 			log.warning("generateNewParam param nil")
 		}
-		if let session = QPCacheUtils.getCacheBy("session") as? String {
+		if let session = getCache("session") as? String {
 			// let tmp = NSMutableDictionary(dictionary: param as NSDictionary)
 			// let pushId = QPCacheUtils.getPushID()
-			if let uid = QPCacheUtils.getCacheBy("UID") as? String {
+			if let uid = getCache("UID") as? String {
 				if uid == "0" {
 					log.warning("uid = 0")
 				} else {
@@ -70,17 +63,47 @@ public class QPSecurityUtils: NSObject {
 		}
 		return password.encryptPassword()
 	}
+
+}
+
+extension QPSecurityUtils {
+
+	public class func saveSession(session: String) {
+		saveCache("session", value: session)
+	}
+
+	public class func getSession() -> String {
+		let str: AnyObject! = getCache("session")
+		if str != nil {
+			return str as! String
+		} else {
+			log.warning("no session was found")
+			return ""
+		}
+	}
+}
+
+extension QPSecurityUtils {
+	class func saveCache(key: String, value: AnyObject) {
+		QPCacheUtils.cache(value, forKey: key)
+	}
+
+	class func getCache(key: String) -> AnyObject? {
+		return QPCacheUtils.getCacheBy(key)
+	}
 }
 
 extension String {
 
 	private func getSessionKey() -> String {
-		let str: AnyObject! = QPCacheUtils.getCacheBy("session")
-		if str != nil {
-			return str as! String
-		} else {
-			return ""
-		}
+//		let str: AnyObject! = QPSecurityUtils.getCache("session")
+//		if str != nil {
+//			return str as! String
+//		} else {
+//			log.warning("no session was found")
+//			return ""
+//		}
+		return QPSecurityUtils.getSession()
 	}
 
 	func encryptPassword() -> String {
