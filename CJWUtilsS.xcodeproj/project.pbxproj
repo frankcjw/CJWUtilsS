@@ -57,6 +57,7 @@
 		01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */; };
 		01CAEFE01C3BA737006E221A /* QPPushUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD01C3BA737006E221A /* QPPushUtils.swift */; };
 		01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFD11C3BA737006E221A /* QPUtils.swift */; };
+		01CE0CAE1D82DF0E009EC9B9 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE0CAD1D82DF0E009EC9B9 /* NSDate+Utilities.m */; };
 		01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6E8441C8E7A920095A206 /* QPViewDebug.swift */; };
 		01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */; };
 		01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */; };
@@ -165,6 +166,8 @@
 		01CAEFCF1C3BA737006E221A /* QPMemberUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPMemberUtils.swift; sourceTree = "<group>"; };
 		01CAEFD01C3BA737006E221A /* QPPushUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPushUtils.swift; sourceTree = "<group>"; };
 		01CAEFD11C3BA737006E221A /* QPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPUtils.swift; sourceTree = "<group>"; };
+		01CE0CAC1D82DF0E009EC9B9 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		01CE0CAD1D82DF0E009EC9B9 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		01E6E8441C8E7A920095A206 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
 		01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
 		01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key.pem; sourceTree = "<group>"; };
@@ -316,6 +319,7 @@
 		01CAEFBA1C3BA737006E221A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				01CE0CAB1D82DF0E009EC9B9 /* NSDate-Extensions-master */,
 				018AF11A1D8048520002ABBF /* MLSelectPhoto */,
 				018AF1151D8040A70002ABBF /* AppInfoManager.h */,
 				018AF1161D8040A70002ABBF /* AppInfoManager.m */,
@@ -386,6 +390,15 @@
 				01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		01CE0CAB1D82DF0E009EC9B9 /* NSDate-Extensions-master */ = {
+			isa = PBXGroup;
+			children = (
+				01CE0CAC1D82DF0E009EC9B9 /* NSDate+Utilities.h */,
+				01CE0CAD1D82DF0E009EC9B9 /* NSDate+Utilities.m */,
+			);
+			path = "NSDate-Extensions-master";
 			sourceTree = "<group>";
 		};
 		01F201A41D80391A00DA5ABB /* Des */ = {
@@ -753,6 +766,7 @@
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,
 				01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */,
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,
+				01CE0CAE1D82DF0E009EC9B9 /* NSDate+Utilities.m in Sources */,
 				018AF14A1D8048520002ABBF /* UIView+MLExtension.m in Sources */,
 				B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */,
 				018AF1571D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
