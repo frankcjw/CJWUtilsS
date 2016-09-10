@@ -931,6 +931,8 @@ public extension UIView {
 
 public struct QPConfig {
 	public var hidesBottomBarWhenPushed = true
+	/// 高德地图api key
+	public var gdMapApiKey = "2bab86f775329259bdbd7c68f520641c"
 }
 
 public extension String {

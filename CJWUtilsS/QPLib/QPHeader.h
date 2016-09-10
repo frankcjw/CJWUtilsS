@@ -50,6 +50,10 @@
 #import "MLSelectPhotoAssets.h"
 
 
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import "VIPMapUtils.h"
+
 //Animation
 //#import "CALayer+Transition.h"
 

@@ -162,6 +162,13 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
 		self.view.showHUDTemporary("sdsds")
+
+		let map = QPMapViewController()
+//		self.pushViewController(map)
+		let navi = UINavigationController(rootViewController: map)
+		self.presentViewController(navi, animated: true) {
+			//
+		}
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {

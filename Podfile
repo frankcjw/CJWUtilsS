@@ -57,6 +57,9 @@ target 'CJWUtilsS' do
 #    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
     pod 'SnapKit'
     pod 'SwiftyRSA'
+    pod ’AMap2DMap’
+    pod ’INTULocationManager’
+
 
 end
 
