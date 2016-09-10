@@ -168,7 +168,7 @@ end
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
   s.dependency "PhoneNumberKit"
-  s.dependency "AMap2DMap"
+  #s.dependency "AMap2DMap"
   s.dependency "INTULocationManager"
   s.dependency "AwesomeCache", "~> 2.0"
 #s.dependency "Bugly"
