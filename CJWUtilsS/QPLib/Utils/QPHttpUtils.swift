@@ -335,11 +335,7 @@ public class QPHttpUtils: NSObject {
 							let json = JSON.parse(value)
 							success(response: json)
 							return
-						} else {
-							fail()
-							return
-						}
-						if let value = response.result.value as? String {
+						} else if let value = response.result.value as? String {
 							let json = JSON.parse(value)
 							success(response: json)
 							return
