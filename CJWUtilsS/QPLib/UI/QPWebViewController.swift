@@ -73,4 +73,8 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 		return true
 	}
+
+	public func currentURL() -> String? {
+		return (self.webView.request?.URLRequest.URL?.absoluteString)
+	}
 }
