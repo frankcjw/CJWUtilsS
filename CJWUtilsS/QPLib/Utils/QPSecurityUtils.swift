@@ -15,7 +15,7 @@ public class QPSecurityUtils: NSObject {
 		var newParam = param
 		if param == nil {
 			newParam = [:]
-			log.warning("generateNewParam param nil")
+//			log.warning("generateNewParam param nil")
 		}
 		if let session = getCache("session") as? String {
 			if let uid = getUID() {
@@ -23,11 +23,14 @@ public class QPSecurityUtils: NSObject {
 					log.warning("uid = 0")
 				} else {
 					let pushId = pushId ?? "ErrorPushId"
+					if pushId == "ErrorPushId" {
+						log.warning("ErrorPushId")
+					}
 					let str = "\(uid)-\(pushId)"
 					log.verbose(str)
 					let auth = CJWDesEncrypt.encrypt(str, key: session as String)
 					newParam["auth"] = auth
-					log.info("auth \(auth)")
+//					log.info("auth \(auth)")
 					log.verbose("\(str)\n\(auth)\n\(newParam)")
 				}
 			} else {
