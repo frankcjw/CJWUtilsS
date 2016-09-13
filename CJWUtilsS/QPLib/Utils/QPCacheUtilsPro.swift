@@ -49,7 +49,7 @@ public class QPCacheUtilsPro: NSObject {
 				cache.setObject(value, forKey: key, expires: .Seconds(expires))
 			}
 			if let cacheResult = cache.objectForKey(key) as? String {
-				print("ss \(cacheResult)")
+//				print("ss \(cacheResult)")
 			}
 			return true
 		} catch _ {
