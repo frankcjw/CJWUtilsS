@@ -163,6 +163,14 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
 		self.view.showHUDTemporary("sdsds")
 
+//        let vc =
+
+		let vc = QPWebViewController()
+		vc.url = "http://www.baidu.com"
+		self.presentViewController(vc, animated: true) {
+			//
+		}
+
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {

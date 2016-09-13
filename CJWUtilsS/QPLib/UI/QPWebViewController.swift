@@ -13,8 +13,8 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	public let webView = UIWebView()
 
-	public var url : String? = ""
-	public var html : String?
+	public var url: String? = ""
+	public var html: String?
 
 	override public func viewDidLoad() {
 		super.viewDidLoad()
@@ -53,7 +53,7 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	 - returns: 是否加载成功
 	 */
-	public func load(url : String?) -> Bool {
+	public func load(url: String?) -> Bool {
 		if url != nil && url != "" {
 			self.url = url!
 			if let nsurl = NSURL(string: url!) {
@@ -68,5 +68,9 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	public func webViewDidFinishLoad(webView: UIWebView) {
 		self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+	}
+
+	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+		return true
 	}
 }

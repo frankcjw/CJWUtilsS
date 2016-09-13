@@ -331,18 +331,21 @@ public class QPHttpUtils: NSObject {
 				case .Success(let upload, _, _):
 					upload.responseJSON { response in
 						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
-						log.debug("ss \(datastring)")
-						if let value = datastring {
-							let json = JSON(value)
+						if let value = datastring as? String {
+							let json = JSON.parse(value)
 							success(response: json)
+							return
 						} else {
 							fail()
+							return
 						}
-						if let value = response.result.value {
-							let json = JSON(value)
+						if let value = response.result.value as? String {
+							let json = JSON.parse(value)
 							success(response: json)
+							return
 						} else {
 							fail()
+							return
 						}
 					}
 				case .Failure(let encodingError):
