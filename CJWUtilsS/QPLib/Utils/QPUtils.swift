@@ -1011,10 +1011,17 @@ public extension JSONSerializable {
 	}
 }
 
-public class QPGuidingViewController: CoreNewFeatureVC {
-}
+//public class QPGuidingViewController: CoreNewFeatureVC {
+//}
+
 public extension QPUtils {
-	public class func guidingViewController(images: [String], block: QPNormalBlock) -> QPGuidingViewController {
+
+	public class func canShowNewFeature() -> Bool {
+		let flag = CoreNewFeatureVC.canShowNewFeature()
+		return flag
+	}
+
+	public class func guidingViewController(images: [String], block: QPNormalBlock) -> UIViewController {
 		var models: [NewFeatureModel] = []
 		for img in images {
 			let image = UIImage(named: img)!
@@ -1022,9 +1029,10 @@ public extension QPUtils {
 			models.append(model)
 		}
 
-		let vc = QPGuidingViewController(models: models) {
+		let vc = CoreNewFeatureVC (models: models) {
 			block()
 		}
+
 		return vc
 	}
 }

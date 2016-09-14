@@ -54,7 +54,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "VIPMapUtils.h"
 
-#import "CoreNewFeatureVC.h"
+//#import "CoreNewFeatureVC.h"
 
 //Animation
 //#import "CALayer+Transition.h"

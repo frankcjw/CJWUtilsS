@@ -26,10 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		self.window = window;
-		window.rootViewController = QPUtils.guidingViewController(["testing", "testing"], block: {
-			let vc = ViewController()
-			self.window?.rootViewController = vc
-		})
+
+		let vc = ViewController()
+		self.window?.rootViewController = vc
+
+//		window.rootViewController = QPUtils.guidingViewController(["testing", "testing"], block: {
+//			self.window?.rootViewController = vc
+//		})
 
 		Defaults["asd"] = "asd"
 		let sss = Defaults["asd"].stringValue
