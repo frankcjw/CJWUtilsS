@@ -10,6 +10,12 @@
 		0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */; };
 		012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012489B91D4AF6EE00DA3865 /* QPButton.swift */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
+		013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA401D89319500EF8254 /* UIApplication+Extend.m */; };
+		013BCA4E1D89319500EF8254 /* UIView+NFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA421D89319500EF8254 /* UIView+NFLayout.m */; };
+		013BCA4F1D89319500EF8254 /* CoreNewFeatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA441D89319500EF8254 /* CoreNewFeatureVC.m */; };
+		013BCA501D89319500EF8254 /* NewFeatureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA471D89319500EF8254 /* NewFeatureModel.m */; };
+		013BCA511D89319500EF8254 /* NewFeatureImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA4A1D89319500EF8254 /* NewFeatureImageV.m */; };
+		013BCA521D89319500EF8254 /* NewFeatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA4C1D89319500EF8254 /* NewFeatureScrollView.m */; };
 		015001A31D59786D00CA34F5 /* QPFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015001A21D59786D00CA34F5 /* QPFloatView.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
@@ -97,6 +103,18 @@
 		0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
 		012489B91D4AF6EE00DA3865 /* QPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPButton.swift; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
+		013BCA3F1D89319500EF8254 /* UIApplication+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Extend.h"; sourceTree = "<group>"; };
+		013BCA401D89319500EF8254 /* UIApplication+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Extend.m"; sourceTree = "<group>"; };
+		013BCA411D89319500EF8254 /* UIView+NFLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NFLayout.h"; sourceTree = "<group>"; };
+		013BCA421D89319500EF8254 /* UIView+NFLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NFLayout.m"; sourceTree = "<group>"; };
+		013BCA431D89319500EF8254 /* CoreNewFeatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreNewFeatureVC.h; sourceTree = "<group>"; };
+		013BCA441D89319500EF8254 /* CoreNewFeatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreNewFeatureVC.m; sourceTree = "<group>"; };
+		013BCA461D89319500EF8254 /* NewFeatureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureModel.h; sourceTree = "<group>"; };
+		013BCA471D89319500EF8254 /* NewFeatureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureModel.m; sourceTree = "<group>"; };
+		013BCA491D89319500EF8254 /* NewFeatureImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureImageV.h; sourceTree = "<group>"; };
+		013BCA4A1D89319500EF8254 /* NewFeatureImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureImageV.m; sourceTree = "<group>"; };
+		013BCA4B1D89319500EF8254 /* NewFeatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureScrollView.h; sourceTree = "<group>"; };
+		013BCA4C1D89319500EF8254 /* NewFeatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureScrollView.m; sourceTree = "<group>"; };
 		015001A21D59786D00CA34F5 /* QPFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPFloatView.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
@@ -228,6 +246,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013BCA3C1D89319500EF8254 /* CoreNewFeatureVC */ = {
+			isa = PBXGroup;
+			children = (
+				013BCA3D1D89319500EF8254 /* Category */,
+				013BCA431D89319500EF8254 /* CoreNewFeatureVC.h */,
+				013BCA441D89319500EF8254 /* CoreNewFeatureVC.m */,
+				013BCA451D89319500EF8254 /* Model */,
+				013BCA481D89319500EF8254 /* View */,
+			);
+			path = CoreNewFeatureVC;
+			sourceTree = "<group>";
+		};
+		013BCA3D1D89319500EF8254 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				013BCA3E1D89319500EF8254 /* UIApplication */,
+				013BCA411D89319500EF8254 /* UIView+NFLayout.h */,
+				013BCA421D89319500EF8254 /* UIView+NFLayout.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		013BCA3E1D89319500EF8254 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				013BCA3F1D89319500EF8254 /* UIApplication+Extend.h */,
+				013BCA401D89319500EF8254 /* UIApplication+Extend.m */,
+			);
+			path = UIApplication;
+			sourceTree = "<group>";
+		};
+		013BCA451D89319500EF8254 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				013BCA461D89319500EF8254 /* NewFeatureModel.h */,
+				013BCA471D89319500EF8254 /* NewFeatureModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		013BCA481D89319500EF8254 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				013BCA491D89319500EF8254 /* NewFeatureImageV.h */,
+				013BCA4A1D89319500EF8254 /* NewFeatureImageV.m */,
+				013BCA4B1D89319500EF8254 /* NewFeatureScrollView.h */,
+				013BCA4C1D89319500EF8254 /* NewFeatureScrollView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		018AF11A1D8048520002ABBF /* MLSelectPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +399,7 @@
 		01CAEFBA1C3BA737006E221A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				013BCA3C1D89319500EF8254 /* CoreNewFeatureVC */,
 				01CE0CAF1D83FB17009EC9B9 /* Map */,
 				01CE0CAB1D82DF0E009EC9B9 /* NSDate-Extensions-master */,
 				018AF11A1D8048520002ABBF /* MLSelectPhoto */,
@@ -772,6 +842,7 @@
 				01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */,
 				01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */,
 				01B1E7E31D2521F700BF2841 /* CJWHello.m in Sources */,
+				013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
@@ -782,6 +853,7 @@
 				012F30051C521812003891E5 /* QPDBUtils.swift in Sources */,
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
 				0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */,
+				013BCA4E1D89319500EF8254 /* UIView+NFLayout.m in Sources */,
 				018AF14D1D8048520002ABBF /* MLSelectPhotoPickerDatas.m in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				01F201AB1D80391A00DA5ABB /* CJWDesEncrypt.m in Sources */,
@@ -804,14 +876,17 @@
 				01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */,
 				01CAEFD91C3BA737006E221A /* QPKey.swift in Sources */,
 				018AF1141D803BF00002ABBF /* Base64.m in Sources */,
+				013BCA511D89319500EF8254 /* NewFeatureImageV.m in Sources */,
 				01CE0CB81D83FD61009EC9B9 /* VIPMapUtils.m in Sources */,
 				018AF14F1D8048520002ABBF /* MLSelectPhotoBrowserViewController.m in Sources */,
 				B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */,
 				01CAEFDA1C3BA737006E221A /* QPTableView.swift in Sources */,
 				018AF1541D8048520002ABBF /* MLPhotoPickerImageView.m in Sources */,
 				018AF1581D8048520002ABBF /* MLSelectPhotoPickerCollectionView.m in Sources */,
+				013BCA4F1D89319500EF8254 /* CoreNewFeatureVC.m in Sources */,
 				01CE0CB11D83FB17009EC9B9 /* GDMapViewController.swift in Sources */,
 				01CE0CB51D83FD47009EC9B9 /* QPNavigationUtils.swift in Sources */,
+				013BCA521D89319500EF8254 /* NewFeatureScrollView.m in Sources */,
 				018AF1191D8045070002ABBF /* QPImagePickerViewController.swift in Sources */,
 				018AF15A1D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				018AF14C1D8048520002ABBF /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
@@ -823,6 +898,7 @@
 				015001A31D59786D00CA34F5 /* QPFloatView.swift in Sources */,
 				015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */,
 				01CAEFDD1C3BA737006E221A /* QPHttpUtils.swift in Sources */,
+				013BCA501D89319500EF8254 /* NewFeatureModel.m in Sources */,
 				0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */,
 				0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */,
 				B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */,

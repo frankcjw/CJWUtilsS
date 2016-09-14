@@ -66,6 +66,10 @@ public class QPBaseTableViewController: UITableViewController {
 	/// 浮动在vc上的view
 	public let floatView = QPFloatView()
 
+	private func updateFloatViewFrame() {
+		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
+	}
+
 	public override func viewWillAppear(animated: Bool) {
 
 		// IQKeyboardManager.sharedManager().enable = false
@@ -82,7 +86,7 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	override public func viewDidAppear(animated: Bool) {
-		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
+		updateFloatViewFrame()
 		super.viewDidAppear(animated)
 	}
 
@@ -111,6 +115,7 @@ public class QPBaseTableViewController: UITableViewController {
 //		self.setBackTitle("")
 		request()
 		load()
+		updateFloatViewFrame()
 	}
 
 //    add
