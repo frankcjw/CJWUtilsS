@@ -55,7 +55,9 @@
     if (!_tickImageView) {
         UIImageView *tickImageView = [[UIImageView alloc] init];
         tickImageView.frame = CGRectMake(self.bounds.size.width - 30, 0, 30, 30);
-        tickImageView.image = [UIImage imageNamed:MLSelectPhotoSrcName(@"AssetsPickerChecked")];
+        NSString *img = MLSelectPhotoSrcName(@"AssetsPickerChecked");
+        img = @"AssetsPickerChecked";
+        tickImageView.image = [UIImage imageNamed:img];
         tickImageView.hidden = YES;
         [self addSubview:tickImageView];
         self.tickImageView = tickImageView;
