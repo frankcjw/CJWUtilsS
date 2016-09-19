@@ -94,7 +94,7 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	private func showClose() {
 
-		let closeButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.close))
+		let closeButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
 
 		self.navigationItem.leftBarButtonItems = [closeButton]
 
@@ -102,9 +102,9 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	private func showBackAndClose() {
 
-		let btn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.back))
+		let btn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.back))
 
-		let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.close))
+		let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
 
 		self.navigationItem.leftBarButtonItems = [btn, closeButton]
 	}
