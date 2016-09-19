@@ -23,6 +23,7 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 		webView.delegate = self
 
 		if !load(url) {
+
 			loadHtml(html)
 		}
 
@@ -68,6 +69,11 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	public func webViewDidFinishLoad(webView: UIWebView) {
 		self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+		if webView.canGoBack {
+			showBackAndClose()
+		} else {
+			showClose()
+		}
 	}
 
 	public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -77,4 +83,30 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	public func currentURL() -> String? {
 		return (self.webView.request?.URLRequest.URL?.absoluteString)
 	}
+
+	func back() {
+		self.webView.goBack()
+	}
+
+	func close() {
+		self.popViewController()
+	}
+
+	private func showClose() {
+
+		let closeButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.close))
+
+		self.navigationItem.leftBarButtonItems = [closeButton]
+
+	}
+
+	private func showBackAndClose() {
+
+		let btn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.back))
+
+		let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(YYWebViewController.close))
+
+		self.navigationItem.leftBarButtonItems = [btn, closeButton]
+	}
+
 }

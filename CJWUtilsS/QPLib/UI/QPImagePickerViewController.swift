@@ -49,6 +49,7 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 		}
 
 		let isAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
 		self.sourceType = .Camera
 		self.delegate = self
 		if isAvailable {
