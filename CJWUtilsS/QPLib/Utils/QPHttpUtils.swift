@@ -333,6 +333,11 @@ public class QPHttpUtils: NSObject {
 						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
 						if let value = datastring as? String {
 							let json = JSON.parse(value)
+							if json == nil {
+								let json = JSON(value)
+								success(response: json)
+								return
+							}
 							success(response: json)
 							return
 						} else if let value = response.result.value as? String {

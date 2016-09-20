@@ -354,3 +354,20 @@ public extension UIView {
 	}
 }
 
+public extension UILabel {
+	public func updateLineGap(gap: CGFloat) {
+		let paragStyle = NSMutableParagraphStyle()
+		paragStyle.lineSpacing = gap
+
+		if let string = self.text {
+
+			let attributeString = NSMutableAttributedString(string: string)
+//			let range = string.rangeOfString(string)
+//			attributeString.addAttribute(NSParagraphStyleAttributeName, value: paragStyle, range: range)
+
+			attributeString.addAttributes([NSParagraphStyleAttributeName: paragStyle], range: NSMakeRange(0, string.length()))
+			self.attributedText = attributeString
+		}
+	}
+}
+
