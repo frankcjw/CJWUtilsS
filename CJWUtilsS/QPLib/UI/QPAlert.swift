@@ -11,10 +11,10 @@ import KLCPopup
 
 public class QPAlert: NSObject {
 
-	class var sharedInstance : QPAlert {
+	class var sharedInstance: QPAlert {
 		struct Static {
-			static var onceToken : dispatch_once_t = 0
-			static var instance : QPAlert? = nil
+			static var onceToken: dispatch_once_t = 0
+			static var instance: QPAlert? = nil
 		}
 		dispatch_once(&Static.onceToken) {
 			Static.instance = QPAlert()
@@ -22,7 +22,7 @@ public class QPAlert: NSObject {
 		return Static.instance!
 	}
 
-	public var pop : KLCPopup!
+	public var pop: KLCPopup!
 
 	public class func dismiss() {
 		QPAlert.sharedInstance.dismiss()
@@ -58,6 +58,7 @@ public class QPAlert: NSObject {
 		vvv.layer.cornerRadius = 10
 
 		let textLabel = UILabel()
+		textLabel.numberOfLines = 0
 		vvv.addSubview(textLabel)
 
 		textLabel.alignTop("0", leading: "0", bottom: "0", trailing: "0", toView: vvv)
