@@ -159,3 +159,15 @@ public extension UIView {
 		self.translatesAutoresizingMaskIntoConstraints = false
 	}
 }
+
+public extension UIViewController {
+	public func pushViewControllerAndDismiss(vc: UIViewController) {
+		if let navi = self.navigationController {
+			var vcs = navi.viewControllers
+			vcs.removeLast()
+			vcs.append(vc)
+			navi.setViewControllers(vcs, animated: true)
+
+		}
+	}
+}

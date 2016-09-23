@@ -161,6 +161,9 @@ public class QPGridTableViewCell: QPTableViewCell {
 				grid.topAlign(view, predicate: "0")
 				horizanReferenceView = grid
 				verticalReferenceView = grid
+				if grids.count == 1 {
+					grid.bottomAlign(view, predicate: "0")
+				}
 			} else {
 				if index % column == 0 {
 					grid.topConstrain(verticalReferenceView, predicate: "0")
