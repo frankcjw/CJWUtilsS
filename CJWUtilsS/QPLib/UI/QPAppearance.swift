@@ -177,8 +177,6 @@ extension CALayer {
 		transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
 		transition.removedOnCompletion = true
 		self.addAnimation(transition, forKey: "key")
-
-		print("\(transition)")
 	}
 }
 
