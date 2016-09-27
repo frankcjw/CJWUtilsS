@@ -19,7 +19,6 @@ public class QPNavigationUtils: NSObject {
 		url.urlEncode()
 		let encodeNaviString: String = url
 		let flag = UIApplication.sharedApplication().openURL(NSURL(string: encodeNaviString)!)
-		log.debug("flag \(flag)")
 		return flag
 	}
 
@@ -30,7 +29,6 @@ public class QPNavigationUtils: NSObject {
 		url = "iosamap://navi?sourceApplication=\(appName)&backScheme=\(backScheme)&poiname=\(name)&poiid=BGVIS&lat=\(latitude)&lon=\(longitude)&dev=1&style=2"
 		url.urlEncode()
 		let flag = url.openUrl()
-		log.debug("flag \(flag) \(url)")
 		return flag
 	}
 
