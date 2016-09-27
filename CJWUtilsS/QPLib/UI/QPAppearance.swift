@@ -371,3 +371,11 @@ public extension UILabel {
 	}
 }
 
+public extension UIScrollView {
+	public func currentPage() -> Int {
+		let aaa = Int(self.contentOffset.x + self.width)
+		let bbb = Int(self.width)
+		let page = aaa / bbb
+		return page - 1
+	}
+}

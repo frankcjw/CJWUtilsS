@@ -11,7 +11,7 @@ target 'CJWUtilsS' do
     pod 'CGFloatType'
     pod 'DZNEmptyDataSet'
     pod 'NSDate+TimeAgo'
-    pod 'HMSegmentedControl'
+    pod 'HMSegmentedControl', '~> 1.5.2'
     pod 'MJExtension'
     pod 'ClusterPrePermissions'
     pod 'FCFileManager'

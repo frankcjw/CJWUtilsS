@@ -50,8 +50,8 @@
 #import "MLSelectPhotoAssets.h"
 
 
-#import <MAMapKit/MAMapKit.h>
-#import <AMapFoundationKit/AMapFoundationKit.h>
+//#import <MAMapKit/MAMapKit.h>
+//#import <AMapFoundationKit/AMapFoundationKit.h>
 #import "VIPMapUtils.h"
 #import "CoreNewFeatureVC.h"
 
@@ -69,3 +69,6 @@
 //#import "MLSelectPhotoPickerGroupViewController.h"
 //#import "MLSelectPhotoCommon.h"
 //#import "MLSelectPhotoAssets.h"
+
+#import "QPMapUtils.h"
+

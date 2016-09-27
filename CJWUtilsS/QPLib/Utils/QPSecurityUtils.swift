@@ -10,7 +10,7 @@ import UIKit
 
 public class QPSecurityUtils: NSObject {
 
-	public class func generateAuthParam(param: [String: AnyObject]!, pushId: String? = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
+	public class func generateAuthParam(param: [String: AnyObject]!, pushId: String = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 
 		var newParam = param
 		if param == nil {
@@ -27,7 +27,7 @@ public class QPSecurityUtils: NSObject {
 						log.warning("ErrorPushId")
 					}
 					let str = "\(uid)-\(pushId)"
-					log.verbose(str)
+					log.info(str)
 					let auth = CJWDesEncrypt.encrypt(str, key: session as String)
 					newParam["auth"] = auth
 //					log.info("auth \(auth)")
@@ -131,7 +131,7 @@ extension String {
 }
 
 public extension QPHttpUtils {
-	func generateAuthParam(param: [String: AnyObject]!, pushId: String? = nil) -> [String: AnyObject]! {
+	func generateAuthParam(param: [String: AnyObject]!, pushId: String = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 		return QPSecurityUtils.generateAuthParam(param, pushId: pushId)
 	}
 }
