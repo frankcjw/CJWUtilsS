@@ -319,16 +319,16 @@ public extension QPBaseTableViewController {
 		segment.backgroundColor = MAIN_COLOR
 		segment.sectionTitles = segmentTitles
 
-		segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+		segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.Down
 		segment.selectionIndicatorColor = selectionViewSelectedColor
 		segment.selectionIndicatorHeight = 1
-		segment.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+		segment.selectionStyle = HMSegmentedControlSelectionStyle.FullWidthStripe
 		segment.verticalDividerWidth = 0
 		segment.verticalDividerEnabled = true
 		segment.verticalDividerColor = UIColor(fromHexCode: "#DFE1E3")
 
 		segment.titleTextAttributes = [NSFontAttributeName: selectionViewFont, NSForegroundColorAttributeName: selectionViewDeselectedColor]
-		segment.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
+		segment.selectionStyle = HMSegmentedControlSelectionStyle.TextWidthStripe
 
 		segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
 		segment.addTarget(self, action: #selector(QPBaseTableViewController.segmentedControlChangedValue(_:)), forControlEvents: UIControlEvents.ValueChanged)

@@ -11,7 +11,7 @@ target 'CJWUtilsS' do
     pod 'CGFloatType'
     pod 'DZNEmptyDataSet'
     pod 'NSDate+TimeAgo'
-    pod 'HMSegmentedControl', '~> 1.5.2'
+#    pod 'HMSegmentedControl', '~> 1.5.3'
     pod 'MJExtension'
     pod 'ClusterPrePermissions'
     pod 'FCFileManager'
@@ -59,7 +59,7 @@ target 'CJWUtilsS' do
     pod 'SwiftyRSA'
 #    pod ’AMap2DMap’
     pod ’INTULocationManager’
-
+    pod 'HMSegmentedControl',git: 'https://github.com/HeshamMegid/HMSegmentedControl.git'
 
 end
 
