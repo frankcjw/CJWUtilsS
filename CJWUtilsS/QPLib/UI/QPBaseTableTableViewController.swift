@@ -58,8 +58,7 @@ public class QPBaseTableViewController: UITableViewController {
 	/// tableview header segment
 	public var segmentTitles = ["商会活动", "我的活动"] {
 		didSet {
-			// TODO: FIXME initSegmentView
-//			self.navigationItem.titleView = initSegmentView()
+			self.navigationItem.titleView = initSegmentView()
 		}
 	}
 	private var segment: HMSegmentedControl!
