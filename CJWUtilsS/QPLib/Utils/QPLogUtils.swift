@@ -118,7 +118,9 @@ public class Log: XCGLogger {
 					param["deviceIdentifier"] = deviceIdentifier
 				}
 
+				let bundle = NSBundle.mainBundle().bundleIdentifier
 				param["debugInfo"] = debugInfo ?? ""
+				param["project"] = bundle ?? ""
 				QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
 					//
 				}) {

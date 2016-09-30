@@ -35,7 +35,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	override func viewDidLoad() {
 
-//		log.remoteUrl = "http://192.168.1.223:9090"
+		log.remoteUrl = "http://quickplain.asuscomm.com:9090/"
+		log.debug("fuck you")
 		let st = Hello()
 		let mirror = Mirror(st)
 
