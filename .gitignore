@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 Pods/
 
 podfile.lock
-=======
 # Xcode
 #
 build/
@@ -32,9 +30,7 @@ DerivedData
 Pods/
 
 CJWUtilsS/ViewController.*
-=======
 .*.sw?
 .DS_Store
 .rbenv-version
 .idea
->>>>>>> 9c6a887ed1c32378b7e7c867fe83499238fe10fe

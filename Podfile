@@ -71,7 +71,6 @@ target 'CJWUtilsS' do
             end
         end
     end
-    
 end
 
 target 'CJWUtilsSTests' do
