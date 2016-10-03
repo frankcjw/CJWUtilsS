@@ -56,6 +56,29 @@ public extension UIViewController {
 }
 
 public extension UIViewController {
+	public func presentViewControllerFromKeyWindow() {
+//        let vc = CJWWebViewController()
+//        vc.url = "http://www.qq.com"
+		let vc = self
+		let barButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: vc, action: #selector(UIViewController.dismiss))
+		vc.navigationItem.leftBarButtonItem = barButton
+		let navi = UINavigationController(rootViewController: vc)
+
+		UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(navi, animated: true, completion: { () -> Void in
+			//
+		})
+	}
+}
+
+public extension UIViewController {
+	public func dismiss() {
+		self.dismissViewControllerAnimated(true) {
+			//
+		}
+	}
+}
+
+public extension UIViewController {
 	/**
 	 安全的push view controller
 
@@ -64,7 +87,7 @@ public extension UIViewController {
 	 */
 	public func pushViewController(viewController: UIViewController, animated: Bool = true) {
 		if let navi = self.navigationController {
-			viewController.hidesBottomBarWhenPushed = true
+			viewController.hidesBottomBarWhenPushed = QPUtils.sharedInstance.config.hidesBottomBarWhenPushed
 			navi.pushViewController(viewController, animated: animated)
 		}
 	}
@@ -83,7 +106,7 @@ public extension UIViewController {
 	public func setBackTitle(title: String) {
 		let button = UIButton(frame: CGRectMake(0, 0, 30, 30))
 		button.setBackgroundImage(UIImage(named: "Practicetopic_icon_back"), forState: .Normal)
-		button.addTarget(self, action: "controllerDismiss", forControlEvents: UIControlEvents.TouchUpInside)
+		button.addTarget(self, action: Selector("controllerDismiss"), forControlEvents: UIControlEvents.TouchUpInside)
 		let back = UIBarButtonItem()
 		// back.title = title
 		back.customView = button

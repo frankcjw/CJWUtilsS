@@ -11,7 +11,7 @@ import WebViewJavascriptBridge
 
 class SecondeViewController: QPWebViewController {
 
-	var bridge : WebViewJavascriptBridge!
+	var bridge: WebViewJavascriptBridge!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,6 +24,16 @@ class SecondeViewController: QPWebViewController {
 			})
 		}
 		webView.bottomAlign(self.view)
+
+		let label = UILabel(frame: CGRectMake(0, 0, 100, 100))
+		label.text = "tio"
+		label.backgroundColor = UIColor.alizarinColor()
+		label.addTapGesture(self, action: #selector(SecondeViewController.jump))
+		view.addSubview(label)
+	}
+
+	func jump() {
+		self.popViewController()
 	}
 
 	override func didReceiveMemoryWarning() {

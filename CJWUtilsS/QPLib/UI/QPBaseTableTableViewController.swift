@@ -9,6 +9,7 @@
 import UIKit
 import FlatUIKit
 import DZNEmptyDataSet
+import HMSegmentedControl
 
 //private let imageError = UIImage(color: COLOR_CLEAR)//UIImage(named: "Cry")
 //private let imageLoading = UIImage(color: COLOR_CLEAR)//UIImage(named: "Loading")
@@ -54,6 +55,21 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public var shouldHideNavigationBar: Bool = false
 
+	/// tableview header segment
+	public var segmentTitles = ["商会活动", "我的活动"] {
+		didSet {
+			self.navigationItem.titleView = initSegmentView()
+		}
+	}
+	private var segment: HMSegmentedControl!
+
+	/// 浮动在vc上的view
+	public let floatView = QPFloatView()
+
+	private func updateFloatViewFrame() {
+		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
+	}
+
 	public override func viewWillAppear(animated: Bool) {
 
 		// IQKeyboardManager.sharedManager().enable = false
@@ -67,6 +83,11 @@ public class QPBaseTableViewController: UITableViewController {
 			fixNavigationBarColor(animated)
 		}
 		super.viewWillAppear(animated)
+	}
+
+	override public func viewDidAppear(animated: Bool) {
+		updateFloatViewFrame()
+		super.viewDidAppear(animated)
 	}
 
 	public override func viewWillDisappear(animated: Bool) {
@@ -87,12 +108,24 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
+		view.addSubview(floatView)
 		self.tableView.emptyDataSetSource = self;
 		self.tableView.emptyDataSetDelegate = self;
 		self.tableView.clearExtraLines()
 //		self.setBackTitle("")
 		request()
 		load()
+		updateFloatViewFrame()
+	}
+
+//    add
+
+	public func addRefreshHeader(target: AnyObject!, action: Selector) {
+		self.tableView.addRefreshHeader(target, action: action)
+	}
+
+	public func addRefreshFooter(target: AnyObject!, action: Selector) {
+		self.tableView.addRefreshFooter(target, action: action)
 	}
 
 	override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -104,7 +137,10 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	override public func scrollViewDidScroll(scrollView: UIScrollView) {
-//		self.view.endEditing(true)
+		// self.view.endEditing(true)
+//		super.scrollViewDidScroll(scrollView)
+		floatView.frame = CGRectMake(0, scrollView.contentOffset.y, view.width, view.height)
+		scrollView.bringSubviewToFront(floatView)
 	}
 
 	override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -261,6 +297,54 @@ public extension UITableViewController {
 
 	public func registerTableViewCell(nibName: String) {
 		self.tableView.registerTableViewCell(nibName, bundle: nil, forCellReuseIdentifier: nibName)
+	}
+}
+
+public extension QPBaseTableViewController {
+
+	public func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+		return segment
+	}
+
+	private func initSegmentView() -> UIView {
+		let view = UIView(frame: CGRectMake(0, 0, 190, 44))
+		let selectionViewSelectedColor = COLOR_WHITE
+		let selectionViewDeselectedColor = UIColor(fromHexCode: "#fad5a2")
+		let selectionViewFont = FONT_TITLE
+
+		if segment == nil {
+			segment = HMSegmentedControl(frame: CGRectMake(5, 10, 180, 28))
+		}
+		segment.backgroundColor = MAIN_COLOR
+		segment.sectionTitles = segmentTitles
+
+		segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+		segment.selectionIndicatorColor = selectionViewSelectedColor
+		segment.selectionIndicatorHeight = 1
+		segment.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+		segment.verticalDividerWidth = 0
+		segment.verticalDividerEnabled = true
+		segment.verticalDividerColor = UIColor(fromHexCode: "#DFE1E3")
+
+		segment.titleTextAttributes = [NSFontAttributeName: selectionViewFont, NSForegroundColorAttributeName: selectionViewDeselectedColor]
+		segment.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe
+
+		segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
+		segment.addTarget(self, action: #selector(QPBaseTableViewController.segmentedControlChangedValue(_:)), forControlEvents: UIControlEvents.ValueChanged)
+		segment = customSegment(segment)
+		view.addSubview(segment)
+
+		return view
+	}
+
+	func segmentedControlChangedValue(control: HMSegmentedControl) {
+		if control.selectedSegmentIndex == 0 {
+		}
+
+		onSegmentChanged(control.selectedSegmentIndex)
+	}
+
+	public func onSegmentChanged(index: Int) {
 	}
 }
 

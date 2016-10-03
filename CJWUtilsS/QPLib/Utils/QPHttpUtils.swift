@@ -32,6 +32,49 @@ public class QPHttpUtils: NSObject {
 
 	var sessionKey = ""
 
+	let manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+	public func testingNW() {
+
+		let url = "http://quickplain.asuscomm.com:9090/network"
+
+//        NSURLSessionConfiguration.
+//		Alamofire.Manager()
+
+		Alamofire.request(.POST, url, parameters: ["ss": "s3"])
+		manager.request(.POST, url, parameters: ["ss": "s4"])
+
+		oldHttpRequest(url, param: ["ss": "s1"], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+		oldHttpRequest(url, param: ["ss": "s5"], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+		let img = UIImage(color: UIColor.redColor(), cornerRadius: 30)
+		uploadImage(url, param: ["ss": "s2"], imageName: ["image"], images: [img], success: { (response) in
+			log.error("\(response)")
+		}) {
+			//
+		}
+
+		log.error("测试了")
+	}
+
+	private func mgr() -> Manager {
+
+		let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.example.app.background")
+
+//		let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+		let manager = Alamofire.Manager(configuration: configuration)
+//		Alamofire.Manager
+//        manager.up
+		return manager
+	}
+
 	private let QPHttpCacheName = "QPCache"
 
 //    var httpManager = AFHTTPRequestOperationManager()
@@ -69,24 +112,32 @@ public class QPHttpUtils: NSObject {
 	 - parameter success: 成功返回:anyobject
 	 - parameter fail:    失败返回
 	 */
-	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) {
-		Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+	public func oldHttpRequest(url: String, param: [String: AnyObject]!, success: QPOldSuccessBlock!, fail: QPFailBlock!) -> String {
+		let httpId = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? "NoUUidNotification"
+		let center = NSNotificationCenter.defaultCenter()
+//        Alamofire.req
+		manager.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
+					center.postNotificationName(httpId, object: nil)
 					success(response: response.result.value)
 				} else {
 					if let str = String(data: response.data!, encoding: NSUTF8StringEncoding) {
 //						let json = JSON(str)
+						center.postNotificationName(httpId, object: nil)
 						success(response: str)
 					} else {
+						center.postNotificationName(httpId, object: nil)
 						fail()
 					}
 				}
 			} else {
+				center.postNotificationName(httpId, object: nil)
 				debugPrint(response)
 				fail()
 			}
 		}
+		return httpId
 	}
 
 	/**
@@ -167,16 +218,16 @@ public class QPHttpUtils: NSObject {
 	 */
 	public func newHttpRequest(url: String, param: [String: AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) -> () {
 
-		let sss = AFHTTPRequestSerializer()
-		let req = NSURLRequest(URL: NSURL(string: url)!)
-//		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
-		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
-
-		let mgr = AFHTTPSessionManager()
-
-		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
-			print("\(response) \(obj) \(error)")
-		}
+//		let sss = AFHTTPRequestSerializer()
+//		let req = NSURLRequest(URL: NSURL(string: url)!)
+////		sss.requestBySerializingRequest(req, withParameters: param, error: nil)
+//		sss.requestWithMethod("POST", URLString: url, parameters: param, error: nil)
+//
+//		let mgr = AFHTTPSessionManager()
+//
+//		mgr.dataTaskWithRequest(req) { (response, obj, error) -> Void in
+//			print("\(response) \(obj) \(error)")
+//		}
 
 		/// 缓存用的key
 		let key = "\(url)\(param)"
@@ -186,7 +237,7 @@ public class QPHttpUtils: NSObject {
 				return
 			}
 		}
-		let request = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
+		let _ = Alamofire.request(.POST, url, parameters: param).responseJSON { response in
 			if response.response?.statusCode >= 200 && response.response?.statusCode < 300 {
 				if response.result.isSuccess {
 					if let value = response.result.value {
@@ -253,6 +304,60 @@ public class QPHttpUtils: NSObject {
 				print(encodingError)
 			}
 		})
+	}
+
+	public func uploadImage(url: String, param: [String: AnyObject]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
+
+		if let URL = NSURL(string: url.addParam(param)) {
+			let mutableURLRequest = NSMutableURLRequest(URL: URL)
+			mutableURLRequest.HTTPMethod = "POST"
+			Alamofire.URLRequestConvertible
+			let encoding: ParameterEncoding = .URL
+			let encodedURLRequest = encoding.encode(mutableURLRequest, parameters: param).0
+			log.debug("url:\(encodedURLRequest)")
+			log.debug("param \(param) imageName:\(imageName) \(encodedURLRequest)")
+
+//			manager.request(.POST, url, parameters: param)
+			manager.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
+				var iii = 0
+				for image in images {
+					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+					let name = imageName[iii]
+					multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
+					iii += 1
+				}
+				}, encodingCompletion: { encodingResult in
+				switch encodingResult {
+				case .Success(let upload, _, _):
+					upload.responseJSON { response in
+						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
+						if let value = datastring as? String {
+							let json = JSON.parse(value)
+							if json == nil {
+								let json = JSON(value)
+								success(response: json)
+								return
+							}
+							success(response: json)
+							return
+						} else if let value = response.result.value as? String {
+							let json = JSON.parse(value)
+							success(response: json)
+							return
+						} else {
+							fail()
+							return
+						}
+					}
+				case .Failure(let encodingError):
+					print(encodingError)
+					log.error("encodingError \(encodingError)")
+					fail()
+				}
+			})
+		} else {
+			fail()
+		}
 	}
 
 //    private func newHttpRequet(url: String, param: [NSObject : AnyObject]!, success: CJWSuccessBlock!, fail: CJWFailBlock!){

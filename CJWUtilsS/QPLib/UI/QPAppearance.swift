@@ -18,12 +18,33 @@ public let FONT_SMALL_BOLD = UIFont.boldSystemFontOfSize(12)
 
 public let TEXT_CENTER = NSTextAlignment.Center
 /// 屏幕宽度
-public let SCREEN_WIDTH = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.width
-/// 屏幕高度
-public let SCREEN_HEIGHT = UIApplication.sharedApplication().keyWindow!.rootViewController!.view.frame.height
+//public let SCREEN_WIDTH: CGFloat = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.frame.width ?? 0
+public let SCREEN_WIDTH = screenWidth
+private var screenWidth: CGFloat {
+	let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+	for window in frontToBackWindows {
+		if window.windowLevel == UIWindowLevelNormal {
+			return window.width
+		}
+	}
+	return 0
+}
 
-let capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+/// 屏幕高度
+//public let SCREEN_HEIGHT: CGFloat = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.frame.height ?? 0
+public let SCREEN_HEIGHT = screenHeight
+private var screenHeight: CGFloat {
+	let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+	for window in frontToBackWindows {
+		if window.windowLevel == UIWindowLevelNormal {
+			return window.height
+		}
+	}
+	return 0
+}
+
+public let capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+public let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 class QPAppearance: NSObject {
 	class func setup() {
@@ -58,18 +79,8 @@ public extension UIView {
 	}
 }
 
-public extension UIImageView {
-	public func toCircleImageView() {
-		self.toCircleView()
-	}
-
-	public func scaleAspectFit() {
-		self.contentMode = UIViewContentMode.ScaleAspectFit
-	}
-}
-
 public extension UIView {
-	public func cornorRadius(radius: CGFloat) {
+	public func cornorRadius(radius: CGFloat = 3) {
 		layer.cornerRadius = radius
 		layer.masksToBounds = true
 	}
@@ -102,14 +113,11 @@ public extension UILabel {
 		self.attributedText = attribute
 	}
 
-	private func getAttribute() -> NSMutableAttributedString {
+	public func getAttribute() -> NSMutableAttributedString {
 		var attribute: NSMutableAttributedString!
 		if self.attributedText == nil {
-			print("empt")
-			if self.text == nil {
-				attribute = NSMutableAttributedString(string: "")
-			}
-			attribute = NSMutableAttributedString(string: self.text!)
+			let txt = self.text ?? ""
+			attribute = NSMutableAttributedString(string: txt)
 		} else {
 			attribute = NSMutableAttributedString(attributedString: attributedText!)
 		}
@@ -196,27 +204,7 @@ public extension UISearchBar {
 	}
 }
 
-public extension UIButton {
-	func addRightImage(img: UIImage) {
-//		let img = UIImage(named: "arrow_v")
-		let button = self
-		// button.setImage(img, forState: UIControlState.Normal)
-//		let inset: CGFloat = 15
-//		button.titleLabel?.font = FONT_SMALL
-//		button.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
-//		button.imageView?.scaleAspectFit()
-//		button.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-
-		let arrow = UIImageView()
-		arrow.image = img
-		button.addSubview(arrow)
-		arrow.centerY(button.titleLabel!)
-		arrow.heightConstrain("10")
-		arrow.widthConstrain("10")
-		arrow.leadingConstrain(button.titleLabel!, predicate: "4")
-	}
-}
-
+/// 有一定padding的textfield
 public class QPTextField: UITextField {
 	override public func layoutSubviews() {
 		super.layoutSubviews()
@@ -234,3 +222,152 @@ public class QPTextField: UITextField {
 		return CGRectInset(bounds, 10, 10);
 	}
 }
+
+public extension UILabel {
+	func textAlignmentCenter() {
+		self.textAlignment = NSTextAlignment.Center
+	}
+}
+
+public class QPPaddingTextField: UITextField {
+
+	@IBInspectable public var paddingLeft: CGFloat = 4
+	@IBInspectable public var paddingRight: CGFloat = 4
+
+	override public func textRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRectMake(bounds.origin.x + paddingLeft, bounds.origin.y,
+			bounds.size.width - paddingLeft - paddingRight, bounds.size.height);
+	}
+
+	override public func editingRectForBounds(bounds: CGRect) -> CGRect {
+		return textRectForBounds(bounds)
+	}
+}
+
+public extension UITextField {
+	/**
+	 简单的添加左边padding
+
+	 - parameter padding: 左边padding
+	 */
+	public func leftPadding(padding: CGFloat) {
+		let paddingView: UIView = UIView(frame: CGRectMake(0, 0, padding, 20))
+		leftView = paddingView
+		leftViewMode = UITextFieldViewMode.Always;
+	}
+}
+
+public class QPControl: UIControl {
+	override public func updateConstraints() {
+		super.updateConstraints()
+	}
+
+	public func setup() {
+	}
+
+	convenience public init () {
+		self.init(frame: CGRect.zero)
+		setup()
+	}
+
+	override public init(frame: CGRect) {
+		super.init(frame: frame)
+		setup()
+	}
+
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		setup()
+	}
+}
+
+public extension UIView {
+	public func backgroundColorClear() {
+		self.backgroundColor = UIColor.clearColor()
+	}
+
+	public func backgroundColorBlack() {
+		self.backgroundColor = UIColor.blackColor()
+	}
+
+	public func backgroundColorWhite() {
+		self.backgroundColor = UIColor.whiteColor()
+	}
+
+	public func backgroundColorHex(hex: String) {
+		let color = UIColor(fromHexCode: hex)
+		self.backgroundColor = color
+	}
+}
+
+// MARK: - 发弹幕
+public extension NSObject {
+	/**
+	 发弹幕
+
+	 - parameter text: 弹幕内容
+	 */
+	public func showScreenComment(text: String) {
+		let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+		for window in frontToBackWindows {
+			if window.windowLevel == UIWindowLevelNormal {
+
+				let text = text.stringByReplacingOccurrencesOfString("\n", withString: "")
+				let font = UIFont.systemFontOfSize(17)
+
+				let label = UILabel()
+                let ran:CGFloat = 150
+				let hei: CGFloat = 30
+				let width = text.calculateWidth(font, height: hei)
+
+				label.frame = CGRectMake(320, ran % 290, width, hei);
+				label.text = text
+				label.font = font
+				label.textColor = UIColor.whiteColor()
+				label.numberOfLines = 0
+				label.shadowEffect()
+				window.addSubview(label)
+
+				let time = Double(width / 60.0)
+				UIView.animateWithDuration(time, animations: {
+					label.frame = CGRectMake(-width, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
+
+					}, completion: { (flag) in
+					label.removeFromSuperview()
+				})
+			}
+		}
+	}
+}
+
+public extension UIView {
+
+	/**
+	 背景添加阴影效果
+	 */
+	public func shadowEffect() {
+		self.layer.shadowColor = UIColor.blackColor().CGColor;// shadowColor阴影颜色
+		self.layer.shadowOffset = CGSizeMake(-4, 4);// shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+		self.layer.shadowOpacity = 0.8;// 阴影透明度，默认0
+		self.layer.shadowRadius = 4;// 阴影半径，默认3
+		// shadowEffect2()
+	}
+}
+
+public extension UILabel {
+	public func updateLineGap(gap: CGFloat) {
+		let paragStyle = NSMutableParagraphStyle()
+		paragStyle.lineSpacing = gap
+
+		if let string = self.text {
+
+			let attributeString = NSMutableAttributedString(string: string)
+//			let range = string.rangeOfString(string)
+//			attributeString.addAttribute(NSParagraphStyleAttributeName, value: paragStyle, range: range)
+
+			attributeString.addAttributes([NSParagraphStyleAttributeName: paragStyle], range: NSMakeRange(0, string.length()))
+			self.attributedText = attributeString
+		}
+	}
+}
+

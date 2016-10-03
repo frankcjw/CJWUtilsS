@@ -11,12 +11,12 @@ import SVProgressHUD
 import MBProgressHUD
 
 class QPHUDUtils: NSObject {
-	var mbHUD : MBProgressHUD?
+	var mbHUD: MBProgressHUD?
 
-	class var sharedInstance : QPHUDUtils {
+	class var sharedInstance: QPHUDUtils {
 		struct Static {
-			static var onceToken : dispatch_once_t = 0
-			static var instance : QPHUDUtils? = nil
+			static var onceToken: dispatch_once_t = 0
+			static var instance: QPHUDUtils? = nil
 		}
 		dispatch_once(&Static.onceToken) {
 			Static.instance = QPHUDUtils()
@@ -62,7 +62,7 @@ public extension UIView {
 		cleanHud()
 		self.userInteractionEnabled = false
 		let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
-		if hud != nil { }
+//		if hud != nil { }
 		hud.labelText = text
 		hud.mode = .Indeterminate
 		QPHUDUtils.sharedInstance.mbHUD = hud
@@ -114,12 +114,12 @@ public extension UIView {
 	 - parameter text:     显示的文字
 	 - parameter duration: 显示时常.默认1.5
 	 */
-	public func showHUDTemporary(text : String, duration: NSTimeInterval = 1.5) {
+	public func showHUDTemporary(text: String, duration: NSTimeInterval = 1.5) {
 		cleanHud()
 		let view = self
 		self.userInteractionEnabled = false
 		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-		if hud != nil { }
+//		if hud != nil { }
 		hud.labelText = text
 		hud.mode = .Text
 		QPHUDUtils.sharedInstance.mbHUD = hud

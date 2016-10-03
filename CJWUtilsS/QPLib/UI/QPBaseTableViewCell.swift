@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public typealias QPTableViewCell = QPBaseTableViewCell
 
 public class QPBaseTableViewCell: UITableViewCell {
 
 	/// 父view controller
-	public var rootViewController : UIViewController?
+	public var rootViewController: UIViewController?
 	/// 这个cell的indexPath
-	public var indexPath : NSIndexPath?
+	public var indexPath: NSIndexPath?
 	public var didSetupConstraints = false
 	/// cell的数据
 	public var cellInfo = NSDictionary()
@@ -28,7 +29,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 	/**
 	 为contentView添加autoLayout
 	 */
-	private func setupAutoLayout() {
+	func setupAutoLayout() {
 		self.contentView.setToAutoLayout()
 		contentView.alignLeading("0", trailing: "0", toView: self)
 	}
@@ -43,7 +44,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 
 	 - returns: nil
 	 */
-	private func initCell() {
+	func initCell() {
 		setupViews(contentView)
 		setupAutoLayout()
 		self.selectionStyle = UITableViewCellSelectionStyle.None
@@ -89,8 +90,64 @@ public class QPBaseTableViewCell: UITableViewCell {
 		setupConstrains(contentView)
 	}
 
+	public func setJson(json: JSON) {
+		setupConstrains(contentView)
+	}
+
 	public func setup() {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
 	}
+}
+
+public extension UITableView {
+	public func disableSeparator() {
+		separatorStyle = UITableViewCellSeparatorStyle.None
+	}
+}
+
+public extension UITableViewCell {
+	/**
+	 隐藏分割线
+	 */
+	public func disableSeparator() {
+		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
+	}
+}
+
+public class QPConfirmTableViewCell: QPTableViewCell {
+	public let button = UIButton()
+	private let label = UILabel()
+
+	override public func setupViews(view: UIView) {
+		super.setupViews(view)
+
+		view.addSubview(button)
+		view.addSubview(label)
+
+		button.backgroundColor = MAIN_COLOR
+		button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		backgroundColorClear()
+
+		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
+
+	}
+
+	override public func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+
+		label.heightConstrain("40")
+		label.leadingAlign(view, predicate: "16")
+		label.topAlign(view, predicate: "20")
+		label.trailingAlign(view, predicate: "-16")
+		label.bottomAlign(view, predicate: "-4")
+
+		button.heightConstrain("40")
+		button.leadingAlign(view, predicate: "16")
+		button.topAlign(view, predicate: "20")
+		button.trailingAlign(view, predicate: "-16")
+		button.bottomAlign(view, predicate: "-4")
+
+	}
+
 }

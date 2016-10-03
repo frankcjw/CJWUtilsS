@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #
 
   #s.source       = { :git => "https://github.com/frankcjwen/CJWUtilsS.git", :tag => "0.0.1" }
-  s.source       = { :git => "https://github.com/frankcjw/CJWUtilsS.git" }
+  s.source       = { :git => "https://github.com/frankcjw/CJWUtilsS.git"  }
   
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -93,12 +93,17 @@ Pod::Spec.new do |s|
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
 
-  s.subspec 'CJWUtils' do |ss|
-    ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
-  end
+s.subspec 'CJWUtils' do |ss|
+    #ss.source = { :git => 'https://github.com/frankcjw/CJWUtils.git'}
+#ss.dependency "Bugly"
+#ss.pod_target_xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/Bugly' }
+#ss.framework = 'Bugly'
+#ss.ios.library = 'Bugly'
+#ss.vendored_framework = 'Bugly'
+end
 
-  # s.public_header_files = "Classes/**/*.h"
-
+#s.public_header_files = "CJWUtilsS/QPLib/QPHeader.h"
+#s.public_header_files = 'Bugly.framework/Headers/bugly.h'
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -109,7 +114,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+  s.resources = "CJWUtilsS/QPLib/Lib/MLSelectPhoto/MLSelectPhoto.bundle"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -136,6 +141,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+#s.xcconfig = { 'SWIFT_OBJC_BRIDGING_HEADER' => 'CJWUtilsS/QPLib/QPHeader.h' }
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency "AFNetworking"
   s.dependency "SDWebImage"
@@ -161,12 +167,17 @@ Pod::Spec.new do |s|
   s.dependency "AsyncSwift"
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift"
+  s.dependency "PhoneNumberKit"
+  #s.dependency "AMap2DMap"
+  s.dependency "INTULocationManager"
   s.dependency "AwesomeCache", "~> 2.0"
+#s.dependency "Bugly"
+#s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"
-  s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
+  #s.dependency {'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'}
 
   #s.dependency "TMCache"
-  #s.dependency {'CJWUtils', :git => 'https://github.com/frankcjw/CJWUtils.git'}
-
-
+#  s.dependency "MLSelectPhoto"
+#s.dependency 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
+#s.dependency 'MLSelectPhoto', :git => 'https://github.com/CJWDevelop/MLSelectPhoto'
 end

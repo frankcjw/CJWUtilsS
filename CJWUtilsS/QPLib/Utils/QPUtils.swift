@@ -11,6 +11,8 @@ import SDWebImage
 import NSDate_TimeAgo
 import FLKAutoLayout
 import SwiftyJSON
+import Alamofire
+import PhoneNumberKit
 
 public let UIControlEventsTouchUpInside = UIControlEvents.TouchUpInside
 public let UIControlStateNormal = UIControlState.Normal
@@ -31,6 +33,8 @@ public class QPUtils: NSObject {
 		}
 		return Static.instance!
 	}
+
+	public var config = QPConfig()
 }
 
 public extension QPUtils {
@@ -48,7 +52,7 @@ public extension QPUtils {
 		for _ in 0 ... units.count - 1 {
 			if calc > 1024 * 2 {
 				calc = calc / 1024
-				unitIndex++
+				unitIndex += 1
 			} else {
 				break
 			}
@@ -386,7 +390,7 @@ public extension Array where Element: Equatable {
 		while true {
 			if let index = indexOf(element) {
 				removeAtIndex(index)
-				occurrences++
+				occurrences += 1
 			} else {
 				return occurrences
 			}
@@ -429,11 +433,21 @@ public extension NSDictionary {
 public extension UIView {
 
 	// MARK: - leading
-	public func leadingAlign(view: UIView, predicate: String = "8") {
+	public func leadingAlign(view: UIView) {
+		self.leadingAlign(view, predicate: "8")
+	}
+
+	public func leadingAlign(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignLeadingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func leadingConstrain(view: UIView, predicate: String = "8") {
+	public func leadingConstrain(view: UIView) {
+		leadingConstrain(view, predicate: "8")
+	}
+
+	public func leadingConstrain(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainLeadingSpaceToView(view, predicate: predicate)
 	}
 
@@ -443,16 +457,32 @@ public extension UIView {
 		self.trailingAlign(view, predicate: predicate)
 	}
 
-	public func trailingAlign(view: UIView, predicate: String = "-8") {
+	public func trailingAlign(view: UIView) {
+		trailingAlign(view, predicate: "-8")
+	}
+
+	public func trailingAlign(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignTrailingEdgeWithView(view, predicate: predicate)
 	}
 
-	public func trailingConstrain(view: UIView, predicate: String = "-8") {
+	public func trailingConstrain(view: UIView) {
+		trailingConstrain(view, predicate: "-8")
+	}
+
+	public func trailingConstrain(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainTrailingSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - top
-	public func topAlign(view: UIView, predicate: String = "8") {
+
+	public func topAlign(view: UIView) {
+		topAlign(view, predicate: "8")
+	}
+
+	public func topAlign(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignTopEdgeWithView(view, predicate: predicate)
 	}
 
@@ -461,12 +491,22 @@ public extension UIView {
 		self.topConstrain(view, predicate: predicate)
 	}
 
-	public func topConstrain(view: UIView, predicate: String = "8") {
+	public func topConstrain(view: UIView) {
+		topConstrain(view, predicate: "8")
+	}
+
+	public func topConstrain(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainTopSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - bottom
-	public func bottomAlign(view: UIView, predicate: String = "-8") {
+	public func bottomAlign(view: UIView) {
+		self.bottomAlign(view, predicate: "-8")
+	}
+
+	public func bottomAlign(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignBottomEdgeWithView(view, predicate: predicate)
 	}
 
@@ -475,37 +515,78 @@ public extension UIView {
 		self.bottomAlign(view, predicate: predicate)
 	}
 
-	public func bottomConstrain(view: UIView, predicate: String = "0") {
+	public func bottomConstrain(view: UIView) {
+		self.bottomConstrain(view, predicate: "0")
+	}
+
+	public func bottomConstrain(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainBottomSpaceToView(view, predicate: predicate)
 	}
 
 	// MARK: - other
-	public func centerX(view: UIView, predicate: String = "0") {
+	public func centerX(view: UIView) {
+		self.centerX(view, predicate: "0")
+	}
+
+	public func centerX(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignCenterXWithView(view, predicate: predicate)
 	}
 
-	public func centerY(view: UIView, predicate: String = "0") {
+	public func centerY(view: UIView) {
+		self.centerY(view, predicate: "0")
+	}
+
+	public func centerY(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignCenterYWithView(view, predicate: predicate)
 	}
 
-	public func width(view: UIView, predicate: String = "0") {
+	public func width(view: UIView) {
+		self.width(view, predicate: "0")
+	}
+
+	public func width(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainWidthToView(view, predicate: predicate)
 	}
 
 	public func widthConstrain(predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainWidth(predicate)
 	}
 
-	public func height(view: UIView, predicate: String = "0") {
+	public func height(view: UIView) {
+		self.height(view, predicate: "0")
+	}
+
+	public func height(view: UIView, predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainHeightToView(view, predicate: predicate)
 	}
 
 	public func heightConstrain(predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainHeight(predicate)
 	}
 
-	public func aspectRatio(predicate: String = "") {
+	public func aspectRatio() {
+		self.aspectRatio("0")
+	}
+
+	public func aspectRatio(predicate: String) {
+		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainAspectRatio(predicate)
+	}
+
+	public func equalConstrain() {
+		if let view = self.superview {
+			self.leadingAlign(view, predicate: "0")
+			self.trailingAlign(view, predicate: "0")
+			self.topAlign(view, predicate: "0")
+			self.bottomAlign(view, predicate: "0")
+		}
 	}
 
 	/**
@@ -617,11 +698,27 @@ public extension String {
 	}
 }
 
-extension String {
-	func isMobile() -> Bool {
+public extension String {
+	public func isMobile() -> Bool {
 		// TODO: isMobile
-		log.warning("not been setup")
+//		log.warning("not been setup")
 //        return "".isValidateMobile(self)
+
+		do {
+			let number = self
+			let phoneNumber = try PhoneNumber(rawNumber: number, region: "CN")
+
+//			log.debug("\(phoneNumber.isValidNumber) \(phoneNumberCustomDefaultRegion.isValidNumber)")
+//			log.warning("\(phoneNumber.numberExtension) \(phoneNumber.type) \(phoneNumberCustomDefaultRegion.toE164())")
+			if phoneNumber.type == .Mobile {
+				return true
+			}
+			return false
+		}
+		catch {
+			log.debug("Generic parser error")
+		}
+
 		return false
 	}
 
@@ -831,3 +928,112 @@ public extension UIView {
 		return self.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
 	}
 }
+
+public struct QPConfig {
+	public var hidesBottomBarWhenPushed = true
+	/// 高德地图api key
+	public var gdMapApiKey = "2bab86f775329259bdbd7c68f520641c"
+}
+
+public extension String {
+	/**
+	 中文转拼音,未完全测试
+
+	 - returns: 拼音字母
+	 */
+	public func toPY() -> String {
+		let mutableString = NSMutableString(string: self) as CFMutableStringRef
+		CFStringTransform(mutableString, nil, kCFStringTransformMandarinLatin, false)
+		CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, false)
+		let string = mutableString as String
+		return string.uppercaseString.stringByReplacingOccurrencesOfString(" ", withString: "")
+	}
+}
+
+public extension String {
+	func addParam(param: [String: AnyObject]?) -> String {
+		if let param = param {
+			let URL = NSURL(string: self)
+			let mutableURLRequest = NSMutableURLRequest(URL: URL!)
+			let paramUrl = Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: param).0.URLString
+//			self = paramUrl
+			return paramUrl
+		} else {
+			return self;
+		}
+	}
+}
+
+// MARK: - convert Struct to JSON
+public protocol JSONRepresentable {
+	var JSONRepresentation: AnyObject { get }
+}
+
+public protocol JSONSerializable: JSONRepresentable {
+}
+
+public extension JSONSerializable {
+	var JSONRepresentation: AnyObject {
+		var representation = [String: AnyObject]()
+
+		for case let (label?, value) in Mirror(reflecting: self).children {
+			switch value {
+			case let value as JSONRepresentable:
+				representation[label] = value.JSONRepresentation
+
+			case let value as NSObject:
+				representation[label] = value
+
+			default:
+				// Ignore any unserializable properties
+				break
+			}
+		}
+
+		return representation
+	}
+}
+
+public extension JSONSerializable {
+	public func toJSON() -> String? {
+		let representation = JSONRepresentation
+
+		guard NSJSONSerialization.isValidJSONObject(representation) else {
+			return nil
+		}
+
+		do {
+			let data = try NSJSONSerialization.dataWithJSONObject(representation, options: [])
+			return String(data: data, encoding: NSUTF8StringEncoding)
+		} catch {
+			return nil
+		}
+	}
+}
+
+//public class QPGuidingViewController: CoreNewFeatureVC {
+//}
+
+public extension QPUtils {
+
+	public class func canShowNewFeature() -> Bool {
+		let flag = CoreNewFeatureVC.canShowNewFeature()
+		return flag
+	}
+
+	public class func guidingViewController(images: [String], block: QPNormalBlock) -> UIViewController {
+		var models: [NewFeatureModel] = []
+		for img in images {
+			let image = UIImage(named: img)!
+			let model = NewFeatureModel(image)
+			models.append(model)
+		}
+
+		let vc = CoreNewFeatureVC (models: models) {
+			block()
+		}
+
+		return vc
+	}
+}
+

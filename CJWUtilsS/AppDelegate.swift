@@ -9,22 +9,36 @@
 import UIKit
 import CoreData
 import Alamofire
-import netfox
-import SwiftyUserDefaults
-
+ 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+ 
 
-		NFX.sharedInstance().start()
-		NFX.sharedInstance().setGesture(.shake)
+//        CoreNewFeatureVC.canShowNewFeature()
 
-		Defaults["asd"] = "asd"
-		let sss = Defaults["asd"].stringValue
-		print(sss)
+		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+		self.window = window;
+
+		let vc = ViewController()
+		self.window?.rootViewController = vc
+
+//		window.rootViewController = QPUtils.guidingViewController(["testing", "testing"], block: {
+//			self.window?.rootViewController = vc
+//		})
+ 
+
+		// let sc = SymmetricCryptor(algorithm: .AES128, options: CCOptions(kCCOptionPKCS7Padding))
+//		cypher.setRandomIV()
+//		do {
+//			let cypherText = try sc.crypt(string: clearText, key: key)
+//            print("")
+//		} catch {
+//			print("Error while encrypting: \(error)")
+//		}
 
 		return true
 	}
