@@ -151,7 +151,7 @@ end
   s.dependency "CGFloatType"
   s.dependency "DZNEmptyDataSet"
   s.dependency "NSDate+TimeAgo"
-  s.dependency "HMSegmentedControl"
+  s.dependency "HMSegmentedControl",'1.5.2'
   s.dependency "MJExtension"
   s.dependency "ClusterPrePermissions"
   s.dependency "FCFileManager"
@@ -159,14 +159,14 @@ end
   s.dependency "FLKAutoLayout"
   s.dependency "Alamofire"
   s.dependency "KLCPopup"
-  s.dependency "XCGLogger"
-  s.dependency "SwiftyJSON"
+  s.dependency "XCGLogger",'3.3'
+  s.dependency "SwiftyJSON",'2.4.0'
   s.dependency "SVProgressHUD"
   s.dependency "SSKeychain"
   s.dependency "CryptoSwift"
-  s.dependency "AsyncSwift"
+  s.dependency "AsyncSwift",'~>1.7.2'
   s.dependency "CGFloatType"
-  s.dependency "CryptoSwift"
+  s.dependency "CryptoSwift",'0.5.2 '
   s.dependency "PhoneNumberKit"
   #s.dependency "AMap2DMap"
   s.dependency "INTULocationManager"
