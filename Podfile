@@ -25,7 +25,7 @@ target 'CJWUtilsS' do
     pod 'SVProgressHUD'
     pod 'SSKeychain'
     pod 'CryptoSwift'
-    pod 'RNCryptor'
+#    pod 'RNCryptor'
 #    pod 'SugarRecord'
 #    pod 'Realm', :tag ~> '0.97.0'
 #    pod 'Realm', '~> 0.97.0'

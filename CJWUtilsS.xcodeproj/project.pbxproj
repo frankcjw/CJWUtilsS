@@ -21,6 +21,7 @@
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
 		0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0151722B1C4CD23A00EEB9ED /* QPAlert.swift */; };
 		0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */; };
+		017C35771DA8C1DA0062C3B1 /* QPEventUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */; };
 		018AF1141D803BF00002ABBF /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1131D803BF00002ABBF /* Base64.m */; };
 		018AF1171D8040A70002ABBF /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1161D8040A70002ABBF /* AppInfoManager.m */; };
 		018AF1191D8045070002ABBF /* QPImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1181D8045070002ABBF /* QPImagePickerViewController.swift */; };
@@ -120,6 +121,7 @@
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
 		0151722B1C4CD23A00EEB9ED /* QPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlert.swift; sourceTree = "<group>"; };
 		0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPCacheUtilsPro.swift; sourceTree = "<group>"; };
+		017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPEventUtils.swift; sourceTree = "<group>"; };
 		018AF1121D803BF00002ABBF /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		018AF1131D803BF00002ABBF /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		018AF1151D8040A70002ABBF /* AppInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoManager.h; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */,
 				01CE0CB41D83FD47009EC9B9 /* QPNavigationUtils.swift */,
 				01CE0CB91D83FE1E009EC9B9 /* QPLocationUtils.swift */,
+				017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				018AF14B1D8048520002ABBF /* MLSelectPhotoAssets.m in Sources */,
 				01F2019E1D800E0A00DA5ABB /* QPSecurityUtils.swift in Sources */,
 				018AF1511D8048520002ABBF /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
+				017C35771DA8C1DA0062C3B1 /* QPEventUtils.swift in Sources */,
 				01CAEFD61C3BA737006E221A /* QPBaseTableViewCell.swift in Sources */,
 				015001A31D59786D00CA34F5 /* QPFloatView.swift in Sources */,
 				015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */,

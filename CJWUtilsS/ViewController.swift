@@ -15,6 +15,7 @@ import WebViewJavascriptBridge
 import Mirror
 import FXBlurView
 import SwiftyRSA
+import EventKit
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -33,6 +34,18 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
+//		QPEventUtils().verifyUserEventAuthorization()
+
+		QPEventUtils.verifyUserAuthorization(EKEntityType.Event, success: {
+			let utils = QPEventUtils()
+			utils.addCalendatTitle("贵州商会活动", block: { (calendar) in
+				let start = NSDate()
+				let end = start.dateByAddingTimeInterval(300)
+				utils.addCalendar("测试活动", startDate: start, endDate: end, calendar: calendar)
+			})
+		}) {
+		}
+//		QPEventUtils().addCalendar("再说", startDate: NSDate(), endDate: NSDate().dateByAddingTimeInterval(100))
 //		let enc = try! s.aesEncrypt(key, iv: iv)
 //		let dec = try! enc.aesDecrypt(key, iv: iv)
 //		print("\(enc) \(dec)")
@@ -65,7 +78,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			}
 //		}
 
-		log.remoteUrl = "http://quickplain.asuscomm.com:9090/enlog"
 		log.debug("fuck you2")
 		let st = Hello()
 		let mirror = Mirror(st)
@@ -145,7 +157,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 			if offsetY < 100 {
 				let percent = (offsetY - 0) / 100
-				print(percent)
 				bv.alpha = percent
 			} else {
 				bv.alpha = 1
@@ -223,9 +234,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	func testing() {
 		let tagString = "啊实1打实,啊实2打实,啊实3打实"
 		let tags = tagString.characters.split { $0 == "," }.map(String.init)
-		for tag in tags {
-			print(tag)
-		}
+
 	}
 
 	func rsa() {
