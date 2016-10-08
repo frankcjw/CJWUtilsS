@@ -15,7 +15,6 @@ import WebViewJavascriptBridge
 import Mirror
 import FXBlurView
 import SwiftyRSA
-import CryptoSwift
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -34,9 +33,40 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
+//		let enc = try! s.aesEncrypt(key, iv: iv)
+//		let dec = try! enc.aesDecrypt(key, iv: iv)
+//		print("\(enc) \(dec)")
 
-		log.remoteUrl = "http://quickplain.asuscomm.com:9090/"
-		log.debug("fuck you")
+//		do {
+//			print("\(key.length())")
+//			let aes = try AES(key: key, iv: iv) // aes128
+//			let ciphertext = try aes.encrypt(sss.utf8.map({ $0 }))
+//			if let en = ciphertext.toBase64() {
+//				print(en)
+//				let str = try en.decryptBase64(aes)
+//				print(str)
+//			}
+//		} catch { }
+
+//		if let data: NSData = "qweqweqwe".dataUsingEncoding(NSUTF8StringEncoding) {
+//			let password = "Secret password"
+//			let ciphertext = RNCryptor.encryptData(data, password: password)
+//			let dataString = String(data: ciphertext, encoding: NSUTF8StringEncoding)
+//
+//			print("ciphertext \(dataString)")
+//
+//			// Decryption
+//			do {
+//				let originalData = try RNCryptor.decryptData(ciphertext, password: password)
+//				let dataString = String(data: originalData, encoding: NSUTF8StringEncoding)
+//				print("\(dataString)")
+//			} catch {
+//				print(error)
+//			}
+//		}
+
+		log.remoteUrl = "http://quickplain.asuscomm.com:9090/enlog"
+		log.debug("fuck you2")
 		let st = Hello()
 		let mirror = Mirror(st)
 

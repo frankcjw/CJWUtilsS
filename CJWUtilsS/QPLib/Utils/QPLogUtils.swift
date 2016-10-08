@@ -9,6 +9,8 @@
 import UIKit
 import XCGLogger
 import FCFileManager
+import CryptoSwift
+import SwiftyJSON
 
 public let log = QPLogUtils.setup()
 
@@ -119,13 +121,24 @@ public class Log: XCGLogger {
 				}
 
 				let bundle = NSBundle.mainBundle().bundleIdentifier
+//				if let debugInfo = debugInfo {
+//					let result = debugInfo.EncryptAES("passwordpassword")
+//					param["debugInfo"] = result ?? ""
+//				}
 				param["debugInfo"] = debugInfo ?? ""
+
 				param["project"] = bundle ?? ""
-				QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
-					//
-				}) {
-					//
+
+				let json = JSON(param).toJSONString()
+				if let result = json.EncryptAES("passwordpassword") {
+					let enParam = ["info": result]
+					QPHttpUtils.sharedInstance.newHttpRequest(url, param: enParam, success: { (response) in
+						//
+					}) {
+						//
+					}
 				}
+
 			}
 		}
 	}
