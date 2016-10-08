@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 public class QPSecurityUtils: NSObject {
 
@@ -133,5 +134,33 @@ extension String {
 public extension QPHttpUtils {
 	func generateAuthParam(param: [String: AnyObject]!, pushId: String? = nil) -> [String: AnyObject]! {
 		return QPSecurityUtils.generateAuthParam(param, pushId: pushId)
+	}
+}
+
+public extension String {
+	public func EncryptAES(key: String) -> String? {
+		let iv = "RandomInitVector"
+		let sss = self
+		do {
+			print("\(key.length())")
+			let aes = try AES(key: key, iv: iv) // aes128
+			let ciphertext = try aes.encrypt(sss.utf8.map({ $0 }))
+			if let en = ciphertext.toBase64() {
+				print(en)
+				return en
+			}
+		} catch {
+		}
+		return nil
+	}
+
+	public func DecryptAES(key: String) -> String? {
+		let iv = "RandomInitVector"
+		do {
+			let aes = try AES(key: key, iv: iv) // aes128
+			return try self.decryptBase64ToString(aes)
+		} catch {
+		}
+		return nil
 	}
 }

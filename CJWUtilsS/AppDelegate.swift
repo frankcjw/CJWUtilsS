@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 import Alamofire
- 
+//import netfox
+//import SwiftyUserDefaults
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //			self.window?.rootViewController = vc
 //		})
  
+ 		log.remoteUrl = "http://quickplain.asuscomm.com:9090/enlog"
 
 		// let sc = SymmetricCryptor(algorithm: .AES128, options: CCOptions(kCCOptionPKCS7Padding))
 //		cypher.setRandomIV()
