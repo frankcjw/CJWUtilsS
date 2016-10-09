@@ -26,7 +26,8 @@ public class QPNavigationUtils: NSObject {
 		var url = "http://m.amap.com/?q=\(latitude),\(longitude)&name=\(name)"
 		// url = "iosamap://path?sourceApplication=\(appName)&slat=\(VIPLocationUtils.sharedInstance.latitude)&slon=\(VIPLocationUtils.sharedInstance.longitude)&sname=我的位置&dname=\(name)&dev=0&m=0&t=0&dlat=\(latitude)&dlon=\(longitude)&backScheme=VIPCardPool"
 
-		url = "iosamap://navi?sourceApplication=\(appName)&backScheme=\(backScheme)&poiname=\(name)&poiid=BGVIS&lat=\(latitude)&lon=\(longitude)&dev=1&style=2"
+//		url = "iosamap://navi?sourceApplication=\(appName)&backScheme=\(backScheme)&poiname=\(name)&poiid=BGVIS&lat=\(latitude)&lon=\(longitude)&dev=1&style=2"
+		url = "iosamap://path?sourceApplication=\(appName)&sname=我的位置&did=BGVIS2&dlat=\(latitude)&dlon=\(longitude)&dname=\(name)&dev=0&m=0&t=1"
 		url.urlEncode()
 		let flag = url.openUrl()
 		return flag
