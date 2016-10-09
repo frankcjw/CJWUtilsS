@@ -59,9 +59,16 @@ public extension UIView {
 	 - parameter text: 需要显示的文字
 	 */
 	public func showLoading(text: String) {
+
+		var view = self
+		if view is UITableView {
+			if let sv = view.superview {
+				view = sv
+			}
+		}
 		cleanHud()
 		self.userInteractionEnabled = false
-		let hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
+		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
 //		if hud != nil { }
 		hud.labelText = text
 		hud.mode = .Indeterminate
@@ -72,9 +79,15 @@ public extension UIView {
 	 隐藏HUD
 	 */
 	public func hideLoading() {
+		var view = self
+		if view is UITableView {
+			if let sv = view.superview {
+				view = sv
+			}
+		}
 		cleanHud()
 		self.userInteractionEnabled = true
-		MBProgressHUD.hideAllHUDsForView(self, animated: true)
+		MBProgressHUD.hideAllHUDsForView(view, animated: true)
 	}
 
 	/**

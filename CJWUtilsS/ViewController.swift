@@ -34,51 +34,15 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	let webView = UIWebView()
 
 	override func viewDidLoad() {
-//		QPEventUtils().verifyUserEventAuthorization()
-
-		QPEventUtils.verifyUserAuthorization(EKEntityType.Event, success: {
-			let utils = QPEventUtils()
-			utils.addCalendatTitle("贵州商会活动", block: { (calendar) in
-				let start = NSDate()
-				let end = start.dateByAddingTimeInterval(300)
-				utils.addCalendar("测试活动", note: "是魔鬼", startDate: start, endDate: end, calendar: calendar)
-			})
-		}) {
-		}
-//		QPEventUtils().addCalendar("再说", startDate: NSDate(), endDate: NSDate().dateByAddingTimeInterval(100))
-//		let enc = try! s.aesEncrypt(key, iv: iv)
-//		let dec = try! enc.aesDecrypt(key, iv: iv)
-//		print("\(enc) \(dec)")
-
-//		do {
-//			print("\(key.length())")
-//			let aes = try AES(key: key, iv: iv) // aes128
-//			let ciphertext = try aes.encrypt(sss.utf8.map({ $0 }))
-//			if let en = ciphertext.toBase64() {
-//				print(en)
-//				let str = try en.decryptBase64(aes)
-//				print(str)
-//			}
-//		} catch { }
-
-//		if let data: NSData = "qweqweqwe".dataUsingEncoding(NSUTF8StringEncoding) {
-//			let password = "Secret password"
-//			let ciphertext = RNCryptor.encryptData(data, password: password)
-//			let dataString = String(data: ciphertext, encoding: NSUTF8StringEncoding)
-//
-//			print("ciphertext \(dataString)")
-//
-//			// Decryption
-//			do {
-//				let originalData = try RNCryptor.decryptData(ciphertext, password: password)
-//				let dataString = String(data: originalData, encoding: NSUTF8StringEncoding)
-//				print("\(dataString)")
-//			} catch {
-//				print(error)
-//			}
+//		QPEventUtils.verifyUserAuthorization(EKEntityType.Event, success: {
+//			let utils = QPEventUtils()
+//			utils.addCalendatTitle("贵州商会活动", block: { (calendar) in
+//				let start = NSDate()
+//				let end = start.dateByAddingTimeInterval(300)
+//				utils.addCalendar("测试活动", note: "是魔鬼", startDate: start, endDate: end, calendar: calendar)
+//			})
+//		}) {
 //		}
-
-		log.debug("fuck you2")
 		let st = Hello()
 		let mirror = Mirror(st)
 
@@ -88,10 +52,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		super.viewDidLoad()
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
-//		self.tableView.registerClass(GS.self, forCellReuseIdentifier: "GS")
-
-//		QPHttpUtils.sharedInstance.uploadFile("wewe", param: ["aaa": "vvv", "bbb": "ccc"], images: [UIImage()], names: [""])
-		log.outputLogLevel = .Debug
 
 		testing()
 		rsa()
@@ -112,7 +72,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
+		return 13
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,6 +87,16 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
+	}
+
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+
+		let view = self.tableView
+		view.showLoading("ffff")
+		excute(3) {
+			view.hideLoading()
+		}
 	}
 
 	var imgv = UIImageView()
@@ -205,21 +175,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
 		self.view.showHUDTemporary("sdsds")
 
-//        let vc =
-
-		let vc = QPWebViewController()
-		vc.url = "http://www.baidu.com"
-		self.presentViewController(vc, animated: true) {
-			//
-		}
-
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
-	}
-
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 	}
 
 	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -385,7 +344,6 @@ class GS: QPGridTableViewCell {
 	}
 
 	override func viewAt(index: Int) -> UIView {
-		print("idx \(index)")
 //		let button = QPTopIconButtonPro()
 //		button.superview?.backgroundColor = UIColor.yellowColor()
 //		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)

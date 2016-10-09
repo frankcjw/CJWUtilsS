@@ -28,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.window = window;
 
 		let vc = ViewController()
-		self.window?.rootViewController = vc
+		let navi = UINavigationController(rootViewController: vc)
+		navi.viewControllers = [ViewController(), ViewController()]
+
+		self.window?.rootViewController = navi
 
 //		window.rootViewController = QPUtils.guidingViewController(["testing", "testing"], block: {
 //			self.window?.rootViewController = vc
