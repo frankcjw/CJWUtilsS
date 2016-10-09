@@ -41,7 +41,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 			utils.addCalendatTitle("贵州商会活动", block: { (calendar) in
 				let start = NSDate()
 				let end = start.dateByAddingTimeInterval(300)
-				utils.addCalendar("测试活动", startDate: start, endDate: end, calendar: calendar)
+				utils.addCalendar("测试活动", note: "是魔鬼", startDate: start, endDate: end, calendar: calendar)
 			})
 		}) {
 		}

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import
 
 import EventKit
 import EventKitUI
@@ -17,12 +16,15 @@ class QPEventUtils: NSObject {
 	let eventStore = EKEventStore()
 	var yourReminderCalendar: EKCalendar?
 
-	func addCalendar(title: String, startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) {
+	func addCalendar(title: String, note: String = "", startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) {
 		let event = EKEvent(eventStore: eventStore)
 		event.title = title
 		event.startDate = startDate
 		event.endDate = endDate
 
+		if !note.isEmpty {
+			event.notes = note
+		}
 		if let calendar = calendar {
 			event.calendar = calendar
 		} else {

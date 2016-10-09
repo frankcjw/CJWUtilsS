@@ -151,13 +151,13 @@ end
   s.dependency "CGFloatType"
   s.dependency "DZNEmptyDataSet"
   s.dependency "NSDate+TimeAgo"
-  s.dependency "HMSegmentedControl",'1.5.3'
+  s.dependency "HMSegmentedControl"
   s.dependency "MJExtension"
   s.dependency "ClusterPrePermissions"
   s.dependency "FCFileManager"
   s.dependency "LKDBHelper"
   s.dependency "FLKAutoLayout"
-  s.dependency "Alamofire", ’~> 3.2.1’
+  s.dependency "Alamofire"
   s.dependency "KLCPopup"
   s.dependency "XCGLogger",'3.3'
   s.dependency "SwiftyJSON"
