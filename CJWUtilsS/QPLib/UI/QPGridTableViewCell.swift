@@ -197,45 +197,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 			customView.topAlign(customViewSuperView, predicate: "\(padding)")
 			customView.bottomAlign(customViewSuperView, predicate: "-\(padding)")
 
-			/*
-
-			 let scale: CGFloat = CGFloat(1) / CGFloat(numberOfLogo * 2)
-			 let indexFloat: CGFloat = CGFloat(index + 1) * 2 - 1
-			 let predicate: CGFloat = indexFloat * scale * 2
-			 logo.centerX(logo.superview!, predicate: "*\(predicate)")
-			 */
 		}
-		/*
-		 for button in customViews {
-		 let index = customViews.indexOf(button)!
-		 if index == 0 {
-		 button.leadingAlign(view, predicate: "0")
-		 button.topAlign(view, predicate: "0")
-		 horizanReferenceView = button
-		 verticalReferenceView = button
-		 } else {
-		 if index % column == 0 {
-		 button.topConstrain(verticalReferenceView, predicate: "0")
-		 button.leadingAlign(view, predicate: "0")
-		 verticalReferenceView = button
-		 horizanReferenceView = button
-		 } else {
-		 button.leadingConstrain(horizanReferenceView, predicate: "0")
-		 button.centerY(horizanReferenceView)
-		 horizanReferenceView = button
-		 }
-		 if index == count - 1 {
-		 button.bottomAlign(view, predicate: "-10")
-		 }
-		 }
-		 button.width(view, predicate: "*\(wwwScale)")
-		 if let predicate = delegate?.heightPredicateForView?() {
-		 button.heightConstrain(predicate)
-		 } else {
-		 button.aspectRatio()
-		 }
-		 }
-		 */
 	}
 }
 

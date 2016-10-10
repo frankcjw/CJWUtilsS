@@ -52,6 +52,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		super.viewDidLoad()
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
+		self.tableView.registerClass(GridCell.self, forCellReuseIdentifier: "GridCell")
 
 		testing()
 		rsa()
@@ -72,7 +73,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 13
+		return 1
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,9 +81,13 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		if indexPath.section == 1 {
+			let cell = GS()
+			return cell
+		}
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
 
-		let cell = GridCell()
+		let cell = tableView.dequeueReusableCellWithIdentifier("GridCell") as! GridCell
 //        drawcell
 //		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()
@@ -330,25 +335,28 @@ class CJWCell: QPBaseTableViewCell {
 }
 
 class GridCell: QPTableViewCell {
-//    let grid = QPGridView(count: 5)
-	let grid = UIView()
+	let grid = QPGridView(count: 4)
+//	let grid = QPGridView()
 
 	override func setupViews(view: UIView) {
 		super.setupViews(view)
 
+//		grid.text = "asd\nasd\nasd\nasd\nasd\n"
+//		grid.numberOfLines = 0
 		view.addSubview(grid)
 	}
 
 	override func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
-//        grid.centerX(view)
+		grid.centerX(view)
 //        grid.width(view, predicate: "0.75")
-		grid.leadingAlign(self, predicate: "0")
-		grid.trailingAlign(self, predicate: "0")
-		grid.topAlign(self, predicate: "0")
-		grid.bottomAlign(self, predicate: "0")
-//		grid.widthConstrain("200")
-		grid.heightConstrain("200")
+//		grid.leadingAlign(view, predicate: "0")
+		grid.debug()
+//		grid.trailingAlign(view, predicate: "0")
+		grid.topAlign(view, predicate: "0")
+		grid.bottomAlign(view, predicate: "0")
+		grid.widthConstrain("250")
+//		grid.heightConstrain("200")
 
 	}
 }

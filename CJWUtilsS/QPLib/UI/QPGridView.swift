@@ -8,24 +8,120 @@
 
 import UIKit
 
-class QPGridView: UIView {
+public class QPGridView: UIView {
 
-	override func updateConstraints() {
+	let column = 2
+//	let count = 6
+	var gridCount = 0
+
+	public var customViews: [UIView] = []
+
+//	public let view = UIView()
+
+	override public func updateConstraints() {
 		super.updateConstraints()
-		view.leadingAlign(self, predicate: "0")
-		view.trailingAlign(self, predicate: "0")
-		view.topAlign(self, predicate: "0")
-		view.bottomAlign(self, predicate: "0")
-//		view.width(self)
+//		var view = self
+//		view.leadingAlign(self, predicate: "10")
+//		view.trailingAlign(self, predicate: "-10")
+//		view.topAlign(self, predicate: "10")
+//		view.bottomAlign(self, predicate: "-10")
+//		let hei = gridCount * 101
 //		view.heightConstrain("\(hei)")
 //		view.backgroundColor = UIColor.yellowColor()
+
+//		let tmpPadding = 0
+		let padding = 4
+
+		gridContainerView.topAlign(self, predicate: "\(padding)")
+		gridContainerView.bottomAlign(self, predicate: "-\(padding)")
+		gridContainerView.leadingAlign(self, predicate: "\(padding)")
+		gridContainerView.trailingAlign(self, predicate: "-\(padding)")
+
+		var horizanReferenceView = customViews.first!
+		var verticalReferenceView = customViews.first!
+
+		let wwwScale: CGFloat = CGFloat(1) / CGFloat(column)
+
+		let view = gridContainerView
+
+		for grid in grids {
+			let index = grids.indexOf(grid)!
+
+			let customView = customViews[index]
+
+			let scale: CGFloat = CGFloat(1) / CGFloat(column * 2)
+			let columnIndex = index % column
+			let indexFloat: CGFloat = CGFloat(columnIndex + 1) * 2 - 1
+			let predicateX: CGFloat = indexFloat * scale * 2
+
+			if index == 0 {
+				grid.topAlign(view, predicate: "0")
+				horizanReferenceView = grid
+				verticalReferenceView = grid
+				if grids.count == 1 {
+					grid.bottomAlign(view, predicate: "0")
+				}
+			} else {
+				if index % column == 0 {
+					grid.topConstrain(verticalReferenceView, predicate: "0")
+					verticalReferenceView = grid
+					horizanReferenceView = grid
+				} else {
+					grid.centerY(horizanReferenceView)
+					horizanReferenceView = grid
+				}
+
+				if index == gridCount - 1 {
+					grid.bottomAlign(view, predicate: "0")
+				}
+			}
+
+			grid.centerX(grid.superview!, predicate: "*\(predicateX)")
+
+			grid.width(grid.superview!, predicate: "*\(wwwScale)")
+			if index != 0 {
+				grid.width(horizanReferenceView)
+			}
+//			if let predicate = delegate?.heightPredicateForView?() {
+//				grid.heightConstrain(predicate)
+//			} else {
+//				grid.aspectRatio()
+//			}
+			// TODO:
+			grid.aspectRatio()
+
+			let customViewSuperView = customView.superview!
+			customView.leadingAlign(customViewSuperView, predicate: "\(padding)")
+			customView.trailingAlign(customViewSuperView, predicate: "-\(padding)")
+			customView.topAlign(customViewSuperView, predicate: "\(padding)")
+			customView.bottomAlign(customViewSuperView, predicate: "-\(padding)")
+
+		}
+
 	}
 
-	let view = UIView()
+	var grids: [UIView] = []
+	let gridContainerView = UIView()
 
 	func setup() {
-		let hei = gridCount * 10
-		self.addSubview(view)
+//		self.addSubview(view)
+		if gridCount > 0 {
+			addSubview(gridContainerView)
+			for index in 0 ... gridCount - 1 {
+
+				let grid = UIView()
+				grids.append(grid)
+				gridContainerView.addSubview(grid)
+
+				// TODO:
+				let userCustomView = customView(index)
+				userCustomView.backgroundColor = UIColor.carrotColor()
+				userCustomView.tag = index
+				customViews.append(userCustomView)
+				grid.addSubview(userCustomView)
+			}
+		}
+
 	}
 
 	convenience init () {
@@ -33,20 +129,24 @@ class QPGridView: UIView {
 		setup()
 	}
 
-	override init(frame: CGRect) {
+	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		setup()
 	}
 
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		setup()
 	}
 
-	var gridCount = 0
-	convenience init (count: Int) {
+	public convenience init (count: Int) {
 		self.init(frame: CGRect.zero)
 		self.gridCount = count
 		setup()
 	}
+
+	public func customView(index: Int) -> UIView {
+		return UIView()
+	}
+
 }
