@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */; };
+		01216C8E1DAA1B70003CDA6C /* QPGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01216C8D1DAA1B70003CDA6C /* QPGridView.swift */; };
 		012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012489B91D4AF6EE00DA3865 /* QPButton.swift */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
 		013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA401D89319500EF8254 /* UIApplication+Extend.m */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
+		01216C8D1DAA1B70003CDA6C /* QPGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridView.swift; sourceTree = "<group>"; };
 		012489B91D4AF6EE00DA3865 /* QPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPButton.swift; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
 		013BCA3F1D89319500EF8254 /* UIApplication+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Extend.h"; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				015001A21D59786D00CA34F5 /* QPFloatView.swift */,
 				018AF1181D8045070002ABBF /* QPImagePickerViewController.swift */,
 				01CE0CB21D83FCC0009EC9B9 /* QPMapViewController.swift */,
+				01216C8D1DAA1B70003CDA6C /* QPGridView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				013BCA4F1D89319500EF8254 /* CoreNewFeatureVC.m in Sources */,
 				01CE0CB11D83FB17009EC9B9 /* GDMapViewController.swift in Sources */,
 				01CE0CB51D83FD47009EC9B9 /* QPNavigationUtils.swift in Sources */,
+				01216C8E1DAA1B70003CDA6C /* QPGridView.swift in Sources */,
 				013BCA521D89319500EF8254 /* NewFeatureScrollView.m in Sources */,
 				018AF1191D8045070002ABBF /* QPImagePickerViewController.swift in Sources */,
 				018AF15A1D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,

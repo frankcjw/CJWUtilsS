@@ -82,7 +82,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
 
-		let cell = GS()
+		let cell = GridCell()
 //        drawcell
 //		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()
@@ -326,6 +326,30 @@ class CJWCell: QPBaseTableViewCell {
 		label2.leadingAlign(view, predicate: "0")
 		label2.trailingAlign(view, predicate: "-30")
 		label2.bottomAlign(view, predicate: "-20")
+	}
+}
+
+class GridCell: QPTableViewCell {
+//    let grid = QPGridView(count: 5)
+	let grid = UIView()
+
+	override func setupViews(view: UIView) {
+		super.setupViews(view)
+
+		view.addSubview(grid)
+	}
+
+	override func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+//        grid.centerX(view)
+//        grid.width(view, predicate: "0.75")
+		grid.leadingAlign(self, predicate: "0")
+		grid.trailingAlign(self, predicate: "0")
+		grid.topAlign(self, predicate: "0")
+		grid.bottomAlign(self, predicate: "0")
+//		grid.widthConstrain("200")
+		grid.heightConstrain("200")
+
 	}
 }
 
