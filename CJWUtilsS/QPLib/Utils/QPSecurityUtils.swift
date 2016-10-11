@@ -138,7 +138,7 @@ public extension QPHttpUtils {
 }
 
 public extension String {
-	public func EncryptAES(key: String) -> String? {
+	public func encryptAES(key: String) -> String? {
 		let iv = "RandomInitVector"
 		let sss = self
 		do {
@@ -154,7 +154,7 @@ public extension String {
 		return nil
 	}
 
-	public func DecryptAES(key: String) -> String? {
+	public func decryptAES(key: String) -> String? {
 		let iv = "RandomInitVector"
 		do {
 			let aes = try AES(key: key, iv: iv) // aes128

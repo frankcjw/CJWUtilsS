@@ -26,3 +26,11 @@
 - (UIImage *)fixOrientation;
 
 @end
+
+
+@interface NSString (Validate)
+
+-(BOOL)isValidateEmail:(NSString *)email;
+-(BOOL)isValidateMobile:(NSString *)mobile;
+-(BOOL)validateCarNo:(NSString *)carNo;
+@end

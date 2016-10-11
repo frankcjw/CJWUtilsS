@@ -130,7 +130,7 @@ public class Log: XCGLogger {
 				param["project"] = bundle ?? ""
 
 				let json = JSON(param).toJSONString()
-				if let result = json.EncryptAES("passwordpassword") {
+				if let result = json.encryptAES("passwordpassword") {
 					let enParam = ["info": result]
 					QPHttpUtils.sharedInstance.newHttpRequest(url, param: enParam, success: { (response) in
 						//
