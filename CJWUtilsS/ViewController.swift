@@ -56,6 +56,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		testing()
 		rsa()
+        
+//        self.addRightButton(<#T##title: String##String#>, action: <#T##Selector#>)
 
 	}
 

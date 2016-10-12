@@ -11,12 +11,12 @@ import UIKit
 import EventKit
 import EventKitUI
 
-class QPEventUtils: NSObject {
+public class QPEventUtils: NSObject {
 
 	let eventStore = EKEventStore()
 	var yourReminderCalendar: EKCalendar?
 
-	func addCalendar(title: String, note: String = "", startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) {
+	public func addCalendar(title: String, note: String = "", startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) {
 		let event = EKEvent(eventStore: eventStore)
 		event.title = title
 		event.startDate = startDate
@@ -38,7 +38,7 @@ class QPEventUtils: NSObject {
 		}
 	}
 
-	func addCalendatTitle(title: String, block: (calendar: EKCalendar) -> ()) {
+	public func addCalendatTitle(title: String, block: (calendar: EKCalendar) -> ()) {
 		let calendars = eventStore.calendarsForEntityType(EKEntityType.Event)
 		if (yourReminderCalendar == nil) {
 			for calendar in calendars {
@@ -67,7 +67,7 @@ class QPEventUtils: NSObject {
 		}
 	}
 
-	class func verifyUserAuthorization(type: EKEntityType, success: QPNormalBlock, fail: QPNormalBlock) {
+	public class func verifyUserAuthorization(type: EKEntityType, success: QPNormalBlock, fail: QPNormalBlock) {
 		let eventStore = EKEventStore()
 
 		switch EKEventStore.authorizationStatusForEntityType(type) {
