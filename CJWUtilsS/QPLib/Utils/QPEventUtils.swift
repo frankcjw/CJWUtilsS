@@ -16,7 +16,7 @@ public class QPEventUtils: NSObject {
 	let eventStore = EKEventStore()
 	var yourReminderCalendar: EKCalendar?
 
-	public func addCalendar(title: String, note: String = "", startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) {
+	public func addCalendar(title: String, note: String = "", startDate: NSDate, endDate: NSDate, calendar: EKCalendar?) -> Bool {
 		let event = EKEvent(eventStore: eventStore)
 		event.title = title
 		event.startDate = startDate
@@ -25,20 +25,22 @@ public class QPEventUtils: NSObject {
 		if !note.isEmpty {
 			event.notes = note
 		}
+
 		if let calendar = calendar {
 			event.calendar = calendar
 		} else {
 			event.calendar = eventStore.defaultCalendarForNewEvents
 		}
-
 		do {
 			try eventStore.saveEvent(event, span: .ThisEvent, commit: true)
+			return true
 		} catch {
 			log.error("add event fail")
 		}
+		return false
 	}
 
-	public func addCalendatTitle(title: String, block: (calendar: EKCalendar) -> ()) {
+	public func addCalendatTitle(title: String, block: (calendar: EKCalendar) -> ()) -> EKCalendar {
 		let calendars = eventStore.calendarsForEntityType(EKEntityType.Event)
 		if (yourReminderCalendar == nil) {
 			for calendar in calendars {
@@ -46,6 +48,7 @@ public class QPEventUtils: NSObject {
 					print("calendar.title \(calendar.title )")
 					yourReminderCalendar = (calendar as EKCalendar)
 					block(calendar: yourReminderCalendar!)
+					return yourReminderCalendar!
 					break
 				}
 			}
@@ -58,6 +61,7 @@ public class QPEventUtils: NSObject {
 				do {
 					try eventStore.saveCalendar(yourReminderCalendar!, commit: true)
 					block(calendar: yourReminderCalendar!)
+					return yourReminderCalendar!
 				} catch {
 					log.error("add calendar title fail")
 					block(calendar: yourReminderCalendar!)
@@ -65,6 +69,7 @@ public class QPEventUtils: NSObject {
 
 			}
 		}
+		return eventStore.defaultCalendarForNewEvents
 	}
 
 	public class func verifyUserAuthorization(type: EKEntityType, success: QPNormalBlock, fail: QPNormalBlock) {
@@ -72,24 +77,24 @@ public class QPEventUtils: NSObject {
 
 		switch EKEventStore.authorizationStatusForEntityType(type) {
 		case .Authorized:
-//			print("Authorized")
+			// print("Authorized")
 			success()
 		case .Denied:
-//			print("Denied")
+			// print("Denied")
 			fail()
 		case .NotDetermined:
 			eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) in
 				if granted {
-//					print("granted")
+					// print("granted")
 					success()
 				}
 				else {
-//					print("not granted")
+					// print("not granted")
 					fail()
 				}
 			})
 		case .Restricted:
-//			print("Restricted")
+			// print("Restricted")
 			fail()
 		}
 	}
