@@ -171,3 +171,10 @@ public extension UIViewController {
 		}
 	}
 }
+
+public extension UIViewController {
+	public func addRightButton(title: String, actin: Selector) {
+		let barButton = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: action)
+		self.navigationItem.rightBarButtonItem = barButton
+	}
+}
