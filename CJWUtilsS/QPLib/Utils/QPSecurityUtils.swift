@@ -142,11 +142,9 @@ public extension String {
 		let iv = "RandomInitVector"
 		let sss = self
 		do {
-			print("\(key.length())")
 			let aes = try AES(key: key, iv: iv) // aes128
 			let ciphertext = try aes.encrypt(sss.utf8.map({ $0 }))
 			if let en = ciphertext.toBase64() {
-				print(en)
 				return en
 			}
 		} catch {
