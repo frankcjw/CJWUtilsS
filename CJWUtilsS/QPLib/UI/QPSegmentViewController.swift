@@ -178,9 +178,6 @@ class QPTabBarViewController: UITabBarController {
 		self.tabBar.tintColor = UIColor.whiteColor()
 		tabBar.barTintColor = UIColor.blackColor()
 		let titles = ["首页", "商家", "钱包"]
-		let images = ["CP_cardpool2", "CP_city2", "CP_wallet@3x 2"]
-		let selectedImages = ["CP_cardpool", "CP_city", "CP_wallet"]
-
 		let items = self.tabBar.items!
 		for item in items {
 			let index = items.indexOf(item)!
