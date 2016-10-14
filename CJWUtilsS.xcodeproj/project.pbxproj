@@ -71,6 +71,7 @@
 		01CE0CB51D83FD47009EC9B9 /* QPNavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CE0CB41D83FD47009EC9B9 /* QPNavigationUtils.swift */; };
 		01CE0CB81D83FD61009EC9B9 /* VIPMapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE0CB71D83FD61009EC9B9 /* VIPMapUtils.m */; };
 		01CE0CBA1D83FE1E009EC9B9 /* QPLocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CE0CB91D83FE1E009EC9B9 /* QPLocationUtils.swift */; };
+		01DD99CD1DB0C41400ECD3A8 /* QPSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */; };
 		01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6E8441C8E7A920095A206 /* QPViewDebug.swift */; };
 		01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */; };
 		01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */; };
@@ -201,6 +202,7 @@
 		01CE0CB61D83FD61009EC9B9 /* VIPMapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPMapUtils.h; sourceTree = "<group>"; };
 		01CE0CB71D83FD61009EC9B9 /* VIPMapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPMapUtils.m; sourceTree = "<group>"; };
 		01CE0CB91D83FE1E009EC9B9 /* QPLocationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLocationUtils.swift; sourceTree = "<group>"; };
+		01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPSegmentViewController.swift; sourceTree = "<group>"; };
 		01E6E8441C8E7A920095A206 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
 		01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
 		01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key.pem; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				01CAEFC41C3BA737006E221A /* QPBaseTableViewCell.swift */,
 				0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */,
 				01CAEFC51C3BA737006E221A /* QPBaseViewController.swift */,
+				01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */,
 				01CAEFC61C3BA737006E221A /* QPColor.swift */,
 				01CAEFC71C3BA737006E221A /* QPKey.swift */,
 				01CAEFC81C3BA737006E221A /* QPTableView.swift */,
@@ -865,6 +868,7 @@
 				01F201AB1D80391A00DA5ABB /* CJWDesEncrypt.m in Sources */,
 				018AF14E1D8048520002ABBF /* MLSelectPhotoPickerGroup.m in Sources */,
 				018AF1531D8048520002ABBF /* MLSelectPhotoPickerViewController.m in Sources */,
+				01DD99CD1DB0C41400ECD3A8 /* QPSegmentViewController.swift in Sources */,
 				012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */,
 				018AF1551D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,

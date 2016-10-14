@@ -16,9 +16,23 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	public var url: String? = ""
 	public var html: String?
 
+	public func agent() -> String {
+		return ""
+	}
+
+	private func setupAgent() {
+		let agentString = agent()
+		let oldAgent = self.webView.stringByEvaluatingJavaScriptFromString("navigator.userAgent")
+		if let newAgent = oldAgent?.stringByAppendingString(" \(agentString)") {
+			let dict = ["UserAgent": newAgent]
+			NSUserDefaults.standardUserDefaults().registerDefaults(dict)
+		}
+	}
+
 	override public func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.addSubview(webView)
+		setupAgent()
 		webView.alignTop("0", leading: "0", bottom: "0", trailing: "0", toView: self.view)
 		webView.delegate = self
 

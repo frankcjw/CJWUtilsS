@@ -182,6 +182,9 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
 		self.view.showHUDTemporary("sdsds")
 
+		let vc = QPSegmentViewController()
+		self.pushViewController(vc)
+
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
