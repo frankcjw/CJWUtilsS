@@ -11,12 +11,28 @@ import HMSegmentedControl
 
 public class QPSegmentViewController: UITabBarController {
 
+	private var segment: HMSegmentedControl!
+
+	private var segmentTitles = ["", ""] {
+		didSet {
+			self.navigationItem.titleView = initSegmentView()
+		}
+	}
+
 	public func numberOfTitles() -> Int {
 		return 3
 	}
 
 	public func titleAt(index: Int) -> String {
 		return "T\(index)"
+	}
+
+	private func imageAt(index: Int) -> UIImage {
+		return UIImage()
+	}
+
+	private func selectedImageAt(index: Int) -> UIImage {
+		return UIImage()
 	}
 
 	public func viewControllerAt(index: Int) -> UIViewController {
@@ -29,14 +45,6 @@ public class QPSegmentViewController: UITabBarController {
 		}
 		return UIViewController()
 	}
-
-	public var segmentTitles = ["", ""] {
-		didSet {
-			self.navigationItem.titleView = initSegmentView()
-		}
-	}
-
-	private var segment: HMSegmentedControl!
 
 	override public func viewDidLoad() {
 
@@ -67,7 +75,6 @@ public class QPSegmentViewController: UITabBarController {
 		super.viewWillAppear(animated)
 		self.tabBar.tintColor = UIColor.whiteColor()
 		tabBar.barTintColor = UIColor.blackColor()
-//		let titles = ["首页", "商家", "钱包"]
 		let items = self.tabBar.items!
 		for item in items {
 			let index = items.indexOf(item)!
