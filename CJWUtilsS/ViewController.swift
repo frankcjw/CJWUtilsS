@@ -33,6 +33,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	let webView = UIWebView()
 
+	var data: [Int] = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+	var appendData: [Int] = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 	override func viewDidLoad() {
 //		QPEventUtils.verifyUserAuthorization(EKEntityType.Event, success: {
 //			let utils = QPEventUtils()
@@ -53,12 +55,21 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 		self.tableView.registerClass(GridCell.self, forCellReuseIdentifier: "GridCell")
+		self.tableView.registerClass(TTImageTableViewCell.self, forCellReuseIdentifier: "TTImageTableViewCell")
 
 		testing()
 		rsa()
 
 //        self.addRightButton(<#T##title: String##String#>, action: <#T##Selector#>)
 
+		self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
+	}
+
+	override func requestMore() {
+
+		self.data.appendContentsOf(self.appendData)
+		self.tableView.endRefreshFooter()
+		self.tableView.reloadData()
 	}
 
 	func accc(sender: QPTopIconButtonPro) {
@@ -79,12 +90,12 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+		return data.count
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if indexPath.section == 1 {
-			let cell = GS()
+		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCellWithIdentifier("TTImageTableViewCell") as! TTImageTableViewCell
 			return cell
 		}
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
@@ -170,17 +181,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		}
 
 		// text.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(integer:(NSUnderlineStyle.StyleDouble).toRaw()), range: NSMakeRange(0, text.length))
-
-		let button = UIButton(frame: CGRectMake(0, 0, 100, 100))
-		view.addSubview(button)
-		let dashed = NSUnderlineStyle.PatternDash.rawValue | NSUnderlineStyle.StyleThick.rawValue
-
-		let attribs = [NSUnderlineStyleAttributeName: dashed, NSUnderlineColorAttributeName: UIColor.whiteColor()];
-
-		let attrString = NSAttributedString(string: "广州 - 珠海", attributes: attribs)
-
-		button.setAttributedTitle(attrString, forState: UIControlState.Normal)
-		self.view.showHUDTemporary("sdsds")
 
 		let vc = QPSegmentViewController()
 		self.pushViewController(vc)
@@ -283,7 +283,7 @@ class CJWCell: QPBaseTableViewCell {
 		defer {
 			print("defer111")
 		}
-
+		qpcir
 		let className = mirror.subjectType
 		print("\(className)")
 		var dictionary = [String: Any]()
@@ -366,6 +366,69 @@ class GridCell: QPTableViewCell {
 	}
 }
 
+class TTImageTableViewCell: QPTableViewCell {
+//	let img = UIImageView()
+//	let label = UILabel()
+
+	let locationImage = UIImageView()
+	let titleLabel = UILabel()
+	let distanceLabel = UILabel()
+	let infoLabel = UILabel()
+	let backgroundImageView = UIImageView()
+
+	let blackView = UIView()
+
+	override func setupViews(view: UIView) {
+		super.setupViews(view)
+//		view.addSubview(img)
+//		img.imageWithSize(1000, height: 1000)
+
+		view.addSubview(backgroundImageView)
+		view.addSubview(blackView)
+		view.addSubview(locationImage)
+		view.addSubview(titleLabel)
+		view.addSubview(distanceLabel)
+		view.addSubview(infoLabel)
+		view.backgroundColorBlack()
+
+		backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
+		backgroundImageView.clipsToBounds = true
+		titleLabel.textColor = UIColor.whiteColor()
+		distanceLabel.textColor = UIColor.whiteColor()
+		infoLabel.textColor = UIColor.whiteColor()
+		blackView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+		blackView.hidden = true
+		view.debug(true)
+
+	}
+
+	override func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+		blackView.equalConstrain()
+
+		backgroundImageView.leadingAlign(view, predicate: "0")
+		backgroundImageView.trailingAlign(view, predicate: "0")
+		backgroundImageView.topAlign(view, predicate: "0")
+		backgroundImageView.bottomAlign(view, predicate: "-1")
+
+		let fff: CGFloat = CGFloat(100) / CGFloat(27)
+		backgroundImageView.aspectRatio("*\(fff)")
+
+		locationImage.topAlign(backgroundImageView, predicate: "16")
+		locationImage.centerX(backgroundImageView)
+		locationImage.heightConstrain("15")
+		locationImage.aspectRatio()
+
+		distanceLabel.topConstrain(locationImage, predicate: "5")
+		distanceLabel.centerX(locationImage)
+
+		titleLabel.centerX(locationImage)
+		titleLabel.topConstrain(distanceLabel, predicate: "5")
+		infoLabel.centerX(locationImage)
+		infoLabel.topConstrain(titleLabel, predicate: "8")
+		infoLabel.bottomAlign(view, predicate: "-8")
+	}
+}
 class GS: QPGridTableViewCell {
 
 	override func numberOfItem() -> Int {
@@ -391,5 +454,4 @@ class GS: QPGridTableViewCell {
 		view.debug()
 		return view
 	}
-
 }

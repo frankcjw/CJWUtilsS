@@ -24,8 +24,9 @@ public extension UIView {
 		layer.borderWidth = 1
 
 		self.backgroundColor = COLOR_DEBUG
-		if self is UIImageView {
-			self.backgroundColor = UIColor.pomegranateColor()
+		if let img = self as? UIImageView {
+			img.backgroundColor = UIColor.pomegranateColor()
+			img.imageTemplate()
 		} else if let label = self as? UILabel {
 			self.backgroundColor = UIColor.peterRiverColor()
 			if label.text == nil {

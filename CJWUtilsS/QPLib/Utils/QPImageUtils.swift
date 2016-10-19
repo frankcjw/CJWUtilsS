@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+//import SwiftRandom
 
 public class QPImageUtils: NSObject {
 }
@@ -133,5 +134,19 @@ public class QPCircleImageView: UIImageView {
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		setup()
+	}
+}
+
+extension UIImageView {
+
+	func imageTemplate() {
+		let imgs = ["http://hbimg.b0.upaiyun.com/cbc211d045703eba40fb65d5f9bcb8d016da04923577c-gbORW6_fw658", "http://hbimg.b0.upaiyun.com/5ecda99cb699618741836ad85c7c710c89b79d1fd38b4-4sjJsP_fw658", "http://hbimg.b0.upaiyun.com/8c224d2e4b6e35d0c0cc8ee2f018055a012840fa2440f-33rNHQ_fw658", "http://hbimg.b0.upaiyun.com/7e4b4c962dd7d928c58b5c499329e7e3317b7864337b6-n3aIxL_fw658"]
+		let ran = (Int(arc4random()) % imgs.count)
+
+		let url = imgs[ran]
+		image(url, placeholder: "")
+		self.scaleAspectFill()
+
+		// self.scaleAspectFill()
 	}
 }

@@ -165,8 +165,8 @@ class SegVC3: UIViewController {
 class QPTabBarViewController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.addChildViewController(UINavigationController(rootViewController: ViewController()))
-		self.addChildViewController(UINavigationController(rootViewController: SecondeViewController()))
+//		self.addChildViewController(UINavigationController(rootViewController: ViewController()))
+//		self.addChildViewController(UINavigationController(rootViewController: SecondeViewController()))
 	}
 
 	override func didReceiveMemoryWarning() {

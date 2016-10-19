@@ -61,6 +61,7 @@ target 'CJWUtilsS' do
 #    pod ’AMap2DMap’
     pod ’INTULocationManager’
     pod 'HMSegmentedControl',git: 'https://github.com/HeshamMegid/HMSegmentedControl.git'
+    pod 'SwiftRandom'
 
 end
 
