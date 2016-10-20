@@ -65,9 +65,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
 
 		excute(3) {
-			self.pickImage(1, block: { (images) in
-				//
-			})
+
 		}
 	}
 
@@ -116,11 +114,12 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
 
-		let view = self.tableView
-		view.showLoading("ffff")
-		excute(3) {
-			view.hideLoading()
-		}
+		self.pickImage(1, block: { (images) in
+			let img = images[0]
+			let imgv = UIImageView(frame: CGRectMake(0, 100, 100, 100))
+			self.view.addSubview(imgv)
+			imgv.image = img
+		})
 	}
 
 	var imgv = UIImageView()

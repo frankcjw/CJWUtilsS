@@ -63,7 +63,7 @@ target 'CJWUtilsS' do
     pod 'HMSegmentedControl',git: 'https://github.com/HeshamMegid/HMSegmentedControl.git'
     pod 'SwiftRandom'
     pod 'iCarousel'
-
+    pod 'WCFastCell'
 end
 
 target 'CJWUtilsSTests' do

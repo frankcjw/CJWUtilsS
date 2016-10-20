@@ -22,7 +22,11 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 			self.imageFromCamera(vc, block: block)
 		}
 		let library = UIAlertAction(title: "图库", style: UIAlertActionStyle.Default) { (action) -> Void in
-			self.imageFromLibrary(vc, maxCount: maxCount, block: block)
+			if maxCount <= 1 {
+				self.imageFromPhoto(vc, block: block)
+			} else {
+				self.imageFromLibrary(vc, maxCount: maxCount, block: block)
+			}
 		}
 
 		actionSheet.addAction(cancelAction)
@@ -43,19 +47,29 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 		}
 	}
 
-	func imageFromCamera(vc: UIViewController, block: QPImagePickerBlock) {
+	func imageFromSystem(vc: UIViewController, type: UIImagePickerControllerSourceType, block: QPImagePickerBlock) {
 		if self.block == nil {
 			self.block = block
 		}
 
-		let isAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+		let isAvailable = UIImagePickerController.isSourceTypeAvailable(type)
 
-		self.sourceType = .Camera
+		self.sourceType = type
 		self.delegate = self
 		self.allowsEditing = true
 		if isAvailable {
 			vc.presentViewController(self, animated: true, completion: nil)
+		} else {
+			self.showText("无权限")
 		}
+	}
+
+	func imageFromPhoto(vc: UIViewController, block: QPImagePickerBlock) {
+		imageFromSystem(vc, type: UIImagePickerControllerSourceType.PhotoLibrary, block: block)
+	}
+	func imageFromCamera(vc: UIViewController, block: QPImagePickerBlock) {
+		imageFromSystem(vc, type: UIImagePickerControllerSourceType.Camera, block: block)
+
 	}
 
 	func imageFromLibrary(vc: UIViewController, maxCount: Int, block: QPImagePickerBlock) {
