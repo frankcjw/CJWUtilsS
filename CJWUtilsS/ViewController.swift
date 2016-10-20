@@ -63,6 +63,12 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //        self.addRightButton(<#T##title: String##String#>, action: <#T##Selector#>)
 
 		self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
+
+		excute(3) {
+			self.pickImage(1, block: { (images) in
+				//
+			})
+		}
 	}
 
 	override func requestMore() {
@@ -283,7 +289,6 @@ class CJWCell: QPBaseTableViewCell {
 		defer {
 			print("defer111")
 		}
-		qpcir
 		let className = mirror.subjectType
 		print("\(className)")
 		var dictionary = [String: Any]()

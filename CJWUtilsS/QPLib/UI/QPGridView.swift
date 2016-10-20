@@ -10,8 +10,8 @@ import UIKit
 
 public class QPGridView: UIView {
 
-	let column = numberOfColum()
 	var gridCount = 0
+	var column = 2
 
 	public var customViews: [UIView] = []
 
@@ -136,9 +136,10 @@ public class QPGridView: UIView {
 		setup()
 	}
 
-	public convenience init (count: Int) {
+	public convenience init (count: Int, column: Int) {
 		self.init(frame: CGRect.zero)
 		self.gridCount = count
+		self.column = column
 		setup()
 	}
 

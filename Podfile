@@ -62,6 +62,7 @@ target 'CJWUtilsS' do
     pod ’INTULocationManager’
     pod 'HMSegmentedControl',git: 'https://github.com/HeshamMegid/HMSegmentedControl.git'
     pod 'SwiftRandom'
+    pod 'iCarousel'
 
 end
 
