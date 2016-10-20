@@ -10,13 +10,10 @@ import UIKit
 
 public class QPGridView: UIView {
 
-	let column = 2
-//	let count = 6
+	let column = numberOfColum()
 	var gridCount = 0
 
 	public var customViews: [UIView] = []
-
-//	public let view = UIView()
 
 	override public func updateConstraints() {
 		super.updateConstraints()
@@ -147,6 +144,10 @@ public class QPGridView: UIView {
 
 	public func customView(index: Int) -> UIView {
 		return UIView()
+	}
+
+	public func numberOfColum() -> Int {
+		return 2
 	}
 
 }
