@@ -345,7 +345,7 @@ class CJWCell: QPBaseTableViewCell {
 }
 
 class GridCell: QPTableViewCell {
-	let grid = QPGridView(count: 4)
+	let grid = QPGridView(count: 4, column: 2)
 //	let grid = QPGridView()
 
 	override func setupViews(view: UIView) {
