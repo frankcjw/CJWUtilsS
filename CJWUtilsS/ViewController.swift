@@ -56,6 +56,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 		self.tableView.registerClass(GridCell.self, forCellReuseIdentifier: "GridCell")
 		self.tableView.registerClass(TTImageTableViewCell.self, forCellReuseIdentifier: "TTImageTableViewCell")
+		self.tableView.registerClass(TTImageTableViewCell2.self, forCellReuseIdentifier: "TTImageTableViewCell2")
 
 		testing()
 		rsa()
@@ -64,9 +65,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
 
-		excute(3) {
-
-		}
+		let imgv = UIImageView(frame: CGRectMake(100, 100, 200, 100))
+		let img = UIImage.generateBarCode("123456", width: 200, height: 100)
+		imgv.image = img
+		self.view.addSubview(imgv)
 	}
 
 	override func requestMore() {
@@ -100,6 +102,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCellWithIdentifier("TTImageTableViewCell") as! TTImageTableViewCell
+			cell.debug(true)
 			return cell
 		}
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
@@ -109,6 +112,17 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		cell.drawGrids(30)
 		cell.backgroundColor = UIColor.clearColor()
 		return cell
+	}
+
+	let cellHeight: CGFloat = (CGFloat(27) / CGFloat(100)) * SCREEN_WIDTH
+
+	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		print("\(cellHeight) \(SCREEN_WIDTH)")
+		return cellHeight
+	}
+
+	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return cellHeight
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -195,15 +209,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
-
-	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-//
 
 	func testing() {
 		let tagString = "啊实1打实,啊实2打实,啊实3打实"
@@ -370,6 +375,21 @@ class GridCell: QPTableViewCell {
 	}
 }
 
+class TTImageTableViewCell2: TTImageTableViewCell {
+	override func setupViews(view: UIView) {
+		super.setupViews(view)
+		let frame = CGRectMake(0, 0, 100, 100)
+		locationImage.frame = frame
+		titleLabel.frame = frame
+		distanceLabel.frame = frame
+		infoLabel.frame = frame
+//		backgroundImageView.frame = frame
+		blackView.frame = frame
+	}
+
+	override func setupConstrains(view: UIView) {
+	}
+}
 class TTImageTableViewCell: QPTableViewCell {
 //	let img = UIImageView()
 //	let label = UILabel()

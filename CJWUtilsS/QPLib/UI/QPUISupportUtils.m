@@ -48,3 +48,25 @@
 }
 
 @end
+
+
+@implementation UIImage (CJWBarCode)
+
++ (UIImage *)generateBarCode:(NSString *)code width:(CGFloat)width height:(CGFloat)height {
+    // 生成二维码图片
+    CIImage *barcodeImage;
+    NSData *data = [code dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:false];
+    CIFilter *filter = [CIFilter filterWithName:@"CICode128BarcodeGenerator"];
+    
+    [filter setValue:data forKey:@"inputMessage"];
+    barcodeImage = [filter outputImage];
+    
+    // 消除模糊
+    CGFloat scaleX = width / barcodeImage.extent.size.width; // extent 返回图片的frame
+    CGFloat scaleY = height / barcodeImage.extent.size.height;
+    CIImage *transformedImage = [barcodeImage imageByApplyingTransform:CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY)];
+    
+    return [UIImage imageWithCIImage:transformedImage];
+}
+
+@end

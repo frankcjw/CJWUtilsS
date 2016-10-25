@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import WCFastCell
 
 public typealias QPTableViewCell = QPBaseTableViewCell
 

@@ -23,3 +23,7 @@
 @interface UIImage (CJWColor)
 + (UIImage *)imageWithColor:(UIColor *)color;
 @end
+
+@interface UIImage (CJWBarCode)
++ (UIImage *)generateBarCode:(NSString *)code width:(CGFloat)width height:(CGFloat)height;
+@end
