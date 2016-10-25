@@ -41,6 +41,7 @@
 #import "CJWDesEncrypt.h"
 #import "AppInfoManager.h"
 #import "CJWHello.h"
+#import "QPUISupportUtils.h"
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MLSelectPhotoPickerViewController.h"
