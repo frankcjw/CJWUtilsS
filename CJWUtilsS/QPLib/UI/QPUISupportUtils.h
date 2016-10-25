@@ -14,8 +14,8 @@
 
 @interface UINavigationBar (CJWUINavigationBar)
 
--(void)translucentWith:(UIColor *)color;
--(void)removeTranslucent;
+//-(void)translucentWith:(UIColor *)color;
+//-(void)removeTranslucent;
 
 @end
 
