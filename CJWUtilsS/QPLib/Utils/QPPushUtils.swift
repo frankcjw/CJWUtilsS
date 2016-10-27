@@ -91,6 +91,10 @@ public class QPBasePushUtils: NSObject {
 		initPush()
 	}
 
+	public func startPush(launchOptions: [NSObject: AnyObject]?) {
+		log.debug("\(userInfo)")
+	}
+
 //    public func startPush(launchOptions:[NSObject:AnyObject]?){
 //        let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
 //        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
