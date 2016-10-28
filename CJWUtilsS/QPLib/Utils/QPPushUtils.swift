@@ -92,7 +92,7 @@ public class QPBasePushUtils: NSObject {
 	}
 
 	public func startPush(launchOptions: [NSObject: AnyObject]?) {
-		log.debug("\(userInfo)")
+		QPBasePushUtils.initPush()
 	}
 
 //    public func startPush(launchOptions:[NSObject:AnyObject]?){
