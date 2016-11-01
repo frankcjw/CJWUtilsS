@@ -15,7 +15,7 @@
 @implementation UINavigationBar (CJWUINavigationBar)
 
 
--(void)translucentWith:(UIColor *)color{
+-(void)translucentBar:(UIColor *)color{
     UIImage *image = [UIImage imageWithColor:color];
     [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [self setShadowImage:[UIImage new]];

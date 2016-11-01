@@ -53,7 +53,13 @@ public class QPSegmentViewController: UITabBarController {
 		for index in 0...(count - 1) {
 			titles.append(titleAt(index))
 			let vc = viewControllerAt(index)
-			self.addChildViewController(UINavigationController(rootViewController: vc))
+//			self.addChildViewController(UINavigationController(rootViewController: vc))
+			if self.navigationController != nil {
+				log.debug("!=nil")
+			} else {
+				log.debug("== nil")
+			}
+			self.addChildViewController(vc)
 		}
 		self.segmentTitles = titles
 		self.tabBar.hidden = true
