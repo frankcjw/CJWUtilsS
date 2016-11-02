@@ -69,6 +69,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		let img = UIImage.generateBarCode("123456", width: 200, height: 100)
 		imgv.image = img
 		self.view.addSubview(imgv)
+
+		self.translucentBar(UIColor.peterRiverColor())
 	}
 
 	override func requestMore() {

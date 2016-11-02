@@ -178,3 +178,13 @@ public extension UIViewController {
 		self.navigationItem.rightBarButtonItem = barButton
 	}
 }
+
+public extension UIViewController {
+	public func translucentBar(color: UIColor) {
+		self.navigationController?.navigationBar.translucentBar(color)
+	}
+
+	public func removeTranslucent() {
+		self.navigationController?.navigationBar.translucent = true
+	}
+}

@@ -27,13 +27,13 @@ public class QPSegmentViewController: UITabBarController {
 		return "T\(index)"
 	}
 
-	private func imageAt(index: Int) -> UIImage {
-		return UIImage()
-	}
-
-	private func selectedImageAt(index: Int) -> UIImage {
-		return UIImage()
-	}
+//	private func imageAt(index: Int) -> UIImage {
+//		return UIImage()
+//	}
+//
+//	private func selectedImageAt(index: Int) -> UIImage {
+//		return UIImage()
+//	}
 
 	public func viewControllerAt(index: Int) -> UIViewController {
 		if index == 0 {
@@ -129,12 +129,12 @@ public extension QPSegmentViewController {
 	func segmentedControlChangedValue(control: HMSegmentedControl) {
 		if control.selectedSegmentIndex == 0 {
 		}
-
-		onSegmentChanged(control.selectedSegmentIndex)
+		let index = control.selectedSegmentIndex
+		self.selectedIndex = index
+		onSegmentChanged(index)
 	}
 
 	public func onSegmentChanged(index: Int) {
-		self.selectedIndex = index
 	}
 }
 
