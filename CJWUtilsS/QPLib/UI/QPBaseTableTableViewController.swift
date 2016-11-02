@@ -349,6 +349,19 @@ public extension QPBaseTableViewController {
 }
 
 public extension UITableView {
+	/**
+     重新刷新数据,防止tableview 乱跳
+     !!!!有待测试
+     */
+	public func reloadDateWithoutScroll() {
+		let inset = self.contentOffset
+		self.reloadData()
+		self.layoutIfNeeded()
+		self.setContentOffset(inset, animated: false)
+	}
+}
+
+public extension UITableView {
 	public func clearExtraLines() {
 		let size = CGRectZero
 		self.tableFooterView = UIView(frame: size)
