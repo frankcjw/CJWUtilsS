@@ -71,6 +71,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.view.addSubview(imgv)
 
 		self.translucentBar(UIColor.peterRiverColor())
+
+		log.debug("我是一个人")
 	}
 
 	override func requestMore() {
@@ -202,9 +204,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		}
 
 		// text.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(integer:(NSUnderlineStyle.StyleDouble).toRaw()), range: NSMakeRange(0, text.length))
-
-		let vc = QPSegmentViewController()
-		self.pushViewController(vc)
 
 	}
 

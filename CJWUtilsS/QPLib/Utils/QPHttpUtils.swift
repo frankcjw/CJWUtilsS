@@ -30,6 +30,19 @@ let pageSize = 50
 
 public class QPHttpUtils: NSObject {
 
+	/**
+     是否连接WiFi,有待详尽测试
+     
+     - returns:
+     */
+	public class func isWifi() -> Bool {
+		let host = "www.baidu.com"
+		if let manager = NetworkReachabilityManager(host: host) {
+			return manager.isReachableOnEthernetOrWiFi
+		} else {
+			return false
+		}
+	}
 	var sessionKey = ""
 
 	let manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())

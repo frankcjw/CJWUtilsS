@@ -11,6 +11,7 @@ import XCGLogger
 import FCFileManager
 import CryptoSwift
 import SwiftyJSON
+import Alamofire
 
 public let log = QPLogUtils.setup()
 
@@ -114,28 +115,47 @@ public class Log: XCGLogger {
 		if remoteDebugEnable {
 
 			if let url = remoteUrl {
-				var param: [String: AnyObject] = [:]
-				param["logLevel"] = "\(logLevel)"
-				if let deviceIdentifier = deviceIdentifier {
-					param["deviceIdentifier"] = deviceIdentifier
-				}
-
-				let bundle = NSBundle.mainBundle().bundleIdentifier
-//				if let debugInfo = debugInfo {
-//					let result = debugInfo.EncryptAES("passwordpassword")
-//					param["debugInfo"] = result ?? ""
+//				var host = "app.cenjiawen.com"
+//				if let nsurl = NSURL(string: remoteUrl!) {
+//					print("\(nsurl.host)")
+//					if let tmp = nsurl.host {
+//						host = tmp
+//					}
 //				}
-				param["debugInfo"] = debugInfo ?? ""
+//				if let manager = NetworkReachabilityManager(host: host) {
+//					if manager.isReachableOnEthernetOrWiFi {
+//
+//					}
+//				}
+				if QPHttpUtils.isWifi() {
+					var param: [String: AnyObject] = [:]
+					param["logLevel"] = "\(logLevel)"
+					if let deviceIdentifier = deviceIdentifier {
+						param["deviceIdentifier"] = deviceIdentifier
+					}
 
-				param["project"] = bundle ?? ""
+					let bundle = NSBundle.mainBundle().bundleIdentifier
+					// if let debugInfo = debugInfo {
+					// let result = debugInfo.EncryptAES("passwordpassword")
+					// param["debugInfo"] = result ?? ""
+					// }
 
-				let json = JSON(param).toJSONString()
-				if let result = json.encryptAES("passwordpassword") {
-					let enParam = ["info": result]
-					QPHttpUtils.sharedInstance.newHttpRequest(url, param: enParam, success: { (response) in
-						//
-					}) {
-						//
+					param["debugInfo"] = debugInfo ?? ""
+					if var debugInfo = debugInfo {
+						debugInfo.urlEncode()
+						param["debugInfo"] = debugInfo
+					}
+
+					param["project"] = bundle ?? ""
+
+					let json = JSON(param).toJSONString()
+					if let result = json.encryptAES("passwordpassword") {
+						let enParam = ["info": result]
+						QPHttpUtils.sharedInstance.newHttpRequest(url, param: enParam, success: { (response) in
+							//
+						}) {
+							//
+						}
 					}
 				}
 
