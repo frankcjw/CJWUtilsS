@@ -41,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let sss = Defaults["asd"].stringValue
 
 		print(sss)
-		log.remoteUrl = "http://quickplain.asuscomm.com:9090/enlog"
+//		log.remoteUrl = "http://quickplain.asuscomm.com:9090/enlog"
+		log.remoteUrl = "http://app.cenjiawen.com/enlog"
 
 		// let sc = SymmetricCryptor(algorithm: .AES128, options: CCOptions(kCCOptionPKCS7Padding))
 //		cypher.setRandomIV()

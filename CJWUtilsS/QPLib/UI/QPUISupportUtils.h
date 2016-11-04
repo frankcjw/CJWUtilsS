@@ -29,3 +29,9 @@
 @interface UIImage (CJWBarCode)
 + (UIImage *)generateBarCode:(NSString *)code width:(CGFloat)width height:(CGFloat)height;
 @end
+
+@interface UIImage (CJWCompress)
+
+- (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
+
+@end

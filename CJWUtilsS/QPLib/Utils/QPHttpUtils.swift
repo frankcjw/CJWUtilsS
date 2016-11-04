@@ -319,6 +319,91 @@ public class QPHttpUtils: NSObject {
 		})
 	}
 
+	public func uploadThirdPartImage(image: UIImage, success: QPSuccessBlock!, fail: QPFailBlock!) {
+		let url = "https://sm.ms/api/upload"
+		if let URL = NSURL(string: url) {
+			let mutableURLRequest = NSMutableURLRequest(URL: URL)
+			mutableURLRequest.HTTPMethod = "POST"
+			Alamofire.URLRequestConvertible
+
+			manager.upload(mutableURLRequest, multipartFormData: { (multipartFormData) in
+				let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+				let name = "smfile"
+				multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
+
+				let desc = "{\"format\":\"json\",\"ssl\":false}";
+				let descData = desc.dataUsingEncoding(NSUTF8StringEncoding)!
+				multipartFormData.appendBodyPart(data: descData, name: "description", mimeType: "text/plain")
+
+				}, encodingCompletion: { encodingResult in
+				switch encodingResult {
+				case .Success(let upload, _, _):
+					upload.responseJSON { response in
+						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
+						if let value = datastring as? String {
+							let json = JSON.parse(value)
+							if json == nil {
+								let json = JSON(value)
+								success(response: json)
+								return
+							}
+							success(response: json)
+							return
+						} else if let value = response.result.value as? String {
+							let json = JSON.parse(value)
+							success(response: json)
+							return
+						} else {
+							fail()
+							return
+						}
+					}
+				case .Failure(let encodingError):
+					print(encodingError)
+					log.error("encodingError \(encodingError)")
+					fail()
+				}
+			})
+			// manager.request(.POST, url, parameters: param)
+//			manager.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
+//				let dataObj = UIImageJPEGRepresentation(image, 1.0)!
+//				let name = imageName[iii]
+//				multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
+////                multipartFormData.
+//				}, encodingCompletion: { encodingResult in
+//				switch encodingResult {
+//				case .Success(let upload, _, _):
+//					upload.responseJSON { response in
+//						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
+//						if let value = datastring as? String {
+//							let json = JSON.parse(value)
+//							if json == nil {
+//								let json = JSON(value)
+//								success(response: json)
+//								return
+//							}
+//							success(response: json)
+//							return
+//						} else if let value = response.result.value as? String {
+//							let json = JSON.parse(value)
+//							success(response: json)
+//							return
+//						} else {
+//							fail()
+//							return
+//						}
+//					}
+//				case .Failure(let encodingError):
+//					print(encodingError)
+//					log.error("encodingError \(encodingError)")
+//					fail()
+//				}
+//			})
+		} else {
+			fail()
+		}
+	}
+
 	public func uploadImage(url: String, param: [String: AnyObject]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
 
 		if let URL = NSURL(string: url.addParam(param)) {

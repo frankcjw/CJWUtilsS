@@ -69,4 +69,35 @@
     return [UIImage imageWithCIImage:transformedImage];
 }
 
+
+@end
+
+
+@implementation UIImage (CJWCompress)
+
+
+- (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize {
+    
+    if (self.size.width <= newSize.width && self.size.height <= newSize.height) {
+        return self;
+    }
+    
+    CGSize actSize = image.size;
+    float scale = actSize.width/actSize.height;
+    
+    if (scale < 1) {
+        newSize.height = newSize.width/scale;
+    } else {
+        newSize.width = newSize.height*scale;
+    }
+    
+    
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 @end

@@ -73,6 +73,15 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.translucentBar(UIColor.peterRiverColor())
 
 		log.debug("我是一个人")
+
+		let imgt = UIImage(named: "testing")!
+		QPHttpUtils.sharedInstance.uploadThirdPartImage(imgt, success: { (response) in
+			print("\(response)")
+			let url = response["data"]["url"]
+			print("\(url)")
+		}) {
+			//
+		}
 	}
 
 	override func requestMore() {
