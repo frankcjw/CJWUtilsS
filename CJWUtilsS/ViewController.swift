@@ -82,6 +82,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		}) {
 			//
 		}
+
+		QPUtils.sharedInstance.showComment("小红花🌹", time: 5)
 	}
 
 	override func requestMore() {

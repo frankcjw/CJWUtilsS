@@ -38,6 +38,62 @@ public class QPUtils: NSObject {
 }
 
 public extension QPUtils {
+
+	public func showComment(text: String, time: NSTimeInterval) {
+		let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+		for window in frontToBackWindows {
+			if window.windowLevel == UIWindowLevelNormal {
+				let label = UILabel()
+				let ran = CGFloat(rand())
+				label.frame = CGRectMake(320, ran % 290 + 64, 250, 30);
+				// label.frame = CGRectMake(0, 0, window.width, window.height)
+				label.text = text
+				label.font = UIFont.systemFontOfSize(23)
+				label.textColor = MAIN_COLOR
+				label.shadowEffect()
+				window.addSubview(label)
+
+				UIView.animateWithDuration(5, animations: {
+					label.frame = CGRectMake(-250, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
+
+					}, completion: { (flag) in
+					label.removeFromSuperview()
+				})
+			}
+		}
+
+//		let time: Double = Double(25.random())
+		excute(time) {
+			self.showComment(text, time: time)
+		}
+	}
+
+	public func showComment(text: String) {
+		let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+		for window in frontToBackWindows {
+			if window.windowLevel == UIWindowLevelNormal {
+				let label = UILabel()
+				let ran = CGFloat(rand())
+				label.frame = CGRectMake(320, ran % 290, 250, 30);
+				// label.frame = CGRectMake(0, 0, window.width, window.height)
+				label.text = text
+				label.font = UIFont.systemFontOfSize(23)
+				label.textColor = MAIN_COLOR
+				label.shadowEffect()
+				window.addSubview(label)
+
+				UIView.animateWithDuration(5, animations: {
+					label.frame = CGRectMake(-250, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
+
+					}, completion: { (flag) in
+					label.removeFromSuperview()
+				})
+			}
+		}
+	}
+}
+
+public extension QPUtils {
 	/**
 	 获取系统图片缓存大小
 
