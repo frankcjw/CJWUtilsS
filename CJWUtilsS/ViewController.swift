@@ -75,17 +75,43 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		log.debug("我是一个人")
 
 		let imgt = UIImage(named: "testing")!
-		QPHttpUtils.sharedInstance.uploadThirdPartImage(imgt, success: { (response) in
+//		QPHttpUtils.sharedInstance.uploadThirdPartImage(imgt, success: { (response) in
+//			print("\(response)")
+//			let url = response["data"]["url"]
+//			print("\(url)")
+//		}) {
+//			//
+//		}
+
+//		QPUtils.sharedInstance.showComment("小红花🌹", time: 5)
+//		IDCardRecongize()
+		let idcardImg = UIImage(named: "idcard.jpg")!
+//		QPHttpUtils.IDCardRecongize(idcardImg, success: { (response) in
+//			print("\(response)")
+//		}) {
+//			//
+//		}
+
+		QPHttpUtils.IDCardRecongizeFromUrl("http://ooo.0o0.ooo/2016/11/17/582d7d8b7f80a.png", success: { (response) in
 			print("\(response)")
-			let url = response["data"]["url"]
-			print("\(url)")
 		}) {
 			//
 		}
 
-		QPUtils.sharedInstance.showComment("小红花🌹", time: 5)
 	}
 
+	func IDCardRecongize() {
+		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
+		let img = UIImage(named: "idcard3.jpg")!
+		let param = ["api_key": "4KIL18K6lUgz3YZdZtBcwUuedBudMJE4", "api_secret": "2Gdg9sMUo3aUNytMPbshWsnsrxIDEf2M"]
+		QPHttpUtils.sharedInstance.uploadImage(url, param: param, imageName: ["image_file"], images: [img], success: { (response) in
+			log.debug("--- \(response)")
+			print("??? \(response)")
+		}) {
+			log.debug("fail")
+			print("print")
+		}
+	}
 	override func requestMore() {
 
 		self.data.appendContentsOf(self.appendData)

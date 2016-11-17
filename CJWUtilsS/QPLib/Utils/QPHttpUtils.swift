@@ -319,6 +319,28 @@ public class QPHttpUtils: NSObject {
 		})
 	}
 
+	/**
+     上传图片到第三方服务器,免费
+     {
+     "size" : 12807,
+     "delete" : "https:\/\/sm.ms\/api\/delete\/Az42EU83HRWFyiL",
+     "width" : 75,
+     "ip" : "61.143.46.255",
+     "filename" : "smfile.png",
+     "height" : 75,
+     "timestamp" : 1479376460,
+     "path" : "\/2016\/11\/17\/582d7e4c4309b.png",
+     "hash" : "Az42EU83HRWFyiL",
+     "url" : "http:\/\/ooo.0o0.ooo\/2016\/11\/17\/582d7e4c4309b.png",
+     "storename" : "582d7e4c4309b.png"
+     }
+     
+     let url = response["data"]["url"]
+
+     - parameter image:   图片文件
+     - parameter success: success description
+     - parameter fail:    fail description
+     */
 	public func uploadThirdPartImage(image: UIImage, success: QPSuccessBlock!, fail: QPFailBlock!) {
 		let url = "https://sm.ms/api/upload"
 		if let URL = NSURL(string: url) {
@@ -558,4 +580,43 @@ public class QPHttpUtils: NSObject {
 //            return newParam as [NSObject : AnyObject]
 //        }
 //    }
+}
+
+// MARK: - 身份证识别
+public extension QPHttpUtils {
+	/**
+     身份证识别
+     
+     - parameter imageUrl: 身份证url
+     - parameter success:  success description
+     - parameter failure:  failure description
+     */
+	public class func IDCardRecongizeFromUrl(imageUrl: String, success: QPSuccessBlock, failure: QPFailBlock) {
+
+		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
+		let param = ["api_key": "4KIL18K6lUgz3YZdZtBcwUuedBudMJE4", "api_secret": "2Gdg9sMUo3aUNytMPbshWsnsrxIDEf2M", "image_url": imageUrl]
+		QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
+			success(response: response)
+		}) {
+			failure()
+		}
+	}
+
+	/**
+     身份证识别
+     
+     - parameter image:   身份证图片文件
+     - parameter success: success description
+     - parameter failure: failure description
+     */
+	public class func IDCardRecongize(image: UIImage, success: QPSuccessBlock, failure: QPFailBlock) {
+
+		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
+		let param = ["api_key": "4KIL18K6lUgz3YZdZtBcwUuedBudMJE4", "api_secret": "2Gdg9sMUo3aUNytMPbshWsnsrxIDEf2M"]
+		QPHttpUtils.sharedInstance.uploadImage(url, param: param, imageName: ["image_file"], images: [image], success: { (response) in
+			success(response: response)
+		}) {
+			failure()
+		}
+	}
 }
