@@ -19,18 +19,18 @@ target 'CJWUtilsS' do
     pod 'FLKAutoLayout'
     pod 'Alamofire'
     pod 'KLCPopup'
-    pod 'XCGLogger'
-    pod 'CocoaLumberjack/Swift'
+    pod 'XCGLogger', '3.3'
+#    pod 'CocoaLumberjack/Swift'
     pod 'SwiftyJSON'
     pod 'SVProgressHUD'
     pod 'SSKeychain'
-    pod 'CryptoSwift'
+    pod 'CryptoSwift', '0.4.1'
 #    pod 'RNCryptor'
 #    pod 'SugarRecord'
 #    pod 'Realm', :tag ~> '0.97.0'
 #    pod 'Realm', '~> 0.97.0'
 #    pod 'RealmSwift'
-    pod 'AsyncSwift'
+    pod 'AsyncSwift', '1.7.2'
     #- swift date operation
     pod 'SwiftDate'
     pod 'AFDateHelper'
@@ -52,7 +52,7 @@ target 'CJWUtilsS' do
     pod 'FXBlurView'
     pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
     pod ’Bugly’
-    pod 'PhoneNumberKit'
+    pod 'PhoneNumberKit', '0.8.3'
 #    pod 'ImagePickerSheetController'
 #    pod 'CJWLib', :git => 'https://github.com/frankcjw/CJWLib.git'
 #    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
@@ -60,10 +60,11 @@ target 'CJWUtilsS' do
     pod 'SwiftyRSA'
 #    pod ’AMap2DMap’
     pod ’INTULocationManager’
-    pod 'HMSegmentedControl',git: 'https://github.com/HeshamMegid/HMSegmentedControl.git'
+    pod 'HMSegmentedControl', '1.5.3'
     pod 'SwiftRandom'
     pod 'iCarousel'
     pod 'WCFastCell'
+    pod 'QRCodeReader', '3.5.2'
 end
 
 target 'CJWUtilsSTests' do
