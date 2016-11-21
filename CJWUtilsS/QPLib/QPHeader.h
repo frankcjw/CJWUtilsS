@@ -55,6 +55,7 @@
 //#import <AMapFoundationKit/AMapFoundationKit.h>
 #import "VIPMapUtils.h"
 #import "CoreNewFeatureVC.h"
+#import "QRCScanner.h"
 
 //#import "CoreNewFeatureVC.h"
 

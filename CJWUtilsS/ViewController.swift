@@ -16,6 +16,7 @@ import Mirror
 import FXBlurView
 import SwiftyRSA
 import EventKit
+import QRCodeReaderViewController
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -35,6 +36,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	var data: [Int] = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 	var appendData: [Int] = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+
 	override func viewDidLoad() {
 //		QPEventUtils.verifyUserAuthorization(EKEntityType.Event, success: {
 //			let utils = QPEventUtils()
@@ -83,35 +85,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			//
 //		}
 
-//		QPUtils.sharedInstance.showComment("小红花🌹", time: 5)
-//		IDCardRecongize()
-		let idcardImg = UIImage(named: "idcard.jpg")!
-//		QPHttpUtils.IDCardRecongize(idcardImg, success: { (response) in
-//			print("\(response)")
-//		}) {
-//			//
-//		}
-
-		QPHttpUtils.IDCardRecongizeFromUrl("http://ooo.0o0.ooo/2016/11/17/582d7d8b7f80a.png", success: { (response) in
-			print("\(response)")
-		}) {
-			//
-		}
-
 	}
 
-	func IDCardRecongize() {
-		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
-		let img = UIImage(named: "idcard3.jpg")!
-		let param = ["api_key": "4KIL18K6lUgz3YZdZtBcwUuedBudMJE4", "api_secret": "2Gdg9sMUo3aUNytMPbshWsnsrxIDEf2M"]
-		QPHttpUtils.sharedInstance.uploadImage(url, param: param, imageName: ["image_file"], images: [img], success: { (response) in
-			log.debug("--- \(response)")
-			print("??? \(response)")
-		}) {
-			log.debug("fail")
-			print("print")
-		}
-	}
 	override func requestMore() {
 
 		self.data.appendContentsOf(self.appendData)
@@ -242,6 +217,21 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		// text.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(integer:(NSUnderlineStyle.StyleDouble).toRaw()), range: NSMakeRange(0, text.length))
 
+//		let qrv = QRCodeReaderView(frame: CGRectMake(100, 100, 100, 100))
+//		self.view.addSubview(qrv)
+//		let reader = QRCodeReader(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
+//		let vc = QRCodeReaderViewController(cancelButtonTitle: "cancel", codeReader: reader, startScanningAtLoad: true, showSwitchCameraButton: true, showTorchButton: true)
+////		self.pushViewController(vc)
+//		reader.setCompletionWithBlock { (str) in
+//			print("\(str)")
+//		}
+
+		let vc = QPQRCodeViewController()
+		vc.onScaned { (result) in
+			print("\(result)")
+			vc.popViewController()
+		}
+		self.pushViewController(vc)
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {

@@ -17,11 +17,11 @@ target 'CJWUtilsS' do
     pod 'FCFileManager'
     pod 'LKDBHelper'
     pod 'FLKAutoLayout'
-    pod 'Alamofire'
+    pod 'Alamofire', '3.4.0'
     pod 'KLCPopup'
     pod 'XCGLogger', '3.3'
 #    pod 'CocoaLumberjack/Swift'
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON', '2.3.2'
     pod 'SVProgressHUD'
     pod 'SSKeychain'
     pod 'CryptoSwift', '0.4.1'
@@ -32,20 +32,20 @@ target 'CJWUtilsS' do
 #    pod 'RealmSwift'
     pod 'AsyncSwift', '1.7.2'
     #- swift date operation
-    pod 'SwiftDate'
+#    pod 'SwiftDate'
     pod 'AFDateHelper'
     # remain testing
-    pod 'Signals'
-    pod 'PromiseKit'
-    pod 'TaskQueue'
+#    pod 'Signals'
+#    pod 'PromiseKit'
+#    pod 'TaskQueue'
     #log net work status , remain testing
     pod 'netfox'
     # swift timer , seems usable, remain testing
-    pod 'SwiftyTimer'
+#    pod 'SwiftyTimer'
     #store any object in your user default,but it's not that usefull
     #pod 'Prephirences'
     # common user default,recommand
-    pod 'SwiftyUserDefaults'
+#    pod 'SwiftyUserDefaults'
     pod 'YYModel'
     pod 'WebViewJavascriptBridge'
     pod 'AwesomeCache', '~> 2.0'
@@ -56,15 +56,15 @@ target 'CJWUtilsS' do
 #    pod 'ImagePickerSheetController'
 #    pod 'CJWLib', :git => 'https://github.com/frankcjw/CJWLib.git'
 #    pod ’CJWLib’, :path => '~/Documents/app/CJWLib'
-    pod 'SnapKit'
+#    pod 'SnapKit'
     pod 'SwiftyRSA'
 #    pod ’AMap2DMap’
     pod ’INTULocationManager’
     pod 'HMSegmentedControl', '1.5.3'
-    pod 'SwiftRandom'
+#    pod 'SwiftRandom'
     pod 'iCarousel'
     pod 'WCFastCell'
-    pod 'QRCodeReader', '3.5.2'
+    pod 'QRCodeReaderViewController','4.0.1'
 end
 
 target 'CJWUtilsSTests' do
