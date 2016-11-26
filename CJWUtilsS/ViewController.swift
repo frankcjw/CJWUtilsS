@@ -226,12 +226,11 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			print("\(str)")
 //		}
 
-		let vc = QPQRCodeViewController()
-		vc.onScaned { (result) in
-			print("\(result)")
-			vc.popViewController()
+		let vc = QPWebViewController()
+		vc.url = "http://www.ip.cn"
+		self.presentViewController(vc, animated: true) {
+			//
 		}
-		self.pushViewController(vc)
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {

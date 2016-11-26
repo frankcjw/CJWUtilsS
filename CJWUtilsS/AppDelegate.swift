@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		NFX.sharedInstance().start()
 		NFX.sharedInstance().setGesture(.shake)
 
+		let url = "/app/customroute/appOrder/12?isYzfReturn=1"
 //        CoreNewFeatureVC.canShowNewFeature()
 
 		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
