@@ -90,6 +90,18 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.view.hideAllHUD()
 		self.popViewController()
 		self.showText("提交失败")
+		let vc = QPQRCodeViewController()
+		vc.onScaned { (result) in
+			self.showConfirmAlert("", message: "", confirm: {
+				//
+				}, cancel: {
+				//
+			})
+			vc.popViewController()
+		}
+
+		self.pushViewController(vc)
+
 	}
 
 	override func requestMore() {
