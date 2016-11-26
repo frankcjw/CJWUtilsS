@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class QPQRCodeViewController: UIViewController {
+class QPQRCodeViewController: UIViewController {
 
-	public typealias QPScanQRCodeViewControllerBlock = (result: String) -> ()
+	typealias QPScanQRCodeViewControllerBlock = (result: String) -> ()
 
-	public var block: QPScanQRCodeViewControllerBlock?
+	var block: QPScanQRCodeViewControllerBlock?
 
-	override public func viewDidLoad() {
+	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "扫描二维码"
 		self.view.backgroundColor = UIColor.blackColor()
@@ -24,17 +24,17 @@ public class QPQRCodeViewController: UIViewController {
 		self.view.addSubview(scaner)
 	}
 
-	public func onScaned(block: QPScanQRCodeViewControllerBlock) {
+	func onScaned(block: QPScanQRCodeViewControllerBlock) {
 		self.block = block
 	}
 
-	override public func didReceiveMemoryWarning() {
+	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 }
 
 extension QPQRCodeViewController: QRCodeScanneDelegate {
-	public func didFinshedScanningQRCode(result: String!) {
+	func didFinshedScanningQRCode(result: String!) {
 		log.verbose("result [\(result)]")
 		block?(result: result)
 		self.navigationController?.popViewControllerAnimated(true)
