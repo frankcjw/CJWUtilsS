@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QPQRCodeViewController: UIViewController {
+public class QPQRCodeViewController: UIViewController {
 
 	typealias QPScanQRCodeViewControllerBlock = (result: String) -> ()
 

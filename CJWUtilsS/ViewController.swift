@@ -17,6 +17,7 @@ import FXBlurView
 import SwiftyRSA
 import EventKit
 import QRCodeReaderViewController
+import SwiftyJSON
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -85,6 +86,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			//
 //		}
 
+		self.view.showLoading("提交中")
+		self.view.hideAllHUD()
+		self.popViewController()
+		self.showText("提交失败")
 	}
 
 	override func requestMore() {
