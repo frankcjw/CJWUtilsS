@@ -10,9 +10,9 @@ import UIKit
 
 public class QPQRCodeViewController: UIViewController {
 
-	public typealias VIPScanQRCodeViewControllerBlock = (result: String) -> ()
+	public typealias QPScanQRCodeViewControllerBlock = (result: String) -> ()
 
-	public var block: VIPScanQRCodeViewControllerBlock?
+	public var block: QPScanQRCodeViewControllerBlock?
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,7 +24,7 @@ public class QPQRCodeViewController: UIViewController {
 		self.view.addSubview(scaner)
 	}
 
-	public func onScaned(block: VIPScanQRCodeViewControllerBlock) {
+	public func onScaned(block: QPScanQRCodeViewControllerBlock) {
 		self.block = block
 	}
 
