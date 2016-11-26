@@ -14,7 +14,7 @@ public class QPQRCodeViewController: UIViewController {
 
 	public var block: QPScanQRCodeViewControllerBlock?
 
-	public override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "扫描二维码"
 		self.view.backgroundColor = UIColor.blackColor()
@@ -28,7 +28,7 @@ public class QPQRCodeViewController: UIViewController {
 		self.block = block
 	}
 
-	public override func didReceiveMemoryWarning() {
+	override public func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 }
