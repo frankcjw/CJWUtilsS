@@ -90,17 +90,12 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.view.hideAllHUD()
 		self.popViewController()
 		self.showText("提交失败")
-		let vc = QPQRCodeViewController()
-		vc.onScaned { (result) in
-			self.showConfirmAlert("", message: "", confirm: {
-				//
-				}, cancel: {
-				//
-			})
-			vc.popViewController()
-		}
 
-		self.pushViewController(vc)
+		QPHttpUtils.IDCardRecongize(UIImage(named: "idcard.jpg")!, success: { (response) in
+			print("\(response)")
+		}) {
+			//
+		}
 
 	}
 
@@ -243,11 +238,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			print("\(str)")
 //		}
 
-		let vc = QPWebViewController()
-		vc.url = "http://www.ip.cn"
-		self.presentViewController(vc, animated: true) {
-			//
-		}
 	}
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {

@@ -611,7 +611,8 @@ public extension QPHttpUtils {
      */
 	public class func IDCardRecongize(image: UIImage, success: QPSuccessBlock, failure: QPFailBlock) {
 
-		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
+//		let url = "https://api.megvii.com/cardpp/v1/ocridcard"
+		let url = "http://qp.cenjiawen.com:9090/qp/cardRecg"
 		let param = ["api_key": "4KIL18K6lUgz3YZdZtBcwUuedBudMJE4", "api_secret": "2Gdg9sMUo3aUNytMPbshWsnsrxIDEf2M"]
 		QPHttpUtils.sharedInstance.uploadImage(url, param: param, imageName: ["image_file"], images: [image], success: { (response) in
 			success(response: response)

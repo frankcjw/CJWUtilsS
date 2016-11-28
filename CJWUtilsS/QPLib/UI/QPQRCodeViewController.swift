@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class QPQRCodeViewController: UIViewController {
+class QPQRCodeViewController: UIViewController {
 
 	typealias QPScanQRCodeViewControllerBlock = (result: String) -> ()
 
 	var block: QPScanQRCodeViewControllerBlock?
 
-	override public func viewDidLoad() {
+	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "扫描二维码"
 		self.view.backgroundColor = UIColor.blackColor()
@@ -29,13 +29,13 @@ public class QPQRCodeViewController: UIViewController {
 		self.block = block
 	}
 
-	override public func didReceiveMemoryWarning() {
+	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 }
 
 extension QPQRCodeViewController: QRCodeScanneDelegate {
-	public func didFinshedScanningQRCode(result: String!) {
+	func didFinshedScanningQRCode(result: String!) {
 		log.verbose("result [\(result)]")
 		block?(result: result)
 //		self.navigationController?.popViewControllerAnimated(true)
