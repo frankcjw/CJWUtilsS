@@ -55,6 +55,9 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public var shouldHideNavigationBar: Bool = false
 
+	/// 是否每次进入页面都请求服务器
+	public var alwaysRequest = false
+
 	/// tableview header segment
 	public var segmentTitles = ["商会活动", "我的活动"] {
 		didSet {
@@ -70,19 +73,25 @@ public class QPBaseTableViewController: UITableViewController {
 		floatView.frame = CGRectMake(0, self.tableView.contentOffset.y, view.width, view.height)
 	}
 
+	public override func request() {
+		super.request()
+	}
+
 	public override func viewWillAppear(animated: Bool) {
 
 		// IQKeyboardManager.sharedManager().enable = false
 		// IQKeyboardManager.sharedManager().enableAutoToolbar = false
 
 		if shouldHideNavigationBar {
-
 			self.navigationController?.setNavigationBarHidden(true, animated: animated)
 		} else {
 
 			fixNavigationBarColor(animated)
 		}
 		super.viewWillAppear(animated)
+		if alwaysRequest {
+			request()
+		}
 	}
 
 	override public func viewDidAppear(animated: Bool) {
@@ -113,7 +122,9 @@ public class QPBaseTableViewController: UITableViewController {
 		self.tableView.emptyDataSetDelegate = self;
 		self.tableView.clearExtraLines()
 //		self.setBackTitle("")
-		request()
+		if !alwaysRequest {
+			request()
+		}
 		load()
 		updateFloatViewFrame()
 	}

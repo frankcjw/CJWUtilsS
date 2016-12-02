@@ -90,14 +90,14 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		self.view.hideAllHUD()
 		self.popViewController()
 		self.showText("提交失败")
-
-		QPHttpUtils.IDCardRecongize(UIImage(named: "idcard.jpg")!, success: { (response) in
-			print("\(response)")
-		}) {
-			//
-		}
+//		QPHttpUtils.IDCardRecongize(UIImage(named: "idcard.jpg")!, success: { (response) in
+//			print("\(response)")
+//		}) {
+//			//
+//		}
 
 	}
+	var sections: [JSON] = []
 
 	override func requestMore() {
 
@@ -237,6 +237,11 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		reader.setCompletionWithBlock { (str) in
 //			print("\(str)")
 //		}
+
+		excute(3) {
+			let vc = QPFormTableViewController()
+			self.pushViewController(vc)
+		}
 
 	}
 
