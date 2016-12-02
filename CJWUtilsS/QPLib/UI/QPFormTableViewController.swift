@@ -67,6 +67,7 @@ public class QPFormTableViewController: QPTableViewController {
 		let key = selectionInfo["key"].stringValue
 
 		let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+		cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 		cell.textLabel?.text = "\(name):\(valueText)"
 		cell.detailTextLabel?.text = "\(key) \(type)"
 		switch type {
