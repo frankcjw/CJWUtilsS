@@ -75,11 +75,10 @@
 
 @implementation UIImage (CJWCompress)
 
-
-- (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize {
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize {
     
-    if (self.size.width <= newSize.width && self.size.height <= newSize.height) {
-        return self;
+    if (image.size.width <= newSize.width && image.size.height <= newSize.height) {
+        return image;
     }
     
     CGSize actSize = image.size;
@@ -98,6 +97,13 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+- (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize {
+    
+    
+    
+    return [UIImage scaleImage:image toSize:newSize];
 }
 
 @end

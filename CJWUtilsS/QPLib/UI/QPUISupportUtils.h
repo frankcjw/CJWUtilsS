@@ -30,7 +30,12 @@
 + (UIImage *)generateBarCode:(NSString *)code width:(CGFloat)width height:(CGFloat)height;
 @end
 
+
+
+
 @interface UIImage (CJWCompress)
+
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 
 - (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 
