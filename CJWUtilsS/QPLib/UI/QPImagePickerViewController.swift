@@ -13,9 +13,11 @@ public typealias QPImagePickerBlock = (images: Array<UIImage>) -> ()
 class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	var block: QPImagePickerBlock!
 	var cameraBlock: QPImagePickerBlock!
-
+	var maxCount = 1
 	func pickImage(vc: UIViewController, maxCount: Int, block: QPImagePickerBlock) {
 		self.block = block
+		self.maxCount = maxCount
+
 		let actionSheet = UIAlertController(title: "选择照片", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
 		let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
 		let camera = UIAlertAction(title: "相机", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -38,10 +40,18 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 	}
 
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
-		if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-			let oirentationImage = image.fixOrientation()
-			block(images: [oirentationImage])
+		if maxCount <= 1 {
+			if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+				let oirentationImage = image.fixOrientation()
+				block(images: [oirentationImage])
+			}
+		} else {
+			if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+				let oirentationImage = image.fixOrientation()
+				block(images: [oirentationImage])
+			}
 		}
+
 		picker.dismissViewControllerAnimated(true) { () -> Void in
 			//
 		}
