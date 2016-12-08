@@ -163,6 +163,7 @@ public extension UIView {
 public extension UIViewController {
 	public func pushViewControllerAndDismiss(vc: UIViewController) {
 		if let navi = self.navigationController {
+			vc.hidesBottomBarWhenPushed = QPUtils.sharedInstance.config.hidesBottomBarWhenPushed
 			var vcs = navi.viewControllers
 			vcs.removeLast()
 			vcs.append(vc)
