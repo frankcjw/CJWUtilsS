@@ -38,7 +38,7 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 	}
 
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
-		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+		if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
 			let oirentationImage = image.fixOrientation()
 			block(images: [oirentationImage])
 		}

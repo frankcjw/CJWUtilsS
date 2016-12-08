@@ -238,9 +238,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			print("\(str)")
 //		}
 
-		excute(3) {
-			let vc = QPFormTableViewController()
-			self.pushViewController(vc)
+		self.pickImage(1) { (images) in
+			//
 		}
 
 	}
