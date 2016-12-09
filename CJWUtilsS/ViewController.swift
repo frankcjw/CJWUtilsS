@@ -18,6 +18,7 @@ import SwiftyRSA
 import EventKit
 import QRCodeReaderViewController
 import SwiftyJSON
+import GPUImage
 
 class CJWoOBJ: NSObject {
 	var title = "String666"

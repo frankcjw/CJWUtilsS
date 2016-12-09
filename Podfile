@@ -65,6 +65,7 @@ target 'CJWUtilsS' do
     pod 'iCarousel'
     pod 'WCFastCell'
     pod 'QRCodeReaderViewController','4.0.1'
+    pod 'GPUImage'
 end
 
 target 'CJWUtilsSTests' do
