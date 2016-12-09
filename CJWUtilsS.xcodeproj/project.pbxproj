@@ -91,6 +91,9 @@
 		01CEB4051DE2A120004AFD1F /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 01CEB3FA1DE2A120004AFD1F /* rscode.c */; };
 		01CEB4061DE2A120004AFD1F /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 01CEB3FC1DE2A120004AFD1F /* split.c */; };
 		01DD99CD1DB0C41400ECD3A8 /* QPSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */; };
+		01E5A4CD1DFA91FD00724830 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01E5A4CC1DFA91FD00724830 /* dog.jpg */; };
+		01E5A4CF1DFA941C00724830 /* lady.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01E5A4CE1DFA941C00724830 /* lady.jpeg */; };
+		01E5A4D11DFA980D00724830 /* gg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01E5A4D01DFA980D00724830 /* gg.jpg */; };
 		01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6E8441C8E7A920095A206 /* QPViewDebug.swift */; };
 		01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */; };
 		01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */; };
@@ -290,6 +293,9 @@
 		01CEB3FC1DE2A120004AFD1F /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		01CEB3FD1DE2A120004AFD1F /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPSegmentViewController.swift; sourceTree = "<group>"; };
+		01E5A4CC1DFA91FD00724830 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
+		01E5A4CE1DFA941C00724830 /* lady.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lady.jpeg; sourceTree = "<group>"; };
+		01E5A4D01DFA980D00724830 /* gg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gg.jpg; sourceTree = "<group>"; };
 		01E6E8441C8E7A920095A206 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
 		01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
 		01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key.pem; sourceTree = "<group>"; };
@@ -734,6 +740,9 @@
 		B64D5BB71A356CC500D137D1 /* CJWUtilsS */ = {
 			isa = PBXGroup;
 			children = (
+				01E5A4D01DFA980D00724830 /* gg.jpg */,
+				01E5A4CE1DFA941C00724830 /* lady.jpeg */,
+				01E5A4CC1DFA91FD00724830 /* dog.jpg */,
 				01F0C3D81DDDAD6000F74D5E /* idcard3.jpg */,
 				01F0C3D61DDDAC6000F74D5E /* idcard.jpg */,
 				01CAEFB91C3BA737006E221A /* QPLib */,
@@ -961,9 +970,12 @@
 				018AF15C1D8048520002ABBF /* MLSelectPhoto.bundle in Resources */,
 				B64D5BC31A356CC500D137D1 /* Main.storyboard in Resources */,
 				01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */,
+				01E5A4D11DFA980D00724830 /* gg.jpg in Resources */,
 				01F0C3D71DDDAC6000F74D5E /* idcard.jpg in Resources */,
 				01F0C3D91DDDAD6000F74D5E /* idcard3.jpg in Resources */,
 				01EB9A981D6C478A00FBCC5E /* rsa_public_key.pem in Resources */,
+				01E5A4CF1DFA941C00724830 /* lady.jpeg in Resources */,
+				01E5A4CD1DFA91FD00724830 /* dog.jpg in Resources */,
 				B64D5BC81A356CC500D137D1 /* LaunchScreen.xib in Resources */,
 				B64D5BC51A356CC500D137D1 /* Images.xcassets in Resources */,
 				01A8FC611C96914200731483 /* ExampleApp.html in Resources */,

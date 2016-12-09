@@ -9,6 +9,8 @@
 import UIKit
 import SDWebImage
 //import SwiftRandom
+import CGFloatType
+import GPUImage
 
 public class QPImageUtils: NSObject {
 }
@@ -134,6 +136,71 @@ public class QPCircleImageView: UIImageView {
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		setup()
+	}
+}
+
+public extension UIImage {
+	/**
+     把图片切成正方形,居中
+     
+     - parameter image: 原图
+     
+     - returns:
+     */
+	public class func cropCenter(image: UIImage) -> UIImage {
+		let img = image
+		let width = img.size.width
+		let height = img.size.height
+		let crop = GPUImageCropFilter()
+		if width > height {
+			let fff: Float = Float(img.size.height) / Float(img.size.width)
+			let scale = NSNumber(float: fff).CGFloatValue()
+			crop.cropRegion = CGRectMake((1 - scale) / 2, 0, scale, 1)
+		} else {
+			let fff: Float = Float(img.size.width) / Float(img.size.height)
+			let scale = NSNumber(float: fff).CGFloatValue()
+			crop.cropRegion = CGRectMake(0, (1 - scale) / 2, 1, scale)
+		}
+		let newImage = crop.imageByFilteringImage(img)
+		return newImage
+	}
+
+	/**
+     调整图片明亮度
+     
+     - parameter image: 原图
+     - parameter rate:  0.0-1.0 ,约大约黑
+     
+     - returns:
+     */
+	public class func dim(image: UIImage, rate: CGFloat = 0.3) -> UIImage {
+		let filter = GPUImageBrightnessFilter()
+		filter.brightness = (-1) * rate
+		return filter.imageByFilteringImage(image)
+	}
+}
+
+public extension UIImageView {
+	/**
+     调暗图片
+     
+     - parameter rate: 0.0-1.0 ,约大约黑
+     */
+	public func dim(rate: CGFloat = 0.3) {
+		if let image = self.image {
+			self.image = UIImage.dim(image, rate: rate)
+		}
+	}
+
+	/**
+     图片裁切成正方形,居中
+     */
+	public func centerCropImage() {
+		if let image = self.image {
+			let img = UIImage.cropCenter(image)
+			self.image = img
+		}
+		scaleAspectFit()
 	}
 }
 

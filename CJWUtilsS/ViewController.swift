@@ -19,6 +19,7 @@ import EventKit
 import QRCodeReaderViewController
 import SwiftyJSON
 import GPUImage
+import CGFloatType
 
 class CJWoOBJ: NSObject {
 	var title = "String666"
@@ -65,18 +66,11 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		testing()
 		rsa()
 
-//        self.addRightButton(<#T##title: String##String#>, action: <#T##Selector#>)
-
 		self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
-
-		let imgv = UIImageView(frame: CGRectMake(100, 100, 200, 100))
-		let img = UIImage.generateBarCode("123456", width: 200, height: 100)
-		imgv.image = img
-		self.view.addSubview(imgv)
 
 		self.translucentBar(UIColor.peterRiverColor())
 
-		log.debug("我是一个人")
+		self.title = "我"
 
 		let imgt = UIImage(named: "testing")!
 //		QPHttpUtils.sharedInstance.uploadThirdPartImage(imgt, success: { (response) in
@@ -87,17 +81,43 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			//
 //		}
 
-		self.view.showLoading("提交中")
-		self.view.hideAllHUD()
-		self.popViewController()
-		self.showText("提交失败")
-//		QPHttpUtils.IDCardRecongize(UIImage(named: "idcard.jpg")!, success: { (response) in
-//			print("\(response)")
-//		}) {
-//			//
-//		}
+//		self.view.showLoading("提交中")
+//		self.view.hideAllHUD()
+//		self.popViewController()
+//		self.showText("提交失败")
+
+		filterImage()
+	}
+
+	func filterImage() {
+		let imageName = "gg.jpg"
+		var img = UIImage(named: imageName)!
+
+		let filter = GPUImageBrightnessFilter()
+
+		let blur = GPUImageiOSBlurFilter()
+//		blur.downsampling = 0.1
+//		blur.blurRadiusInPixels = 0.5
+		filter.brightness = -0.3
+//		img = filter.imageByFilteringImage(img)
+//		img = blur.imageByFilteringImage(img)
+
+		let imgv = UIImageView(frame: CGRectMake(0, 100, 200, 200))
+		imgv.image = img
+		imgv.scaleAspectFit()
+		imgv.centerCropImage()
+		imgv.dim(0.1)
+
+		// color.
+		self.view.addSubview(imgv)
+
+		let imgv2 = UIImageView(frame: CGRectMake(0, 300, 200, 200))
+		imgv2.image = UIImage(named: imageName)!
+		imgv2.scaleAspectFit()
+		self.view.addSubview(imgv2)
 
 	}
+
 	var sections: [JSON] = []
 
 	override func requestMore() {
@@ -165,42 +185,14 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		})
 	}
 
-	var imgv = UIImageView()
-	let bv = FXBlurView()
-	var isBlur = false
-
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		imgv.frame = self.view.frame
-		imgv.image("http://ww1.sinaimg.cn/mw690/9e9d7b23gw1f4eg71jjgqg205m0ak7ac.gif", placeholder: "testing")
 
-		bv.frame = self.view.frame
-		bv.dynamic = true
-		bv.updateInterval = 1
-		self.tableView.insertSubview(bv, atIndex: 0)
-
-		self.tableView.setInsetsTop(300)
-		self.tableView.insertSubview(imgv, atIndex: 0)
+//		self.tableView.setInsetsTop(300)
 	}
 
 	override func scrollViewDidScroll(scrollView: UIScrollView) {
-		let offsetY = scrollView.contentOffset.y
 		super.scrollViewDidScroll(scrollView)
-		imgv.frame = CGRectMake(imgv.x, offsetY, imgv.width, imgv.height)
-		bv.frame = CGRectMake(bv.x, offsetY, bv.width, bv.height)
-
-		if offsetY > 0 {
-
-			if offsetY < 100 {
-				let percent = (offsetY - 0) / 100
-				bv.alpha = percent
-			} else {
-				bv.alpha = 1
-			}
-			bv.hidden = false
-		} else {
-			bv.hidden = true
-		}
 	}
 
 	override func viewDidAppear(animated: Bool) {
@@ -239,10 +231,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			print("\(str)")
 //		}
 
-		excute(3) {
-			let vc = QPFormTableViewController()
-			self.pushViewController(vc)
-		}
+//		excute(3) {
+//			let vc = QPFormTableViewController()
+//			self.pushViewController(vc)
+//		}
 
 	}
 
