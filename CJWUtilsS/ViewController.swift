@@ -92,6 +92,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	func filterImage() {
 		let imageName = "gg.jpg"
 		var img = UIImage(named: imageName)!
+		let img2 = UIImage(named: "dog.jpg")!
+		let img3 = UIImage(named: "ran.png")!
 
 		let filter = GPUImageBrightnessFilter()
 
@@ -103,7 +105,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		img = blur.imageByFilteringImage(img)
 
 		let imgv = UIImageView(frame: CGRectMake(0, 100, 200, 200))
-		imgv.image = img
+//		imgv.image = img
 		imgv.scaleAspectFit()
 		imgv.centerCropImage()
 		imgv.dim(0.1)
@@ -116,6 +118,19 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		imgv2.scaleAspectFit()
 		self.view.addSubview(imgv2)
 
+		let mask = GPUImageMaskFilter()
+		mask.imageByFilteringImage(img2)
+
+		let mk = GPUImagePicture(image: UIImage(named: "lady.jpeg")!)
+		let pic = GPUImagePicture(image: img)
+
+		pic.addTarget(mask)
+//		pic.replaceTextureWithSubimage(img2)
+		pic.processImage()
+//		let nmg = pic.imageByFilteringImage(img2)
+		let nmg = mask.imageByFilteringImage(img3)
+		imgv.image = nmg
+//
 	}
 
 	var sections: [JSON] = []

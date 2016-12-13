@@ -8,18 +8,18 @@
 
 import UIKit
 
-class QPFormModifyTableViewController: QPTableViewController {
+public class QPFormModifyTableViewController: QPTableViewController {
 
 	var textInputFiled = UITextField()
 
 	private var text = ""
 	private var placeholder = ""
 
-	typealias QPInputModifyBlock = (text: String) -> ()
+	public typealias QPInputModifyBlock = (text: String) -> ()
 
 	var block: QPInputModifyBlock?
 
-	override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.registerClass(QPInputTextFieldCell.self, forCellReuseIdentifier: "QPInputTextFieldCell")
 		self.addRightButton("更新", action: #selector(QPFormModifyTableViewController.onConfirm))
@@ -32,15 +32,15 @@ class QPFormModifyTableViewController: QPTableViewController {
 
 	// MARK: - Table view data source
 
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 1
 	}
 
-	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	override public func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("QPInputTextFieldCell") as! QPInputTextFieldCell
 		cell.textField.text = self.text
 		cell.textField.placeholder = self.placeholder
@@ -48,18 +48,18 @@ class QPFormModifyTableViewController: QPTableViewController {
 		return cell
 	}
 
-	override func popViewController(animated: Bool) {
+	override public func popViewController(animated: Bool) {
 		super.popViewController(animated)
 		block?(text: textInputFiled.text ?? "")
 	}
 
-	func setupBlock(text: String, placeholder: String, block: QPInputModifyBlock) {
+	public func setupBlock(text: String, placeholder: String, block: QPInputModifyBlock) {
 		self.text = text
 		self.placeholder = placeholder
 		self.block = block
 	}
 
-	func setupBlock(block: QPInputModifyBlock) {
+	public func setupBlock(block: QPInputModifyBlock) {
 		self.block = block
 	}
 }

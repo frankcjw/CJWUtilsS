@@ -56,6 +56,7 @@
 		01A8FC611C96914200731483 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 01A8FC601C96914200731483 /* ExampleApp.html */; };
 		01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8FC621C96923F00731483 /* SecondeViewController.swift */; };
 		01B1E7E31D2521F700BF2841 /* CJWHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B1E7E21D2521F700BF2841 /* CJWHello.m */; };
+		01BD40BB1DFFD20B0059BC28 /* ran.png in Resources */ = {isa = PBXBuildFile; fileRef = 01BD40BA1DFFD20B0059BC28 /* ran.png */; };
 		01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFBE1C3BA737006E221A /* UIViewController+BackButtonHandler.m */; };
 		01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC11C3BA737006E221A /* QPAlertActionUtils.swift */; };
 		01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAEFC21C3BA737006E221A /* QPAppearance.swift */; };
@@ -242,6 +243,7 @@
 		01A8FC621C96923F00731483 /* SecondeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondeViewController.swift; sourceTree = "<group>"; };
 		01B1E7E11D2521F700BF2841 /* CJWHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJWHello.h; sourceTree = "<group>"; };
 		01B1E7E21D2521F700BF2841 /* CJWHello.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJWHello.m; sourceTree = "<group>"; };
+		01BD40BA1DFFD20B0059BC28 /* ran.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ran.png; sourceTree = "<group>"; };
 		01CAEFBD1C3BA737006E221A /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		01CAEFBE1C3BA737006E221A /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		01CAEFBF1C3BA737006E221A /* QPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPHeader.h; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 		B64D5BB71A356CC500D137D1 /* CJWUtilsS */ = {
 			isa = PBXGroup;
 			children = (
+				01BD40BA1DFFD20B0059BC28 /* ran.png */,
 				01E5A4D01DFA980D00724830 /* gg.jpg */,
 				01E5A4CE1DFA941C00724830 /* lady.jpeg */,
 				01E5A4CC1DFA91FD00724830 /* dog.jpg */,
@@ -970,6 +973,7 @@
 				018AF15C1D8048520002ABBF /* MLSelectPhoto.bundle in Resources */,
 				B64D5BC31A356CC500D137D1 /* Main.storyboard in Resources */,
 				01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */,
+				01BD40BB1DFFD20B0059BC28 /* ran.png in Resources */,
 				01E5A4D11DFA980D00724830 /* gg.jpg in Resources */,
 				01F0C3D71DDDAC6000F74D5E /* idcard.jpg in Resources */,
 				01F0C3D91DDDAD6000F74D5E /* idcard3.jpg in Resources */,
