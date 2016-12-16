@@ -11,6 +11,19 @@ import CryptoSwift
 
 public class QPSecurityUtils: NSObject {
 
+	public class func enc(pwd: String) {
+//        NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000
+		let timestamp = NSDate().timeIntervalSince1970 * 1000
+		let time = Int(timestamp)
+		print("timestamp: \(time)")
+		if let en = pwd.encryptAES("Bar12345Bar12345") {
+			print(en)
+			let auth = "\(en)\(time)"
+			print(auth)
+			print(auth.md5())
+		}
+	}
+
 	public class func generateAuthParam(param: [String: AnyObject]!, pushId: String = QPSecurityUtils.getPushId()) -> [String: AnyObject]! {
 
 		var newParam = param

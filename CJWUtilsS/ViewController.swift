@@ -86,7 +86,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		self.popViewController()
 //		self.showText("提交失败")
 
-		filterImage()
+//		filterImage()
+
+		QPSecurityUtils.enc("fuckyou")
+		newRsa()
 	}
 
 	func filterImage() {
@@ -261,6 +264,28 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		let tagString = "啊实1打实,啊实2打实,啊实3打实"
 		let tags = tagString.characters.split { $0 == "," }.map(String.init)
 
+	}
+
+	func newRsa() {
+
+		let bundle = NSBundle.mainBundle()
+		let pubPath = bundle.pathForResource("rsa_public_key", ofType: "pem")!
+		let pubPathPrivate = bundle.pathForResource("rsa_private_key", ofType: "pem")!
+
+		let str = "Frank"
+		let pemString = "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAuG5B006eaxeYsx+njeNNJvPc\nPqie9WodNyEUjicQEFjOdQKhVK2WkM4DuMqVl43s+I5bS28BTdSf4OiZaH6Xn93f\nZy3sbc/dKcamE66MONnsVrfVL/dXYRGM7XCPruLKpQnuzWHIZIaIiRAZ1mXGJ6ig\nhW84bWRLMPWPYC2JZQIDAQAB\n-----END PUBLIC KEY-----\n"
+
+		let publicKey = try? String(contentsOfFile: pubPath, encoding: NSUTF8StringEncoding)
+		let privateKey = try? String(contentsOfFile: pubPathPrivate, encoding: NSUTF8StringEncoding)
+		print("\(publicKey!)")
+		print("\(pemString)")
+
+		let encryptedString = try! SwiftyRSA.encryptString(str, publicKeyPEM: publicKey!)
+		print(encryptedString)
+		print("fff")
+		print(privateKey)
+		let sss = try! SwiftyRSA.decryptString(encryptedString, privateKeyPEM: privateKey!)
+		print(sss)
 	}
 
 	func rsa() {
