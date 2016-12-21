@@ -270,7 +270,9 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		let bundle = NSBundle.mainBundle()
 		let pubPath = bundle.pathForResource("rsa_public_key", ofType: "pem")!
+		let pubPathJava = bundle.pathForResource("rsa_public_key_java", ofType: "pem")!
 		let pubPathPrivate = bundle.pathForResource("rsa_private_key", ofType: "pem")!
+		let pubPathPrivateJava = bundle.pathForResource("rsa_private_key_java", ofType: "pem")!
 
 		let str = "Frank"
 		let pemString = "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAuG5B006eaxeYsx+njeNNJvPc\nPqie9WodNyEUjicQEFjOdQKhVK2WkM4DuMqVl43s+I5bS28BTdSf4OiZaH6Xn93f\nZy3sbc/dKcamE66MONnsVrfVL/dXYRGM7XCPruLKpQnuzWHIZIaIiRAZ1mXGJ6ig\nhW84bWRLMPWPYC2JZQIDAQAB\n-----END PUBLIC KEY-----\n"
@@ -278,6 +280,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		let publicKey = try? String(contentsOfFile: pubPath, encoding: NSUTF8StringEncoding)
 		let privateKey = try? String(contentsOfFile: pubPathPrivate, encoding: NSUTF8StringEncoding)
 		print("\(publicKey!)")
+		print("--\n\(privateKey!)\n--")
 		print("\(pemString)")
 
 		let encryptedString = try! SwiftyRSA.encryptString(str, publicKeyPEM: publicKey!)

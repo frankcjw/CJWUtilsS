@@ -12,6 +12,8 @@
 		0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */; };
 		01216C8E1DAA1B70003CDA6C /* QPGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01216C8D1DAA1B70003CDA6C /* QPGridView.swift */; };
 		012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012489B91D4AF6EE00DA3865 /* QPButton.swift */; };
+		01298BE21E07B286005715BD /* rsa_public_key_java.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01298BE11E07B286005715BD /* rsa_public_key_java.pem */; };
+		01298BE41E07B36E005715BD /* rsa_private_key_java.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01298BE31E07B36E005715BD /* rsa_private_key_java.pem */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
 		013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA401D89319500EF8254 /* UIApplication+Extend.m */; };
 		013BCA4E1D89319500EF8254 /* UIView+NFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA421D89319500EF8254 /* UIView+NFLayout.m */; };
@@ -168,6 +170,8 @@
 		0115E3B81D3CD9860078C4B9 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
 		01216C8D1DAA1B70003CDA6C /* QPGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridView.swift; sourceTree = "<group>"; };
 		012489B91D4AF6EE00DA3865 /* QPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPButton.swift; sourceTree = "<group>"; };
+		01298BE11E07B286005715BD /* rsa_public_key_java.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key_java.pem; sourceTree = "<group>"; };
+		01298BE31E07B36E005715BD /* rsa_private_key_java.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key_java.pem; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
 		013BCA3F1D89319500EF8254 /* UIApplication+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Extend.h"; sourceTree = "<group>"; };
 		013BCA401D89319500EF8254 /* UIApplication+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Extend.m"; sourceTree = "<group>"; };
@@ -753,6 +757,8 @@
 				B64D5BBA1A356CC500D137D1 /* AppDelegate.swift */,
 				01EB9A971D6C478A00FBCC5E /* rsa_public_key.pem */,
 				01EB9A991D6C47E000FBCC5E /* rsa_private_key.pem */,
+				01298BE11E07B286005715BD /* rsa_public_key_java.pem */,
+				01298BE31E07B36E005715BD /* rsa_private_key_java.pem */,
 				01A8FC601C96914200731483 /* ExampleApp.html */,
 				B64D5BBF1A356CC500D137D1 /* ViewController.swift */,
 				01A8FC621C96923F00731483 /* SecondeViewController.swift */,
@@ -970,6 +976,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01298BE21E07B286005715BD /* rsa_public_key_java.pem in Resources */,
 				018AF15C1D8048520002ABBF /* MLSelectPhoto.bundle in Resources */,
 				B64D5BC31A356CC500D137D1 /* Main.storyboard in Resources */,
 				01EB9A9A1D6C47E000FBCC5E /* rsa_private_key.pem in Resources */,
@@ -983,6 +990,7 @@
 				B64D5BC81A356CC500D137D1 /* LaunchScreen.xib in Resources */,
 				B64D5BC51A356CC500D137D1 /* Images.xcassets in Resources */,
 				01A8FC611C96914200731483 /* ExampleApp.html in Resources */,
+				01298BE41E07B36E005715BD /* rsa_private_key_java.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
