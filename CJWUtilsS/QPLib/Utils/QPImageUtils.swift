@@ -16,6 +16,14 @@ public class QPImageUtils: NSObject {
 }
 
 public extension UIImageView {
+
+	public func image(url: String, placeholder: String, block: () -> ()) {
+		let placeholderImage = UIImage(named: placeholder)
+		sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
+			block()
+		}
+	}
+
 	public func image(url: String, placeholder: String) {
 		let placeholderImage = UIImage(named: placeholder)
 		sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
@@ -216,4 +224,5 @@ extension UIImageView {
 
 		// self.scaleAspectFill()
 	}
+
 }
