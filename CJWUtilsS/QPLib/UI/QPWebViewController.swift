@@ -16,6 +16,8 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	public var url: String? = ""
 	public var html: String?
 
+	public var isPresent = false
+
 	public func agent() -> String {
 		return ""
 	}
@@ -103,7 +105,11 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	}
 
 	func close() {
-		self.popViewController()
+		if isPresent {
+			self.dismiss()
+		} else {
+			self.popViewController()
+		}
 	}
 
 	private func showClose() {
