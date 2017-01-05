@@ -171,6 +171,7 @@ end
   s.dependency "INTULocationManager"
   s.dependency "AwesomeCache", "~> 2.0"
   s.dependency "GPUImage"
+  s.dependency "SwiftyRSA"
 #s.dependency "Bugly"
 #s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"
