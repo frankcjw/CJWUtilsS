@@ -39,6 +39,12 @@ public extension UIImageView {
 }
 
 public extension UIImage {
+    func tinttt(){
+//        self.t
+    }
+}
+
+public extension UIImage {
 	/**
 	 通过uicolor生成uiimage
 

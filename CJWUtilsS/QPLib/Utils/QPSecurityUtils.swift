@@ -8,8 +8,27 @@
 
 import UIKit
 import CryptoSwift
+import SwiftyRSA
 
 public class QPSecurityUtils: NSObject {
+
+	public class func encryptRSA(text: String, publicKey: String) -> String {
+		let bundle = NSBundle.mainBundle()
+		let publicKeyPath = bundle.pathForResource("rsa_public_key2", ofType: "pem")!
+		let publicKey = try? String(contentsOfFile: publicKeyPath, encoding: NSUTF8StringEncoding)
+		let encryptedString = try! SwiftyRSA.encryptString(text, publicKeyPEM: publicKey!)
+		print("\(encryptedString)")
+		return encryptedString
+
+	}
+
+	public class func decryptRSA(encryptedString: String, privateKey: String) {
+		let bundle = NSBundle.mainBundle()
+		let privateKeyPath = bundle.pathForResource("rsa_private_key1", ofType: "pem")!
+		let privateKey = try? String(contentsOfFile: privateKeyPath, encoding: NSUTF8StringEncoding)
+		let sss = try! SwiftyRSA.decryptString(encryptedString, privateKeyPEM: privateKey!)
+		print(sss)
+	}
 
 	public class func enc(pwd: String) {
 //        NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000

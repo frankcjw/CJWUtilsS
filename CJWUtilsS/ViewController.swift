@@ -89,7 +89,20 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //		filterImage()
 
 		QPSecurityUtils.enc("fuckyou")
-		newRsa()
+//		newRsa()
+
+//        showal
+
+		standerRSA()
+	}
+
+	func standerRSA() {
+
+//		QPSecurityUtils.decryptRSA("pk4IZhlAyqzJrvsIOscesx7ELzLXEQS27F7TPqnG03kgmgxnj7O6eV8ebz/edpL+Dm7bO95UafFCq4g9QwxGr+QaluyoQ9AkJgZWCepCFMMLBLEjOUrt9kDAARjVI+k3Q/V9DvtOdwminD4UipKYAXDzQOxP6S5eE9mwqVfieps=", privateKey: "")
+
+		let encryptedString = QPSecurityUtils.encryptRSA("hello", publicKey: "")
+		print("[\(encryptedString)]")
+		QPSecurityUtils.decryptRSA(encryptedString, privateKey: "")
 	}
 
 	func filterImage() {

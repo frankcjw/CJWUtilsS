@@ -31,3 +31,5 @@ DerivedData
 Pods/
 
 CJWUtilsS/ViewController.*
+
+*.pem
