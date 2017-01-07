@@ -162,7 +162,7 @@ end
   s.dependency "XCGLogger",'3.3'
   s.dependency "SwiftyJSON"
   s.dependency "SVProgressHUD"
-  s.dependency "SSKeychain"
+#s.dependency "SSKeychain"
   s.dependency "AsyncSwift",'~>1.7.2'
   s.dependency "CGFloatType"
   s.dependency "CryptoSwift",'~>0.4.1'
