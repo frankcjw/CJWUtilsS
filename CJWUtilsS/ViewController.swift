@@ -100,9 +100,9 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 //		QPSecurityUtils.decryptRSA("pk4IZhlAyqzJrvsIOscesx7ELzLXEQS27F7TPqnG03kgmgxnj7O6eV8ebz/edpL+Dm7bO95UafFCq4g9QwxGr+QaluyoQ9AkJgZWCepCFMMLBLEjOUrt9kDAARjVI+k3Q/V9DvtOdwminD4UipKYAXDzQOxP6S5eE9mwqVfieps=", privateKey: "")
 
-		let encryptedString = QPSecurityUtils.encryptRSA("hello", publicKey: "")
-		print("[\(encryptedString)]")
-		QPSecurityUtils.decryptRSA(encryptedString, privateKey: "")
+//		let encryptedString = QPSecurityUtils.encryptRSA("hello", publicKey: "")
+//		print("[\(encryptedString)]")
+//		QPSecurityUtils.decryptRSA(encryptedString, privateKey: "")
 	}
 
 	func filterImage() {
@@ -176,13 +176,19 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return data.count
+//		return data.count
+		return 1
 	}
 
 	override func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCellWithIdentifier("TTImageTableViewCell") as! TTImageTableViewCell
-			cell.debug(true)
+		if indexPath.section == 1 {
+//			let cell = tableView.dequeueReusableCellWithIdentifier("TTImageTableViewCell") as! TTImageTableViewCell
+//			cell.debug(true)
+//			return cell
+		} else if indexPath.section == 0 {
+			let cell = QPInnerScrollViewCell()
+			cell.setupScroll(self)
+			cell.backgroundColor = UIColor.redColor()
 			return cell
 		}
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
@@ -196,14 +202,13 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	let cellHeight: CGFloat = (CGFloat(27) / CGFloat(100)) * SCREEN_WIDTH
 
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		print("\(cellHeight) \(SCREEN_WIDTH)")
-		return cellHeight
-	}
-
-	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return cellHeight
-	}
+//	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//		return cellHeight
+//	}
+//
+//	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//		return cellHeight
+//	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
@@ -349,7 +354,6 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		let count = "MIICoTAbBgkqhkiG9w0BBQMwDgQIC2bS+trZgQQCAggABIICgHiNSce6u9Z4Lg3PJAwvyB4q/7K5Ik4oTy39c9fBKyXnacZ5Vq8gqKhbhc/yOhL80X34/F6vea2iEFH/Qdajky6b5jPvvHMioNc0kD86qcMAsIJXBtWFt9FpswdFP+u/4MacoTFYDEg5h0vNum8HRX4rOPtIgjSbRFdVr6qaw2JXODb2mYfB8LqAy56kvQx2z9rq+n0knsACJZSyCFouIPg343+uxsUdhzdpvtEgF9Jd5Zmz3Vg13LSW/2xIAS6Niw4mhFLSfDjbM5FofM/UEfKHYpY8hlphANgtzHv972ca0nmiwb01lrT9AngkdSNniDRmUUQLW9SbXrM9tlFq55lyKar2cxLdio2ERz2N0RzmkwqEmY+M+mQkWh1ZZA08rbsLiuyu59htTjX5+pte+O2mQ9DvBbxbvSMppWV4pMtsfECLtpseyUjnRKrmdiFpoq0W8FLat/F9SaYM4tqpoPv0EyUH+nydWKrzvZ+zjtVzKimZr/fMbblR35KA5n3vildqGvGwdkHmq4QHzeUl3fj404EKe11YEyUv1jWn2l+gn1GDKB7XacNRIjVPvsAQPGtSB1vF7TGhUoLIXu+7nxzWf5P/+4jRFreGh+Z6zfZy/Gt1vPw8aAsmBTxPSnX1nBBtZdRvGZFx0a/CFeQJnJ7YDLadL+JGOjhE+5qKiKhoEOLIwYLYF7tKKPdrqqo54KiOzcuczJLr8W1bi7/4LWsEkKySJ+zfC43dnkG6xXhYt801nHWzzE0UOPVwucmNS01FforPytoZuzFdvhqgdXLhMEaJ4sjSYAV+r2OC6lPz1IUUXqX4NGvg8HDaJmoi3ex5ViRcrf1+kBZhnunz3tw="
 
 		let count2 = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCERFbQ1ETtXKZuDZWd0rz1koiC3GOVehyJKlWUZy95sVR4oDu7/q/MDWbUFY6gK+5ZuQkkUcAzv8vX8AgDE9X2SRswlJvnWc4mUH+gTFuXXRmpDr1TA/pL/PR+ETqi9hRztyv+fzwNh2G5dPtI/zBtM/8Lgiqc9hySzChDodcvPwIDAQAB"
-		print("\(count.length()) \(count2.length())")
 	}
 }
 
@@ -541,6 +545,7 @@ class TTImageTableViewCell: QPTableViewCell {
 		infoLabel.bottomAlign(view, predicate: "-8")
 	}
 }
+
 class GS: QPGridTableViewCell {
 
 	override func numberOfItem() -> Int {
@@ -565,5 +570,18 @@ class GS: QPGridTableViewCell {
 		let view = UIView()
 		view.debug()
 		return view
+	}
+}
+
+extension ViewController: QPInnerScrollViewCellDelegate {
+	func viewAt(index: Int) -> UIView {
+		let view = UIImageView()
+		view.backgroundColor = UIColor.redColor()
+		view.debug()
+		return view
+	}
+
+	func numberOfItem() -> Int {
+		return 20
 	}
 }

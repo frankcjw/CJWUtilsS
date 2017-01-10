@@ -17,6 +17,10 @@ public class QPImageUtils: NSObject {
 
 public extension UIImageView {
 
+	public func imageUrl(url: String) {
+		sd_setImageWithURL(NSURL(string: url))
+	}
+
 	public func image(url: String, placeholder: String, block: () -> ()) {
 		let placeholderImage = UIImage(named: placeholder)
 		sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage) { (img, error, type, nsurl) -> Void in
@@ -39,9 +43,9 @@ public extension UIImageView {
 }
 
 public extension UIImage {
-    func tinttt(){
+	func tinttt() {
 //        self.t
-    }
+	}
 }
 
 public extension UIImage {

@@ -47,6 +47,16 @@ public class QPHttpUtils: NSObject {
 
 	let manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
+	public func download(url: String, block: (image: UIImage) -> ()) {
+		Alamofire.request(.POST, url, parameters: [:]).responseData { response in
+			if let data = response.result.value {
+				if let image = UIImage(data: data) {
+					block(image: image)
+				}
+			}
+		}
+	}
+
 	public func testingNW() {
 
 		let url = "http://quickplain.asuscomm.com:9090/network"
@@ -311,7 +321,7 @@ public class QPHttpUtils: NSObject {
 					debugPrint(response)
 //                    response.result.
 				}.progress({ (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) -> Void in
-					print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
+//					print("\(bytesWritten) \(totalBytesWritten) \(totalBytesExpectedToWrite)")
 				})
 			case .Failure(let encodingError):
 				print(encodingError)

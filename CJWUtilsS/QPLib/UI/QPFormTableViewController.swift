@@ -183,7 +183,6 @@ public class QPFormTableViewController: QPTableViewController {
 
 	override public func reloadData() {
 		super.reloadData()
-		print("\(self.formInfo)")
 	}
 
 	public func getSelectionInfo(indexPath: NSIndexPath) -> JSON {

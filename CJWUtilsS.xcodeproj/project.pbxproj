@@ -35,6 +35,7 @@
 		015CB5D61DCC7C5900347982 /* sS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015CB5C11DCC7C5900347982 /* sS.framework */; };
 		015CB5D71DCC7C5900347982 /* sS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 015CB5C11DCC7C5900347982 /* sS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */; };
+		01699BA91E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01699BA81E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift */; };
 		017C35771DA8C1DA0062C3B1 /* QPEventUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */; };
 		018AF1141D803BF00002ABBF /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1131D803BF00002ABBF /* Base64.m */; };
 		018AF1171D8040A70002ABBF /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1161D8040A70002ABBF /* AppInfoManager.m */; };
@@ -204,6 +205,7 @@
 		015CB5D11DCC7C5900347982 /* sSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sSTests.swift; sourceTree = "<group>"; };
 		015CB5D31DCC7C5900347982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0161E7761CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPCacheUtilsPro.swift; sourceTree = "<group>"; };
+		01699BA81E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPInnerScrollViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPEventUtils.swift; sourceTree = "<group>"; };
 		018AF1121D803BF00002ABBF /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		018AF1131D803BF00002ABBF /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				01CEB3E91DE2A0CE004AFD1F /* QPQRCodeViewController.swift */,
 				01093D7B1DF149CE00694298 /* QPFormTableViewController.swift */,
 				01093D7D1DF149DD00694298 /* QPFormModifyTableViewController.swift */,
+				01699BA81E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1243,6 +1246,7 @@
 				01CEB3FE1DE2A120004AFD1F /* bitstream.c in Sources */,
 				018AF15A1D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				018AF14C1D8048520002ABBF /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
+				01699BA91E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift in Sources */,
 				01093D7C1DF149CE00694298 /* QPFormTableViewController.swift in Sources */,
 				018AF1561D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				01CEB4011DE2A120004AFD1F /* QRCodeGenerator.m in Sources */,
