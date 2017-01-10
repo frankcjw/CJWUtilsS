@@ -26,16 +26,6 @@ class QPInnerScrollViewCell: QPTableViewCell {
 		super.updateConstraints()
 	}
 
-	// convenience init () {
-	// self.init(style: UITableViewCellStyle.Default, reuseIdentifier: "")
-	// setup()
-	// }
-
-	// required init?(coder aDecoder: NSCoder) {
-	// super.init(coder: aDecoder)
-	// setup()
-	// }
-
 	override func setupViews(view: UIView) {
 		super.setupViews(view)
 		view.addSubview(scrollView)
@@ -60,8 +50,6 @@ class QPInnerScrollViewCell: QPTableViewCell {
 			let xPos = index * oneThird
 			let frame = CGRectMake(xPos, 0, oneThird, heightForScrollView())
 			view.frame = frame
-			print("\(frame)")
-
 			view.addTapGesture(self, action: #selector(QPInnerScrollViewCell.onTap(_:)))
 			scrollView.addSubview(view)
 		}
