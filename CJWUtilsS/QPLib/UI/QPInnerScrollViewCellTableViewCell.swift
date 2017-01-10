@@ -17,25 +17,25 @@ public protocol QPInnerScrollViewCellDelegate {
 	optional func didSelectAt(index: Int)
 }
 
-class QPInnerScrollViewCell: QPTableViewCell {
+public class QPInnerScrollViewCell: QPTableViewCell {
 
-	let scrollView = UIScrollView()
-	var delegate: QPInnerScrollViewCellDelegate?
+	public let scrollView = UIScrollView()
+	private var delegate: QPInnerScrollViewCellDelegate?
 
-	override func updateConstraints() {
+	override public func updateConstraints() {
 		super.updateConstraints()
 	}
 
-	override func setupViews(view: UIView) {
+	override public func setupViews(view: UIView) {
 		super.setupViews(view)
 		view.addSubview(scrollView)
 	}
 
-	func heightForScrollView() -> CGFloat {
+	public func heightForScrollView() -> CGFloat {
 		return 120
 	}
 
-	func setupScroll(delegate: QPInnerScrollViewCellDelegate) {
+	public func setupScroll(delegate: QPInnerScrollViewCellDelegate) {
 		self.delegate = delegate
 		let itemCount = delegate.numberOfItem()
 		let oneThird: CGFloat = SCREEN_WIDTH / 3
@@ -55,17 +55,17 @@ class QPInnerScrollViewCell: QPTableViewCell {
 		}
 	}
 
-	func onTap(gesture: UIGestureRecognizer) {
+	public func onTap(gesture: UIGestureRecognizer) {
 		if let tag = gesture.view?.tag {
 			delegate?.didSelectAt?(tag)
 		}
 	}
 
-	func padding() -> Int {
+	public func padding() -> Int {
 		return 8
 	}
 
-	override func setupConstrains(view: UIView) {
+	override public func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
 		scrollView.topAlign(view, predicate: "\(padding())")
 		scrollView.bottomAlign(view, predicate: "-\(padding())")
