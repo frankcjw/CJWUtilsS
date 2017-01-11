@@ -10,11 +10,11 @@ import UIKit
 
 @objc
 public protocol QPInnerScrollViewCellDelegate {
-	func viewAt(index: Int) -> UIView
+	func innerScrollViewViewAt(cell: QPInnerScrollViewCell, index: Int) -> UIView
 
-	func numberOfItem() -> Int
+	func innerScrollViewNumberOfItem(cell: QPInnerScrollViewCell) -> Int
 
-	optional func didSelectAt(index: Int)
+	optional func innerScrollViewDidSelectAt(cell: QPInnerScrollViewCell, index: Int)
 }
 
 public class QPInnerScrollViewCell: QPTableViewCell {
@@ -37,14 +37,14 @@ public class QPInnerScrollViewCell: QPTableViewCell {
 
 	public func setupScroll(delegate: QPInnerScrollViewCellDelegate) {
 		self.delegate = delegate
-		let itemCount = delegate.numberOfItem()
+		let itemCount = delegate.innerScrollViewNumberOfItem(self)
 		let oneThird: CGFloat = SCREEN_WIDTH / 3
 		let width: CGFloat = oneThird * NSNumber(integer: itemCount).CGFloatValue()
 
 		let size = CGSizeMake(width, self.frame.height)
 		scrollView.contentSize = size
 		for index in 0 ... itemCount - 1 {
-			let view = delegate.viewAt(index)
+			let view = delegate.innerScrollViewViewAt(self, index: index)
 			view.tag = index
 			let index: CGFloat = NSNumber(integer: index).CGFloatValue()
 			let xPos = index * oneThird
@@ -57,7 +57,7 @@ public class QPInnerScrollViewCell: QPTableViewCell {
 
 	public func onTap(gesture: UIGestureRecognizer) {
 		if let tag = gesture.view?.tag {
-			delegate?.didSelectAt?(tag)
+			delegate?.innerScrollViewDidSelectAt?(self, index: tag)
 		}
 	}
 

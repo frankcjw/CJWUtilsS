@@ -9,16 +9,16 @@
 import UIKit
 @objc
 public protocol QPGridTableViewCellDelegate {
-	func viewAt(index: Int) -> UIView
-	func numberOfColumn() -> Int
+	func viewAt(cell: QPGridTableViewCell, index: Int) -> UIView
+	func numberOfColumn(cell: QPGridTableViewCell) -> Int
 	/**
 	 如果不固定grid的数量返回0!!!!!!
 
 	 - returns: grids的数量
 	 */
-	func numberOfItem() -> Int
-	optional func heightPredicateForView() -> String
-	optional func gridPadding() -> Int
+	func numberOfItem(cell: QPGridTableViewCell) -> Int
+	optional func heightPredicateForView(cell: QPGridTableViewCell) -> String
+	optional func gridPadding(cell: QPGridTableViewCell) -> Int
 }
 
 //extension QPGridTableViewCell: QPGridTableViewCellDelegate {
@@ -65,13 +65,13 @@ public class QPGridTableViewCell: QPTableViewCell {
 		if self.delegate == nil {
 			self.delegate = self
 		}
-		column = delegate?.numberOfColumn() ?? 0
+		column = delegate?.numberOfColumn(self) ?? 0
 
 		var itemCount = 0
 		if privateRowCount > 0 {
 			itemCount = privateRowCount
 		} else {
-			itemCount = delegate?.numberOfItem() ?? 0
+			itemCount = delegate?.numberOfItem(self) ?? 0
 		}
 //		row = itemCount / column
 //		if (itemCount % column) != 0 {
@@ -91,7 +91,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 			grids.append(grid)
 			gridContainerView.addSubview(grid)
 
-			let customView = delegate?.viewAt(index) ?? UIView()
+			let customView = delegate?.viewAt(self, index: index) ?? UIView()
 			customView.tag = index
 			customViews.append(customView)
 			grid.addSubview(customView)
@@ -132,7 +132,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 	override public func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
 
-		let tmpPadding = delegate?.gridPadding?() ?? 0
+		let tmpPadding = delegate?.gridPadding?(self) ?? 0
 		let padding = tmpPadding == 0 ? 0 : tmpPadding / 2
 
 		gridContainerView.topAlign(view, predicate: "\(padding)")
@@ -185,7 +185,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 			if index != 0 {
 				grid.width(horizanReferenceView)
 			}
-			if let predicate = delegate?.heightPredicateForView?() {
+			if let predicate = delegate?.heightPredicateForView?(self) {
 				grid.heightConstrain(predicate)
 			} else {
 				grid.aspectRatio()
@@ -202,19 +202,19 @@ public class QPGridTableViewCell: QPTableViewCell {
 }
 
 extension QPGridTableViewCell: QPGridTableViewCellDelegate {
-	public func gridPadding() -> Int {
+	public func gridPadding(cell: QPGridTableViewCell) -> Int {
 		return 8
 	}
 
-	public func numberOfItem() -> Int {
+	public func numberOfItem(cell: QPGridTableViewCell) -> Int {
 		return 0
 	}
 
-	public func numberOfColumn() -> Int {
+	public func numberOfColumn(cell: QPGridTableViewCell) -> Int {
 		return 4
 	}
 
-	public func viewAt(index: Int) -> UIView {
+	public func viewAt(cell: QPGridTableViewCell, index: Int) -> UIView {
 		let label = UILabel()
 		label.text = "label \(index)"
 		label.textAlignmentCenter()
