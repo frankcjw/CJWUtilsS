@@ -83,11 +83,13 @@ public class QPAdvTableViewCell: QPTableViewCell {
 				customPageControl(adView.pageControl)
 				var imageUrls: [String] = []
 				let count = delegate.numberOfItems(self)
-				for index in 0...count - 1 {
-					let url = delegate.imageAtIndex(self, index: index)
-					imageUrls.append(url)
+				if count > 0 {
+					for index in 0...count - 1 {
+						let url = delegate.imageAtIndex(self, index: index)
+						imageUrls.append(url)
+					}
+					updateAdv(imageUrls)
 				}
-				updateAdv(imageUrls)
 
 			}
 

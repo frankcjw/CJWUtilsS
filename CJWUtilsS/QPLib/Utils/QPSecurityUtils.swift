@@ -22,12 +22,12 @@ public class QPSecurityUtils: NSObject {
 
 	}
 
-	public class func decryptRSA(encryptedString: String, privateKey: String) {
+	public class func decryptRSA(encryptedString: String, privateKey: String) -> String {
 		let bundle = NSBundle.mainBundle()
 		let privateKeyPath = bundle.pathForResource("rsa_private_key1", ofType: "pem")!
 		let privateKey = try? String(contentsOfFile: privateKeyPath, encoding: NSUTF8StringEncoding)
-		let sss = try! SwiftyRSA.decryptString(encryptedString, privateKeyPEM: privateKey!)
-		print(sss)
+		let plainText = try! SwiftyRSA.decryptString(encryptedString, privateKeyPEM: privateKey!)
+		return plainText;
 	}
 
 	public class func enc(pwd: String) {
