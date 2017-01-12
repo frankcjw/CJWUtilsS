@@ -9,16 +9,16 @@
 import UIKit
 @objc
 public protocol QPGridTableViewCellDelegate {
-	func viewAt(cell: QPGridTableViewCell, index: Int) -> UIView
-	func numberOfColumn(cell: QPGridTableViewCell) -> Int
+	func viewAt(cell: QPTableViewCell, index: Int) -> UIView
+	func numberOfColumn(cell: QPTableViewCell) -> Int
 	/**
 	 如果不固定grid的数量返回0!!!!!!
 
 	 - returns: grids的数量
 	 */
-	func numberOfItem(cell: QPGridTableViewCell) -> Int
-	optional func heightPredicateForView(cell: QPGridTableViewCell) -> String
-	optional func gridPadding(cell: QPGridTableViewCell) -> Int
+	func numberOfItem(cell: QPTableViewCell) -> Int
+	optional func heightPredicateForView(cell: QPTableViewCell) -> String
+	optional func gridPadding(cell: QPTableViewCell) -> Int
 }
 
 //extension QPGridTableViewCell: QPGridTableViewCellDelegate {
@@ -49,6 +49,18 @@ public class QPGridTableViewCell: QPTableViewCell {
 
 	let gridContainerView = UIView()
 
+	public convenience init(rowCount: Int, delegate: QPGridTableViewCellDelegate, tag: Int) {
+		self.init()
+		self.tag = tag
+		self.delegate = delegate
+		privateRowCount = rowCount
+		grids = []
+		for sv in contentView.subviews {
+			sv.removeFromSuperview()
+		}
+		initCell()
+	}
+
 	public convenience init(rowCount: Int, delegate: QPGridTableViewCellDelegate) {
 		self.init()
 		self.delegate = delegate
@@ -73,11 +85,7 @@ public class QPGridTableViewCell: QPTableViewCell {
 		} else {
 			itemCount = delegate?.numberOfItem(self) ?? 0
 		}
-//		row = itemCount / column
-//		if (itemCount % column) != 0 {
-//			row += 1
-//		}
-		// row = delegate?.numberOfRow() ?? 0
+
 		count = itemCount
 		self.backgroundColor = COLOR_WHITE
 
@@ -102,29 +110,8 @@ public class QPGridTableViewCell: QPTableViewCell {
 		super.layoutSubviews()
 	}
 
-//	func drawGrids(count: Int) {
-//		grids.removeAll()
-////        gridContainerView.remov
-//		for sv in gridContainerView.subviews {
-//			sv.removeFromSuperview()
-//		}
-//
-//		for index in 0 ... count - 1 {
-//
-//			let grid = UIView()
-//			grids.append(grid)
-//			gridContainerView.addSubview(grid)
-//
-//			let customView = delegate?.viewAt(index) ?? UIView()
-//			customView.tag = index
-//			customViews.append(customView)
-//			grid.addSubview(customView)
-//		}
-//	}
-
 	public func addTarget(target: AnyObject?, action: Selector) {
 		for customView in customViews {
-//			button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
 			customView.addTapGesture(target, action: action)
 		}
 	}
@@ -202,19 +189,19 @@ public class QPGridTableViewCell: QPTableViewCell {
 }
 
 extension QPGridTableViewCell: QPGridTableViewCellDelegate {
-	public func gridPadding(cell: QPGridTableViewCell) -> Int {
+	public func gridPadding(cell: QPTableViewCell) -> Int {
 		return 8
 	}
 
-	public func numberOfItem(cell: QPGridTableViewCell) -> Int {
+	public func numberOfItem(cell: QPTableViewCell) -> Int {
 		return 0
 	}
 
-	public func numberOfColumn(cell: QPGridTableViewCell) -> Int {
+	public func numberOfColumn(cell: QPTableViewCell) -> Int {
 		return 4
 	}
 
-	public func viewAt(cell: QPGridTableViewCell, index: Int) -> UIView {
+	public func viewAt(cell: QPTableViewCell, index: Int) -> UIView {
 		let label = UILabel()
 		label.text = "label \(index)"
 		label.textAlignmentCenter()

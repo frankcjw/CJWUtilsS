@@ -548,19 +548,19 @@ class TTImageTableViewCell: QPTableViewCell {
 
 class GS: QPGridTableViewCell {
 
-	override func numberOfItem(cell: QPGridTableViewCell) -> Int {
+	override func numberOfItem(cell: QPTableViewCell) -> Int {
 		return 10
 	}
 
-	override func numberOfColumn(cell: QPGridTableViewCell) -> Int {
+	override func numberOfColumn(cell: QPTableViewCell) -> Int {
 		return 4
 	}
 
-	func heightPredicateForView(cell: QPGridTableViewCell) -> String {
+	func heightPredicateForView(cell: QPTableViewCell) -> String {
 		return "100"
 	}
 
-	override func viewAt(cell: QPGridTableViewCell, index: Int) -> UIView {
+	override func viewAt(cell: QPTableViewCell, index: Int) -> UIView {
 //		let button = QPTopIconButtonPro()
 //		button.superview?.backgroundColor = UIColor.yellowColor()
 //		button.setImage(UIImage(named: "testing"), forState: UIControlState.Normal)
@@ -574,14 +574,14 @@ class GS: QPGridTableViewCell {
 }
 
 extension ViewController: QPInnerScrollViewCellDelegate {
-	func innerScrollViewViewAt(cell: QPInnerScrollViewCell, index: Int) -> UIView {
+	func innerScrollViewViewAt(cell: QPTableViewCell, index: Int) -> UIView {
 		let view = UIImageView()
 		view.backgroundColor = UIColor.redColor()
 		view.debug()
 		return view
 	}
 
-	func innerScrollViewNumberOfItem(cell: QPInnerScrollViewCell) -> Int {
+	func innerScrollViewNumberOfItem(cell: QPTableViewCell) -> Int {
 		return 20
 	}
 }

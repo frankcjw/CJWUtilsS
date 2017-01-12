@@ -10,11 +10,11 @@ import UIKit
 
 @objc
 public protocol QPInnerScrollViewCellDelegate {
-	func innerScrollViewViewAt(cell: QPInnerScrollViewCell, index: Int) -> UIView
+	func innerScrollViewViewAt(cell: QPTableViewCell, index: Int) -> UIView
 
-	func innerScrollViewNumberOfItem(cell: QPInnerScrollViewCell) -> Int
+	func innerScrollViewNumberOfItem(cell: QPTableViewCell) -> Int
 
-	optional func innerScrollViewDidSelectAt(cell: QPInnerScrollViewCell, index: Int)
+	optional func innerScrollViewDidSelectAt(cell: QPTableViewCell, index: Int)
 }
 
 public class QPInnerScrollViewCell: QPTableViewCell {
@@ -33,6 +33,11 @@ public class QPInnerScrollViewCell: QPTableViewCell {
 
 	public func heightForScrollView() -> CGFloat {
 		return 120
+	}
+
+	public convenience init(delegate: QPInnerScrollViewCellDelegate) {
+		self.init()
+		setupScroll(delegate)
 	}
 
 	public func setupScroll(delegate: QPInnerScrollViewCellDelegate) {
