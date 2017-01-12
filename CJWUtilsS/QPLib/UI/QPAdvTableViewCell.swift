@@ -28,7 +28,7 @@ public class QPAdvTableViewCell: QPTableViewCell {
 	var adView: JXBAdPageView!
 
 	public var placeholderImage: String = ""
-	var delegate: QPAdvTableViewCellDelegate?
+	public var delegate: QPAdvTableViewCellDelegate?
 
 	override public func setupViews(view: UIView) {
 		view.addSubview(advImage)

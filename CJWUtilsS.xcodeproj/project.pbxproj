@@ -112,6 +112,7 @@
 		01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423481C807A5D009FDA73 /* QPWebViewController.swift */; };
 		01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */; };
 		01F5DBB81E2736E90068E317 /* QPAdvTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5DBB71E2736E90068E317 /* QPAdvTableViewCell.swift */; };
+		01F5DBBA1E2780FF0068E317 /* QPSNSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5DBB91E2780FF0068E317 /* QPSNSUtils.swift */; };
 		01F72C2B1C5087D600F15C8B /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */; };
 		079AE541252A7C76D718B522 /* Pods_CJWUtilsS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7E810D59A89D787C55185D /* Pods_CJWUtilsS.framework */; };
 		49DC46288ADB58BA63E795CF /* libPods-CJWUtilsSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F348644E63E766842B877C /* libPods-CJWUtilsSTests.a */; };
@@ -324,6 +325,7 @@
 		01F423481C807A5D009FDA73 /* QPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPWebViewController.swift; sourceTree = "<group>"; };
 		01F423541C81C4CC009FDA73 /* QPAlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertUtils.swift; sourceTree = "<group>"; };
 		01F5DBB71E2736E90068E317 /* QPAdvTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAdvTableViewCell.swift; sourceTree = "<group>"; };
+		01F5DBB91E2780FF0068E317 /* QPSNSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPSNSUtils.swift; sourceTree = "<group>"; };
 		01F72C2A1C5087D600F15C8B /* QPLogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
 		05202591053D459F181441BF /* Pods-CJWUtilsSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJWUtilsSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJWUtilsSTests/Pods-CJWUtilsSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54F348644E63E766842B877C /* libPods-CJWUtilsSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJWUtilsSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -654,6 +656,7 @@
 				01CE0CB41D83FD47009EC9B9 /* QPNavigationUtils.swift */,
 				01CE0CB91D83FE1E009EC9B9 /* QPLocationUtils.swift */,
 				017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */,
+				01F5DBB91E2780FF0068E317 /* QPSNSUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
+				01F5DBBA1E2780FF0068E317 /* QPSNSUtils.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
 				01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */,
 				01CAEFDC1C3BA737006E221A /* QPCacheUtils.swift in Sources */,

@@ -98,14 +98,14 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 	}
 
 	func standerRSA() {
-		let encryptedString = "WWRG1LaGEZl2Xjty9HB6fKIZUX8d7mNvTxIM36mzL/07HPTb5F4RFyXSuvHTTogKrqJMn7DUGClQ7/U5d6d1lTfbw8zMkINPENiiyon2IhQBvQwhvY0zfK6sjVCXnJRToi305ik/mz6fBti8ar568OvF/9H5k2ICVZRkPHMrfiA=";
+//		let encryptedString = "WWRG1LaGEZl2Xjty9HB6fKIZUX8d7mNvTxIM36mzL/07HPTb5F4RFyXSuvHTTogKrqJMn7DUGClQ7/U5d6d1lTfbw8zMkINPENiiyon2IhQBvQwhvY0zfK6sjVCXnJRToi305ik/mz6fBti8ar568OvF/9H5k2ICVZRkPHMrfiA=";
 
 //		QPSecurityUtils.decryptRSA("pk4IZhlAyqzJrvsIOscesx7ELzLXEQS27F7TPqnG03kgmgxnj7O6eV8ebz/edpL+Dm7bO95UafFCq4g9QwxGr+QaluyoQ9AkJgZWCepCFMMLBLEjOUrt9kDAARjVI+k3Q/V9DvtOdwminD4UipKYAXDzQOxP6S5eE9mwqVfieps=", privateKey: "")
 
-//		let encryptedString = QPSecurityUtils.encryptRSA("hello", publicKey: "")
-//		print("[\(encryptedString)]")
-		let de = QPSecurityUtils.decryptRSA(encryptedString, privateKey: "")
-		print("de: \(de)")
+		let encryptedString = QPSecurityUtils.encryptRSA("hello", publicKey: "")
+		print("[\(encryptedString)]")
+//		let de = QPSecurityUtils.decryptRSA(encryptedString, privateKey: "")
+//		print("de: \(de)")
 	}
 
 	func filterImage() {
