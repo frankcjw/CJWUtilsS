@@ -597,21 +597,6 @@ extension ViewController: QPAdvTableViewCellDelegate {
 		return urls[index]
 	}
 
-	func titleAtIndex(cell: QPTableViewCell, label: UILabel, index: Int) {
-		label.hidden = true
-		label.text = "fucking \(index)"
-	}
-//
-//	func imageAtIndex(cell: QPTableViewCell, imageView: UIImageView, index: Int) {
-//		imageView.imageTemplate()
-//	}
-//
-//	func titleAtIndex(cell: QPTableViewCell, label: UILabel, index: Int) {
-//		label.text = "fffff"
-//	}
-//
 	func didSelectAtIndex(cell: QPTableViewCell, index: Int) {
-//		log.debug("index: \(index)")
-		print("index \(index)")
 	}
 }
