@@ -129,7 +129,9 @@ public class QPBaseTableViewController: UITableViewController {
 		updateFloatViewFrame()
 	}
 
-//    add
+	override public func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
 
 	public func addRefreshHeader(target: AnyObject!, action: Selector) {
 		self.tableView.addRefreshHeader(target, action: action)
