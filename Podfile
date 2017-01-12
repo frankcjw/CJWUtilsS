@@ -66,6 +66,7 @@ target 'CJWUtilsS' do
     pod 'WCFastCell'
     pod 'QRCodeReaderViewController','4.0.1'
     pod 'GPUImage'
+    pod 'JXBAdPageView'
 #    pod 'FMDB', '2.5'
 #    pod 'LBXScan'
 #    pod 'MTBBarcodeScanner'

@@ -60,6 +60,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 		self.tableView.registerClass(CJWCell.self, forCellReuseIdentifier: "CJWCell")
 		self.tableView.registerClass(GridCell.self, forCellReuseIdentifier: "GridCell")
+		self.tableView.registerClass(QPAdvTableViewCell.self, forCellReuseIdentifier: "QPAdvTableViewCell")
 		self.tableView.registerClass(TTImageTableViewCell.self, forCellReuseIdentifier: "TTImageTableViewCell")
 		self.tableView.registerClass(TTImageTableViewCell2.self, forCellReuseIdentifier: "TTImageTableViewCell2")
 
@@ -186,9 +187,9 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			cell.debug(true)
 //			return cell
 		} else if indexPath.section == 0 {
-			let cell = QPInnerScrollViewCell()
-			cell.setupScroll(self)
-			cell.backgroundColor = UIColor.redColor()
+			let cell = tableView.dequeueReusableCellWithIdentifier("QPAdvTableViewCell") as! QPAdvTableViewCell
+			cell.delegate = self
+//			cell.updateAdv(["", "", ""])
 			return cell
 		}
 //		let cell = tableView.dequeueReusableCellWithIdentifier("GS") as! GS
@@ -583,5 +584,34 @@ extension ViewController: QPInnerScrollViewCellDelegate {
 
 	func innerScrollViewNumberOfItem(cell: QPTableViewCell) -> Int {
 		return 20
+	}
+}
+
+extension ViewController: QPAdvTableViewCellDelegate {
+	func numberOfItems(cell: QPTableViewCell) -> Int {
+		return 3
+	}
+
+	func imageAtIndex(cell: QPTableViewCell, index: Int) -> String {
+		let urls = ["http://wx4.sinaimg.cn/mw690/699d71c9ly1fbnov2nu0jj21ac0u0e58.jpg", "http://wx3.sinaimg.cn/mw690/699d71c9ly1fbnov1djqwj219n0u0tnc.jpg", "http://wx4.sinaimg.cn/mw690/699d71c9ly1fbnov0mafxj21ec0u0wsg.jpg"]
+		return urls[index]
+	}
+
+	func titleAtIndex(cell: QPTableViewCell, label: UILabel, index: Int) {
+		label.hidden = true
+		label.text = "fucking \(index)"
+	}
+//
+//	func imageAtIndex(cell: QPTableViewCell, imageView: UIImageView, index: Int) {
+//		imageView.imageTemplate()
+//	}
+//
+//	func titleAtIndex(cell: QPTableViewCell, label: UILabel, index: Int) {
+//		label.text = "fffff"
+//	}
+//
+	func didSelectAtIndex(cell: QPTableViewCell, index: Int) {
+//		log.debug("index: \(index)")
+		print("index \(index)")
 	}
 }
