@@ -60,6 +60,7 @@ public class QPAdvTableViewCell: QPTableViewCell {
 			adView.pageControl.currentPageIndicatorTintColor = MAIN_COLOR
 //			adView.pageControl.pageIndicatorTintColor = COLOR_CLEAR
 			adView.pageControl.hidden = true
+			adView.pageControl.userInteractionEnabled = false
 
 			let frame = CGRectMake(0, self.frame.height - pageControlHeight, self.frame.width, pageControlHeight)
 			titleLabel.frame = frame
