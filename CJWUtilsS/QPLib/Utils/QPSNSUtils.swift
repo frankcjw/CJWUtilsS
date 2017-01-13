@@ -34,7 +34,9 @@ class QPSNSUtils: NSObject {
 	func login() {
 		let url = "http://qp.cenjiawen.com:9090/sns/user/login"
 		let password = QPSecurityUtils.encryptRSA("hello", publicKey: "")
-		let param = ["mobile": "13631290232", "password": password]
+		let aes = "eeeee".encryptAES("IX07L2433M88JFLJ")!
+		let param = ["mobile": "13631290232", "password": password, "aes": aes]
+//        QPSecurityUtils.enae
 		QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
 			log.debug("\(response)")
 		}) {
