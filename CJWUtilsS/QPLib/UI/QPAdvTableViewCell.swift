@@ -123,7 +123,7 @@ public class QPAdvTableViewCell: QPTableViewCell {
 		advImage.bottomAlign(view, predicate: "-1")
 		advImage.leadingAlign(view, predicate: "1")
 		advImage.trailingAlign(view, predicate: "-1")
-		let asp: Float = Float(16) / Float(6)
+		let asp: Float = Float(4) / Float(1)
 		advImage.constrainAspectRatio("*\(asp)")
 	}
 

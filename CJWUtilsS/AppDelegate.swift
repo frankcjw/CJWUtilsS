@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		self.window = window;
-
+		log.outputLogLevel = .Debug
 		let vc = QPFormTableViewController()
 		let navi = UINavigationController(rootViewController: vc)
 		navi.viewControllers = [ViewController(), ViewController()]

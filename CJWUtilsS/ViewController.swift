@@ -191,6 +191,7 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		} else if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCellWithIdentifier("QPAdvTableViewCell") as! QPAdvTableViewCell
 			cell.delegate = self
+			cell.placeholderImage = "testing"
 //			cell.updateAdv(["", "", ""])
 			return cell
 		}
@@ -600,5 +601,7 @@ extension ViewController: QPAdvTableViewCellDelegate {
 	}
 
 	func didSelectAtIndex(cell: QPTableViewCell, index: Int) {
+		print("click")
+		QPSNSUtils.sharedInstance.login()
 	}
 }
