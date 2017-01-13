@@ -132,7 +132,6 @@ public class QPAdvTableViewCell: QPTableViewCell {
 extension QPAdvTableViewCell: JXBAdPageViewDelegate {
 	public func setWebImage(imgView: UIImageView!, imgUrl: String!) {
 
-		log.debug("imgUrl: \(imgUrl)")
 		let index = adView.pageControl.currentPage
 		imgView.backgroundColor = UIColor.lightGrayColor()
 //		control.currentPage = index
