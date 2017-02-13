@@ -17,7 +17,7 @@ public protocol QPGridTableViewCellDelegate {
 	 - returns: grids的数量
 	 */
 	func numberOfItem(cell: QPTableViewCell) -> Int
-	optional func heightPredicateForView(cell: QPTableViewCell) -> String
+	optional func heightPredicateForView(cell: QPTableViewCell) -> String?
 	optional func gridPadding(cell: QPTableViewCell) -> Int
 }
 

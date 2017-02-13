@@ -32,13 +32,18 @@ class QPSNSUtils: NSObject {
 	}
 
 	func login() {
+		let aesKey = "IX07L2433M88JFLJ"
 		let url = "http://qp.cenjiawen.com:9090/sns/user/login"
-		let password = QPSecurityUtils.encryptRSA("hello", publicKey: "")
-		let aes = "eeeee".encryptAES("IX07L2433M88JFLJ")!
-		let param = ["mobile": "13631290232", "password": password, "aes": aes]
+		let password = QPSecurityUtils.encryptRSA("qweasdzxc", publicKey: "")
+		let token = "eeeee".encryptAES(aesKey)!
+		let param = ["mobile": "13631290232", "password": password, "token": token]
 //        QPSecurityUtils.enae
 		QPHttpUtils.sharedInstance.newHttpRequest(url, param: param, success: { (response) in
 			log.debug("\(response)")
+			let info = response["info"].stringValue
+//			let de = QPSecurityUtils.decryptRSA(info, privateKey: "")
+			let de = info.decryptAES(aesKey)
+			log.info("\(de)")
 		}) {
 			log.debug("fail")
 		}
