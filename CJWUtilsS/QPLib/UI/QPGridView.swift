@@ -17,16 +17,16 @@ public class QPGridView: UIView {
 
 	override public func updateConstraints() {
 		super.updateConstraints()
-//		var view = self
-//		view.leadingAlign(self, predicate: "10")
-//		view.trailingAlign(self, predicate: "-10")
-//		view.topAlign(self, predicate: "10")
-//		view.bottomAlign(self, predicate: "-10")
-//		let hei = gridCount * 101
-//		view.heightConstrain("\(hei)")
-//		view.backgroundColor = UIColor.yellowColor()
+		// var view = self
+		// view.leadingAlign(self, predicate: "10")
+		// view.trailingAlign(self, predicate: "-10")
+		// view.topAlign(self, predicate: "10")
+		// view.bottomAlign(self, predicate: "-10")
+		// let hei = gridCount * 101
+		// view.heightConstrain("\(hei)")
+		// view.backgroundColor = UIColor.yellowColor()
 
-//		let tmpPadding = 0
+		// let tmpPadding = 0
 		let padding = 4
 
 		gridContainerView.topAlign(self, predicate: "\(padding)")
@@ -79,13 +79,16 @@ public class QPGridView: UIView {
 			if index != 0 {
 				grid.width(horizanReferenceView)
 			}
-//			if let predicate = delegate?.heightPredicateForView?() {
-//				grid.heightConstrain(predicate)
-//			} else {
-//				grid.aspectRatio()
-//			}
-			// TODO:
-			grid.aspectRatio()
+			// if let predicate = delegate?.heightPredicateForView?() {
+			// grid.heightConstrain(predicate)
+			// } else {
+			// grid.aspectRatio()
+			// }
+			if let heightConstrain = gridHeightConstrain() {
+				grid.heightConstrain(heightConstrain)
+			} else {
+				grid.aspectRatio()
+			}
 
 			let customViewSuperView = customView.superview!
 			customView.leadingAlign(customViewSuperView, predicate: "\(padding)")
@@ -97,11 +100,30 @@ public class QPGridView: UIView {
 
 	}
 
+	public typealias GridSelectionBlock = (index: Int) -> ()
+
+	func onViewSelected(gesture: UIGestureRecognizer) {
+		if let tag = gesture.view?.tag {
+			self.onSelectBlock?(index: tag)
+		}
+	}
+	var onSelectBlock: GridSelectionBlock?
+
+	public func addTarget(block: GridSelectionBlock) {
+		self.onSelectBlock = block
+	}
+
+	var heightConstrain: String?
+
+	public func gridHeightConstrain() -> String? {
+		return heightConstrain
+	}
+
 	var grids: [UIView] = []
 	let gridContainerView = UIView()
 
 	func setup() {
-//		self.addSubview(view)
+		// self.addSubview(view)
 		if gridCount > 0 {
 			addSubview(gridContainerView)
 			for index in 0 ... gridCount - 1 {
@@ -112,8 +134,8 @@ public class QPGridView: UIView {
 
 				// TODO:
 				let userCustomView = customView(index)
-				userCustomView.backgroundColor = UIColor.carrotColor()
 				userCustomView.tag = index
+				userCustomView.addTapGesture(self, action: "onViewSelected:")
 				customViews.append(userCustomView)
 				grid.addSubview(userCustomView)
 			}
@@ -138,6 +160,14 @@ public class QPGridView: UIView {
 
 	public convenience init (count: Int, column: Int) {
 		self.init(frame: CGRect.zero)
+		self.gridCount = count
+		self.column = column
+		setup()
+	}
+
+	public convenience init (count: Int, column: Int, heightConstrain: String) {
+		self.init(frame: CGRect.zero)
+		self.heightConstrain = heightConstrain
 		self.gridCount = count
 		self.column = column
 		setup()
