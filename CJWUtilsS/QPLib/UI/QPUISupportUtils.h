@@ -40,3 +40,9 @@
 - (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 
 @end
+
+@interface UIViewController (CJWWeb)
+
+-(void)restBackFunction;
+
+@end

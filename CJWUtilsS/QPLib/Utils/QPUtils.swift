@@ -659,6 +659,25 @@ public extension UIView {
 	}
 }
 
+extension UIView {
+    
+    func equalConstrain2(view: UIView) {
+        self.leadingAlign(view, predicate: "0")
+        self.trailingAlign(view, predicate: "0")
+        self.topAlign(view, predicate: "0")
+        self.bottomAlign(view, predicate: "0")
+    }
+    
+    func paddingConstrain(padding: Int = 8) {
+        if let view = self.superview {
+            self.leadingAlign(view, predicate: "\(padding)")
+            self.trailingAlign(view, predicate: "-\(padding)")
+            self.topAlign(view, predicate: "\(padding)")
+            self.bottomAlign(view, predicate: "-\(padding)")
+        }
+    }
+}
+
 class QPCurrentCity: NSObject {
 	// TODO: 获取当前城市
 	/// 获取当前城市

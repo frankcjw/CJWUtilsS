@@ -127,6 +127,7 @@ public class QPBaseTableViewController: UITableViewController {
 		}
 		load()
 		updateFloatViewFrame()
+		self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
 	}
 
 	override public func preferredStatusBarStyle() -> UIStatusBarStyle {

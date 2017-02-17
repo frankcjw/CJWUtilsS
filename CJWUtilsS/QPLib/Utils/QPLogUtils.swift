@@ -148,6 +148,12 @@ public class Log: XCGLogger {
 
 					param["project"] = bundle ?? ""
 
+					let version = AppInfoManager.getVersion()
+					let build = AppInfoManager.getBuild()
+					param["version"] = "\(version)-\(build)"
+					let iOS = UIDevice.currentDevice().systemVersion
+					param["desc"] = "\(iOS)"
+
 					let json = JSON(param).toJSONString()
 					if let result = json.encryptAES("passwordpassword") {
 						let enParam = ["info": result]

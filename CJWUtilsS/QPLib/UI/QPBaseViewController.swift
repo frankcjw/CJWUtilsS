@@ -189,3 +189,13 @@ public extension UIViewController {
 		self.navigationController?.navigationBar.translucent = true
 	}
 }
+
+extension UIViewController {
+	func fuckingBack() {
+		self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action: Selector("back"))
+	}
+
+	func fuckingBackAgain() {
+		self.navigationController?.interactivePopGestureRecognizer?.removeTarget(self, action: Selector("back"))
+	}
+}

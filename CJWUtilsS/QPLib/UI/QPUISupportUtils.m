@@ -107,3 +107,15 @@
 }
 
 @end
+
+
+@implementation UIViewController (CJWWeb)
+
+/**
+ *  在ViewController中viewDidAppare中添加，在viewWillDisappear中remove。
+ */
+-(void)restBackFunction{
+    [self.navigationController.interactivePopGestureRecognizer addTarget:self action:@selector(back)];
+}
+
+@end

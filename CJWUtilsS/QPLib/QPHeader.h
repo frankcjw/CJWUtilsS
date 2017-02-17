@@ -72,4 +72,6 @@
 //#import "MLSelectPhotoCommon.h"
 //#import "MLSelectPhotoAssets.h"
 
+//emotion
+#import "MLEmojiLabel.h"
  

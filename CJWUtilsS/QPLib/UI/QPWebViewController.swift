@@ -31,6 +31,16 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 		}
 	}
 
+	override public func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+//		fuckingBack()
+	}
+
+	public override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+//		fuckingBackAgain()
+	}
+
 	override public func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.addSubview(webView)

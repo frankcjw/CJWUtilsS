@@ -227,7 +227,8 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-
+		let vc = QPExamTableViewController()
+		self.pushViewController(vc)
 //		self.tableView.setInsetsTop(300)
 	}
 

@@ -70,6 +70,7 @@ target 'CJWUtilsS' do
 #    pod 'FMDB', '2.5'
 #    pod 'LBXScan'
 #    pod 'MTBBarcodeScanner'
+    pod 'MLeaksFinder'
 end
 
 target 'CJWUtilsSTests' do
