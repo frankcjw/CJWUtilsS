@@ -377,3 +377,19 @@ public extension UIScrollView {
 		return page - 1
 	}
 }
+
+public extension UINavigationBar {
+	func setClearNavigationBarColor(color: UIColor) {
+		translucent = false
+		shadowImage = UIImage(color: UIColor.clearColor())
+		setBackgroundImage(UIImage(color: color), forBarMetrics: UIBarMetrics.Default)
+	}
+}
+
+public extension UIViewController {
+	func setClearNavigationBarColor(color: UIColor) {
+		self.navigationController?.navigationBar.translucent = false
+		self.navigationController?.navigationBar.shadowImage = UIImage(color: UIColor.clearColor())
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: color), forBarMetrics: UIBarMetrics.Default)
+	}
+}

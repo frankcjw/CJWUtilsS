@@ -11,6 +11,89 @@ import SwiftyJSON
 
 public typealias QPTableViewCell = QPBaseTableViewCell
 
+public class QPCollectionViewCell: UICollectionViewCell {
+	/// 父view controller
+	public var rootViewController: UIViewController?
+	/// 这个cell的indexPath
+	public var indexPath: NSIndexPath?
+	public var didSetupConstraints = false
+	/// cell的数据
+	public var cellInfo = NSDictionary()
+
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		initCell()
+	}
+
+	/**
+     为contentView添加autoLayout
+     */
+	func setupAutoLayout() {
+		self.contentView.setToAutoLayout()
+		contentView.alignLeading("0", trailing: "0", toView: self)
+	}
+
+	/**
+     初始化cell
+     
+     - returns: nil
+     */
+	func initCell() {
+		setupViews(contentView)
+		setupAutoLayout()
+	}
+
+	/**
+     更新Constrains
+     */
+	override public func updateConstraints() {
+
+		// if !didSetupConstraints {
+		// setupConstrains(contentView)
+		// didSetupConstraints = true
+		// }
+		setupConstrains(contentView)
+
+		super.updateConstraints()
+	}
+
+	/**
+     构造Constrains
+     
+     - parameter view: cell.contentView
+     */
+	public func setupConstrains(view: UIView) {
+	}
+
+	/**
+     初始化cell内的view
+     
+     - parameter view: cell.contentView
+     */
+	public func setupViews(view: UIView) {
+	}
+
+	/**
+     添加cell内容
+     
+     - parameter info: info
+     */
+	public func setInfo(info: NSDictionary) {
+		self.cellInfo = info
+		setupConstrains(contentView)
+	}
+
+	public func setJson(json: JSON) {
+		setupConstrains(contentView)
+	}
+
+	public func setup() {
+		self.setNeedsUpdateConstraints()
+		self.updateConstraintsIfNeeded()
+	}
+
+}
+
 public class QPBaseTableViewCell: UITableViewCell {
 
 	/// 父view controller
