@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+ 
 @interface QPUISupportUtils : UIView
 
 @end
@@ -44,5 +44,19 @@
 @interface UIViewController (CJWWeb)
 
 -(void)restBackFunction;
+
+@end
+
+
+@interface QPMobileUtils : NSObject
+
++ (BOOL)isChinaMobile:(NSString *)phoneNum;
+
+@end
+
+
+@interface UIImage (CJWPodImage)
+
++(UIImage *) imageInPod:(NSString *)name;
 
 @end

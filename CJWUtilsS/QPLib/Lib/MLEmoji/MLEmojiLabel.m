@@ -7,6 +7,7 @@
 //
 
 #import "MLEmojiLabel.h"
+#import "QPUISupportUtils.h"
 
 #pragma mark - 正则列表
 
@@ -255,7 +256,9 @@ static inline CGFloat TTTFlushFactorForTextAlignment(NSTextAlignment textAlignme
                 runBounds.origin.y = origins[lineIndex].y;
                 runBounds.origin.y -= runDescent;
                 
-                UIImage *image = [UIImage imageNamed:imageName];
+//                UIImage *image = [UIImage imageNamed:imageName];
+                UIImage *image = [UIImage imageInPod:imageName];
+                         
                 runBounds.origin.y -= emojiOriginYOffset; //稍微矫正下。
                 CGContextDrawImage(c, runBounds, image.CGImage);
             }

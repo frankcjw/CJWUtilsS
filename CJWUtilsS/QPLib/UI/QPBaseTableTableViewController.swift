@@ -47,6 +47,9 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public var controllerInfo = NSDictionary()
 
+	/// 推过来之前的vc
+	public var pushedViewController: UIViewController?
+
 	public var page = 1
 	private var shouldShowEmptyStatus: Bool = true
 	private var statusText = TIPS_LOADING

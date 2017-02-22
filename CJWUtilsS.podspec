@@ -71,7 +71,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "8.0"
   # s.osx.deployment_target = "10.7"
 
-
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the location from where the source should be retrieved.
@@ -88,7 +87,6 @@ Pod::Spec.new do |s|
   #  files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-
   s.source_files  = "Classes", "CJWUtilsS/QPLib/**/*.swift", "CJWUtilsS/utils/*.swift", "CJWUtilsS/QPLib/Lib/**/*.*","CJWUtilsS/QPLib/UI/**/*.*"
   #s.source_files  = "Classes", "CJWUtilsS/utils/**/*"
   s.exclude_files = "Classes/Exclude"
@@ -114,7 +112,11 @@ end
   #
 
   # s.resource  = "icon.png"
-  s.resources = "CJWUtilsS/QPLib/Lib/MLSelectPhoto/MLSelectPhoto.bundle"
+  s.resources = "CJWUtilsS/QPLib/Lib/MLSelectPhoto/MLSelectPhoto.bundle" 
+#s.resource_bundle = {
+#'CJWUtilsS' => ['CJWUtilsS/QPLib/Lib/MLEmoji/Expression/*']
+#}
+#s.resources = ["CJWUtilsS/QPLib/Lib/MLEmoji/Expression/*.png"]
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -172,6 +174,7 @@ end
   s.dependency "AwesomeCache", "~> 2.0"
   s.dependency "GPUImage"
   s.dependency "SwiftyRSA"
+  s.dependency "PodAsset"
   s.dependency "JXBAdPageView"
 #s.dependency "Bugly"
 #s.framework = 'Bugly'

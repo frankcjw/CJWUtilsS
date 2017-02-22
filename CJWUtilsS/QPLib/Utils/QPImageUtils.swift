@@ -11,6 +11,7 @@ import SDWebImage
 //import SwiftRandom
 import CGFloatType
 import GPUImage
+import PodAsset
 
 public class QPImageUtils: NSObject {
 }
@@ -39,6 +40,15 @@ public extension UIImageView {
 		if let img = UIImage(named: name) {
 			self.image = img
 		}
+	}
+
+	public func imageInPod(name: String) {
+		var bundle = NSBundle(identifier: "com.cenjiawen.app.CJWUtilsS")
+		if bundle == nil {
+			bundle = PodAsset.bundleForPod("CJWUtilsS")
+		}
+		let img = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
+		self.image = img
 	}
 }
 

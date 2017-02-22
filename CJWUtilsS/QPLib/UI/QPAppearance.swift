@@ -379,7 +379,7 @@ public extension UIScrollView {
 }
 
 public extension UINavigationBar {
-	func setClearNavigationBarColor(color: UIColor) {
+	public func setClearNavigationBarColor(color: UIColor) {
 		translucent = false
 		shadowImage = UIImage(color: UIColor.clearColor())
 		setBackgroundImage(UIImage(color: color), forBarMetrics: UIBarMetrics.Default)
@@ -387,9 +387,52 @@ public extension UINavigationBar {
 }
 
 public extension UIViewController {
-	func setClearNavigationBarColor(color: UIColor) {
+	public func setClearNavigationBarColor(color: UIColor) {
 		self.navigationController?.navigationBar.translucent = false
 		self.navigationController?.navigationBar.shadowImage = UIImage(color: UIColor.clearColor())
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(color: color), forBarMetrics: UIBarMetrics.Default)
+	}
+}
+
+public extension UIImageView {
+	public func image(name: String, color: UIColor) {
+		if let img = UIImage(named: name) {
+			let tmpImg = img.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+			self.image = tmpImg
+			self.tintColor = color
+		}
+	}
+}
+
+import PodAsset
+
+public class QPTImageView: UIImageView {
+	public override func updateConstraints() {
+		super.updateConstraints()
+	}
+
+	public func setup() {
+		var bundle = NSBundle(identifier: "com.cenjiawen.app.CJWUtilsS")
+		if bundle == nil {
+			bundle = PodAsset.bundleForPod("CJWUtilsS")
+		}
+		print("bundle2 \(bundle)")
+		let img = UIImage(named: "Expression_1@2x.png", inBundle: bundle, compatibleWithTraitCollection: nil)
+		self.image = img
+	}
+
+	public convenience init () {
+		self.init(frame: CGRect.zero)
+		setup()
+	}
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		setup()
+	}
+
+	public required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		setup()
 	}
 }

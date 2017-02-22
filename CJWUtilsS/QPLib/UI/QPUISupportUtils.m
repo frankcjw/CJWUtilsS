@@ -7,6 +7,7 @@
 //
 
 #import "QPUISupportUtils.h"
+#import "PodAsset.h"
 
 @implementation QPUISupportUtils
 
@@ -119,3 +120,33 @@
 }
 
 @end
+
+
+
+@implementation QPMobileUtils
+
++ (BOOL)isChinaMobile:(NSString *)phoneNum
+{
+    NSString *CM = @"^1(3[4-9]|4[7]|5[0-27-9]|7[08]|8[2-478])\\d{8}$";
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    return [regextestcm evaluateWithObject:phoneNum];
+}
+
+
+@end
+
+
+@implementation UIImage (CJWPodImage)
+
++(UIImage *) imageInPod:(NSString *)name {
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@""];
+    if (bundle == NULL) {
+        bundle = [PodAsset bundleForPod:@""];
+    }
+    UIImage *image = [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+    return image;
+}
+
+@end
+
+

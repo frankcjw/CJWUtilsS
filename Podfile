@@ -40,6 +40,8 @@ target 'CJWUtilsS' do
 #    pod 'TaskQueue'
     #log net work status , remain testing
     pod 'netfox'
+    pod 'PodAsset'
+
     # swift timer , seems usable, remain testing
 #    pod 'SwiftyTimer'
     #store any object in your user default,but it's not that usefull
@@ -50,7 +52,7 @@ target 'CJWUtilsS' do
     pod 'WebViewJavascriptBridge'
     pod 'AwesomeCache', '~> 2.0'
     pod 'FXBlurView'
-    pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
+#    pod 'Mirror', :git => 'https://github.com/kostiakoval/Mirror.git', :branch => 'swift-2.0'
     pod ’Bugly’
     pod 'PhoneNumberKit', '0.8.3'
 #    pod 'ImagePickerSheetController'

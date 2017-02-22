@@ -87,6 +87,9 @@ public extension UIViewController {
 	 */
 	public func pushViewController(viewController: UIViewController, animated: Bool = true) {
 		if let navi = self.navigationController {
+			if let vc = viewController as? QPTableViewController {
+				vc.pushedViewController = self
+			}
 			viewController.hidesBottomBarWhenPushed = QPUtils.sharedInstance.config.hidesBottomBarWhenPushed
 			navi.pushViewController(viewController, animated: animated)
 		}

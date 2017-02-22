@@ -12,7 +12,7 @@ import CoreData
 import ObjectiveC
 import Alamofire
 import WebViewJavascriptBridge
-import Mirror
+//import Mirror
 import FXBlurView
 import SwiftyRSA
 import EventKit
@@ -50,11 +50,10 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 //			})
 //		}) {
 //		}
-		let st = Hello()
-		let mirror = Mirror(st)
-
-		mirror.names
-		print(mirror.toDictionary)
+//		let st = Hello()
+//		let mirror = Mirror(st)
+// 		mirror.names
+//		print(mirror.toDictionary)
 
 		super.viewDidLoad()
 
@@ -227,9 +226,22 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		let vc = QPExamTableViewController()
-		self.pushViewController(vc)
+//		let vc = QPExamTableViewController()
+//		self.pushViewController(vc)
 //		self.tableView.setInsetsTop(300)
+
+		let imgv = QPTImageView(frame: CGRectMake(100, 100, 100, 100))
+		imgv.backgroundColor = UIColor.redColor()
+		self.view.addSubview(imgv)
+
+		for bd in NSBundle.allBundles() {
+			print("\(bd.bundleIdentifier)")
+		}
+//		let bundle = NSBundle(identifier: "com.cenjiawen.app.CJWUtilsS")
+//		print("bundle \(bundle)")
+//		let img = UIImage(named: "Expression_1@2x.png", inBundle: bundle, compatibleWithTraitCollection: nil)
+//		imgv.image = img
+
 	}
 
 	override func scrollViewDidScroll(scrollView: UIScrollView) {
