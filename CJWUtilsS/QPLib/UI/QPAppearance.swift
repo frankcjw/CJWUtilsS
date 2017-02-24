@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PodAsset
 
 public let FONT_TITLE = UIFont.boldSystemFontOfSize(15)
 public let FONT_NORMAL = UIFont.systemFontOfSize(14)
@@ -403,8 +404,6 @@ public extension UIImageView {
 		}
 	}
 }
-
-import PodAsset
 
 public class QPTImageView: UIImageView {
 	public override func updateConstraints() {

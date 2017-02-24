@@ -49,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //			print("Error while encrypting: \(error)")
 //		}
 
+		let pwd = QPSecurityUtils.encryptRSA("123456", publicKey: "")
+		print("-------------------")
+		print("\(pwd)")
+		print("-------------------")
+
 		return true
 	}
 
