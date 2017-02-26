@@ -176,6 +176,8 @@ end
   s.dependency "SwiftyRSA"
   s.dependency "PodAsset"
   s.dependency "JXBAdPageView"
+  s.dependency "iVersion"
+  s.dependency "iRate"
 #s.dependency "Bugly"
 #s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"

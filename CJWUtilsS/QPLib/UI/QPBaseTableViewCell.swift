@@ -109,17 +109,17 @@ public class QPBaseTableViewCell: UITableViewCell {
 		initCell()
 	}
 
-	/**
-	 为contentView添加autoLayout
-	 */
-	func setupAutoLayout() {
-		self.contentView.setToAutoLayout()
-		contentView.alignLeading("0", trailing: "0", toView: self)
-	}
-
 	override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		initCell()
+	}
+
+	/**
+	 为contentView添加autoLayout
+	 */
+	public func setupAutoLayout() {
+		self.contentView.setToAutoLayout()
+		contentView.alignLeading("0", trailing: "0", toView: self)
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 
 	 - returns: nil
 	 */
-	func initCell() {
+	public func initCell() {
 		setupViews(contentView)
 		setupAutoLayout()
 		self.selectionStyle = UITableViewCellSelectionStyle.None

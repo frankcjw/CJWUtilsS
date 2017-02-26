@@ -212,6 +212,7 @@
 		01CEB4051DE2A120004AFD1F /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 01CEB3FA1DE2A120004AFD1F /* rscode.c */; };
 		01CEB4061DE2A120004AFD1F /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 01CEB3FC1DE2A120004AFD1F /* split.c */; };
 		01D0365A1E615E1C0040C0CF /* QPPdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D036591E615E1C0040C0CF /* QPPdfViewController.swift */; };
+		01D0365C1E618B840040C0CF /* QPVersionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0365B1E618B840040C0CF /* QPVersionUtils.swift */; };
 		01DD99CD1DB0C41400ECD3A8 /* QPSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */; };
 		01E5A4CD1DFA91FD00724830 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01E5A4CC1DFA91FD00724830 /* dog.jpg */; };
 		01E5A4CF1DFA941C00724830 /* lady.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01E5A4CE1DFA941C00724830 /* lady.jpeg */; };
@@ -540,6 +541,7 @@
 		01CEB3FC1DE2A120004AFD1F /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		01CEB3FD1DE2A120004AFD1F /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		01D036591E615E1C0040C0CF /* QPPdfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPdfViewController.swift; sourceTree = "<group>"; };
+		01D0365B1E618B840040C0CF /* QPVersionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPVersionUtils.swift; sourceTree = "<group>"; };
 		01DD99CC1DB0C41400ECD3A8 /* QPSegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPSegmentViewController.swift; sourceTree = "<group>"; };
 		01E5A4CC1DFA91FD00724830 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
 		01E5A4CE1DFA941C00724830 /* lady.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lady.jpeg; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				01CE0CB91D83FE1E009EC9B9 /* QPLocationUtils.swift */,
 				017C35761DA8C1DA0062C3B1 /* QPEventUtils.swift */,
 				01F5DBB91E2780FF0068E317 /* QPSNSUtils.swift */,
+				01D0365B1E618B840040C0CF /* QPVersionUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1669,6 +1672,7 @@
 				018AF15B1D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				01CE0CB31D83FCC0009EC9B9 /* QPMapViewController.swift in Sources */,
 				01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */,
+				01D0365C1E618B840040C0CF /* QPVersionUtils.swift in Sources */,
 				01F423491C807A5D009FDA73 /* QPWebViewController.swift in Sources */,
 				01E6E8451C8E7A920095A206 /* QPViewDebug.swift in Sources */,
 				01B1E7E31D2521F700BF2841 /* CJWHello.m in Sources */,

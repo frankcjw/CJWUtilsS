@@ -73,6 +73,8 @@ target 'CJWUtilsS' do
 #    pod 'LBXScan'
 #    pod 'MTBBarcodeScanner'
     pod 'MLeaksFinder'
+    pod 'iVersion'
+    pod 'iRate'
 end
 
 target 'CJWUtilsSTests' do
