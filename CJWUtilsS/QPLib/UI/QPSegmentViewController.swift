@@ -136,6 +136,12 @@ public extension QPSegmentViewController {
 
 	public func onSegmentChanged(index: Int) {
 	}
+
+	public func selectIndex(index: Int) {
+		self.segment.selectedSegmentIndex = index
+		self.selectedIndex = index
+		onSegmentChanged(index)
+	}
 }
 
 class SegVC: UIViewController {
