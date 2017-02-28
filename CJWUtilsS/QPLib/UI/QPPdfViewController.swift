@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CJWUtilsS
 
 public class QPPdfViewController: QPViewController {
 
@@ -44,7 +45,11 @@ public class QPPDFView: UIView {
 	let webView = UIWebView()
 
 	public func loadPdf(path: String) {
-		webView.loadRequest(NSURLRequest(URL: NSURL(string: path)!))
+		var ppp = path
+		ppp.urlEncode()
+		if let nsurl = NSURL(string: ppp) {
+			webView.loadRequest(NSURLRequest(URL: nsurl))
+		}
 	}
 
 	public override func updateConstraints() {

@@ -44,14 +44,12 @@ public class QPVersionUtils: NSObject {
 
 		var appName = "我们"
 		if let info = NSBundle.mainBundle().infoDictionary {
-            log.debug("\(info)")
 			if let name = info["CFBundleDisplayName"] as? String {
 				appName = name
 			}
 		}
-        log.debug("appName: \(appName)")
 		rate.message = "如果您喜欢\(appName)，请给它一个评价吧。这不会占用您很多的时间，感谢您的支持！"
-		rate.previewMode = true
+//		rate.previewMode = true
 		rate.rateButtonLabel = "去评价"
 		rate.remindButtonLabel = "稍后提醒我"
 		rate.cancelButtonLabel = "下次"

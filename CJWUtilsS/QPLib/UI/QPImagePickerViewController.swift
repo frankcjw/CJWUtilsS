@@ -14,6 +14,8 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 	var block: QPImagePickerBlock!
 	var cameraBlock: QPImagePickerBlock!
 	var maxCount = 1
+	var editAble = true
+
 	func pickImage(vc: UIViewController, maxCount: Int, block: QPImagePickerBlock) {
 		self.block = block
 		self.maxCount = maxCount
@@ -44,6 +46,9 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 			if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
 				let oirentationImage = image.fixOrientation()
 				block(images: [oirentationImage])
+			} else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+				let oirentationImage = image.fixOrientation()
+				block(images: [oirentationImage])
 			}
 		} else {
 			if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -66,7 +71,7 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 
 		self.sourceType = type
 		self.delegate = self
-		self.allowsEditing = true
+		self.allowsEditing = editAble
 		if isAvailable {
 			vc.presentViewController(self, animated: true, completion: nil)
 		} else {
@@ -77,6 +82,7 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 	func imageFromPhoto(vc: UIViewController, block: QPImagePickerBlock) {
 		imageFromSystem(vc, type: UIImagePickerControllerSourceType.PhotoLibrary, block: block)
 	}
+
 	func imageFromCamera(vc: UIViewController, block: QPImagePickerBlock) {
 		imageFromSystem(vc, type: UIImagePickerControllerSourceType.Camera, block: block)
 
@@ -111,9 +117,14 @@ class QPImagePickerViewController: UIImagePickerController, UIActionSheetDelegat
 
 public extension UIViewController {
 
-	func pickImage(maxCount: Int, block: QPImagePickerBlock) {
+	func pickImage(maxCount: Int, editAble: Bool, block: QPImagePickerBlock) {
 		let picker = QPImagePickerViewController()
+		picker.editAble = editAble
 		picker.pickImage(self, maxCount: maxCount, block: block)
+	}
+
+	func pickImage(maxCount: Int, block: QPImagePickerBlock) {
+		pickImage(maxCount, editAble: true, block: block)
 	}
 
 	func pickImageFromLibrary(maxCount: Int, block: QPImagePickerBlock) {
