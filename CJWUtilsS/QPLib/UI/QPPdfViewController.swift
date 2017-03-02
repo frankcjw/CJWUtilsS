@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CJWUtilsS
 
 public class QPPdfViewController: QPViewController {
 
@@ -35,12 +34,6 @@ public class QPPdfViewController: QPViewController {
 }
 
 public class QPPDFView: UIView {
-
-//	public var pdfPath: String {
-//		didSet {
-//			webView.loadRequest(NSURLRequest(URL: NSURL(string: pdfPath)!))
-//		}
-//	}
 
 	let webView = UIWebView()
 

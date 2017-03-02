@@ -1137,3 +1137,13 @@ public extension Array where Element: Equatable {
 		return result
 	}
 }
+
+public extension QPUtils {
+	class func getTextFiedlChangedText(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> String {
+		if let text: NSString = textField.text {
+			let tmp = text.stringByReplacingCharactersInRange(range, withString: string)
+			return tmp
+		}
+		return ""
+	}
+}

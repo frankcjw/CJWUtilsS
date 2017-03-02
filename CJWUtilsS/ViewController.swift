@@ -237,6 +237,15 @@ class ViewController: QPTableViewController, UIImagePickerControllerDelegate, UI
 		for bd in NSBundle.allBundles() {
 			print("\(bd.bundleIdentifier)")
 		}
+
+		if QPFeatureViewController.canShowNewFeature() {
+			let vc = QPFeatureViewController()
+			vc.images = ["dog.jpg", "gg.jpg", "lady.jpeg"]
+			vc.setOnEndNewFeatureBlock({
+				vc.popViewController()
+			})
+			self.pushViewController(vc)
+		}
 //		let bundle = NSBundle(identifier: "com.cenjiawen.app.CJWUtilsS")
 //		print("bundle \(bundle)")
 //		let img = UIImage(named: "Expression_1@2x.png", inBundle: bundle, compatibleWithTraitCollection: nil)
