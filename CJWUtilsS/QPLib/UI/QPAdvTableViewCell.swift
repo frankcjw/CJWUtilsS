@@ -43,6 +43,14 @@ public class QPAdvTableViewCell: QPTableViewCell {
 //	var advs: [JSON] = []
 //	let control = SMPageControl()
 
+	var aspectRatioString: String?
+
+	public convenience init(width: CGFloat, height: CGFloat) {
+		self.init()
+		let value: CGFloat = width / height
+		self.aspectRatioString = "*\(value)"
+	}
+
 	override public func drawRect(rect: CGRect) {
 		super.drawRect(rect)
 		let pageControlHeight: CGFloat = heightForInfo()
@@ -124,8 +132,13 @@ public class QPAdvTableViewCell: QPTableViewCell {
 		advImage.bottomAlign(view, predicate: "-1")
 		advImage.leadingAlign(view, predicate: "1")
 		advImage.trailingAlign(view, predicate: "-1")
-		let asp: Float = Float(4) / Float(1)
-		advImage.constrainAspectRatio("*\(asp)")
+
+		if let aspectRatioString = aspectRatioString {
+			advImage.constrainAspectRatio("\(aspectRatioString)")
+		} else {
+			let asp: Float = Float(4) / Float(1)
+			advImage.constrainAspectRatio("*\(asp)")
+		}
 	}
 
 }

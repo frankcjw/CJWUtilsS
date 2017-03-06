@@ -659,25 +659,6 @@ public extension UIView {
 	}
 }
 
-extension UIView {
-
-	func equalConstrain2(view: UIView) {
-		self.leadingAlign(view, predicate: "0")
-		self.trailingAlign(view, predicate: "0")
-		self.topAlign(view, predicate: "0")
-		self.bottomAlign(view, predicate: "0")
-	}
-
-	func paddingConstrain(padding: Int = 8) {
-		if let view = self.superview {
-			self.leadingAlign(view, predicate: "\(padding)")
-			self.trailingAlign(view, predicate: "-\(padding)")
-			self.topAlign(view, predicate: "\(padding)")
-			self.bottomAlign(view, predicate: "-\(padding)")
-		}
-	}
-}
-
 class QPCurrentCity: NSObject {
 	// TODO: 获取当前城市
 	/// 获取当前城市
@@ -1145,5 +1126,96 @@ public extension QPUtils {
 			return tmp
 		}
 		return ""
+	}
+}
+
+public class QPWelcomViewController: QPViewController {
+	let imageView = UIImageView()
+
+	public override func viewDidLoad() {
+		super.viewDidLoad()
+		self.view.addSubview(imageView)
+		imageView.frame = CGRectMake(0, 0, self.view.width, self.view.height)
+		imageView.scaleAspectFill()
+		imageView.backgroundColor = UIColor.lightGrayColor()
+		if let img = UIImage(named: "Launch") {
+			self.imageView.image = img
+		} else { imageView.imageUrl("http://wx2.sinaimg.cn/mw690/62f87eb4gy1fddamyqmwcj20hs0a0dgf.jpg")
+		}
+
+	}
+}
+
+/// QP全局启动
+public class QPResponder: UIResponder, UIApplicationDelegate {
+
+	public var window: UIWindow?
+
+	class var sharedInstance: QPResponder {
+		struct Static {
+			static var onceToken: dispatch_once_t = 0
+			static var instance: QPResponder? = nil
+		}
+		dispatch_once(&Static.onceToken) {
+			Static.instance = QPResponder()
+		}
+		return Static.instance!
+	}
+
+	public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+		self.window = window
+		window.rootViewController = QPWelcomViewController()
+		window.makeKeyAndVisible()
+
+		UINavigationBar.appearance().barStyle = UIBarStyle.Black// 这是白色....
+		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+		UINavigationBar.appearance().barTintColor = MAIN_COLOR
+		UITabBar.appearance().tintColor = MAIN_COLOR
+		UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+		QPVersionUtils.setup()
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QPResponder.onLogout), name: "onLogout", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QPResponder.onLogin(_:)), name: "onLogin", object: nil)
+
+		if onAutoLogin() {
+		} else {
+			showLogin()
+		}
+		return true
+	}
+
+	public func showVC(viewController: UIViewController) {
+		window?.rootViewController = viewController
+		window?.makeKeyAndVisible()
+	}
+
+	/**
+     登录成功通知
+     
+     - parameter notification: <#notification description#>
+     */
+	public func onLogin(notification: NSNotification) {
+	}
+
+	/**
+     跳转到登出
+     */
+	public func onLogout() {
+	}
+
+	/**
+     跳转到登录页面
+     */
+	public func showLogin() {
+	}
+
+	/**
+     处理自动登录
+     
+     - returns: 是否正在进行自动登录
+     */
+	public func onAutoLogin() -> Bool {
+		return false
 	}
 }

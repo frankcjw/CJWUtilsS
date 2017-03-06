@@ -435,3 +435,40 @@ public class QPTImageView: UIImageView {
 		setup()
 	}
 }
+
+public extension UIColor {
+	public class func mainColor() -> UIColor {
+		return MAIN_COLOR
+	}
+
+	public class func mainRed() -> UIColor {
+		return UIColor.alizarinColor()
+	}
+
+	public class func mainGreen() -> UIColor {
+		return UIColor.emerlandColor()
+	}
+
+	public class func lightlightGrayColor() -> UIColor {
+		return COLOR_LIGHT_LIGHT_GRAY
+	}
+}
+
+public extension UIView {
+
+	public func equalConstrain2(view: UIView) {
+		self.leadingAlign(view, predicate: "0")
+		self.trailingAlign(view, predicate: "0")
+		self.topAlign(view, predicate: "0")
+		self.bottomAlign(view, predicate: "0")
+	}
+
+	public func paddingConstrain(padding: Int = 8) {
+		if let view = self.superview {
+			self.leadingAlign(view, predicate: "\(padding)")
+			self.trailingAlign(view, predicate: "-\(padding)")
+			self.topAlign(view, predicate: "\(padding)")
+			self.bottomAlign(view, predicate: "-\(padding)")
+		}
+	}
+}
