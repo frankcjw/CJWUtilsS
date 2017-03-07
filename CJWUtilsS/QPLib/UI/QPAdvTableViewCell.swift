@@ -27,7 +27,7 @@ public class QPAdvTableViewCell: QPTableViewCell {
 	var titleLabel = UILabel()
 	var adView: JXBAdPageView!
 
-	public var placeholderImage: String = ""
+	public var placeholderImage: String = "AssetsPickerChecked@2x"
 	public var delegate: QPAdvTableViewCellDelegate?
 
 	override public func setupViews(view: UIView) {

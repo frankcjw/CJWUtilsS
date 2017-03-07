@@ -15,7 +15,9 @@ public class QPSegmentViewController: UITabBarController {
 
 	private var segmentTitles = ["", ""] {
 		didSet {
-			self.navigationItem.titleView = initSegmentView()
+			if canShowTitle() {
+				self.navigationItem.titleView = initSegmentView()
+			}
 		}
 	}
 
@@ -25,6 +27,10 @@ public class QPSegmentViewController: UITabBarController {
 
 	public func titleAt(index: Int) -> String {
 		return "T\(index)"
+	}
+
+	public func canShowTitle() -> Bool {
+		return true
 	}
 
 //	private func imageAt(index: Int) -> UIImage {
