@@ -61,7 +61,7 @@ class QPTipsTableViewCell: QPTableViewCell {
 		titleLabel.textColor = UIColor.darkGrayColor()
 
 		titleLabel.font = FONT_SMALL
-		titleLabel.text = "[色]你可以转星星给别人\n你可以转星星给别人\nhttp://ww3.sinaimg.cn/mw690/005Ko17Djw1fctevehff5j315o6li4qr.jpg"
+		titleLabel.text = "[色]你可以转积分给别人\n你可以转积分给别人\nhttp://ww3.sinaimg.cn/mw690/005Ko17Djw1fctevehff5j315o6li4qr.jpg"
 		titleLabel.numberOfLines = 0
 		titleLabel.textAlignmentCenter()
 	}

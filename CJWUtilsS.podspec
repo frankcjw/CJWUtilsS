@@ -177,7 +177,8 @@ end
   s.dependency "PodAsset"
   s.dependency "JXBAdPageView"
   s.dependency "iVersion"
-  s.dependency "iRate"
+    s.dependency "iRate"
+    s.dependency "Qiniu", "~> 7.1"
 #s.dependency "Bugly"
 #s.framework = 'Bugly'
   #s.dependency "RealmSwift", "~> 0.97.0"

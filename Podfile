@@ -75,6 +75,8 @@ target 'CJWUtilsS' do
     pod 'MLeaksFinder'
     pod 'iVersion'
     pod 'iRate'
+    pod 'Qiniu', '~> 7.1'
+
 end
 
 target 'CJWUtilsSTests' do

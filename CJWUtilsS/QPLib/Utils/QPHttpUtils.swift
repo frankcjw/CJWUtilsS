@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import AFNetworking
 import AwesomeCache
+import Qiniu
 
 let HOST = ""
 
@@ -624,6 +625,73 @@ public extension QPHttpUtils {
 		let url = "http://web.cenjiawen.com/qp/cardRecg"
 		QPHttpUtils.sharedInstance.uploadImage(url, param: nil, imageName: ["image_file"], images: [image], success: { (response) in
 			success(response: response)
+		}) {
+			failure()
+		}
+	}
+}
+
+public extension QPHttpUtils {
+
+	/**
+     上传图片
+     
+     - parameter image:   图片nsdata
+     - parameter path:    图片路径
+     - parameter baseUrl: 图片url前缀
+     - parameter token:   七牛
+     - parameter success: success description
+     - parameter failure: failure description
+     */
+	public func uploadImage(image: UIImage, path: String, baseUrl: String, token: String, success: QPSuccessBlock, failure: QPFailBlock) {
+		if let imageData = UIImagePNGRepresentation(image) {
+			uploadFile(imageData, path: path, baseUrl: baseUrl, token: token, success: success, failure: failure)
+		} else {
+			failure()
+		}
+	}
+
+	/**
+     七牛上传图片
+     
+     - parameter data:    文件nsdata
+     - parameter path:    文件路径 如CJWUtilsS
+     - parameter baseUrl: 文件url cdn路径 如http://img.moo-mi.com/
+     - parameter token:   token
+     - parameter success: success description
+     - parameter failure: failure description
+     */
+	public func uploadFile(data: NSData, path: String, baseUrl: String, token: String, success: QPSuccessBlock, failure: QPFailBlock) {
+		let upManager = QNUploadManager()
+		let uuid: String = NSUUID.init().UUIDString
+		let key = "\(path)/\(uuid)"
+		let imageUrl = "\(baseUrl)\(key)"
+		upManager.putData(data, key: key, token: token, complete: { (info, key, resp) -> Void in
+			if (info.statusCode == 200 && resp != nil) {
+				success(response: JSON(imageUrl))
+			} else {
+				log.error("七牛上传失败")
+				failure()
+			}
+			}, option: nil)
+	}
+
+	/**
+     默认上传到谢文俊的七牛
+     
+     - parameter image:   图片UIImage
+     - parameter path:    路径,默认CJWUtilsS
+     - parameter success: success description
+     - parameter failure: failure description
+     */
+	public func uploadImage(image: UIImage, path: String = "CJWUtilsS", success: QPSuccessBlock, failure: QPFailBlock) {
+		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/", param: nil, success: { (response) in
+			if let token = response["info"].string {
+				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
+				self.uploadImage(tmpImg, path: path, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
+			} else {
+				failure()
+			}
 		}) {
 			failure()
 		}
