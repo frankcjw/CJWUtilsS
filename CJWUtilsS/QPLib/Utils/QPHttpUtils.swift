@@ -671,9 +671,49 @@ public extension QPHttpUtils {
 				success(response: JSON(imageUrl))
 			} else {
 				log.error("七牛上传失败")
+				log.error("\(info)")
 				failure()
 			}
 			}, option: nil)
+	}
+
+	/**
+     上传到cjw七牛服务器
+     
+     - parameter image:   图片nsdata
+     - parameter path:    路径
+     - parameter success: success description
+     - parameter failure: failure description
+     */
+	public func uploadCJWImage(image: UIImage, path: String, success: QPSuccessBlock, failure: QPFailBlock) {
+		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/1", param: nil, success: { (response) in
+			if let token = response["info"].string {
+				let cfg = QNConfiguration.build { (builder) in
+					builder.setZone(QNZone.zone1())
+				}
+				let baseUrl = "http://pic.cenjiawen.com/"
+				let upManager = QNUploadManager(configuration: cfg)
+				let uuid: String = NSUUID.init().UUIDString
+				let key = "\(path)/\(uuid)"
+				let imageUrl = "\(baseUrl)\(key)"
+				if let imageData = UIImagePNGRepresentation(image) {
+					upManager.putData(imageData, key: key, token: token, complete: { (info, key, resp) -> Void in
+						if (info.statusCode == 200 && resp != nil) {
+							success(response: JSON(imageUrl))
+						} else {
+							log.error("七牛上传失败")
+							log.error("\(info)")
+							failure()
+						}
+						}, option: nil)
+				} else {
+				}
+			} else {
+				failure()
+			}
+		}) {
+			failure()
+		}
 	}
 
 	/**
@@ -685,10 +725,10 @@ public extension QPHttpUtils {
      - parameter failure: failure description
      */
 	public func uploadImage(image: UIImage, path: String = "CJWUtilsS", success: QPSuccessBlock, failure: QPFailBlock) {
-		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/", param: nil, success: { (response) in
+		QPHttpUtils.sharedInstance.newHttpRequest("http://qp.cenjiawen.com:9090/qntoken/", param: nil, success: { (response) in
 			if let token = response["info"].string {
-				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
-				self.uploadImage(tmpImg, path: path, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
+//				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
+				self.uploadImage(image, path: path, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
 			} else {
 				failure()
 			}
