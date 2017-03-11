@@ -11,6 +11,29 @@ import iRate
 import iVersion
 
 public class QPVersionUtils: NSObject {
+
+	class func isForceUpdate() {
+		if let bundleId = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as? String {
+			print("\(bundleId)")
+			let checkUrl = "http://quickplain.cenjiawen.com:666/service/appversion/check";
+			let lastUrl = "http://quickplain.cenjiawen.com:666/service/appversion/latest";
+			let build = AppInfoManager.getBuild();
+			let version = AppInfoManager.getVersion();
+			let param = ["versionPackage": "\(bundleId)", "id": "6", "versionType": "1", "versionCode": "\(build)", "version": "\(version)"]
+			QPHttpUtils.sharedInstance.newHttpRequest(checkUrl, param: param, success: { (response) in
+				log.info("\(response)")
+				}, fail: {
+				//
+			})
+			QPHttpUtils.sharedInstance.newHttpRequest(checkUrl, param: param, success: { (response) in
+				log.info("\(response)")
+				}, fail: {
+				//
+			})
+		} else {
+			log.error("fail to get bundle id")
+		}
+	}
 	public class func setup() {
 		let version = iVersion.sharedInstance()
 		version.inThisVersionTitle = "版本更新"

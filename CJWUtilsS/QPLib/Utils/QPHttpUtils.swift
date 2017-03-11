@@ -725,7 +725,7 @@ public extension QPHttpUtils {
      - parameter failure: failure description
      */
 	public func uploadImage(image: UIImage, path: String = "CJWUtilsS", success: QPSuccessBlock, failure: QPFailBlock) {
-		QPHttpUtils.sharedInstance.newHttpRequest("http://qp.cenjiawen.com:9090/qntoken/", param: nil, success: { (response) in
+		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/", param: nil, success: { (response) in
 			if let token = response["info"].string {
 //				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
 				self.uploadImage(image, path: path, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
