@@ -1145,3 +1145,20 @@ public class QPWelcomViewController: QPViewController {
 
 	}
 }
+
+public extension JSON {
+	public var doubleSubValue: String {
+		let number = self.doubleValue
+		let text = "\(number.subDouble(2))"
+		return text
+	}
+}
+
+public extension String {
+	public func copyToPasteboard() {
+		if self != "" {
+			UIPasteboard.generalPasteboard().string = self
+		}
+	}
+}
+

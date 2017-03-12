@@ -167,11 +167,35 @@ public class QPBaseTableViewController: UITableViewController {
 			qpCell.setup()
 			qpCell.rootViewController = self
 			qpCell.indexPath = indexPath
+			smoothUpdate(qpCell, indexPath: indexPath)
 			return qpCell
 		}
+		smoothUpdate(cell, indexPath: indexPath)
 		return cellForRow(atIndexPath: indexPath)
 	}
 
+	/**
+     平滑的更新cell
+     
+     - parameter cell:      要更新的cell
+     - parameter indexPath: NSIndexPath
+     */
+	public func smoothUpdate(cell: UITableViewCell, indexPath: NSIndexPath) {
+	}
+
+	/**
+     平滑的更新cell
+     前提是要先实现smoothUpdate,在这个方法里面实现cell内容的设置.✨
+     强烈推荐使用,不会导致页面跳动.不过稍微麻烦一点点
+     待测试
+     
+     - parameter indexPath: NSIndexPath
+     */
+	public func smoothReload(indexPath: NSIndexPath) {
+		if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+			smoothUpdate(cell, indexPath: indexPath)
+		}
+	}
 	/**
 	 新版版使用这个方法加载cell
 
@@ -403,5 +427,21 @@ public extension UITableView {
 	public func setInsets(insets: UIEdgeInsets) {
 		self.contentInset = insets;
 		self.scrollIndicatorInsets = insets;
+	}
+}
+
+public extension UITableView {
+	public func reloadIndexPath(indexPath: NSIndexPath) {
+		dispatch_async(dispatch_get_main_queue()) { () -> Void in
+			self.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+		}
+	}
+
+	public func reloadVisibleData() {
+		if let indexPaths = self.indexPathsForVisibleRows {
+			dispatch_async(dispatch_get_main_queue()) { () -> Void in
+				self.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
+			}
+		}
 	}
 }

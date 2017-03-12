@@ -668,6 +668,9 @@ public extension QPHttpUtils {
 		let imageUrl = "\(baseUrl)\(key)"
 		upManager.putData(data, key: key, token: token, complete: { (info, key, resp) -> Void in
 			if (info.statusCode == 200 && resp != nil) {
+//				self.newHttpRequest("http://qp.cenjiawen.com:9090/image", param: ["img": "\(imageUrl)"], success: { (response) in
+//					}, fail: {
+//				})
 				success(response: JSON(imageUrl))
 			} else {
 				log.error("七牛上传失败")
