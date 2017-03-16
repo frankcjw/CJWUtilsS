@@ -49,7 +49,11 @@ public extension UITableView {
 		self.refresFooter?.hidden = false
 	}
 	public func hideFooter() {
-		self.refresFooter?.hidden = true
+		if let refresFooter = refresFooter {
+			refresFooter.hidden = true
+		} else {
+			log.warning("no footer")
+		}
 	}
 
 	/**

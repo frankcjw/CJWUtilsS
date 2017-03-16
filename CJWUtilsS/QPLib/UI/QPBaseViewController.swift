@@ -106,18 +106,28 @@ public extension UIViewController {
 		}
 	}
 
-	public func setBackTitle(title: String) {
+	/**
+     测试,失败了
+     
+     - parameter title: <#title description#>
+     */
+	func setBackTitle(title: String) {
 		let button = UIButton(frame: CGRectMake(0, 0, 30, 30))
 		button.setBackgroundImage(UIImage(named: "Practicetopic_icon_back"), forState: .Normal)
 		button.addTarget(self, action: Selector("controllerDismiss"), forControlEvents: UIControlEvents.TouchUpInside)
 		let back = UIBarButtonItem()
 		// back.title = title
 		back.customView = button
-		// self.navigationItem.backBarButtonItem = back
-		// self.navigationItem.leftBarButtonItem = back
+		self.navigationItem.backBarButtonItem = back
+//		self.navigationItem.leftBarButtonItem = back
 	}
 
-	public func setBackAction(action: Selector) {
+	/**
+     测试,失败了
+     重写navigationShouldPopOnBackButton这个方法实现吧少年
+     - parameter action:
+     */
+	func setBackAction(action: Selector) {
 		let back = UIBarButtonItem()
 		// back.title = title
 		back.action = action
@@ -130,6 +140,9 @@ public extension UIViewController {
 			self.navigationController?.view.showHUDTemporary(text)
 		} else {
 			self.view.showHUDTemporary(text)
+		}
+		if let vc = self as? UITableViewController {
+			vc.tableView.endRefreshing()
 		}
 	}
 }

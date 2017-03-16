@@ -12,6 +12,7 @@ import UIKit
 public class QPResponder: UIResponder, UIApplicationDelegate {
 
 	public var window: UIWindow?
+	public var isNewFeature = false
 
 	class var sharedInstance: QPResponder {
 		struct Static {
@@ -39,22 +40,46 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QPResponder.onLogout), name: "onLogout", object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QPResponder.onLogin(_:)), name: "onLogin", object: nil)
 
-		if onAutoLogin() {
-		} else {
-			showLogin()
+		/**
+         *  是新装或者更新软件,不处理
+         */
+		if !isNewFeature {
+			setupLoginStatus()
 		}
 		return true
 	}
 
+	/**
+     处理登录状态请求
+     */
+	public func setupLoginStatus() {
+		if onAutoLogin() {
+		} else {
+			showLogin()
+		}
+	}
+
+	/**
+     检查更新
+     */
 	public func checkForceUpdate() {
 		QPVersionUtils.isForceUpdate()
 		QPVersionUtils.setup()
 
 	}
 
+	/**
+     随意弹出页面
+     
+     - parameter viewController: <#viewController description#>
+     */
 	public func showVC(viewController: UIViewController) {
 		window?.rootViewController = viewController
 		window?.makeKeyAndVisible()
+	}
+
+	public class func showVC(viewController: UIViewController) {
+		QPResponder.sharedInstance.showVC(viewController)
 	}
 
 	/**
@@ -78,7 +103,7 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 	}
 
 	/**
-     处理自动登录
+     处理自动登录,被动调用
      
      - returns: 是否正在进行自动登录
      */

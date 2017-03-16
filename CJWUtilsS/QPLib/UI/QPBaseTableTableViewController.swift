@@ -445,3 +445,9 @@ public extension UITableView {
 		}
 	}
 }
+
+public extension Int {
+	public mutating func pageReset() {
+		self = 1
+	}
+}

@@ -15,8 +15,8 @@ public class QPVersionUtils: NSObject {
 	class func isForceUpdate() {
 		if let bundleId = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as? String {
 			print("\(bundleId)")
-			let checkUrl = "http://quickplain.cenjiawen.com:666/service/appversion/check";
-			let lastUrl = "http://quickplain.cenjiawen.com:666/service/appversion/latest";
+			let checkUrl = "http://98.cenjiawen.com:666/service/appversion/check";
+			let lastUrl = "http://98.cenjiawen.com:666/service/appversion/latest";
 			let build = AppInfoManager.getBuild();
 			let version = AppInfoManager.getVersion();
 			let param = ["versionPackage": "\(bundleId)", "id": "6", "versionType": "1", "versionCode": "\(build)", "version": "\(version)"]
