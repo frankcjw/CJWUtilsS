@@ -46,6 +46,7 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 		if !isNewFeature {
 			setupLoginStatus()
 		}
+		log.outputLogLevel = .Debug
 		return true
 	}
 

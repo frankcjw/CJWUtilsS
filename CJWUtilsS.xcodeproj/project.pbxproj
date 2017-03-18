@@ -174,6 +174,8 @@
 		018AF15A1D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1451D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m */; };
 		018AF15B1D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1471D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m */; };
 		018AF15C1D8048520002ABBF /* MLSelectPhoto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 018AF1481D8048520002ABBF /* MLSelectPhoto.bundle */; };
+		019A93F11E7DB75D0061F305 /* QPScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A93F01E7DB75D0061F305 /* QPScrollView.swift */; };
+		019A93F31E7DB7770061F305 /* QPColumnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A93F21E7DB7770061F305 /* QPColumnsView.swift */; };
 		01A8FC611C96914200731483 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 01A8FC601C96914200731483 /* ExampleApp.html */; };
 		01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8FC621C96923F00731483 /* SecondeViewController.swift */; };
 		01B1E7E31D2521F700BF2841 /* CJWHello.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B1E7E21D2521F700BF2841 /* CJWHello.m */; };
@@ -488,6 +490,8 @@
 		018AF1461D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroupTableViewCell.h; sourceTree = "<group>"; };
 		018AF1471D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroupTableViewCell.m; sourceTree = "<group>"; };
 		018AF1481D8048520002ABBF /* MLSelectPhoto.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLSelectPhoto.bundle; sourceTree = "<group>"; };
+		019A93F01E7DB75D0061F305 /* QPScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPScrollView.swift; sourceTree = "<group>"; };
+		019A93F21E7DB7770061F305 /* QPColumnsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPColumnsView.swift; sourceTree = "<group>"; };
 		01A8FC601C96914200731483 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
 		01A8FC621C96923F00731483 /* SecondeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondeViewController.swift; sourceTree = "<group>"; };
 		01B1E7E11D2521F700BF2841 /* CJWHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJWHello.h; sourceTree = "<group>"; };
@@ -1011,6 +1015,8 @@
 				01699BA81E24E73B00C935A8 /* QPInnerScrollViewCellTableViewCell.swift */,
 				01789BDF1E56D2F800DAD024 /* QPExamTableViewController.swift */,
 				01789CC41E56DF1A00DAD024 /* QPEmojiLabel.swift */,
+				019A93F01E7DB75D0061F305 /* QPScrollView.swift */,
+				019A93F21E7DB7770061F305 /* QPColumnsView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1675,6 +1681,7 @@
 				018AF1521D8048520002ABBF /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				018AF1591D8048520002ABBF /* MLSelectPhotoPickerCollectionViewCell.m in Sources */,
 				01CEB4041DE2A120004AFD1F /* qrspec.c in Sources */,
+				019A93F11E7DB75D0061F305 /* QPScrollView.swift in Sources */,
 				018AF15B1D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				01CE0CB31D83FCC0009EC9B9 /* QPMapViewController.swift in Sources */,
 				01CAEFDF1C3BA737006E221A /* QPMemberUtils.swift in Sources */,
@@ -1713,6 +1720,7 @@
 				012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */,
 				018AF1551D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,
+				019A93F31E7DB7770061F305 /* QPColumnsView.swift in Sources */,
 				01CE0CBA1D83FE1E009EC9B9 /* QPLocationUtils.swift in Sources */,
 				01A8FC631C96923F00731483 /* SecondeViewController.swift in Sources */,
 				B64D5BC01A356CC500D137D1 /* ViewController.swift in Sources */,

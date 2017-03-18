@@ -594,6 +594,11 @@ public extension UIView {
 		self.centerY(view, predicate: "0")
 	}
 
+	public func centerView(view: UIView) {
+		self.centerY(view)
+		self.centerX(view)
+	}
+
 	public func centerY(view: UIView, predicate: String) {
 		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.alignCenterYWithView(view, predicate: predicate)
@@ -634,6 +639,11 @@ public extension UIView {
 	public func aspectRatio(predicate: String) {
 		let predicate = predicate.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		self.constrainAspectRatio(predicate)
+	}
+
+	public func aspectRatio(width: CGFloat, height: CGFloat) {
+		let scale: CGFloat = width / height
+		self.aspectRatio("*\(scale)")
 	}
 
 	public func equalConstrain() {
