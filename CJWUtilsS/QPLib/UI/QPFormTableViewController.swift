@@ -26,7 +26,7 @@ public class QPFormTableViewController: QPTableViewController {
 		self.addRightButton("提交", action: #selector(QPFormTableViewController.onSubmit))
 	}
 
-	public func onSubmit() {
+	public override func onSubmit() {
 
 	}
 

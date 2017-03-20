@@ -14,6 +14,18 @@ import GPUImage
 import PodAsset
 
 public class QPImageUtils: NSObject {
+
+	public class func saveToAlbum(image: UIImage) {
+		UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+	}
+
+//	public func saveToAlbum(image: UIImage) {
+//		UIImageWriteToSavedPhotosAlbum(image, self, "onSaveSuccess", nil)
+//	}
+//
+//	func onSaveSuccess() {
+//		print("onSaveSuccess")
+//	}
 }
 
 public extension UIImageView {
@@ -138,6 +150,35 @@ public extension UIImageView {
 	}
 }
 
+public class QPCircleView: UIView {
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		toCircleView()
+	}
+
+	override public func updateConstraints() {
+		super.updateConstraints()
+	}
+
+	public func setup() {
+	}
+
+	convenience public init () {
+		self.init(frame: CGRect.zero)
+		setup()
+	}
+
+	override public init(frame: CGRect) {
+		super.init(frame: frame)
+		setup()
+	}
+
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		setup()
+	}
+}
+
 public class QPCircleImageView: UIImageView {
 	public override func layoutSubviews() {
 		super.layoutSubviews()
@@ -245,5 +286,8 @@ public extension UIImageView {
 
 		// self.scaleAspectFill()
 	}
+}
+
+public extension UIImage {
 
 }

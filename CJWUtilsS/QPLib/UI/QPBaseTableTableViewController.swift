@@ -130,8 +130,7 @@ public class QPBaseTableViewController: UITableViewController {
 		}
 		load()
 		updateFloatViewFrame()
-		self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
-        self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+		self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
 	}
 
 	override public func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -326,6 +325,9 @@ extension QPBaseTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 	public func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint {
 		return CGPointMake(0, -30)
 	}
+
+	public func onSubmit() {
+	}
 }
 
 public extension UITableViewController {
@@ -452,3 +454,4 @@ public extension Int {
 		self = 1
 	}
 }
+

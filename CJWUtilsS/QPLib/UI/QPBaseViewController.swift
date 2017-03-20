@@ -194,6 +194,13 @@ public extension UIViewController {
 		let barButton = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: action)
 		self.navigationItem.rightBarButtonItem = barButton
 	}
+
+	public func addRightButton(title: String) {
+		self.addRightButton(title, action: "onClickRightButton")
+	}
+
+	public func onClickRightButton() {
+	}
 }
 
 public extension UIViewController {

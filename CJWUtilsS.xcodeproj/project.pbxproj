@@ -19,6 +19,8 @@
 		01298BE21E07B286005715BD /* rsa_public_key_java.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01298BE11E07B286005715BD /* rsa_public_key_java.pem */; };
 		01298BE41E07B36E005715BD /* rsa_private_key_java.pem in Resources */ = {isa = PBXBuildFile; fileRef = 01298BE31E07B36E005715BD /* rsa_private_key_java.pem */; };
 		012F30051C521812003891E5 /* QPDBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F30041C521812003891E5 /* QPDBUtils.swift */; };
+		0134D2931E7E8AD40050625B /* QPInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134D2921E7E8AD40050625B /* QPInputTableViewCell.swift */; };
+		0134D2951E7E8B710050625B /* QPTipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134D2941E7E8B710050625B /* QPTipsLabel.swift */; };
 		0136C1311E669F7200092290 /* QPFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136C1301E669F7200092290 /* QPFeatureViewController.swift */; };
 		013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA401D89319500EF8254 /* UIApplication+Extend.m */; };
 		013BCA4E1D89319500EF8254 /* UIView+NFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA421D89319500EF8254 /* UIView+NFLayout.m */; };
@@ -303,6 +305,8 @@
 		01298BE11E07B286005715BD /* rsa_public_key_java.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key_java.pem; sourceTree = "<group>"; };
 		01298BE31E07B36E005715BD /* rsa_private_key_java.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_private_key_java.pem; sourceTree = "<group>"; };
 		012F30041C521812003891E5 /* QPDBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPDBUtils.swift; sourceTree = "<group>"; };
+		0134D2921E7E8AD40050625B /* QPInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPInputTableViewCell.swift; sourceTree = "<group>"; };
+		0134D2941E7E8B710050625B /* QPTipsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPTipsLabel.swift; sourceTree = "<group>"; };
 		0136C1301E669F7200092290 /* QPFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPFeatureViewController.swift; sourceTree = "<group>"; };
 		013BCA3F1D89319500EF8254 /* UIApplication+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Extend.h"; sourceTree = "<group>"; };
 		013BCA401D89319500EF8254 /* UIApplication+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Extend.m"; sourceTree = "<group>"; };
@@ -1017,6 +1021,8 @@
 				01789CC41E56DF1A00DAD024 /* QPEmojiLabel.swift */,
 				019A93F01E7DB75D0061F305 /* QPScrollView.swift */,
 				019A93F21E7DB7770061F305 /* QPColumnsView.swift */,
+				0134D2921E7E8AD40050625B /* QPInputTableViewCell.swift */,
+				0134D2941E7E8B710050625B /* QPTipsLabel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1698,6 +1704,7 @@
 				01F5DBBA1E2780FF0068E317 /* QPSNSUtils.swift in Sources */,
 				01CAEFD21C3BA737006E221A /* UIViewController+BackButtonHandler.m in Sources */,
 				01CAEFD51C3BA737006E221A /* QPBaseTableTableViewController.swift in Sources */,
+				0134D2951E7E8B710050625B /* QPTipsLabel.swift in Sources */,
 				01CAEFDC1C3BA737006E221A /* QPCacheUtils.swift in Sources */,
 				01CAEFE11C3BA737006E221A /* QPUtils.swift in Sources */,
 				01CAEFD31C3BA737006E221A /* QPAlertActionUtils.swift in Sources */,
@@ -1712,6 +1719,7 @@
 				01F5DBB81E2736E90068E317 /* QPAdvTableViewCell.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				01CEB4061DE2A120004AFD1F /* split.c in Sources */,
+				0134D2931E7E8AD40050625B /* QPInputTableViewCell.swift in Sources */,
 				01F201AB1D80391A00DA5ABB /* CJWDesEncrypt.m in Sources */,
 				018AF14E1D8048520002ABBF /* MLSelectPhotoPickerGroup.m in Sources */,
 				018AF1531D8048520002ABBF /* MLSelectPhotoPickerViewController.m in Sources */,

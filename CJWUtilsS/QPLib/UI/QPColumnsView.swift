@@ -8,11 +8,14 @@
 
 import UIKit
 
-public class QPColumnsView: UIView {
+public class QPColumnsView: UIControl {
 
 	private var count = 2
 	public var labels: [UILabel] = []
 	public var lines: [UIView] = []
+	public var indicatorLines: [UIView] = []
+	public var currentIndex = 0
+	public var selectAble = true
 
 	public func hideLines(flag: Bool = true) {
 		for line in lines {
@@ -57,14 +60,27 @@ public class QPColumnsView: UIView {
 
 	public override func updateConstraints() {
 		super.updateConstraints()
-
 	}
 
 	public func setupLabel(label: UILabel) {
 		label.numberOfLines = 0
+		label.cornorRadius(15)
 	}
 
 	public func setupLine(view: UIView) {
+
+		if count == 1 {
+//			let xPredicate = UIView.predicate(1, count: 1)
+//			let line = UIView()
+//			view.addSubview(line)
+//			line.widthConstrain("1")
+//			line.height(view, predicate: "*0.6")
+//			line.centerY(view)
+//			line.centerX(view, predicate: "*\(xPredicate)")
+//			line.backgroundColorWhite()
+//			lines.append(line)
+			return
+		}
 		for index in 1 ... count - 1 {
 			let xPredicate = Float(2) * Float(index) / Float(count)
 			let line = UIView()
@@ -88,7 +104,7 @@ public class QPColumnsView: UIView {
 			let bbb: Float = (countFloat * 1)
 			let xPredicate: Float = aaa / bbb
 			let label = UILabel()
-			label.tag = index
+			label.tag = index - 1
 			labels.append(label)
 			view.addSubview(label)
 
@@ -100,32 +116,82 @@ public class QPColumnsView: UIView {
 			label.text = "label \(index)"
 			label.textColor = UIColor.whiteColor()
 			label.font = FONT_NORMAL
+			label.addTapGesture(self, action: "onTap:")
 
 			setupLabel(label)
+
+			let line = UIView()
+			view.addSubview(line)
+			line.bottomAlign(view, predicate: "0")
+			line.width(label)
+			line.heightConstrain("2")
+			line.centerX(label)
+			line.backgroundColor = UIColor.mainColor()
+			line.hidden = true
+			indicatorLines.append(line)
+
 		}
+	}
+
+	func onTap(gesture: UIGestureRecognizer) {
+		if let tag = gesture.view?.tag {
+			selectIndex(tag)
+			self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+		}
+
 	}
 
 	public func setup(view: UIView) {
 	}
 
-}
+	public func selectIndex(index: Int) {
+		if !selectAble {
+			return
+		}
+		if index < labels.count {
+			for label in labels {
+				label.backgroundColor = UIColor.whiteColor()
+				label.textColor = UIColor.darkGrayColor()
+			}
+			for line in indicatorLines {
+				line.hidden = true
+			}
 
-public class QPColumnsView2: QPColumnsView {
-	public let imageView = UIImageView()
+			let label = labelAt(index)
+			label.backgroundColor = UIColor.mainColor()
+			label.textColor = UIColor.whiteColor()
+			indicatorLines[index].hidden = false
+			self.currentIndex = index
+		}
 
-	public override func setupData(view: UIView) {
-		super.setupData(view)
-		view.addSubview(imageView)
-		let label = labelAt(labels.count - 1)
-		label.hidden = true
-		imageView.centerX(label)
-		imageView.centerY(label)
-		// imageView.aspectRatio()
-		imageView.height(label)
-		imageView.scaleAspectFit()
-		imageView.image("w_unit")
 	}
+
+	public func custom(block: (label: UILabel, index: Int) -> ()) {
+		var index = 0
+		for label in labels {
+			block(label: label, index: index)
+			index += 1
+		}
+	}
+
 }
+
+//public class QPColumnsView2: QPColumnsView {
+//	public let imageView = UIImageView()
+//
+//	public override func setupData(view: UIView) {
+//		super.setupData(view)
+//		view.addSubview(imageView)
+//		let label = labelAt(labels.count - 1)
+//		label.hidden = true
+//		imageView.centerX(label)
+//		imageView.centerY(label)
+//		// imageView.aspectRatio()
+//		imageView.height(label)
+//		imageView.scaleAspectFit()
+//		imageView.image("w_unit")
+//	}
+//}
 
 public extension UILabel {
 	func setTitle(title: String, subtitle: String, titleColor: UIColor, subtitleColor: UIColor) {

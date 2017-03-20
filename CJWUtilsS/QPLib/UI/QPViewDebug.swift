@@ -30,7 +30,11 @@ public extension UIView {
 		} else if let label = self as? UILabel {
 			self.backgroundColor = UIColor.peterRiverColor()
 			if label.text == nil {
-				label.text = "Label"
+				if label.numberOfLines > 0 {
+					label.text = "Label\nLabel\nLabel\nLabel\nLabel"
+				} else {
+					label.text = "Label"
+				}
 			}
 		} else if let button = self as? UIButton {
 			button.setTitle("Button", forState: UIControlState.Normal)

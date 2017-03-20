@@ -59,6 +59,9 @@ public class QPSegmentViewController: UITabBarController {
 		for index in 0...(count - 1) {
 			titles.append(titleAt(index))
 			let vc = viewControllerAt(index)
+			if let vc = vc as? QPSegmenChildTableViewController {
+				vc.rootSegment = self
+			}
 //			self.addChildViewController(UINavigationController(rootViewController: vc))
 			if self.navigationController != nil {
 				log.debug("!=nil")
@@ -144,7 +147,9 @@ public extension QPSegmentViewController {
 	}
 
 	public func selectIndex(index: Int) {
-		self.segment.selectedSegmentIndex = index
+		if let segment = segment {
+			segment.selectedSegmentIndex = index
+		}
 		self.selectedIndex = index
 		onSegmentChanged(index)
 	}
@@ -203,3 +208,8 @@ class QPTabBarViewController: UITabBarController {
 		}
 	}
 }
+
+public class QPSegmenChildTableViewController: QPTableViewController {
+	public var rootSegment: QPSegmentViewController!
+}
+

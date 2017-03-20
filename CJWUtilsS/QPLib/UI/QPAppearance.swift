@@ -47,7 +47,7 @@ private var screenHeight: CGFloat {
 public let capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 public let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-class QPAppearance: NSObject {
+public class QPAppearance: NSObject {
 	class func setup() {
 		// UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(),NSFontAttributeName: FONT_TITLE]
 		// UIButton.appearance().tintColor = MAIN_COLOR
@@ -470,5 +470,65 @@ public extension UIView {
 			self.topAlign(view, predicate: "\(padding)")
 			self.bottomAlign(view, predicate: "-\(padding)")
 		}
+	}
+}
+
+public extension UIFont {
+	/*
+	 public let FONT_TITLE = UIFont.boldSystemFontOfSize(15)
+	 public let FONT_NORMAL = UIFont.systemFontOfSize(14)
+	 public let FONT_BIG = UIFont.systemFontOfSize(15)
+	 public let FONT_NORMAL_BOLD = UIFont.boldSystemFontOfSize(14)
+	 public let FONT_LARGE = UIFont.systemFontOfSize(18)
+	 public let FONT_SMALL = UIFont.systemFontOfSize(12)
+	 public let FONT_SMALL_BOLD = UIFont.boldSystemFontOfSize(12)
+	 */
+
+	public class func fontSmall() -> UIFont {
+		return UIFont.systemFontOfSize(12)
+	}
+
+	public class func fontNormal() -> UIFont {
+		return UIFont.systemFontOfSize(14)
+	}
+
+	public class func fontBig() -> UIFont {
+		return UIFont.systemFontOfSize(17)
+	}
+
+	public class func fontLarge() -> UIFont {
+		return UIFont.systemFontOfSize(20)
+	}
+}
+
+public extension UIView {
+	/**
+     等分位置
+     
+     - parameter index: 从1开始
+     - parameter count: 分成积分
+     
+     - returns:
+     */
+	public class func predicate(index: Int, count: Int) -> Float {
+		let indexFloat = NSNumber(integer: index).floatValue
+		let countFloat = NSNumber(integer: count).floatValue
+		let aaa: Float = indexFloat * 2 - 1
+		let bbb: Float = (countFloat * 1)
+		let xPredicate: Float = aaa / bbb
+		return xPredicate
+	}
+
+	/**
+     等分位置
+     
+     - parameter index: 从1开始
+     - parameter count: 分成积分
+     
+     - returns:
+     */
+	public class func predicateString(index: Int, count: Int) -> String {
+		let predicate = "*\(UIView.predicate(index, count: count))"
+		return predicate
 	}
 }

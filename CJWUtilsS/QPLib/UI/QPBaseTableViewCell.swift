@@ -181,6 +181,7 @@ public class QPBaseTableViewCell: UITableViewCell {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
 	}
+
 }
 
 public extension UITableView {
@@ -196,6 +197,32 @@ public extension UITableViewCell {
 	public func disableSeparator() {
 		separatorInset = UIEdgeInsetsMake(0, bounds.size.width * 2, 0, 0);
 	}
+}
+
+public class QPSubmitTableViewCell: QPTableViewCell {
+
+	public let titleLabel = UILabel()
+
+	public override func setupViews(view: UIView) {
+		super.setupViews(view)
+		view.addSubview(titleLabel)
+		titleLabel.cornorRadius(5)
+		titleLabel.backgroundColor = UIColor.mainColor()
+		titleLabel.textAlignmentCenter()
+		titleLabel.textColor = UIColor.whiteColor()
+		titleLabel.font = UIFont.fontNormal()
+		self.disableSeparator()
+	}
+
+	public override func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+		titleLabel.leadingAlign(view)
+		titleLabel.trailingAlign(view)
+		titleLabel.bottomAlign(view)
+		titleLabel.topAlign(view)
+		titleLabel.heightConstrain("44")
+	}
+
 }
 
 public class QPConfirmTableViewCell: QPTableViewCell {
@@ -321,6 +348,32 @@ public class QPNormalTableViewCell: UITableViewCell {
 	public func setup() {
 		self.setNeedsUpdateConstraints()
 		self.updateConstraintsIfNeeded()
+	}
+}
+
+public extension UITableView {
+	public func registerQPInputCell() {
+		self.registerClass(QPInputTableViewCell.self, forCellReuseIdentifier: "QPInputTableViewCell")
+	}
+
+	public func registerQPNumberCell() {
+		self.registerClass(QPInputNumberTableViewCell.self, forCellReuseIdentifier: "QPInputNumberTableViewCell")
+	}
+
+	public func registerQPInputMobileCell() {
+		self.registerClass(QPInputMobileTableViewCell.self, forCellReuseIdentifier: "QPInputMobileTableViewCell")
+	}
+
+	public func registerQPInputPasswordCell() {
+		self.registerClass(QPInputPasswordTableViewCell.self, forCellReuseIdentifier: "QPInputPasswordTableViewCell")
+	}
+
+	public func registerQPInputCell2() {
+		self.registerClass(QPInputTableViewCell2.self, forCellReuseIdentifier: "QPInputTableViewCell2")
+	}
+
+	public func registerQPLabelCell() {
+		self.registerClass(QPLabelTableViewCell.self, forCellReuseIdentifier: "QPLabelTableViewCell")
 	}
 }
 
