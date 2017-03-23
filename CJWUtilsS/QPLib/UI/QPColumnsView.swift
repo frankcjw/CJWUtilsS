@@ -15,12 +15,40 @@ public class QPColumnsView: UIControl {
 	public var lines: [UIView] = []
 	public var indicatorLines: [UIView] = []
 	public var currentIndex = 0
-	public var selectAble = true
+	public var selectAble = false
+	public var identifier = ""
 
 	public func hideLines(flag: Bool = true) {
 		for line in lines {
 			line.hidden = flag
 		}
+	}
+
+	public typealias QPColumnsViewCustomBlock = (label: UILabel) -> ()
+
+	var onSelectedBlock: QPColumnsViewCustomBlock?
+	var onDeselectedBlock: QPColumnsViewCustomBlock?
+
+	public func clearCornor() {
+		for label in self.labels {
+			label.cornorRadius(0)
+		}
+	}
+
+	public func setupOnSelected(block: QPColumnsViewCustomBlock) {
+		self.onSelectedBlock = block
+	}
+
+	public func setupOnDeselected(block: QPColumnsViewCustomBlock) {
+		self.onDeselectedBlock = block
+	}
+
+	public typealias QPColumnsViewBlock = (index: Int) -> ()
+
+	public var block: QPColumnsViewBlock?
+
+	public func onIndexChanged(block: QPColumnsViewBlock) {
+		self.block = block
 	}
 
 	public func labelAt(index: Int) -> UILabel {
@@ -136,9 +164,23 @@ public class QPColumnsView: UIControl {
 	func onTap(gesture: UIGestureRecognizer) {
 		if let tag = gesture.view?.tag {
 			selectIndex(tag)
-			self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+			if let block = block {
+				block(index: tag)
+			} else {
+				self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+			}
 		}
 
+	}
+
+	public func onSelected(label: UILabel) {
+		label.backgroundColor = UIColor.mainColor()
+		label.textColor = UIColor.whiteColor()
+	}
+
+	public func onDeselected(label: UILabel) {
+		label.backgroundColor = UIColor.whiteColor()
+		label.textColor = UIColor.darkGrayColor()
 	}
 
 	public func setup(view: UIView) {
@@ -150,16 +192,16 @@ public class QPColumnsView: UIControl {
 		}
 		if index < labels.count {
 			for label in labels {
-				label.backgroundColor = UIColor.whiteColor()
-				label.textColor = UIColor.darkGrayColor()
+				onDeselected(label)
+				onDeselectedBlock?(label: label)
 			}
 			for line in indicatorLines {
 				line.hidden = true
 			}
 
 			let label = labelAt(index)
-			label.backgroundColor = UIColor.mainColor()
-			label.textColor = UIColor.whiteColor()
+			onSelected(label)
+			onSelectedBlock?(label: label)
 			indicatorLines[index].hidden = false
 			self.currentIndex = index
 		}

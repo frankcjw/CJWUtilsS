@@ -53,8 +53,8 @@ public class QPScrollView: UIView, UIScrollViewDelegate {
 		setup(self)
 
 		pageControl.numberOfPages = count
-		pageControl.pageIndicatorTintColor = UIColor.yellowColor()
-		pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
+		pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+		pageControl.currentPageIndicatorTintColor = UIColor.mainColor()
 		scrollView.pagingEnabled = true
 
 	}
@@ -69,15 +69,13 @@ public class QPScrollView: UIView, UIScrollViewDelegate {
 
 	public override func drawRect(rect: CGRect) {
 		super.drawRect(rect)
-		log.info("\(self.count)")
 		let widCount = NSNumber(integer: self.count).CGFloatValue()
-		let minus: CGFloat = 64 + 49
-		scrollView.contentSize = CGSizeMake(self.width * widCount, self.height - minus)
+		scrollView.contentSize = CGSizeMake(self.width * widCount, self.height - 49)
 		for index in 0 ... count - 1 {
 			let xPos = NSNumber(integer: index).CGFloatValue() * self.width
 			let containerView = UIView()
-			containerView.frame = CGRectMake(xPos, 0, self.width, self.height - minus)
-			let rect = CGRectMake(0, 0, self.width, self.height - minus)
+			containerView.frame = CGRectMake(xPos, 0, self.width, self.height)
+			let rect = CGRectMake(0, 0, self.width, self.height)
 			if let customView = block?(page: index, rect: rect) {
 				containerView.addSubview(customView)
 			}

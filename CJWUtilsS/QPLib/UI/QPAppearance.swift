@@ -403,6 +403,14 @@ public extension UIImageView {
 			self.tintColor = color
 		}
 	}
+
+	public func imageMainColor(name: String) {
+		if let img = UIImage(named: name) {
+			let tmpImg = img.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+			self.image = tmpImg
+			self.tintColor = UIColor.mainColor()
+		}
+	}
 }
 
 public class QPTImageView: UIImageView {
@@ -530,5 +538,79 @@ public extension UIView {
 	public class func predicateString(index: Int, count: Int) -> String {
 		let predicate = "*\(UIView.predicate(index, count: count))"
 		return predicate
+	}
+
+	public class func fractions(numerator: Int, denominator: Int) -> CGFloat {
+		return CGFloat(numerator) / CGFloat(denominator)
+	}
+}
+
+public class QPInputMobileTextField: QPInputTextField {
+	public override func drawRect(rect: CGRect) {
+		super.drawRect(rect)
+		self.keyboardType = UIKeyboardType.PhonePad
+	}
+}
+
+public class QPInputNumberTextField: QPInputTextField {
+	public override func drawRect(rect: CGRect) {
+		super.drawRect(rect)
+		self.keyboardType = UIKeyboardType.NumberPad
+	}
+}
+
+public class QPInputPasswordTextField: QPInputTextField {
+	public override func drawRect(rect: CGRect) {
+		super.drawRect(rect)
+		self.secureTextEntry = true
+	}
+}
+
+public class QPInputTextField: UITextField, UITextFieldDelegate {
+
+	public typealias QPTextFieldBlock = (text: String) -> ()
+
+	var block: QPTextFieldBlock?
+	public override func drawRect(rect: CGRect) {
+		super.drawRect(rect)
+		delegate = self
+		self.clearButtonMode = UITextFieldViewMode.WhileEditing
+	}
+
+	public func onTextChanged(block: QPTextFieldBlock) {
+		self.block = block
+	}
+
+	public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		let text = QPUtils.getTextFiedlChangedText(textField, shouldChangeCharactersInRange: range, replacementString: string)
+		block?(text: text)
+		return true
+	}
+
+	public func textFieldShouldClear(textField: UITextField) -> Bool {
+		block?(text: "")
+		return true
+	}
+}
+
+public extension UITextField {
+	public func inputPassword() {
+		self.inputText()
+		self.secureTextEntry = true
+	}
+
+	public func inputNumber() {
+		self.keyboardType = UIKeyboardType.NumberPad
+		self.secureTextEntry = false
+	}
+
+	public func inputPhone() {
+		self.keyboardType = UIKeyboardType.PhonePad
+		self.secureTextEntry = false
+	}
+
+	public func inputText() {
+		self.keyboardType = UIKeyboardType.Default
+		self.secureTextEntry = false
 	}
 }

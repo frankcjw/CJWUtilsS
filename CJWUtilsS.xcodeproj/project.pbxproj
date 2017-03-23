@@ -28,6 +28,7 @@
 		013BCA501D89319500EF8254 /* NewFeatureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA471D89319500EF8254 /* NewFeatureModel.m */; };
 		013BCA511D89319500EF8254 /* NewFeatureImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA4A1D89319500EF8254 /* NewFeatureImageV.m */; };
 		013BCA521D89319500EF8254 /* NewFeatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013BCA4C1D89319500EF8254 /* NewFeatureScrollView.m */; };
+		01412DF51E8126EB00E45627 /* LGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01412DF41E8126EB00E45627 /* LGView.swift */; };
 		015001A31D59786D00CA34F5 /* QPFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015001A21D59786D00CA34F5 /* QPFloatView.swift */; };
 		015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172271C4C914F00EEB9ED /* QPImageUtils.swift */; };
 		0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */; };
@@ -320,6 +321,7 @@
 		013BCA4A1D89319500EF8254 /* NewFeatureImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureImageV.m; sourceTree = "<group>"; };
 		013BCA4B1D89319500EF8254 /* NewFeatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureScrollView.h; sourceTree = "<group>"; };
 		013BCA4C1D89319500EF8254 /* NewFeatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureScrollView.m; sourceTree = "<group>"; };
+		01412DF41E8126EB00E45627 /* LGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGView.swift; sourceTree = "<group>"; };
 		015001A21D59786D00CA34F5 /* QPFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPFloatView.swift; sourceTree = "<group>"; };
 		015172271C4C914F00EEB9ED /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
 		015172291C4C9BA000EEB9ED /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
@@ -1023,6 +1025,7 @@
 				019A93F21E7DB7770061F305 /* QPColumnsView.swift */,
 				0134D2921E7E8AD40050625B /* QPInputTableViewCell.swift */,
 				0134D2941E7E8B710050625B /* QPTipsLabel.swift */,
+				01412DF41E8126EB00E45627 /* LGView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1775,6 +1778,7 @@
 				01CEB4051DE2A120004AFD1F /* rscode.c in Sources */,
 				017C35771DA8C1DA0062C3B1 /* QPEventUtils.swift in Sources */,
 				01789CC21E56DEEB00DAD024 /* MLEmojiLabel.m in Sources */,
+				01412DF51E8126EB00E45627 /* LGView.swift in Sources */,
 				01CAEFD61C3BA737006E221A /* QPBaseTableViewCell.swift in Sources */,
 				015001A31D59786D00CA34F5 /* QPFloatView.swift in Sources */,
 				015172281C4C914F00EEB9ED /* QPImageUtils.swift in Sources */,
