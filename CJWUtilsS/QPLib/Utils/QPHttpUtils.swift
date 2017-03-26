@@ -31,6 +31,10 @@ let pageSize = 50
 
 public class QPHttpUtils: NSObject {
 
+	public class func pageSize() -> Int {
+		return 100
+	}
+
 	/**
      是否连接WiFi,有待详尽测试
      
@@ -231,6 +235,8 @@ public class QPHttpUtils: NSObject {
 		}
 	}
 
+	public func coreOperation(url: String, param: [String: AnyObject]!, expires: NSTimeInterval = 0, success: QPSuccessBlock!, fail: QPFailBlock!) {
+	}
 	/**
 	 新的http方法,推荐使用
 

@@ -136,6 +136,7 @@ public extension UIViewController {
 
 	public func showNetworkException() {
 		let text = "网络错误"
+		self.view.hideAllHUD()
 		if view is UITableView {
 			self.navigationController?.view.showHUDTemporary(text)
 		} else {

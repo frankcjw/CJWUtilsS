@@ -86,10 +86,15 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 		QPResponder.sharedInstance.showVC(viewController)
 	}
 
+	public func showNaviVC(vc: UIViewController) {
+		let navi = UINavigationController(rootViewController: vc)
+		self.showVC(navi)
+	}
+
 	/**
      登录成功通知
      
-     - parameter notification: <#notification description#>
+     - parameter notification:
      */
 	public func onLogin(notification: NSNotification) {
 	}

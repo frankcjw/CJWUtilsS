@@ -604,6 +604,10 @@ public extension UITextField {
 		self.secureTextEntry = false
 	}
 
+	public func inputMobile() {
+		inputPhone()
+	}
+
 	public func inputPhone() {
 		self.keyboardType = UIKeyboardType.PhonePad
 		self.secureTextEntry = false

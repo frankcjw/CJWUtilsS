@@ -15,7 +15,7 @@ public class QPColumnsView: UIControl {
 	public var lines: [UIView] = []
 	public var indicatorLines: [UIView] = []
 	public var currentIndex = 0
-	public var selectAble = false
+	public var selectable = false
 	public var identifier = ""
 
 	public func hideLines(flag: Bool = true) {
@@ -187,7 +187,7 @@ public class QPColumnsView: UIControl {
 	}
 
 	public func selectIndex(index: Int) {
-		if !selectAble {
+		if !selectable {
 			return
 		}
 		if index < labels.count {

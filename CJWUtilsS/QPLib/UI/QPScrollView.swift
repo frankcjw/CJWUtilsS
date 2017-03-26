@@ -28,9 +28,9 @@ public class QPScrollView: UIView, UIScrollViewDelegate {
 	public func setup(view: UIView) {
 		view.addSubview(scrollView)
 		view.addSubview(pageControl)
-		view.backgroundColor = UIColor.lightGrayColor()
+		view.backgroundColor = UIColor.lightlightGrayColor()
 		scrollView.paddingConstrain(0)
-		scrollView.backgroundColor = UIColor.redColor()
+		scrollView.backgroundColor = UIColor.whiteColor()
 
 		pageControl.bottomAlign(self, predicate: "-50")
 		pageControl.centerX(self)

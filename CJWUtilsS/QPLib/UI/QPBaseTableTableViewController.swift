@@ -10,6 +10,7 @@ import UIKit
 import FlatUIKit
 import DZNEmptyDataSet
 import HMSegmentedControl
+import SwiftyJSON
 
 //private let imageError = UIImage(color: COLOR_CLEAR)//UIImage(named: "Cry")
 //private let imageLoading = UIImage(color: COLOR_CLEAR)//UIImage(named: "Loading")
@@ -44,6 +45,13 @@ extension UIViewController {
 public typealias QPTableViewController = QPBaseTableViewController
 
 public class QPBaseTableViewController: UITableViewController {
+
+	public var jsonInfo = JSON("")
+	public var jsonArray: [JSON] = []
+
+	public func addFooter() {
+		self.tableView.addRefreshFooter(self, action: "requestMore")
+	}
 
 	public var controllerInfo = NSDictionary()
 
@@ -103,11 +111,11 @@ public class QPBaseTableViewController: UITableViewController {
 	}
 
 	public override func viewWillDisappear(animated: Bool) {
-		// if shouldHideNavigationBar {
-		// self.navigationController?.setNavigationBarHidden(false, animated: animated)
-		// self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-		//
-		// }
+		if shouldHideNavigationBar {
+			self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//		 self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+
+		}
 		super.viewWillDisappear(animated)
 	}
 
@@ -183,6 +191,9 @@ public class QPBaseTableViewController: UITableViewController {
 	public func smoothUpdate(cell: UITableViewCell, indexPath: NSIndexPath) {
 	}
 
+	public func smoothUpdate(cell: UITableViewCell, indexPath: NSIndexPath, section: Int, row: Int) {
+	}
+
 	/**
      平滑的更新cell
      前提是要先实现smoothUpdate,在这个方法里面实现cell内容的设置.✨
@@ -194,6 +205,7 @@ public class QPBaseTableViewController: UITableViewController {
 	public func smoothReload(indexPath: NSIndexPath) {
 		if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
 			smoothUpdate(cell, indexPath: indexPath)
+			smoothUpdate(cell, indexPath: indexPath, section: indexPath.section, row: indexPath.row)
 		}
 	}
 	/**
@@ -454,4 +466,121 @@ public extension Int {
 		self = 1
 	}
 }
+
+//----for xjw
+
+public extension QPTableViewController {
+	func requestPage() -> Int {
+		return QPHttpUtils.pageSize()
+	}
+	/**
+     处理下啦刷新状态,包含reloadData
+     
+     ********* view did load ***********
+     
+     self.tableView.addRefreshFooter(self, action: #selector(UIViewController.requestMore))
+     
+     ********* http ***********
+     
+     let param = ["pageNow": page, "pageSize": pageCount]
+     
+     ********* requetst ***********
+     
+     page = 1
+     
+     self.data = response.arrayValue
+     self.setupRequest(self.data)
+     
+     self.jsonArray = response.list()
+     self.jsonInfo = response
+     self.setupRequest(self.jsonArray)
+
+     self.showNetworkException()
+
+     ********* more ***********
+     
+     page + 1
+      self.view.hideAllHUD()
+     let array = response.arrayValue
+     for item in array {
+     self.data.append(item)
+     }
+     self.addJSONArray(response, source: self.data)
+     
+     
+     self.view.hideAllHUD()
+     let array = response.list()
+     for item in array {
+     self.jsonArray.append(item)
+     }
+     self.addJSONArray(response, source: self.jsonArray)
+     
+     
+     
+     self.showNetworkException()
+     
+     
+     - parameter response: response
+     - parameter source:   下啦刷新原数据
+     
+     
+     - parameter source: 下啦刷新原数据
+     */
+	public func setupRequest(source: [JSON]) {
+		self.reloadData()
+		self.page = 1
+		setupFooterInfo(source)
+		if source.count == 0 {
+			self.tableViewNoData()
+		}
+	}
+
+	public func setupFooterInfo(source: [JSON]) -> Bool {
+		let data = source
+		let count = data.count
+		let limit = requestPage()
+		log.verbose("count:\(count) \(limit)")
+		self.tableView.endRefreshFooter()
+		var flag = true
+		if count == 0 {
+			self.tableView.hideFooter()
+			flag = false
+		} else if count < limit {
+			log.verbose("count: \(count) 不足加载更多")
+			self.tableView.hideFooter()
+		} else {
+			self.tableView.showFooter()
+		}
+		return flag
+	}
+
+	/**
+     下啦加载更多
+     page + 1
+     
+     self.view.hideAllHUD()
+     let array = response.arrayValue
+     for item in array {
+     self.data.append(item)
+     }
+     self.addJSONArray(response, source: self.data)
+     
+     self.showNetworkException()
+     
+     
+     - parameter response: response
+     - parameter source:   下啦刷新原数据
+     */
+	public func addJSONArray(response: JSON, source: [JSON]) {
+		let array = response.arrayValue
+		self.reloadData()
+		let flag = setupFooterInfo(array)
+		if flag {
+			self.page += 1
+		} else {
+		}
+	}
+}
+
+//----for xjw
 
