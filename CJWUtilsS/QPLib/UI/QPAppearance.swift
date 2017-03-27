@@ -618,3 +618,9 @@ public extension UITextField {
 		self.secureTextEntry = false
 	}
 }
+
+public extension String {
+    public func getRange() -> NSRange {
+        return NSMakeRange(0, self.length())
+    }
+}
