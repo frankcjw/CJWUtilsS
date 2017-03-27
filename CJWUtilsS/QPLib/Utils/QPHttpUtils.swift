@@ -725,6 +725,14 @@ public extension QPHttpUtils {
 		}
 	}
 
+	private func getBundleId() -> String {
+		if let bundleId = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as? String {
+			return bundleId
+		} else {
+			return "CJWUtilsS"
+		}
+	}
+
 	/**
      默认上传到谢文俊的七牛
      
@@ -733,7 +741,11 @@ public extension QPHttpUtils {
      - parameter success: success description
      - parameter failure: failure description
      */
-	public func uploadImage(image: UIImage, path: String = "CJWUtilsS", success: QPSuccessBlock, failure: QPFailBlock) {
+	public func uploadImage(image: UIImage, path: String = "", success: QPSuccessBlock, failure: QPFailBlock) {
+		var ppp = path
+		if ppp == "" {
+			ppp = getBundleId()
+		}
 		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/", param: nil, success: { (response) in
 			if let token = response["info"].string {
 //				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
