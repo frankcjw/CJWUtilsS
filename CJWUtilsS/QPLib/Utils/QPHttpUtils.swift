@@ -733,6 +733,9 @@ public extension QPHttpUtils {
 		}
 	}
 
+	public func uploadImageCompress(image: UIImage, path: String = "", success: QPSuccessBlock, failure: QPFailBlock) {
+		uploadImage(image.compress(), path: path, success: success, failure: failure)
+	}
 	/**
      默认上传到谢文俊的七牛
      
@@ -745,11 +748,13 @@ public extension QPHttpUtils {
 		var ppp = path
 		if ppp == "" {
 			ppp = getBundleId()
+			ppp = ppp.encryptAES("IX07L2433M88JCJW") ?? getBundleId()
+			ppp.urlEncode()
 		}
 		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken/", param: nil, success: { (response) in
 			if let token = response["info"].string {
 //				let tmpImg = UIImage.scaleImage(image, toSize: CGSizeMake(200, 200))
-				self.uploadImage(image, path: path, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
+				self.uploadImage(image, path: ppp, baseUrl: "http://img.moo-mi.com/", token: "\(token)", success: success, failure: failure)
 			} else {
 				failure()
 			}

@@ -18,6 +18,11 @@ NSDictionary *infoDictionary;
 //    NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
 }
 
++(NSString *)getBundleId{
+    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+
+}
+
 +(NSString *)getVersion{
     return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
 }

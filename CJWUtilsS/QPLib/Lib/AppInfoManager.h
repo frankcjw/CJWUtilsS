@@ -54,4 +54,6 @@
  */
 +(NSString *)getUrlScheme;
 
++(NSString *)getBundleId;
+
 @end

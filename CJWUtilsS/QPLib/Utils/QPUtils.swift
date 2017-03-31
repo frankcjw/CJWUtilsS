@@ -211,6 +211,16 @@ public extension Double {
 		return realDate
 	}
 
+	public func convertToDateString2() -> String {
+//		let time = self / 1000 - NSTimeIntervalSince1970
+//		let date = NSDate(timeIntervalSinceReferenceDate: time)
+//		let fmt = NSDateFormatter()
+//		fmt.dateFormat = "yyyy-MM-dd"
+//		let realDate = fmt.stringFromDate(date)
+//		return realDate
+		return convertToDateString("yyyy-MM-dd")
+	}
+
 	public func convertToDateString(formatt: String) -> String {
 		let time = self / 1000 - NSTimeIntervalSince1970
 		let date = NSDate(timeIntervalSinceReferenceDate: time)
@@ -1172,3 +1182,24 @@ public extension String {
 	}
 }
 
+public extension UIImage {
+	/**
+     压缩图片 默认 300 * 300
+     
+     - returns:
+     */
+	public func compress() -> UIImage {
+		return compress(CGSizeMake(300, 300))
+	}
+
+	/**
+     压缩图片
+     
+     - parameter size: 压缩到尺寸
+     
+     - returns: 
+     */
+	public func compress(size: CGSize) -> UIImage {
+		return UIImage.scaleImage(self, toSize: size)
+	}
+}

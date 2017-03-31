@@ -177,6 +177,17 @@
 		018AF15A1D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1451D8048520002ABBF /* MLSelectPhotoPickerFooterCollectionReusableView.m */; };
 		018AF15B1D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AF1471D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m */; };
 		018AF15C1D8048520002ABBF /* MLSelectPhoto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 018AF1481D8048520002ABBF /* MLSelectPhoto.bundle */; };
+		0194B94C1E8AC53C002FA2DC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194B94B1E8AC53C002FA2DC /* Security.framework */; };
+		0194B9571E8ACA55002FA2DC /* Cassette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B94E1E8ACA55002FA2DC /* Cassette.swift */; };
+		0194B9581E8ACA55002FA2DC /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B94F1E8ACA55002FA2DC /* Interaction.swift */; };
+		0194B9591E8ACA55002FA2DC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9501E8ACA55002FA2DC /* Session.swift */; };
+		0194B95A1E8ACA55002FA2DC /* SessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9511E8ACA55002FA2DC /* SessionDataTask.swift */; };
+		0194B95B1E8ACA55002FA2DC /* SessionDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9521E8ACA55002FA2DC /* SessionDownloadTask.swift */; };
+		0194B95C1E8ACA55002FA2DC /* SessionUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9531E8ACA55002FA2DC /* SessionUploadTask.swift */; };
+		0194B95D1E8ACA55002FA2DC /* URLHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9541E8ACA55002FA2DC /* URLHTTPResponse.swift */; };
+		0194B95E1E8ACA55002FA2DC /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9551E8ACA55002FA2DC /* URLRequest.swift */; };
+		0194B95F1E8ACA55002FA2DC /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194B9561E8ACA55002FA2DC /* URLResponse.swift */; };
+		0194B9611E8ACCD3002FA2DC /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 0194B9601E8ACCD3002FA2DC /* example.json */; };
 		019A93F11E7DB75D0061F305 /* QPScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A93F01E7DB75D0061F305 /* QPScrollView.swift */; };
 		019A93F31E7DB7770061F305 /* QPColumnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A93F21E7DB7770061F305 /* QPColumnsView.swift */; };
 		01A8FC611C96914200731483 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 01A8FC601C96914200731483 /* ExampleApp.html */; };
@@ -496,6 +507,17 @@
 		018AF1461D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroupTableViewCell.h; sourceTree = "<group>"; };
 		018AF1471D8048520002ABBF /* MLSelectPhotoPickerGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroupTableViewCell.m; sourceTree = "<group>"; };
 		018AF1481D8048520002ABBF /* MLSelectPhoto.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLSelectPhoto.bundle; sourceTree = "<group>"; };
+		0194B94B1E8AC53C002FA2DC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0194B94E1E8ACA55002FA2DC /* Cassette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cassette.swift; sourceTree = "<group>"; };
+		0194B94F1E8ACA55002FA2DC /* Interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		0194B9501E8ACA55002FA2DC /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		0194B9511E8ACA55002FA2DC /* SessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDataTask.swift; sourceTree = "<group>"; };
+		0194B9521E8ACA55002FA2DC /* SessionDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDownloadTask.swift; sourceTree = "<group>"; };
+		0194B9531E8ACA55002FA2DC /* SessionUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUploadTask.swift; sourceTree = "<group>"; };
+		0194B9541E8ACA55002FA2DC /* URLHTTPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHTTPResponse.swift; sourceTree = "<group>"; };
+		0194B9551E8ACA55002FA2DC /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		0194B9561E8ACA55002FA2DC /* URLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		0194B9601E8ACCD3002FA2DC /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		019A93F01E7DB75D0061F305 /* QPScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPScrollView.swift; sourceTree = "<group>"; };
 		019A93F21E7DB7770061F305 /* QPColumnsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPColumnsView.swift; sourceTree = "<group>"; };
 		01A8FC601C96914200731483 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
@@ -613,6 +635,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0194B94C1E8AC53C002FA2DC /* Security.framework in Frameworks */,
 				015CB5D61DCC7C5900347982 /* sS.framework in Frameworks */,
 				079AE541252A7C76D718B522 /* Pods_CJWUtilsS.framework in Frameworks */,
 			);
@@ -940,6 +963,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0194B94D1E8ACA55002FA2DC /* DVR */ = {
+			isa = PBXGroup;
+			children = (
+				0194B9601E8ACCD3002FA2DC /* example.json */,
+				0194B94E1E8ACA55002FA2DC /* Cassette.swift */,
+				0194B94F1E8ACA55002FA2DC /* Interaction.swift */,
+				0194B9501E8ACA55002FA2DC /* Session.swift */,
+				0194B9511E8ACA55002FA2DC /* SessionDataTask.swift */,
+				0194B9521E8ACA55002FA2DC /* SessionDownloadTask.swift */,
+				0194B9531E8ACA55002FA2DC /* SessionUploadTask.swift */,
+				0194B9541E8ACA55002FA2DC /* URLHTTPResponse.swift */,
+				0194B9551E8ACA55002FA2DC /* URLRequest.swift */,
+				0194B9561E8ACA55002FA2DC /* URLResponse.swift */,
+			);
+			path = DVR;
+			sourceTree = "<group>";
+		};
 		01CAEFB91C3BA737006E221A /* QPLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -954,6 +994,7 @@
 		01CAEFBA1C3BA737006E221A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				0194B94D1E8ACA55002FA2DC /* DVR */,
 				01789BE11E56DEEB00DAD024 /* MLEmoji */,
 				01CEB3EB1DE2A120004AFD1F /* libqrencode */,
 				01CEB3E01DE2A088004AFD1F /* QRCodeScanner */,
@@ -1238,6 +1279,7 @@
 		D989CEA188FF5D0446E057B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0194B94B1E8AC53C002FA2DC /* Security.framework */,
 				9D7E810D59A89D787C55185D /* Pods_CJWUtilsS.framework */,
 				54F348644E63E766842B877C /* libPods-CJWUtilsSTests.a */,
 			);
@@ -1475,6 +1517,7 @@
 				01789CAB1E56DEEB00DAD024 /* Expression_83@2x.png in Resources */,
 				01789C8E1E56DEEB00DAD024 /* Expression_57@2x.png in Resources */,
 				01789C971E56DEEB00DAD024 /* Expression_65@2x.png in Resources */,
+				0194B9611E8ACCD3002FA2DC /* example.json in Resources */,
 				01789C821E56DEEB00DAD024 /* Expression_46@2x.png in Resources */,
 				01789CA31E56DEEB00DAD024 /* Expression_76@2x.png in Resources */,
 				01789C921E56DEEB00DAD024 /* Expression_60@2x.png in Resources */,
@@ -1702,6 +1745,7 @@
 				01CEB3E71DE2A088004AFD1F /* QRCScanner.m in Sources */,
 				013BCA4D1D89319500EF8254 /* UIApplication+Extend.m in Sources */,
 				0151722A1C4C9BA000EEB9ED /* QPHUDUtils.swift in Sources */,
+				0194B95D1E8ACA55002FA2DC /* URLHTTPResponse.swift in Sources */,
 				01789CC31E56DEEB00DAD024 /* TTTAttributedLabel.m in Sources */,
 				01CAEFD41C3BA737006E221A /* QPAppearance.swift in Sources */,
 				01F5DBBA1E2780FF0068E317 /* QPSNSUtils.swift in Sources */,
@@ -1714,6 +1758,7 @@
 				012F30051C521812003891E5 /* QPDBUtils.swift in Sources */,
 				01CAEFD71C3BA737006E221A /* QPBaseViewController.swift in Sources */,
 				01CEB3FF1DE2A120004AFD1F /* CJWQRCode.m in Sources */,
+				0194B9591E8ACA55002FA2DC /* Session.swift in Sources */,
 				01789BE01E56D2F800DAD024 /* QPExamTableViewController.swift in Sources */,
 				0161E7771CAD13FD00D0D0C3 /* QPCacheUtilsPro.swift in Sources */,
 				01CEB3E81DE2A088004AFD1F /* UIImage+MDQRCode.m in Sources */,
@@ -1722,6 +1767,7 @@
 				01F5DBB81E2736E90068E317 /* QPAdvTableViewCell.swift in Sources */,
 				01CAEFD81C3BA737006E221A /* QPColor.swift in Sources */,
 				01CEB4061DE2A120004AFD1F /* split.c in Sources */,
+				0194B9581E8ACA55002FA2DC /* Interaction.swift in Sources */,
 				0134D2931E7E8AD40050625B /* QPInputTableViewCell.swift in Sources */,
 				01F201AB1D80391A00DA5ABB /* CJWDesEncrypt.m in Sources */,
 				018AF14E1D8048520002ABBF /* MLSelectPhotoPickerGroup.m in Sources */,
@@ -1730,6 +1776,7 @@
 				01DD99CD1DB0C41400ECD3A8 /* QPSegmentViewController.swift in Sources */,
 				012489BA1D4AF6EE00DA3865 /* QPButton.swift in Sources */,
 				018AF1551D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
+				0194B95A1E8ACA55002FA2DC /* SessionDataTask.swift in Sources */,
 				01F423551C81C4CC009FDA73 /* QPAlertUtils.swift in Sources */,
 				019A93F31E7DB7770061F305 /* QPColumnsView.swift in Sources */,
 				01CE0CBA1D83FE1E009EC9B9 /* QPLocationUtils.swift in Sources */,
@@ -1739,6 +1786,7 @@
 				018AF14A1D8048520002ABBF /* UIView+MLExtension.m in Sources */,
 				B64D5BBE1A356CC500D137D1 /* CJWUtilsS.xcdatamodeld in Sources */,
 				018AF1571D8048520002ABBF /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
+				0194B9571E8ACA55002FA2DC /* Cassette.swift in Sources */,
 				01CAEFDE1C3BA737006E221A /* QPKeyChainUtils.swift in Sources */,
 				018AF1491D8048520002ABBF /* UIImage+MLTint.m in Sources */,
 				018AF1501D8048520002ABBF /* MLSelectPhotoNavigationViewController.m in Sources */,
@@ -1750,6 +1798,7 @@
 				018AF1141D803BF00002ABBF /* Base64.m in Sources */,
 				013BCA511D89319500EF8254 /* NewFeatureImageV.m in Sources */,
 				01CE0CB81D83FD61009EC9B9 /* VIPMapUtils.m in Sources */,
+				0194B95E1E8ACA55002FA2DC /* URLRequest.swift in Sources */,
 				01789CC51E56DF1A00DAD024 /* QPEmojiLabel.swift in Sources */,
 				018AF14F1D8048520002ABBF /* MLSelectPhotoBrowserViewController.m in Sources */,
 				B64D5BDF1A35714200D137D1 /* CJWDate.swift in Sources */,
@@ -1757,6 +1806,7 @@
 				018AF1541D8048520002ABBF /* MLPhotoPickerImageView.m in Sources */,
 				018AF1581D8048520002ABBF /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				013BCA4F1D89319500EF8254 /* CoreNewFeatureVC.m in Sources */,
+				0194B95C1E8ACA55002FA2DC /* SessionUploadTask.swift in Sources */,
 				01CE0CB11D83FB17009EC9B9 /* GDMapViewController.swift in Sources */,
 				01CE0CB51D83FD47009EC9B9 /* QPNavigationUtils.swift in Sources */,
 				01216C8E1DAA1B70003CDA6C /* QPGridView.swift in Sources */,
@@ -1785,9 +1835,11 @@
 				01CAEFDD1C3BA737006E221A /* QPHttpUtils.swift in Sources */,
 				013BCA501D89319500EF8254 /* NewFeatureModel.m in Sources */,
 				0151722C1C4CD23A00EEB9ED /* QPAlert.swift in Sources */,
+				0194B95B1E8ACA55002FA2DC /* SessionDownloadTask.swift in Sources */,
 				0115E3B91D3CD9860078C4B9 /* QPGridTableViewCell.swift in Sources */,
 				0136C1311E669F7200092290 /* QPFeatureViewController.swift in Sources */,
 				B64D5BBB1A356CC500D137D1 /* AppDelegate.swift in Sources */,
+				0194B95F1E8ACA55002FA2DC /* URLResponse.swift in Sources */,
 				018AF1171D8040A70002ABBF /* AppInfoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

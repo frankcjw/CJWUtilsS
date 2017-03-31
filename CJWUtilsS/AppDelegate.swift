@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 import netfox
+import Security
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print("-------------------")
 		print("\(pwd)")
 		print("-------------------")
+		QPHttpUtils.sharedInstance.newHttpRequest("http://app.cenjiawen.com/qntoken", param: nil, success: { (response) in
+			print("\(response)")
+		}) {
+
+		}
 
 		return true
 	}

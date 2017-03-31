@@ -17,12 +17,14 @@ public class QPFormModifyTableViewController: QPTableViewController {
 
 	public typealias QPInputModifyBlock = (text: String) -> ()
 
+	public var rightTitle = "保存"
+
 	var block: QPInputModifyBlock?
 
 	override public func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.registerClass(QPInputTextFieldCell.self, forCellReuseIdentifier: "QPInputTextFieldCell")
-		self.addRightButton("更新", action: #selector(QPFormModifyTableViewController.onConfirm))
+		self.addRightButton(rightTitle, action: #selector(QPFormModifyTableViewController.onConfirm))
 		self.title = placeholder
 	}
 

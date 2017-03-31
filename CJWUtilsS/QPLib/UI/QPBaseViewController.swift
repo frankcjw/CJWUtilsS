@@ -207,6 +207,7 @@ public extension UIViewController {
 public extension UIViewController {
 	public func translucentBar(color: UIColor) {
 		self.navigationController?.navigationBar.translucentBar(color)
+		self.navigationController?.navigationBar.translucent = false
 	}
 
 	public func removeTranslucent() {

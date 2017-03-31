@@ -76,6 +76,7 @@ target 'CJWUtilsS' do
     pod 'iVersion'
     pod 'iRate'
     pod 'Qiniu', '~> 7.1'
+    pod 'SAMKeychain'
 
 end
 
