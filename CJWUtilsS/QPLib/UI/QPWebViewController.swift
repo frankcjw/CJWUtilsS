@@ -18,6 +18,10 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	public var isPresent = false
 
+	public var isShowLeftButtons = true
+
+	public var isLoadTitle = true
+
 	public func agent() -> String {
 		return ""
 	}
@@ -94,7 +98,9 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 	}
 
 	public func webViewDidFinishLoad(webView: UIWebView) {
-		self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+		if isLoadTitle {
+			self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+		}
 		if webView.canGoBack {
 			showBackAndClose()
 		} else {
@@ -124,19 +130,23 @@ public class QPWebViewController: QPViewController, UIWebViewDelegate {
 
 	private func showClose() {
 
-		let closeButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
-
-		self.navigationItem.leftBarButtonItems = [closeButton]
+		if isShowLeftButtons {
+			let closeButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
+			self.navigationItem.leftBarButtonItems = [closeButton]
+		}
 
 	}
 
 	private func showBackAndClose() {
 
-		let btn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.back))
+		if isShowLeftButtons {
+			let btn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.back))
 
-		let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
+			let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(QPWebViewController.close))
 
-		self.navigationItem.leftBarButtonItems = [btn, closeButton]
+			self.navigationItem.leftBarButtonItems = [btn, closeButton]
+		}
+
 	}
 
 }

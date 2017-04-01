@@ -1203,3 +1203,56 @@ public extension UIImage {
 		return UIImage.scaleImage(self, toSize: size)
 	}
 }
+
+public extension QPUtils {
+	public func isIdCard(value: String) -> Bool {
+		let regex = "^(\\d{14}|\\d{17})(\\d|[xX])$"
+		let result: NSPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
+		return result.evaluateWithObject(value)
+	}
+}
+
+public class QPSearchBar: UISearchBar, UISearchBarDelegate {
+
+	public typealias QPSearchBarBloclk = (text: String) -> ()
+
+	var block: QPSearchBarBloclk?
+
+	public func onTextChanged(block: QPSearchBarBloclk) {
+		self.block = block
+	}
+
+	public var disable = false
+
+	override public func updateConstraints() {
+		super.updateConstraints()
+	}
+
+	func setup(view: UIView) {
+		self.delegate = self
+	}
+
+	convenience init () {
+		self.init(frame: CGRect.zero)
+		setup(self)
+	}
+
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		setup(self)
+	}
+
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		setup(self)
+	}
+
+	public func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+		return !disable
+	}
+
+	public func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+		block?(text: searchText)
+	}
+}
+

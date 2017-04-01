@@ -51,7 +51,7 @@ public class QPBaseTableViewController: UITableViewController {
 
 	public func addFooter() {
 		self.tableView.addRefreshFooter(self, action: "requestMore")
-	}
+ 	}
 
 	public var controllerInfo = NSDictionary()
 
