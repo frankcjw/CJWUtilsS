@@ -17,7 +17,7 @@ public class QPFormModifyTableViewController: QPTableViewController {
 
 	public typealias QPInputModifyBlock = (text: String) -> ()
 
-	public var rightTitle = "保存"
+	public var rightTitle = "确定"
 
 	var block: QPInputModifyBlock?
 

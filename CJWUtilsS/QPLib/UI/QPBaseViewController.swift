@@ -26,13 +26,10 @@ public class QPBaseViewController: UIViewController {
 
 			self.navigationController?.setNavigationBarHidden(true, animated: animated)
 		} else {
-
-//            self.navigationController?.navigationBar.translucentWith(UIColor.whiteColor())
-			self.navigationController?.navigationBar.translucent = false
-
-			self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//            self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-		}
+//  			self.navigationController?.navigationBar.translucent = false
+//
+//			self.navigationController?.setNavigationBarHidden(false, animated: animated)
+ 		}
 		super.viewWillAppear(animated)
 	}
 
