@@ -24,6 +24,10 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 		}
 		return Static.instance!
 	}
+    
+    public func applicationWillEnterForeground(application: UIApplication) {
+        onAutoLogin()
+    }
 
 	public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		let window = UIWindow(frame: UIScreen.mainScreen().bounds)

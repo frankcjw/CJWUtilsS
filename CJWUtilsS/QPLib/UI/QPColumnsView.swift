@@ -10,7 +10,7 @@ import UIKit
 
 public class QPColumnsView: UIControl {
 
-	private var count = 2
+	public var count = 2
 	public var labels: [UILabel] = []
 	public var lines: [UIView] = []
 	public var indicatorLines: [UIView] = []
@@ -138,8 +138,14 @@ public class QPColumnsView: UIControl {
 
 			label.centerY(view)
 			label.heightConstrain(">=30")
-			label.widthConstrain(">=80")
 			label.centerX(view, predicate: "*\(xPredicate)")
+
+			label.widthConstrain(">=80")
+			label.leadingAlign(view, predicate: ">=0")
+			label.trailingAlign(view, predicate: "<=0")
+			label.topAlign(view, predicate: ">=0")
+			label.bottomAlign(view, predicate: "<=0")
+
 			label.textAlignmentCenter()
 			label.text = "label \(index)"
 			label.textColor = UIColor.whiteColor()
