@@ -94,7 +94,7 @@ public class QPBaseTableViewController: UITableViewController {
 		// IQKeyboardManager.sharedManager().enableAutoToolbar = false
 
 		if shouldHideNavigationBar {
-			self.navigationController?.setNavigationBarHidden(true, animated: animated)
+ 			self.navigationController?.setNavigationBarHidden(true, animated: animated)
 		} else {
 
 			fixNavigationBarColor(animated)

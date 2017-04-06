@@ -50,7 +50,7 @@ public class QPFeatureViewController: UIViewController {
 			if index == images.count - 1 {
 				imgv.addSubview(button)
 				button.centerX(imgv)
-				button.bottomAlign(imgv, predicate: "-100")
+				button.bottomAlign(imgv, predicate: "-40")
 			}
 			index += 1
 		}
