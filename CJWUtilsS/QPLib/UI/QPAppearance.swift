@@ -543,6 +543,18 @@ public extension UIView {
 	public class func fractions(numerator: Int, denominator: Int) -> CGFloat {
 		return CGFloat(numerator) / CGFloat(denominator)
 	}
+
+	public class func scale(number: Int, count: Int) -> CGFloat {
+		let aaa: CGFloat = CGFloat(number)
+		let bbb: CGFloat = CGFloat(count)
+		let result: CGFloat = aaa / bbb
+		return result
+	}
+
+	public class func scaleString(number: Int, count: Int) -> String {
+		let scaleNumber = scale(number, count: count)
+		return "*\(scaleNumber)"
+	}
 }
 
 public class QPInputMobileTextField: QPInputTextField {
@@ -620,7 +632,7 @@ public extension UITextField {
 }
 
 public extension String {
-    public func getRange() -> NSRange {
-        return NSMakeRange(0, self.length())
-    }
+	public func getRange() -> NSRange {
+		return NSMakeRange(0, self.length())
+	}
 }

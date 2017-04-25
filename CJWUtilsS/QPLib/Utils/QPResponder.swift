@@ -38,10 +38,10 @@ public class QPResponder: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().barStyle = UIBarStyle.Black// 这是白色....
 		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 		UINavigationBar.appearance().barTintColor = UIColor.mainColor()
-		let bar = UINavigationBar.appearance()
-		bar.translucentBar(UIColor.mainColor())
-		bar.translucent = false
-		UITabBar.appearance().tintColor = UIColor.mainColor()
+//		let bar = UINavigationBar.appearance()
+//		bar.translucentBar(UIColor.mainColor())
+//		bar.translucent = false
+//		UITabBar.appearance().tintColor = UIColor.mainColor()
 		UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 		checkForceUpdate()
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QPResponder.onLogout), name: "onLogout", object: nil)
