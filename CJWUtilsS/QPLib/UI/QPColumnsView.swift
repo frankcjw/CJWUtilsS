@@ -205,11 +205,12 @@ public class QPColumnsView: UIControl {
 				line.hidden = true
 			}
 
+			indicatorLines[index].hidden = false
+			self.currentIndex = index
+
 			let label = labelAt(index)
 			onSelected(label)
 			onSelectedBlock?(label: label)
-			indicatorLines[index].hidden = false
-			self.currentIndex = index
 		}
 
 	}

@@ -150,6 +150,39 @@ public class QPInputTableViewCell2: QPTableViewCell, UITextFieldDelegate {
 	}
 }
 
+public class QPLongLabelTableViewCell: QPTableViewCell {
+
+	public let tipsLabel = QPTipsLabel()
+	public let titleLabel = UILabel()
+
+	public override func setupViews(view: UIView) {
+		super.setupViews(view)
+		view.addSubview(tipsLabel)
+		view.addSubview(titleLabel)
+		tipsLabel.font = UIFont.fontNormal()
+		titleLabel.font = UIFont.fontNormal()
+		tipsLabel.textColor = UIColor.darkGrayColor()
+	}
+
+	public override func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+
+        titleLabel.trailingAlign(view, predicate: "-16@700")
+		titleLabel.leadingAlign(view, predicate: ">=100")
+		titleLabel.leadingConstrain(tipsLabel, predicate: "16")
+		titleLabel.topAlign(view)
+		titleLabel.bottomAlign(view)
+		// titleLabel.centerY(view)
+		// titleLabel.trailingAlign(view)
+
+		tipsLabel.leadingAlign(view, predicate: "16")
+		tipsLabel.topAlign(view, predicate: "16")
+		tipsLabel.bottomAlign(view, predicate: "-16")
+		tipsLabel.centerY(view)
+
+	}
+}
+
 public class QPLabelTableViewCell: QPTableViewCell {
 
 	public let tipsLabel = QPTipsLabel()
@@ -169,7 +202,6 @@ public class QPLabelTableViewCell: QPTableViewCell {
 
 		titleLabel.leadingAlign(view, predicate: ">=100")
 		titleLabel.leadingConstrain(tipsLabel, predicate: ">=16")
-//        titleLabel.trailingAlign(view)
 		titleLabel.centerY(view)
 //        titleLabel.trailingAlign(view)
 
