@@ -17,7 +17,6 @@ public class QPSecurityUtils: NSObject {
 		let publicKeyPath = bundle.pathForResource("rsa_public_key2", ofType: "pem")!
 		let publicKey = try? String(contentsOfFile: publicKeyPath, encoding: NSUTF8StringEncoding)
 		let encryptedString = try! SwiftyRSA.encryptString(text, publicKeyPEM: publicKey!)
-		print("\(encryptedString)")
 		return encryptedString
 
 	}
@@ -161,6 +160,7 @@ extension String {
 		let pwd = CJWDesEncrypt.encrypt(self, key: session as String)
 		return pwd
 	}
+
 }
 
 public extension QPHttpUtils {

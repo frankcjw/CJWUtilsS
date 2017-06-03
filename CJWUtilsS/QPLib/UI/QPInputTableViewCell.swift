@@ -93,7 +93,7 @@ public class QPInputVerifyCodeTableViewCell: QPInputTableViewCell2 {
 public class QPInputTableViewCell2: QPTableViewCell, UITextFieldDelegate {
 	public let tipsLabel = QPTipsLabel()
 	public let textField = UITextField()
-	public let infoLabel = UILabel()
+	public let infoLabel = LGTimerLabel()
 	var block: QPInputTableViewCellBlock?
 
 	public override func setupViews(view: UIView) {
@@ -162,12 +162,14 @@ public class QPLongLabelTableViewCell: QPTableViewCell {
 		tipsLabel.font = UIFont.fontNormal()
 		titleLabel.font = UIFont.fontNormal()
 		tipsLabel.textColor = UIColor.darkGrayColor()
+		titleLabel.numberOfLines = 0
+//		titleLabel.textAlignment = NSTextAlignme
 	}
 
 	public override func setupConstrains(view: UIView) {
 		super.setupConstrains(view)
 
-        titleLabel.trailingAlign(view, predicate: "-16@700")
+		titleLabel.trailingAlign(view, predicate: "-16")
 		titleLabel.leadingAlign(view, predicate: ">=100")
 		titleLabel.leadingConstrain(tipsLabel, predicate: "16")
 		titleLabel.topAlign(view)

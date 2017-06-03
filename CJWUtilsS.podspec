@@ -177,6 +177,7 @@ end
   s.dependency "PodAsset"
   s.dependency "JXBAdPageView"
   s.dependency "iVersion"
+  s.dependency "MZTimerLabel"
     s.dependency "iRate"
     s.dependency "Qiniu", "~> 7.1"
 #s.dependency "Bugly"

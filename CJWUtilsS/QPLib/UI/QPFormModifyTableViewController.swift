@@ -10,7 +10,10 @@ import UIKit
 
 public class QPFormModifyTableViewController: QPTableViewController {
 
+	public var isTextView = false
+
 	var textInputFiled = UITextField()
+	var textInputView = UITextView()
 
 	private var text = ""
 	private var placeholder = ""
@@ -43,6 +46,12 @@ public class QPFormModifyTableViewController: QPTableViewController {
 	}
 
 	override public func cellForRow(atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		if isTextView {
+			let cell = QPInputTextViewCell()
+			cell.textField.text = self.text
+			self.textInputView = cell.textField
+			return cell
+		}
 		let cell = tableView.dequeueReusableCellWithIdentifier("QPInputTextFieldCell") as! QPInputTextFieldCell
 		cell.textField.text = self.text
 		cell.textField.placeholder = self.placeholder
@@ -52,7 +61,11 @@ public class QPFormModifyTableViewController: QPTableViewController {
 
 	override public func popViewController(animated: Bool) {
 		super.popViewController(animated)
-		block?(text: textInputFiled.text ?? "")
+		if isTextView {
+			block?(text: textInputView.text ?? "")
+		} else {
+			block?(text: textInputFiled.text ?? "")
+		}
 	}
 
 	public func setupBlock(text: String, placeholder: String, block: QPInputModifyBlock) {
@@ -85,5 +98,24 @@ class QPInputTextFieldCell: QPTableViewCell {
 		textField.bottomAlign(view, predicate: "0")
 		// textField.equalConstrain()
 		textField.heightConstrain("44")
+	}
+}
+
+class QPInputTextViewCell: QPTableViewCell {
+	let textField = UITextView()
+
+	override func setupViews(view: UIView) {
+		super.setupViews(view)
+		view.addSubview(textField)
+	}
+
+	override func setupConstrains(view: UIView) {
+		super.setupConstrains(view)
+		textField.leadingAlign(view, predicate: "16")
+		textField.trailingAlign(view, predicate: "-16")
+		textField.topAlign(view, predicate: "4")
+		textField.bottomAlign(view, predicate: "-4")
+		// textField.equalConstrain()
+		textField.heightConstrain("100")
 	}
 }
